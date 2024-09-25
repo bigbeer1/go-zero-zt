@@ -1,0 +1,128 @@
+# 描述 Compose 文件的版本信息
+version: "3"
+
+# 自动创建网络，并手动指定IP网段
+networks:
+  dabenxiong_net:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+
+# 定义服务，可以多个
+services:
+  redis-1: # 服务名称
+    image: redis:6.2.8 # 创建容器时所需的镜像
+    container_name: redis-1 # 容器名称
+    restart: always
+    networks:
+      dabenxiong_net:
+         ipv4_address: 172.20.99.11
+    environment:
+      - REDISCLI_AUTH=G6200000000
+    ports:
+      - "6381:6381"
+      - "16381:16381"
+    volumes: # 数据卷，目录挂载
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+#      - ./etc_rc.local:/etc/rc.local
+      - ../deploy/redis/redis1.conf:/etc/redis/redis.conf
+#      - ../data/redis/1:/data
+      - ../deploy/redis/hosts:/etc/hosts
+    command: redis-server /etc/redis/redis.conf # 覆盖容器启动后默认执行的命令
+  redis-2:
+    image: redis:6.2.8 # 创建容器时所需的镜像
+    container_name: redis-2
+    restart: always
+    networks:
+      dabenxiong_net:
+        ipv4_address: 172.20.99.12
+    environment:
+      - REDISCLI_AUTH=G6200000000
+    ports:
+      - "6382:6382"
+      - "16382:16382"
+    volumes:
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+      - ../deploy/redis/redis2.conf:/etc/redis/redis.conf
+#      - ../data/redis/2:/data
+      - ../deploy/redis/hosts:/etc/hosts
+    command: redis-server /etc/redis/redis.conf
+  redis-3:
+    image: redis:6.2.8 # 创建容器时所需的镜像
+    container_name: redis-3
+    restart: always
+    networks:
+      dabenxiong_net:
+        ipv4_address: 172.20.99.13
+    environment:
+      - REDISCLI_AUTH=G6200000000
+    ports:
+      - "6383:6383"
+      - "16383:16383"
+    volumes:
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+      - ../deploy/redis/redis3.conf:/etc/redis/redis.conf
+#      - ../data/redis/3:/data
+      - ../deploy/redis/hosts:/etc/hosts
+    command: redis-server /etc/redis/redis.conf
+  redis-4:
+    image: redis:6.2.8 # 创建容器时所需的镜像
+    container_name: redis-4
+    restart: always
+    networks:
+      dabenxiong_net:
+        ipv4_address: 172.20.99.14
+    environment:
+      - REDISCLI_AUTH=G6200000000
+    ports:
+      - "6384:6384"
+      - "16384:16384"
+    volumes:
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+      - ../deploy/redis/redis4.conf:/etc/redis/redis.conf
+#      - ../data/redis/4:/data
+      - ../deploy/redis/hosts:/etc/hosts
+    command: redis-server /etc/redis/redis.conf
+  redis-5:
+    image: redis:6.2.8 # 创建容器时所需的镜像
+    container_name: redis-5
+    restart: always
+    networks:
+      dabenxiong_net:
+        ipv4_address: 172.20.99.15
+    environment:
+      - REDISCLI_AUTH=G6200000000
+    ports:
+      - "6385:6385"
+      - "16385:16385"
+    volumes:
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+      - ../deploy/redis/redis5.conf:/etc/redis/redis.conf
+#      - ../data/redis/5:/data
+      - ../deploy/redis/hosts:/etc/hosts
+    command: redis-server /etc/redis/redis.conf
+  redis-6:
+    image: redis:6.2.8 # 创建容器时所需的镜像
+    container_name: redis-6
+    restart: always
+    networks:
+      dabenxiong_net:
+        ipv4_address: 172.20.99.16
+    environment:
+      - REDISCLI_AUTH=G6200000000
+    ports:
+      - "6386:6386"
+      - "16386:16386"
+    volumes:
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+      - ../deploy/redis/redis6.conf:/etc/redis/redis.conf
+#      - ../data/redis/6:/data
+      - ../deploy/redis/hosts:/etc/hosts
+    command: redis-server /etc/redis/redis.conf

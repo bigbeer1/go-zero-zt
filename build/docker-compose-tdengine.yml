@@ -1,0 +1,38 @@
+# 描述 Compose 文件的版本信息
+version: "3"
+
+# 自动创建网络，并手动指定IP网段
+networks:
+  dabenxiong_net:
+    ipam:
+      config:
+        - subnet: 172.20.98.0/16
+
+
+# 定义服务，可以多个
+services:
+  taosnode1: # 服务名称
+    image: tdengine/tdengine:3.0.7.1 # 创建容器时所需的镜像
+    container_name: taosnode1 # 容器名称
+    restart: always
+    networks:
+      dabenxiong_net:
+         ipv4_address: 172.20.98.11
+    ports:
+      - "6030:6030"
+      - "6041:6041"
+      - "6043-6049:6043-6049"
+      - "6043-6049:6043-6049/udp"
+    volumes: # 数据卷，目录挂载
+      - ../deploy/tdengine/hosts:/etc/hosts
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+      - ../deploy/tdengine/taos1.cfg:/etc/taos/taos.cfg
+      - ../deploy/tdengine/taosadapter.toml:/etc/taos/taosadapter.toml
+      - ../deploy/tdengine/taoskeeper.toml:/etc/taos/taoskeeper.toml
+      - ../data/tdengine/taos1:/var/lib/taos
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"      # 日志文件大小
+        max-file: "1"        # 日志的数量

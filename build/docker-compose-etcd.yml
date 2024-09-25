@@ -1,0 +1,38 @@
+version: '3'
+
+######## 项目依赖的环境，启动项目之前要先启动此环境 #######
+
+# 自动创建网络，并手动指定IP网段
+networks:
+  dabenxiong_net:
+    ipam:
+      config:
+        - subnet: 172.20.88.0/16
+services:
+  # 注册中心
+  etcd: # etcd注册中间
+    image: bitnami/etcd
+    container_name: etcd
+    volumes:
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+    ports: # 设置端口映射
+      - "30000:2379"
+    networks:
+      - dabenxiong_net
+    restart: always
+
+  etcd-manager:
+    image: evildecay/etcdkeeper
+    container_name: etcd-manager
+    restart: always
+    volumes:
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    networks:
+      - dabenxiong_net
+    ports:
+      - "7000:8080"

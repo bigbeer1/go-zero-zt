@@ -1,0 +1,107 @@
+debug = false
+taosConfigDir = ""
+port = 6041
+logLevel = "error"
+httpCodeServerError = false
+SMLAutoCreateDB = false
+
+[cors]
+allowAllOrigins = true
+
+#[pool]
+#maxConnect = 0
+#maxIdle = 0
+#idleTimeout = 0
+
+[ssl]
+enable = false
+certFile = ""
+keyFile = ""
+
+[log]
+path = "/var/log/taos"
+rotationCount = 1
+rotationTime = "24h"
+rotationSize = "1GB"
+enableRecordHttpSql = false
+sqlRotationCount = 1
+sqlRotationTime = "24h"
+sqlRotationSize = "1GB"
+
+[monitor]
+disable = false
+collectDuration = "3s"
+disableCollectClientIP = false
+incgroup = false
+pauseQueryMemoryThreshold = 70
+pauseAllMemoryThreshold = 80
+identity = ""
+writeToTD = false
+user = "root"
+password = "POOTACA93V"
+writeInterval = "30s"
+
+[opentsdb]
+enable = true
+
+[influxdb]
+enable = false
+
+[statsd]
+enable = false
+port = 6044
+db = "statsd"
+user = "root"
+password = "POOTACA93V"
+worker = 10
+gatherInterval = "5s"
+protocol = "udp"
+maxTCPConnections = 250
+tcpKeepAlive = false
+allowPendingMessages = 50000
+deleteCounters = true
+deleteGauges = true
+deleteSets = true
+deleteTimings = true
+
+[collectd]
+enable = false
+port = 6045
+db = "collectd"
+user = "root"
+password = "POOTACA93V"
+worker = 10
+
+
+[opentsdb_telnet]
+enable = false
+maxTCPConnections = 250
+tcpKeepAlive = false
+dbs = ["opentsdb_telnet", "collectd", "icinga2", "tcollector"]
+ports = [6046, 6047, 6048, 6049]
+user = "root"
+password = "POOTACA93V"
+batchSize = 1
+flushInterval = "0s"
+
+[node_exporter]
+enable = false
+db = "node_exporter"
+user = "root"
+password = "POOTACA93V"
+urls = ["http://localhost:9100"]
+responseTimeout = "5s"
+httpUsername = ""
+httpPassword = ""
+httpBearerTokenString = ""
+caCertFile = ""
+certFile = ""
+keyFile = ""
+insecureSkipVerify = true
+gatherDuration = "5s"
+
+[prometheus]
+enable = false
+
+[tmq]
+releaseIntervalMultiplierForAutocommit = 2
