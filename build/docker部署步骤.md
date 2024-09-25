@@ -40,10 +40,8 @@ docker engine 配置
 #### 步骤1: 部署redis集群
 $ docker-compose -f docker-compose-redis.yml up -d
 
-
 #### 步骤2：启动redis集群
 $ docker exec -it redis-1 redis-cli --cluster create 172.20.99.11:6381 172.20.99.12:6382 172.20.99.13:6383 172.20.99.14:6384 172.20.99.15:6385 172.20.99.16:6386 --cluster-replicas 1
-
 
 #### 步骤2：部署环境中间件
 $ docker-compose -f docker-compose-env.yml up -d

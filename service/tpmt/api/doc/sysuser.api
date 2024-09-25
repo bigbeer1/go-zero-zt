@@ -1,0 +1,63 @@
+syntax = "v1"
+
+
+type (
+    SysUserAddRequest {
+		Account  string  `json:"account"`  // 用户名
+		NickName  string  `json:"nick_name"`  // 姓名
+		Password  string  `json:"password"`  // 密码
+		State  int64  `json:"state,options=1|2|3,"`  // 状态 1:正常 2:停用 3:封禁
+    }
+
+    SysUserDelRequest {
+		Id  string  `path:"id"`  // 用户ID
+    }
+
+    SysUserUpRequest {
+		Id  string  `json:"id"`  // 用户ID
+		NickName  string  `json:"nick_name,optional"`  // 姓名
+		State  int64  `json:"state,options=1|2|3"`  // 状态 1:正常 2:停用 3:封禁
+    }
+
+
+    SysUserListRequest {
+		Current  int64  `form:"current,default=1,optional"`  // 页码
+		PageSize  int64  `form:"page_size,default=10,optional"`  // 页数
+		NickName  string  `form:"nick_name,optional"`  // 姓名
+		State  int64  `form:"state,default=99,optional"`  // 状态 1:正常 2:停用 3:封禁
+    }
+
+    SysUserInfoRequest {
+		Id  string  `form:"id"`  // 用户ID          
+    }
+
+)
+
+@server(
+    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
+//    jwt: Auth
+    group: sysUser
+)
+
+service Tpmt {
+
+    // 添加
+    @handler SysUserAdd
+    post /tpmt/sysUser (SysUserAddRequest) returns (Response)
+
+    // 删除
+    @handler SysUserDel
+    delete /tpmt/sysUser/:id (SysUserDelRequest) returns (Response)
+
+    // 更新
+    @handler SysUserUp
+    put /tpmt/sysUser (SysUserUpRequest) returns (Response)
+
+    // 分页查询
+    @handler SysUserList
+    get /tpmt/sysUser (SysUserListRequest) returns (Response)
+
+    // 查询详细信息
+    @handler SysUserInfo
+    get /tpmt/sysUserInfo (SysUserInfoRequest) returns (Response)
+}
