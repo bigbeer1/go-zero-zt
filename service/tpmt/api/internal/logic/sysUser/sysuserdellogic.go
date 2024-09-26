@@ -35,7 +35,7 @@ func (l *SysUserDelLogic) SysUserDel(req *types.SysUserDelRequest) (resp *types.
 		DeletedName: tokenData.NickName, // 删除人
 	})
 	if err != nil {
-		return nil, common.NewDefaultError(err)
+		return nil, common.NewDefaultError(err.Error())
 	}
 	return &types.Response{
 		Code: 0,

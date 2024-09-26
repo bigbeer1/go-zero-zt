@@ -22,25 +22,24 @@ import (
 var (
 	sysUserFieldNames          = builder.RawFieldNames(&SysUser{})
 	sysUserRows                = strings.Join(sysUserFieldNames, ",")
-	sysUserRowsExpectAutoSet   = strings.Join(stringx.Remove(sysUserFieldNames, "`create_at`", "`create_time`", "`created_at`", "`update_at`", "`update_time`", "`updated_at`"), ",")
-	sysUserRowsWithPlaceHolder = strings.Join(stringx.Remove(sysUserFieldNames, "`id`", "`create_at`", "`create_time`", "`created_at`", "`update_at`", "`update_time`", "`updated_at`"), "=?,") + "=?"
+	sysUserRowsExpectAutoSet   = strings.Join(stringx.Remove(sysUserFieldNames, "`create_at`", "`create_time`", "`update_at`", "`update_time`"), ",")
+	sysUserRowsWithPlaceHolder = strings.Join(stringx.Remove(sysUserFieldNames, "`id`", "`create_at`", "`create_time`", "`update_at`", "`update_time`"), "=?,") + "=?"
 
 	cacheSysUserIdPrefix = "cache:sysUser:id:"
-
-	cacheSysUserAccountPrefix = "cache:sysUser:account:"
 )
 
 type (
 	sysUserModel interface {
 		Insert(ctx context.Context, data *SysUser) (sql.Result, error)
 		FindOne(ctx context.Context, id string) (*SysUser, error)
-		FindByAccount(ctx context.Context, account string) (*SysUser, error)
 		Update(ctx context.Context, data *SysUser) error
 		FindCount(ctx context.Context, countBuilder squirrel.SelectBuilder) (int64, error)
 		FindList(ctx context.Context, rowBuilder squirrel.SelectBuilder, current, pageSize int64) ([]*SysUser, error)
 		RowBuilder() squirrel.SelectBuilder
 		CountBuilder(field string) squirrel.SelectBuilder
 		SumBuilder(field string) squirrel.SelectBuilder
+		TransCtx(ctx context.Context, fn func(ctx context.Context, sqlx sqlx.Session) error) error
+		sysUserModelExtra
 	}
 
 	defaultSysUserModel struct {
@@ -70,24 +69,6 @@ func newSysUserModel(conn sqlx.SqlConn, c cache.CacheConf, opts ...cache.Option)
 	}
 }
 
-func (m *defaultSysUserModel) FindByAccount(ctx context.Context, account string) (*SysUser, error) {
-	sysUserAccountKey := fmt.Sprintf("%s%v", cacheSysUserAccountPrefix, account)
-	var resp SysUser
-	err := m.QueryRowCtx(ctx, &resp, sysUserAccountKey, func(ctx context.Context, conn sqlx.SqlConn, v any) error {
-		query := fmt.Sprintf("select %s from %s where deleted_at is null And  `account` = ? limit 1", sysUserRows, m.table)
-		return conn.QueryRowCtx(ctx, v, query, account)
-	})
-	switch err {
-	case nil:
-		return &resp, nil
-	case sqlc.ErrNotFound:
-		return nil, sqlx.ErrNotFound
-	default:
-		return nil, err
-	}
-
-}
-
 func (m *defaultSysUserModel) FindOne(ctx context.Context, id string) (*SysUser, error) {
 	sysUserIdKey := fmt.Sprintf("%s%v", cacheSysUserIdPrefix, id)
 	var resp SysUser
@@ -107,11 +88,12 @@ func (m *defaultSysUserModel) FindOne(ctx context.Context, id string) (*SysUser,
 }
 
 func (m *defaultSysUserModel) Insert(ctx context.Context, data *SysUser) (sql.Result, error) {
+	sysUserAccountKey := fmt.Sprintf("%s%v", cacheSysUserAccountPrefix, data.Account)
 	sysUserIdKey := fmt.Sprintf("%s%v", cacheSysUserIdPrefix, data.Id)
 	ret, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
-		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?, ?, ?, ?, ?)", m.table, sysUserRowsExpectAutoSet)
-		return conn.ExecCtx(ctx, query, data.Id, data.Account, data.NickName, data.Password, data.State, data.CreatedName, data.UpdatedName, data.DeletedAt, data.DeletedName)
-	}, sysUserIdKey)
+		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", m.table, sysUserRowsExpectAutoSet)
+		return conn.ExecCtx(ctx, query, data.Id, data.Account, data.NickName, data.Password, data.State, data.CreatedName, data.CreatedAt, data.UpdatedName, data.UpdatedAt, data.DeletedAt, data.DeletedName)
+	}, sysUserIdKey, sysUserAccountKey)
 	return ret, err
 }
 
@@ -120,7 +102,7 @@ func (m *defaultSysUserModel) Update(ctx context.Context, data *SysUser) error {
 	sysUserIdKey := fmt.Sprintf("%s%v", cacheSysUserIdPrefix, data.Id)
 	_, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, sysUserRowsWithPlaceHolder)
-		return conn.ExecCtx(ctx, query, data.Account, data.NickName, data.Password, data.State, data.CreatedName, data.UpdatedName, data.DeletedAt, data.DeletedName, data.Id)
+		return conn.ExecCtx(ctx, query, data.Account, data.NickName, data.Password, data.State, data.CreatedName, data.CreatedAt, data.UpdatedName, data.UpdatedAt, data.DeletedAt, data.DeletedName, data.Id)
 	}, sysUserIdKey, sysUserAccountKey)
 	return err
 }
@@ -178,6 +160,12 @@ func (m *defaultSysUserModel) FindList(ctx context.Context, rowBuilder squirrel.
 	default:
 		return nil, err
 	}
+}
+
+func (m *defaultSysUserModel) TransCtx(ctx context.Context, fn func(ctx context.Context, sqlx sqlx.Session) error) error {
+	return m.Transact(func(s sqlx.Session) error {
+		return fn(ctx, s)
+	})
 }
 
 func (m *defaultSysUserModel) formatPrimary(primary any) string {

@@ -36,7 +36,7 @@ func (l *SysUserListLogic) SysUserList(req *types.SysUserListRequest) (resp *typ
 		State:    req.State,    // 状态 1:正常 2:停用 3:封禁
 	})
 	if err != nil {
-		return nil, common.NewDefaultError(err)
+		return nil, common.NewDefaultError(err.Error())
 	}
 
 	var result SysUserListResp

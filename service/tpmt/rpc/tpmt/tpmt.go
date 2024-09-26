@@ -15,6 +15,7 @@ import (
 
 type (
 	CommonResp         = tpmtclient.CommonResp
+	SysLoginReq        = tpmtclient.SysLoginReq
 	SysUserAddReq      = tpmtclient.SysUserAddReq
 	SysUserDeleteReq   = tpmtclient.SysUserDeleteReq
 	SysUserFindOneReq  = tpmtclient.SysUserFindOneReq
@@ -25,6 +26,7 @@ type (
 	SysUserUpdateReq   = tpmtclient.SysUserUpdateReq
 
 	Tpmt interface {
+		SysLogin(ctx context.Context, in *SysLoginReq, opts ...grpc.CallOption) (*SysUserFindOneResp, error)
 		SysUserAdd(ctx context.Context, in *SysUserAddReq, opts ...grpc.CallOption) (*CommonResp, error)
 		SysUserDelete(ctx context.Context, in *SysUserDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
 		SysUserUpdate(ctx context.Context, in *SysUserUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
@@ -41,6 +43,11 @@ func NewTpmt(cli zrpc.Client) Tpmt {
 	return &defaultTpmt{
 		cli: cli,
 	}
+}
+
+func (m *defaultTpmt) SysLogin(ctx context.Context, in *SysLoginReq, opts ...grpc.CallOption) (*SysUserFindOneResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysLogin(ctx, in, opts...)
 }
 
 func (m *defaultTpmt) SysUserAdd(ctx context.Context, in *SysUserAddReq, opts ...grpc.CallOption) (*CommonResp, error) {

@@ -33,7 +33,7 @@ func (l *SysUserInfoLogic) SysUserInfo(req *types.SysUserInfoRequest) (resp *typ
 		Id: req.Id, // 用户ID
 	})
 	if err != nil {
-		return nil, common.NewDefaultError(err)
+		return nil, common.NewDefaultError(err.Error())
 	}
 
 	var result SysUserFindOneResp

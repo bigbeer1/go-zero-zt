@@ -44,7 +44,6 @@ message SysUserFindOneResp{
 	string  id = 1;  // 用户ID
 	string  account = 2;  // 用户名
 	string  nick_name = 3;  // 姓名
-	string  password = 4;  // 密码
 	int64   state = 5;  // 状态 1:正常 2:停用 3:封禁
 	string  created_name = 6;  // 创建人
 	int64   created_at = 7;  // 创建时间
@@ -79,9 +78,18 @@ message SysUserListData{
 	int64   updated_at = 9;  // 更新时间
 }
 
+// SysUser 列表信息
+message SysLoginReq{
+	string  account = 1;  // 用户名
+	string  password = 2;  // 姓名
+}
+
 //SysUser end---------------------
 
 service Tpmt {
+
+
+	rpc SysLogin(SysLoginReq) returns(SysUserFindOneResp);
 
   rpc SysUserAdd(SysUserAddReq) returns(CommonResp);
   rpc SysUserDelete(SysUserDeleteReq) returns(CommonResp);

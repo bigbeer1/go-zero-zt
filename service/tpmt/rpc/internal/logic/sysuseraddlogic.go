@@ -2,6 +2,7 @@ package logic
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	uuid "github.com/satori/go.uuid"
 	"github.com/zeromicro/go-zero/core/stores/sqlc"
@@ -32,7 +33,7 @@ func (l *SysUserAddLogic) SysUserAdd(in *tpmtclient.SysUserAddReq) (*tpmtclient.
 
 	_, err := l.svcCtx.SysUserModel.FindByAccount(l.ctx, in.Account)
 	if err != nil {
-		if err != sqlc.ErrNotFound {
+		if !errors.Is(err, sqlc.ErrNotFound) {
 			return nil, err
 		}
 	}

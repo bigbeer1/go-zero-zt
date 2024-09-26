@@ -23,6 +23,11 @@ func NewTpmtServer(svcCtx *svc.ServiceContext) *TpmtServer {
 	}
 }
 
+func (s *TpmtServer) SysLogin(ctx context.Context, in *tpmtclient.SysLoginReq) (*tpmtclient.SysUserFindOneResp, error) {
+	l := logic.NewSysLoginLogic(ctx, s.svcCtx)
+	return l.SysLogin(in)
+}
+
 func (s *TpmtServer) SysUserAdd(ctx context.Context, in *tpmtclient.SysUserAddReq) (*tpmtclient.CommonResp, error) {
 	l := logic.NewSysUserAddLogic(ctx, s.svcCtx)
 	return l.SysUserAdd(in)

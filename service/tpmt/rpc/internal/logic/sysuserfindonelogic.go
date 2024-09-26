@@ -44,7 +44,6 @@ func (l *SysUserFindOneLogic) SysUserFindOne(in *tpmtclient.SysUserFindOneReq) (
 		Id:          res.Id,                         //用户ID
 		Account:     res.Account,                    //用户名
 		NickName:    res.NickName,                   //姓名
-		Password:    res.Password,                   //密码
 		State:       res.State,                      //状态 1:正常 2:停用 3:封禁
 		CreatedName: res.CreatedName,                //创建人
 		CreatedAt:   res.CreatedAt.UnixMilli(),      //创建时间

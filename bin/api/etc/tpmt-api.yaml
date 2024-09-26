@@ -18,3 +18,7 @@ TpmtRpc:
     Key: tpmt.rpc
   Timeout: 30000
 
+Auth:
+  AccessSecret: uOvKLmVfztaX9999999
+  AccessExpire: 86400
+

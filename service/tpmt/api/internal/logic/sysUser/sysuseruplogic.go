@@ -35,7 +35,7 @@ func (l *SysUserUpLogic) SysUserUp(req *types.SysUserUpRequest) (resp *types.Res
 		UpdatedName: tokenData.NickName, // 更新人
 	})
 	if err != nil {
-		return nil, common.NewDefaultError(err)
+		return nil, common.NewDefaultError(err.Error())
 	}
 	return &types.Response{
 		Code: 0,

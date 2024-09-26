@@ -4,6 +4,7 @@ go 1.22
 
 require (
 	github.com/Masterminds/squirrel v1.5.4
+	github.com/golang-jwt/jwt v3.2.2+incompatible
 	github.com/jinzhu/copier v0.4.0
 	github.com/satori/go.uuid v1.2.0
 	github.com/zeromicro/go-zero v1.7.2

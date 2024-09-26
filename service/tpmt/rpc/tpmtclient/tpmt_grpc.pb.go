@@ -18,6 +18,7 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TpmtClient interface {
+	SysLogin(ctx context.Context, in *SysLoginReq, opts ...grpc.CallOption) (*SysUserFindOneResp, error)
 	SysUserAdd(ctx context.Context, in *SysUserAddReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysUserDelete(ctx context.Context, in *SysUserDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysUserUpdate(ctx context.Context, in *SysUserUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
@@ -31,6 +32,15 @@ type tpmtClient struct {
 
 func NewTpmtClient(cc grpc.ClientConnInterface) TpmtClient {
 	return &tpmtClient{cc}
+}
+
+func (c *tpmtClient) SysLogin(ctx context.Context, in *SysLoginReq, opts ...grpc.CallOption) (*SysUserFindOneResp, error) {
+	out := new(SysUserFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysLogin", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *tpmtClient) SysUserAdd(ctx context.Context, in *SysUserAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
@@ -82,6 +92,7 @@ func (c *tpmtClient) SysUserList(ctx context.Context, in *SysUserListReq, opts .
 // All implementations must embed UnimplementedTpmtServer
 // for forward compatibility
 type TpmtServer interface {
+	SysLogin(context.Context, *SysLoginReq) (*SysUserFindOneResp, error)
 	SysUserAdd(context.Context, *SysUserAddReq) (*CommonResp, error)
 	SysUserDelete(context.Context, *SysUserDeleteReq) (*CommonResp, error)
 	SysUserUpdate(context.Context, *SysUserUpdateReq) (*CommonResp, error)
@@ -94,6 +105,9 @@ type TpmtServer interface {
 type UnimplementedTpmtServer struct {
 }
 
+func (UnimplementedTpmtServer) SysLogin(context.Context, *SysLoginReq) (*SysUserFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysLogin not implemented")
+}
 func (UnimplementedTpmtServer) SysUserAdd(context.Context, *SysUserAddReq) (*CommonResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysUserAdd not implemented")
 }
@@ -120,6 +134,24 @@ type UnsafeTpmtServer interface {
 
 func RegisterTpmtServer(s grpc.ServiceRegistrar, srv TpmtServer) {
 	s.RegisterService(&Tpmt_ServiceDesc, srv)
+}
+
+func _Tpmt_SysLogin_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysLoginReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysLogin(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysLogin",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysLogin(ctx, req.(*SysLoginReq))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _Tpmt_SysUserAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -219,6 +251,10 @@ var Tpmt_ServiceDesc = grpc.ServiceDesc{
 	ServiceName: "tpmtclient.Tpmt",
 	HandlerType: (*TpmtServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "SysLogin",
+			Handler:    _Tpmt_SysLogin_Handler,
+		},
 		{
 			MethodName: "SysUserAdd",
 			Handler:    _Tpmt_SysUserAdd_Handler,

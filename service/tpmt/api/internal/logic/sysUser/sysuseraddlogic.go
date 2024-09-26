@@ -37,7 +37,7 @@ func (l *SysUserAddLogic) SysUserAdd(req *types.SysUserAddRequest) (resp *types.
 		CreatedName: tokenData.NickName, // 创建人
 	})
 	if err != nil {
-		return nil, common.NewDefaultError(err)
+		return nil, common.NewDefaultError(err.Error())
 	}
 	return &types.Response{
 		Code: 0,

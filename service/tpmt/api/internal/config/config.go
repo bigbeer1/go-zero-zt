@@ -9,4 +9,9 @@ type Config struct {
 	rest.RestConf
 
 	TpmtRpc zrpc.RpcClientConf
+
+	Auth struct {
+		AccessSecret string
+		AccessExpire int64
+	}
 }

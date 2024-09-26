@@ -31,7 +31,26 @@ type (
 		Id  string  `form:"id"`  // 用户ID          
     }
 
+    SysLoginRequest {
+        Account  string  `json:"account"`  // 用户名
+        Password  string  `json:"password"`  // 密码
+    }
+
 )
+
+@server(
+    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
+    //    jwt: Auth
+)
+
+
+service Tpmt {
+
+    // 登录
+    @handler Login
+    post /login (SysLoginRequest) returns (Response)
+}
+
 
 @server(
     //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码

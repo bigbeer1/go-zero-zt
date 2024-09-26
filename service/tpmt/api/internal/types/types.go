@@ -9,6 +9,11 @@ type Response struct {
 	Data interface{} `json:"data"` // 数据
 }
 
+type SysLoginRequest struct {
+	Account  string `json:"account"`  // 用户名
+	Password string `json:"password"` // 密码
+}
+
 type SysUserAddRequest struct {
 	Account  string `json:"account"`              // 用户名
 	NickName string `json:"nick_name"`            // 姓名
