@@ -29,6 +29,7 @@ func NewSysUserListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysUs
 }
 
 func (l *SysUserListLogic) SysUserList(req *types.SysUserListRequest) (resp *types.Response, err error) {
+
 	all, err := l.svcCtx.TpmtRpc.SysUserList(l.ctx, &tpmtclient.SysUserListReq{
 		Current:  req.Current,  // 页码
 		PageSize: req.PageSize, // 页数

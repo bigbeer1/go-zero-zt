@@ -38,14 +38,8 @@ type (
 
 )
 
-@server(
-    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
-    //    jwt: Auth
-)
-
 
 service Tpmt {
-
     // 登录
     @handler Login
     post /login (SysLoginRequest) returns (Response)
@@ -54,7 +48,7 @@ service Tpmt {
 
 @server(
     //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
-//    jwt: Auth
+    jwt: Auth
     group: sysUser
 )
 
@@ -79,4 +73,10 @@ service Tpmt {
     // 查询详细信息
     @handler SysUserInfo
     get /tpmt/sysUserInfo (SysUserInfoRequest) returns (Response)
+
+    // 管理员修改用户密码
+
+    // 修改自己的密码
+
+    // 修改自己的用户信息
 }

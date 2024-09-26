@@ -3,8 +3,8 @@ package sysUser
 import (
 	"context"
 	"tpmt-zt/common"
+	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/common/tokenData"
 	"tpmt-zt/service/tpmt/rpc/tpmtclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
@@ -29,6 +29,8 @@ func NewSysUserAddLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysUse
 
 func (l *SysUserAddLogic) SysUserAdd(req *types.SysUserAddRequest) (resp *types.Response, err error) {
 
+	tokenData := jwtx.ParseToken(l.ctx)
+
 	_, err = l.svcCtx.TpmtRpc.SysUserAdd(l.ctx, &tpmtclient.SysUserAddReq{
 		Account:     req.Account,        // 用户名
 		NickName:    req.NickName,       // 姓名
@@ -36,6 +38,7 @@ func (l *SysUserAddLogic) SysUserAdd(req *types.SysUserAddRequest) (resp *types.
 		State:       req.State,          // 状态 1:正常 2:停用 3:封禁
 		CreatedName: tokenData.NickName, // 创建人
 	})
+
 	if err != nil {
 		return nil, common.NewDefaultError(err.Error())
 	}

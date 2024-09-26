@@ -29,6 +29,7 @@ func NewSysUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysUs
 }
 
 func (l *SysUserInfoLogic) SysUserInfo(req *types.SysUserInfoRequest) (resp *types.Response, err error) {
+
 	res, err := l.svcCtx.TpmtRpc.SysUserFindOne(l.ctx, &tpmtclient.SysUserFindOneReq{
 		Id: req.Id, // 用户ID
 	})
