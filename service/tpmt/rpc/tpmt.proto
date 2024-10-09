@@ -105,11 +105,298 @@ message SysUserUpMyPwdReq{
 
 //SysUser end---------------------
 
+
+
+//SysRole start-------------------
+
+// SysRole 添加
+message SysRoleAddReq{
+	string  name = 1;  // 角色名称
+	string  remark = 2;  // 备注
+	int64   role_type = 3;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+	string  created_name = 4;  // 创建人
+	repeated int64  menu_ids = 5;  // 菜单ids
+	repeated int64  interface_ids = 6;  // 接口ids
+}
+
+// SysRole 删除
+message SysRoleDeleteReq{
+	int64   id = 1;  // 角色ID
+	string  deleted_name = 2;  // 删除人
+}
+
+// SysRole 更新
+message SysRoleUpdateReq{
+	int64   id = 1;  // 角色ID
+	string  name = 2;  // 角色名称
+	string  remark = 3;  // 备注
+	int64   role_type = 4;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+	string  updated_name = 5;  // 更新人
+}
+
+// SysRole 单个查询
+message SysRoleFindOneReq{
+	int64   id = 1;  // 角色ID
+}
+
+// SysRole 单个查询返回
+message SysRoleFindOneResp{
+	int64   id = 1;  // 角色ID
+	string  name = 2;  // 角色名称
+	string  remark = 3;  // 备注
+	int64   role_type = 4;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+	string  created_name = 5;  // 创建人
+	int64   created_at = 6;  // 创建时间
+	string  updated_name = 7;  // 更新人
+	int64   updated_at = 8;  // 更新时间
+}
+
+
+// SysRole 分页查询
+message SysRoleListReq{
+	int64  current = 1;  // 页码
+	int64  page_size = 2;  // 页数
+	string  name = 3;  // 角色名称
+	string  remark = 4;  // 备注
+	int64   role_type = 5;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+}
+
+// SysRole 分页查询返回
+message SysRoleListResp{
+	int64  total = 1;  // 总数
+	repeated  SysRoleListData list = 2;  // 内容
+}
+
+// SysRole 列表信息
+message SysRoleListData{
+	int64   id = 1;  // 角色ID
+	string  name = 2;  // 角色名称
+	string  remark = 3;  // 备注
+	int64   role_type = 4;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+	string  created_name = 5;  // 创建人
+	int64   created_at = 6;  // 创建时间
+	string  updated_name = 7;  // 更新人
+	int64   updated_at = 8;  // 更新时间
+}
+
+//SysRole end---------------------
+
+
+//SysMenu start-------------------
+
+// SysMenu 添加
+message SysMenuAddReq{
+	int64   menu_type = 1;  // 菜单类型(层级关系)
+	string  name = 2;  // 菜单名称
+	string  title = 3;  // 标题
+	string  path = 4;  // 路径
+	string  component = 5;  // 本地路径
+	string  redirect = 6;  // 跳转
+	int64   sort = 7;  // sort
+	string  icon = 8;  // 图标
+	int64   is_hide = 9;  // 是否隐藏
+	int64   is_keep_alive = 10;  // 是否缓存
+	int64   parent_id = 11;  // 父ID
+	int64   is_home = 12;  // 是否首页
+	int64   is_main = 13;  // 是否主菜单
+	string  created_name = 14;  // 创建人
+}
+
+// SysMenu 删除
+message SysMenuDeleteReq{
+	int64   id = 1;  // 菜单ID
+	string  deleted_name = 2;  // 删除人
+}
+
+// SysMenu 更新
+message SysMenuUpdateReq{
+	int64   id = 1;  // 菜单ID
+	int64   menu_type = 2;  // 菜单类型(层级关系)
+	string  name = 3;  // 菜单名称
+	string  title = 4;  // 标题
+	string  path = 5;  // 路径
+	string  component = 6;  // 本地路径
+	string  redirect = 7;  // 跳转
+	int64   sort = 8;  // sort
+	string  icon = 9;  // 图标
+	int64   is_hide = 10;  // 是否隐藏
+	int64   is_keep_alive = 11;  // 是否缓存
+	int64   parent_id = 12;  // 父ID
+	int64   is_home = 13;  // 是否首页
+	int64   is_main = 14;  // 是否主菜单
+	string  updated_name = 15;  // 更新人
+}
+
+// SysMenu 单个查询
+message SysMenuFindOneReq{
+	int64   id = 1;  // 菜单ID
+}
+
+// SysMenu 单个查询返回
+message SysMenuFindOneResp{
+	int64   id = 1;  // 菜单ID
+	int64   menu_type = 2;  // 菜单类型(层级关系)
+	string  name = 3;  // 菜单名称
+	string  title = 4;  // 标题
+	string  path = 5;  // 路径
+	string  component = 6;  // 本地路径
+	string  redirect = 7;  // 跳转
+	int64   sort = 8;  // sort
+	string  icon = 9;  // 图标
+	int64   is_hide = 10;  // 是否隐藏
+	int64   is_keep_alive = 11;  // 是否缓存
+	int64   parent_id = 12;  // 父ID
+	int64   is_home = 13;  // 是否首页
+	int64   is_main = 14;  // 是否主菜单
+	string  created_name = 15;  // 创建人
+	int64   created_at = 16;  // 创建时间
+	string  updated_name = 17;  // 更新人
+	int64   updated_at = 18;  // 更新时间
+}
+
+
+// SysMenu 分页查询
+message SysMenuListReq{
+	int64  current = 1;  // 页码
+	int64  page_size = 2;  // 页数
+	int64   menu_type = 3;  // 菜单类型(层级关系)
+	string  name = 4;  // 菜单名称
+	string  title = 5;  // 标题
+	string  path = 6;  // 路径
+	string  component = 7;  // 本地路径
+	string  redirect = 8;  // 跳转
+	string  icon = 9;  // 图标
+	int64   is_hide = 10;  // 是否隐藏
+	int64   is_keep_alive = 11;  // 是否缓存
+	int64   parent_id = 12;  // 父ID
+	int64   is_home = 13;  // 是否首页
+	int64   is_main = 14;  // 是否主菜单
+}
+
+// SysMenu 分页查询返回
+message SysMenuListResp{
+	int64  total = 1;  // 总数
+	repeated  SysMenuListData list = 2;  // 内容
+}
+
+// SysMenu 列表信息
+message SysMenuListData{
+	int64   id = 1;  // 菜单ID
+	int64   menu_type = 2;  // 菜单类型(层级关系)
+	string  name = 3;  // 菜单名称
+	string  title = 4;  // 标题
+	string  path = 5;  // 路径
+	string  component = 6;  // 本地路径
+	string  redirect = 7;  // 跳转
+	int64   sort = 8;  // sort
+	string  icon = 9;  // 图标
+	int64   is_hide = 10;  // 是否隐藏
+	int64   is_keep_alive = 11;  // 是否缓存
+	int64   parent_id = 12;  // 父ID
+	int64   is_home = 13;  // 是否首页
+	int64   is_main = 14;  // 是否主菜单
+	string  created_name = 15;  // 创建人
+	int64   created_at = 16;  // 创建时间
+	string  updated_name = 17;  // 更新人
+	int64   updated_at = 18;  // 更新时间
+}
+
+//SysMenu end---------------------
+
+
+//SysInterface start-------------------
+
+// SysInterface 添加
+message SysInterfaceAddReq{
+	string  created_name = 1;  // 创建人
+	string  name = 2;  // 接口名称
+	string  path = 3;  // 接口地址
+	string  interface_type = 4;  // 接口类型
+	string  interface_group_name = 5;  // 接口分组名称
+	string  remark = 6;  // 备注
+	int64   sort = 7;  // sort
+}
+
+// SysInterface 删除
+message SysInterfaceDeleteReq{
+	int64   id = 1;  // 接口ID
+	string  deleted_name = 2;  // 删除人
+}
+
+// SysInterface 更新
+message SysInterfaceUpdateReq{
+	int64   id = 1;  // 接口ID
+	string  updated_name = 2;  // 更新人
+	string  name = 3;  // 接口名称
+	string  path = 4;  // 接口地址
+	string  interface_type = 5;  // 接口类型
+	string  interface_group_name = 6;  // 接口分组名称
+	string  remark = 7;  // 备注
+	int64   sort = 8;  // sort
+}
+
+// SysInterface 单个查询
+message SysInterfaceFindOneReq{
+	int64   id = 1;  // 接口ID
+}
+
+// SysInterface 单个查询返回
+message SysInterfaceFindOneResp{
+	int64   id = 1;  // 接口ID
+	int64   created_at = 2;  // 创建时间
+	int64   updated_at = 3;  // 更新时间
+	string  created_name = 4;  // 创建人
+	string  updated_name = 5;  // 更新人
+	string  name = 6;  // 接口名称
+	string  path = 7;  // 接口地址
+	string  interface_type = 8;  // 接口类型
+	string  interface_group_name = 9;  // 接口分组名称
+	string  remark = 10;  // 备注
+	int64   sort = 11;  // sort
+}
+
+
+// SysInterface 分页查询
+message SysInterfaceListReq{
+	int64  current = 1;  // 页码
+	int64  page_size = 2;  // 页数
+	string  name = 3;  // 接口名称
+	string  path = 4;  // 接口地址
+	string  interface_type = 5;  // 接口类型
+	string  interface_group_name = 6;  // 接口分组名称
+	string  remark = 7;  // 备注
+}
+
+// SysInterface 分页查询返回
+message SysInterfaceListResp{
+	int64  total = 1;  // 总数
+	repeated  SysInterfaceListData list = 2;  // 内容
+}
+
+// SysInterface 列表信息
+message SysInterfaceListData{
+	int64   id = 1;  // 接口ID
+	int64   created_at = 2;  // 创建时间
+	int64   updated_at = 3;  // 更新时间
+	string  created_name = 4;  // 创建人
+	string  updated_name = 5;  // 更新人
+	string  name = 6;  // 接口名称
+	string  path = 7;  // 接口地址
+	string  interface_type = 8;  // 接口类型
+	string  interface_group_name = 9;  // 接口分组名称
+	string  remark = 10;  // 备注
+	int64   sort = 11;  // sort
+}
+
+//SysInterface end---------------------
+
+
 service Tpmt {
 
-
+	// 用户登录
 	rpc SysLogin(SysLoginReq) returns(SysUserFindOneResp);
 
+	// 用户
   rpc SysUserAdd(SysUserAddReq) returns(CommonResp);
   rpc SysUserDelete(SysUserDeleteReq) returns(CommonResp);
   rpc SysUserUpdate(SysUserUpdateReq) returns(CommonResp);
@@ -122,5 +409,28 @@ service Tpmt {
 	// 用户修改自己的密码
 	rpc SysUserUpMyPwd(SysUserUpMyPwdReq) returns(CommonResp);
 
+
+	// 角色
+	rpc SysRoleAdd(SysRoleAddReq) returns(CommonResp);
+	rpc SysRoleDelete(SysRoleDeleteReq) returns(CommonResp);
+	rpc SysRoleUpdate(SysRoleUpdateReq) returns(CommonResp);
+	rpc SysRoleFindOne(SysRoleFindOneReq) returns(SysRoleFindOneResp);
+	rpc SysRoleList(SysRoleListReq) returns(SysRoleListResp);
+
+
+	// 菜单
+	rpc SysMenuAdd(SysMenuAddReq) returns(CommonResp);
+	rpc SysMenuDelete(SysMenuDeleteReq) returns(CommonResp);
+	rpc SysMenuUpdate(SysMenuUpdateReq) returns(CommonResp);
+	rpc SysMenuFindOne(SysMenuFindOneReq) returns(SysMenuFindOneResp);
+	rpc SysMenuList(SysMenuListReq) returns(SysMenuListResp);
+
+
+	// 接口
+	rpc SysInterfaceAdd(SysInterfaceAddReq) returns(CommonResp);
+	rpc SysInterfaceDelete(SysInterfaceDeleteReq) returns(CommonResp);
+	rpc SysInterfaceUpdate(SysInterfaceUpdateReq) returns(CommonResp);
+	rpc SysInterfaceFindOne(SysInterfaceFindOneReq) returns(SysInterfaceFindOneResp);
+	rpc SysInterfaceList(SysInterfaceListReq) returns(SysInterfaceListResp);
 
 }

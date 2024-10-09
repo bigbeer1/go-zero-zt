@@ -1,0 +1,72 @@
+syntax = "v1"
+
+
+type (
+    SysInterfaceAddRequest {
+		Name  string  `json:"name"`  // 接口名称
+		Path  string  `json:"path"`  // 接口地址
+		InterfaceType  string  `json:"interface_type"`  // 接口类型
+		InterfaceGroupName  string  `json:"interface_group_name"`  // 接口分组名称
+		Remark  string  `json:"remark,optional"`  // 备注
+		Sort  int64  `json:"sort,optional"`  // sort
+    }
+
+    SysInterfaceDelRequest {
+		Id  int64  `path:"id"`  // 接口ID
+    }
+
+    SysInterfaceUpRequest {
+		Id  int64  `json:"id"`  // 接口ID
+		Name  string  `json:"name,optional"`  // 接口名称
+		Path  string  `json:"path,optional"`  // 接口地址
+		InterfaceType  string  `json:"interface_type,optional"`  // 接口类型
+		InterfaceGroupName  string  `json:"interface_group_name,optional"`  // 接口分组名称
+		Remark  string  `json:"remark,optional"`  // 备注
+		Sort  int64  `json:"sort,optional"`  // sort      
+    }
+
+
+    SysInterfaceListRequest {
+		Current  int64  `form:"current,default=1,optional"`  // 页码
+		PageSize  int64  `form:"page_size,default=10,optional"`  // 页数
+		Name  string  `form:"name,optional"`  // 接口名称
+		Path  string  `form:"path,optional"`  // 接口地址
+		InterfaceType  string  `form:"interface_type,optional"`  // 接口类型
+		InterfaceGroupName  string  `form:"interface_group_name,optional"`  // 接口分组名称
+		Remark  string  `form:"remark,optional"`  // 备注       
+    }
+
+    SysInterfaceInfoRequest {
+		Id  int64  `form:"id"`  // 接口ID          
+    }
+
+)
+
+@server(
+    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
+    jwt: Auth
+    group: sysInterface
+)
+
+service Tpmt {
+
+    // 添加
+    @handler SysInterfaceAdd
+    post /tpmt/sysInterface (SysInterfaceAddRequest) returns (Response)
+
+    // 删除
+    @handler SysInterfaceDel
+    delete /tpmt/sysInterface/:id (SysInterfaceDelRequest) returns (Response)
+
+    // 更新
+    @handler SysInterfaceUp
+    put /tpmt/sysInterface (SysInterfaceUpRequest) returns (Response)
+
+    // 分页查询
+    @handler SysInterfaceList
+    get /tpmt/sysInterface (SysInterfaceListRequest) returns (Response)
+
+    // 查询详细信息
+    @handler SysInterfaceInfo
+    get /tpmt/sysInterfaceInfo (SysInterfaceInfoRequest) returns (Response)
+}

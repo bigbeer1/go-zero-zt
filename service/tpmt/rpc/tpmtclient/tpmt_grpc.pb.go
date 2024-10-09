@@ -18,7 +18,9 @@ const _ = grpc.SupportPackageIsVersion7
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type TpmtClient interface {
+	// 用户登录
 	SysLogin(ctx context.Context, in *SysLoginReq, opts ...grpc.CallOption) (*SysUserFindOneResp, error)
+	// 用户
 	SysUserAdd(ctx context.Context, in *SysUserAddReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysUserDelete(ctx context.Context, in *SysUserDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysUserUpdate(ctx context.Context, in *SysUserUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
@@ -28,6 +30,24 @@ type TpmtClient interface {
 	SysUserResetPwd(ctx context.Context, in *SysUserResetPwdReq, opts ...grpc.CallOption) (*SysUserResetPwdResp, error)
 	// 用户修改自己的密码
 	SysUserUpMyPwd(ctx context.Context, in *SysUserUpMyPwdReq, opts ...grpc.CallOption) (*CommonResp, error)
+	// 角色
+	SysRoleAdd(ctx context.Context, in *SysRoleAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysRoleDelete(ctx context.Context, in *SysRoleDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysRoleUpdate(ctx context.Context, in *SysRoleUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysRoleFindOne(ctx context.Context, in *SysRoleFindOneReq, opts ...grpc.CallOption) (*SysRoleFindOneResp, error)
+	SysRoleList(ctx context.Context, in *SysRoleListReq, opts ...grpc.CallOption) (*SysRoleListResp, error)
+	// 菜单
+	SysMenuAdd(ctx context.Context, in *SysMenuAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysMenuDelete(ctx context.Context, in *SysMenuDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysMenuUpdate(ctx context.Context, in *SysMenuUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysMenuFindOne(ctx context.Context, in *SysMenuFindOneReq, opts ...grpc.CallOption) (*SysMenuFindOneResp, error)
+	SysMenuList(ctx context.Context, in *SysMenuListReq, opts ...grpc.CallOption) (*SysMenuListResp, error)
+	// 接口
+	SysInterfaceAdd(ctx context.Context, in *SysInterfaceAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysInterfaceDelete(ctx context.Context, in *SysInterfaceDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysInterfaceUpdate(ctx context.Context, in *SysInterfaceUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysInterfaceFindOne(ctx context.Context, in *SysInterfaceFindOneReq, opts ...grpc.CallOption) (*SysInterfaceFindOneResp, error)
+	SysInterfaceList(ctx context.Context, in *SysInterfaceListReq, opts ...grpc.CallOption) (*SysInterfaceListResp, error)
 }
 
 type tpmtClient struct {
@@ -110,11 +130,148 @@ func (c *tpmtClient) SysUserUpMyPwd(ctx context.Context, in *SysUserUpMyPwdReq, 
 	return out, nil
 }
 
+func (c *tpmtClient) SysRoleAdd(ctx context.Context, in *SysRoleAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysRoleAdd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysRoleDelete(ctx context.Context, in *SysRoleDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysRoleDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysRoleUpdate(ctx context.Context, in *SysRoleUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysRoleUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysRoleFindOne(ctx context.Context, in *SysRoleFindOneReq, opts ...grpc.CallOption) (*SysRoleFindOneResp, error) {
+	out := new(SysRoleFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysRoleFindOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysRoleList(ctx context.Context, in *SysRoleListReq, opts ...grpc.CallOption) (*SysRoleListResp, error) {
+	out := new(SysRoleListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysRoleList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysMenuAdd(ctx context.Context, in *SysMenuAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysMenuAdd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysMenuDelete(ctx context.Context, in *SysMenuDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysMenuDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysMenuUpdate(ctx context.Context, in *SysMenuUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysMenuUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysMenuFindOne(ctx context.Context, in *SysMenuFindOneReq, opts ...grpc.CallOption) (*SysMenuFindOneResp, error) {
+	out := new(SysMenuFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysMenuFindOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysMenuList(ctx context.Context, in *SysMenuListReq, opts ...grpc.CallOption) (*SysMenuListResp, error) {
+	out := new(SysMenuListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysMenuList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysInterfaceAdd(ctx context.Context, in *SysInterfaceAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysInterfaceAdd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysInterfaceDelete(ctx context.Context, in *SysInterfaceDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysInterfaceDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysInterfaceUpdate(ctx context.Context, in *SysInterfaceUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysInterfaceUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysInterfaceFindOne(ctx context.Context, in *SysInterfaceFindOneReq, opts ...grpc.CallOption) (*SysInterfaceFindOneResp, error) {
+	out := new(SysInterfaceFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysInterfaceFindOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysInterfaceList(ctx context.Context, in *SysInterfaceListReq, opts ...grpc.CallOption) (*SysInterfaceListResp, error) {
+	out := new(SysInterfaceListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysInterfaceList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TpmtServer is the server API for Tpmt service.
 // All implementations must embed UnimplementedTpmtServer
 // for forward compatibility
 type TpmtServer interface {
+	// 用户登录
 	SysLogin(context.Context, *SysLoginReq) (*SysUserFindOneResp, error)
+	// 用户
 	SysUserAdd(context.Context, *SysUserAddReq) (*CommonResp, error)
 	SysUserDelete(context.Context, *SysUserDeleteReq) (*CommonResp, error)
 	SysUserUpdate(context.Context, *SysUserUpdateReq) (*CommonResp, error)
@@ -124,6 +281,24 @@ type TpmtServer interface {
 	SysUserResetPwd(context.Context, *SysUserResetPwdReq) (*SysUserResetPwdResp, error)
 	// 用户修改自己的密码
 	SysUserUpMyPwd(context.Context, *SysUserUpMyPwdReq) (*CommonResp, error)
+	// 角色
+	SysRoleAdd(context.Context, *SysRoleAddReq) (*CommonResp, error)
+	SysRoleDelete(context.Context, *SysRoleDeleteReq) (*CommonResp, error)
+	SysRoleUpdate(context.Context, *SysRoleUpdateReq) (*CommonResp, error)
+	SysRoleFindOne(context.Context, *SysRoleFindOneReq) (*SysRoleFindOneResp, error)
+	SysRoleList(context.Context, *SysRoleListReq) (*SysRoleListResp, error)
+	// 菜单
+	SysMenuAdd(context.Context, *SysMenuAddReq) (*CommonResp, error)
+	SysMenuDelete(context.Context, *SysMenuDeleteReq) (*CommonResp, error)
+	SysMenuUpdate(context.Context, *SysMenuUpdateReq) (*CommonResp, error)
+	SysMenuFindOne(context.Context, *SysMenuFindOneReq) (*SysMenuFindOneResp, error)
+	SysMenuList(context.Context, *SysMenuListReq) (*SysMenuListResp, error)
+	// 接口
+	SysInterfaceAdd(context.Context, *SysInterfaceAddReq) (*CommonResp, error)
+	SysInterfaceDelete(context.Context, *SysInterfaceDeleteReq) (*CommonResp, error)
+	SysInterfaceUpdate(context.Context, *SysInterfaceUpdateReq) (*CommonResp, error)
+	SysInterfaceFindOne(context.Context, *SysInterfaceFindOneReq) (*SysInterfaceFindOneResp, error)
+	SysInterfaceList(context.Context, *SysInterfaceListReq) (*SysInterfaceListResp, error)
 	mustEmbedUnimplementedTpmtServer()
 }
 
@@ -154,6 +329,51 @@ func (UnimplementedTpmtServer) SysUserResetPwd(context.Context, *SysUserResetPwd
 }
 func (UnimplementedTpmtServer) SysUserUpMyPwd(context.Context, *SysUserUpMyPwdReq) (*CommonResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysUserUpMyPwd not implemented")
+}
+func (UnimplementedTpmtServer) SysRoleAdd(context.Context, *SysRoleAddReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysRoleAdd not implemented")
+}
+func (UnimplementedTpmtServer) SysRoleDelete(context.Context, *SysRoleDeleteReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysRoleDelete not implemented")
+}
+func (UnimplementedTpmtServer) SysRoleUpdate(context.Context, *SysRoleUpdateReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysRoleUpdate not implemented")
+}
+func (UnimplementedTpmtServer) SysRoleFindOne(context.Context, *SysRoleFindOneReq) (*SysRoleFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysRoleFindOne not implemented")
+}
+func (UnimplementedTpmtServer) SysRoleList(context.Context, *SysRoleListReq) (*SysRoleListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysRoleList not implemented")
+}
+func (UnimplementedTpmtServer) SysMenuAdd(context.Context, *SysMenuAddReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysMenuAdd not implemented")
+}
+func (UnimplementedTpmtServer) SysMenuDelete(context.Context, *SysMenuDeleteReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysMenuDelete not implemented")
+}
+func (UnimplementedTpmtServer) SysMenuUpdate(context.Context, *SysMenuUpdateReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysMenuUpdate not implemented")
+}
+func (UnimplementedTpmtServer) SysMenuFindOne(context.Context, *SysMenuFindOneReq) (*SysMenuFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysMenuFindOne not implemented")
+}
+func (UnimplementedTpmtServer) SysMenuList(context.Context, *SysMenuListReq) (*SysMenuListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysMenuList not implemented")
+}
+func (UnimplementedTpmtServer) SysInterfaceAdd(context.Context, *SysInterfaceAddReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceAdd not implemented")
+}
+func (UnimplementedTpmtServer) SysInterfaceDelete(context.Context, *SysInterfaceDeleteReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceDelete not implemented")
+}
+func (UnimplementedTpmtServer) SysInterfaceUpdate(context.Context, *SysInterfaceUpdateReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceUpdate not implemented")
+}
+func (UnimplementedTpmtServer) SysInterfaceFindOne(context.Context, *SysInterfaceFindOneReq) (*SysInterfaceFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceFindOne not implemented")
+}
+func (UnimplementedTpmtServer) SysInterfaceList(context.Context, *SysInterfaceListReq) (*SysInterfaceListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceList not implemented")
 }
 func (UnimplementedTpmtServer) mustEmbedUnimplementedTpmtServer() {}
 
@@ -312,6 +532,276 @@ func _Tpmt_SysUserUpMyPwd_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tpmt_SysRoleAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysRoleAddReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysRoleAdd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysRoleAdd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysRoleAdd(ctx, req.(*SysRoleAddReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysRoleDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysRoleDeleteReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysRoleDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysRoleDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysRoleDelete(ctx, req.(*SysRoleDeleteReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysRoleUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysRoleUpdateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysRoleUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysRoleUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysRoleUpdate(ctx, req.(*SysRoleUpdateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysRoleFindOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysRoleFindOneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysRoleFindOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysRoleFindOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysRoleFindOne(ctx, req.(*SysRoleFindOneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysRoleList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysRoleListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysRoleList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysRoleList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysRoleList(ctx, req.(*SysRoleListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysMenuAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysMenuAddReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysMenuAdd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysMenuAdd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysMenuAdd(ctx, req.(*SysMenuAddReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysMenuDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysMenuDeleteReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysMenuDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysMenuDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysMenuDelete(ctx, req.(*SysMenuDeleteReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysMenuUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysMenuUpdateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysMenuUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysMenuUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysMenuUpdate(ctx, req.(*SysMenuUpdateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysMenuFindOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysMenuFindOneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysMenuFindOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysMenuFindOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysMenuFindOne(ctx, req.(*SysMenuFindOneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysMenuList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysMenuListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysMenuList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysMenuList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysMenuList(ctx, req.(*SysMenuListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysInterfaceAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysInterfaceAddReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysInterfaceAdd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysInterfaceAdd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysInterfaceAdd(ctx, req.(*SysInterfaceAddReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysInterfaceDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysInterfaceDeleteReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysInterfaceDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysInterfaceDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysInterfaceDelete(ctx, req.(*SysInterfaceDeleteReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysInterfaceUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysInterfaceUpdateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysInterfaceUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysInterfaceUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysInterfaceUpdate(ctx, req.(*SysInterfaceUpdateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysInterfaceFindOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysInterfaceFindOneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysInterfaceFindOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysInterfaceFindOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysInterfaceFindOne(ctx, req.(*SysInterfaceFindOneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysInterfaceList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysInterfaceListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysInterfaceList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysInterfaceList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysInterfaceList(ctx, req.(*SysInterfaceListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Tpmt_ServiceDesc is the grpc.ServiceDesc for Tpmt service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -350,6 +840,66 @@ var Tpmt_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SysUserUpMyPwd",
 			Handler:    _Tpmt_SysUserUpMyPwd_Handler,
+		},
+		{
+			MethodName: "SysRoleAdd",
+			Handler:    _Tpmt_SysRoleAdd_Handler,
+		},
+		{
+			MethodName: "SysRoleDelete",
+			Handler:    _Tpmt_SysRoleDelete_Handler,
+		},
+		{
+			MethodName: "SysRoleUpdate",
+			Handler:    _Tpmt_SysRoleUpdate_Handler,
+		},
+		{
+			MethodName: "SysRoleFindOne",
+			Handler:    _Tpmt_SysRoleFindOne_Handler,
+		},
+		{
+			MethodName: "SysRoleList",
+			Handler:    _Tpmt_SysRoleList_Handler,
+		},
+		{
+			MethodName: "SysMenuAdd",
+			Handler:    _Tpmt_SysMenuAdd_Handler,
+		},
+		{
+			MethodName: "SysMenuDelete",
+			Handler:    _Tpmt_SysMenuDelete_Handler,
+		},
+		{
+			MethodName: "SysMenuUpdate",
+			Handler:    _Tpmt_SysMenuUpdate_Handler,
+		},
+		{
+			MethodName: "SysMenuFindOne",
+			Handler:    _Tpmt_SysMenuFindOne_Handler,
+		},
+		{
+			MethodName: "SysMenuList",
+			Handler:    _Tpmt_SysMenuList_Handler,
+		},
+		{
+			MethodName: "SysInterfaceAdd",
+			Handler:    _Tpmt_SysInterfaceAdd_Handler,
+		},
+		{
+			MethodName: "SysInterfaceDelete",
+			Handler:    _Tpmt_SysInterfaceDelete_Handler,
+		},
+		{
+			MethodName: "SysInterfaceUpdate",
+			Handler:    _Tpmt_SysInterfaceUpdate_Handler,
+		},
+		{
+			MethodName: "SysInterfaceFindOne",
+			Handler:    _Tpmt_SysInterfaceFindOne_Handler,
+		},
+		{
+			MethodName: "SysInterfaceList",
+			Handler:    _Tpmt_SysInterfaceList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

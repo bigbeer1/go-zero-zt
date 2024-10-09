@@ -1,6 +1,9 @@
 syntax = "v1"
 
 import "doc/sysuser.api"
+import "doc/sysrole.api"
+import "doc/sysmenu.api"
+import "doc/sysinterface.api"
 
 type (
 	Response {

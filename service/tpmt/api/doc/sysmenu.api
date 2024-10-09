@@ -1,0 +1,93 @@
+syntax = "v1"
+
+
+type (
+    SysMenuAddRequest {
+		MenuType  int64  `json:"menu_type"`  // 菜单类型(层级关系)
+		Name  string  `json:"name"`  // 菜单名称
+		Title  string  `json:"title"`  // 标题
+		Path  string  `json:"path"`  // 路径
+		Component  string  `json:"component"`  // 本地路径
+		Redirect  string  `json:"redirect"`  // 跳转
+		Sort  int64  `json:"sort"`  // sort
+		Icon  string  `json:"icon"`  // 图标
+		IsHide  int64  `json:"is_hide"`  // 是否隐藏
+		IsKeepAlive  int64  `json:"is_keep_alive"`  // 是否缓存
+		ParentId  int64  `json:"parent_id,optional"`  // 父ID
+		IsHome  int64  `json:"is_home"`  // 是否首页
+		IsMain  int64  `json:"is_main"`  // 是否主菜单
+    }
+
+    SysMenuDelRequest {
+		Id  int64  `path:"id"`  // 菜单ID
+    }
+
+    SysMenuUpRequest {
+		Id  int64  `json:"id"`  // 菜单ID
+		MenuType  int64  `json:"menu_type,optional"`  // 菜单类型(层级关系)
+		Name  string  `json:"name,optional"`  // 菜单名称
+		Title  string  `json:"title,optional"`  // 标题
+		Path  string  `json:"path,optional"`  // 路径
+		Component  string  `json:"component,optional"`  // 本地路径
+		Redirect  string  `json:"redirect,optional"`  // 跳转
+		Sort  int64  `json:"sort,optional"`  // sort
+		Icon  string  `json:"icon,optional"`  // 图标
+		IsHide  int64  `json:"is_hide,optional"`  // 是否隐藏
+		IsKeepAlive  int64  `json:"is_keep_alive,optional"`  // 是否缓存
+		ParentId  int64  `json:"parent_id,optional"`  // 父ID
+		IsHome  int64  `json:"is_home,optional"`  // 是否首页
+		IsMain  int64  `json:"is_main,optional"`  // 是否主菜单      
+    }
+
+
+    SysMenuListRequest {
+		Current  int64  `form:"current,default=1,optional"`  // 页码
+		PageSize  int64  `form:"page_size,default=10,optional"`  // 页数
+		MenuType  int64  `form:"menu_type,default=99,optional"`  // 菜单类型(层级关系)
+		Name  string  `form:"name,optional"`  // 菜单名称
+		Title  string  `form:"title,optional"`  // 标题
+		Path  string  `form:"path,optional"`  // 路径
+		Component  string  `form:"component,optional"`  // 本地路径
+		Redirect  string  `form:"redirect,optional"`  // 跳转
+		Icon  string  `form:"icon,optional"`  // 图标
+		IsHide  int64  `form:"is_hide,default=99,optional"`  // 是否隐藏
+		IsKeepAlive  int64  `form:"is_keep_alive,default=99,optional"`  // 是否缓存
+		ParentId  int64  `form:"parent_id,default=99,optional"`  // 父ID
+		IsHome  int64  `form:"is_home,default=99,optional"`  // 是否首页
+		IsMain  int64  `form:"is_main,default=99,optional"`  // 是否主菜单       
+    }
+
+    SysMenuInfoRequest {
+		Id  int64  `form:"id"`  // 菜单ID          
+    }
+
+)
+
+@server(
+    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
+    jwt: Auth
+    group: sysMenu
+)
+
+service Tpmt {
+
+    // 添加
+    @handler SysMenuAdd
+    post /tpmt/sysMenu (SysMenuAddRequest) returns (Response)
+
+    // 删除
+    @handler SysMenuDel
+    delete /tpmt/sysMenu/:id (SysMenuDelRequest) returns (Response)
+
+    // 更新
+    @handler SysMenuUp
+    put /tpmt/sysMenu (SysMenuUpRequest) returns (Response)
+
+    // 分页查询
+    @handler SysMenuList
+    get /tpmt/sysMenu (SysMenuListRequest) returns (Response)
+
+    // 查询详细信息
+    @handler SysMenuInfo
+    get /tpmt/sysMenuInfo (SysMenuInfoRequest) returns (Response)
+}

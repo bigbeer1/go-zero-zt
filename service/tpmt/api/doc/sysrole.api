@@ -1,0 +1,66 @@
+syntax = "v1"
+
+
+type (
+    SysRoleAddRequest {
+		Name  string  `json:"name"`  // 角色名称
+		Remark  string  `json:"remark,optional"`  // 备注
+		RoleType  int64  `json:"role_type,options=1|2|3"`  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+        SysMenuIds  []int64  `json:"sys_menu_ids"`  // 菜单IDS
+        SysInterfaceIds  []int64  `json:"sys_interface_ids"`  // 接口IDS
+    }
+
+    SysRoleDelRequest {
+		Id  int64  `path:"id"`  // 角色ID
+    }
+
+    SysRoleUpRequest {
+		Id  int64  `json:"id"`  // 角色ID
+		Name  string  `json:"name,optional"`  // 角色名称
+		Remark  string  `json:"remark,optional"`  // 备注
+		RoleType  int64  `json:"role_type,optional,options=0|1|2|3"`  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+    }
+
+
+    SysRoleListRequest {
+		Current  int64  `form:"current,default=1,optional"`  // 页码
+		PageSize  int64  `form:"page_size,default=10,optional"`  // 页数
+		Name  string  `form:"name,optional"`  // 角色名称
+		Remark  string  `form:"remark,optional"`  // 备注
+		RoleType  int64  `form:"role_type,default=99,optional"`  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色       
+    }
+
+    SysRoleInfoRequest {
+		Id  int64  `form:"id"`  // 角色ID          
+    }
+
+)
+
+@server(
+    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
+    jwt: Auth
+    group: sysRole
+)
+
+service Tpmt {
+
+    // 添加
+    @handler SysRoleAdd
+    post /tpmt/sysRole (SysRoleAddRequest) returns (Response)
+
+    // 删除
+    @handler SysRoleDel
+    delete /tpmt/sysRole/:id (SysRoleDelRequest) returns (Response)
+
+    // 更新
+    @handler SysRoleUp
+    put /tpmt/sysRole (SysRoleUpRequest) returns (Response)
+
+    // 分页查询
+    @handler SysRoleList
+    get /tpmt/sysRole (SysRoleListRequest) returns (Response)
+
+    // 查询详细信息
+    @handler SysRoleInfo
+    get /tpmt/sysRoleInfo (SysRoleInfoRequest) returns (Response)
+}

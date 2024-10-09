@@ -9,9 +9,135 @@ type Response struct {
 	Data interface{} `json:"data"` // 数据
 }
 
+type SysInterfaceAddRequest struct {
+	Name               string `json:"name"`                 // 接口名称
+	Path               string `json:"path"`                 // 接口地址
+	InterfaceType      string `json:"interface_type"`       // 接口类型
+	InterfaceGroupName string `json:"interface_group_name"` // 接口分组名称
+	Remark             string `json:"remark,optional"`      // 备注
+	Sort               int64  `json:"sort,optional"`        // sort
+}
+
+type SysInterfaceDelRequest struct {
+	Id int64 `path:"id"` // 接口ID
+}
+
+type SysInterfaceInfoRequest struct {
+	Id int64 `form:"id"` // 接口ID
+}
+
+type SysInterfaceListRequest struct {
+	Current            int64  `form:"current,default=1,optional"`    // 页码
+	PageSize           int64  `form:"page_size,default=10,optional"` // 页数
+	Name               string `form:"name,optional"`                 // 接口名称
+	Path               string `form:"path,optional"`                 // 接口地址
+	InterfaceType      string `form:"interface_type,optional"`       // 接口类型
+	InterfaceGroupName string `form:"interface_group_name,optional"` // 接口分组名称
+	Remark             string `form:"remark,optional"`               // 备注
+}
+
+type SysInterfaceUpRequest struct {
+	Id                 int64  `json:"id"`                            // 接口ID
+	Name               string `json:"name,optional"`                 // 接口名称
+	Path               string `json:"path,optional"`                 // 接口地址
+	InterfaceType      string `json:"interface_type,optional"`       // 接口类型
+	InterfaceGroupName string `json:"interface_group_name,optional"` // 接口分组名称
+	Remark             string `json:"remark,optional"`               // 备注
+	Sort               int64  `json:"sort,optional"`                 // sort
+}
+
 type SysLoginRequest struct {
 	Account  string `json:"account"`  // 用户名
 	Password string `json:"password"` // 密码
+}
+
+type SysMenuAddRequest struct {
+	MenuType    int64  `json:"menu_type"`          // 菜单类型(层级关系)
+	Name        string `json:"name"`               // 菜单名称
+	Title       string `json:"title"`              // 标题
+	Path        string `json:"path"`               // 路径
+	Component   string `json:"component"`          // 本地路径
+	Redirect    string `json:"redirect"`           // 跳转
+	Sort        int64  `json:"sort"`               // sort
+	Icon        string `json:"icon"`               // 图标
+	IsHide      int64  `json:"is_hide"`            // 是否隐藏
+	IsKeepAlive int64  `json:"is_keep_alive"`      // 是否缓存
+	ParentId    int64  `json:"parent_id,optional"` // 父ID
+	IsHome      int64  `json:"is_home"`            // 是否首页
+	IsMain      int64  `json:"is_main"`            // 是否主菜单
+}
+
+type SysMenuDelRequest struct {
+	Id int64 `path:"id"` // 菜单ID
+}
+
+type SysMenuInfoRequest struct {
+	Id int64 `form:"id"` // 菜单ID
+}
+
+type SysMenuListRequest struct {
+	Current     int64  `form:"current,default=1,optional"`        // 页码
+	PageSize    int64  `form:"page_size,default=10,optional"`     // 页数
+	MenuType    int64  `form:"menu_type,default=99,optional"`     // 菜单类型(层级关系)
+	Name        string `form:"name,optional"`                     // 菜单名称
+	Title       string `form:"title,optional"`                    // 标题
+	Path        string `form:"path,optional"`                     // 路径
+	Component   string `form:"component,optional"`                // 本地路径
+	Redirect    string `form:"redirect,optional"`                 // 跳转
+	Icon        string `form:"icon,optional"`                     // 图标
+	IsHide      int64  `form:"is_hide,default=99,optional"`       // 是否隐藏
+	IsKeepAlive int64  `form:"is_keep_alive,default=99,optional"` // 是否缓存
+	ParentId    int64  `form:"parent_id,default=99,optional"`     // 父ID
+	IsHome      int64  `form:"is_home,default=99,optional"`       // 是否首页
+	IsMain      int64  `form:"is_main,default=99,optional"`       // 是否主菜单
+}
+
+type SysMenuUpRequest struct {
+	Id          int64  `json:"id"`                     // 菜单ID
+	MenuType    int64  `json:"menu_type,optional"`     // 菜单类型(层级关系)
+	Name        string `json:"name,optional"`          // 菜单名称
+	Title       string `json:"title,optional"`         // 标题
+	Path        string `json:"path,optional"`          // 路径
+	Component   string `json:"component,optional"`     // 本地路径
+	Redirect    string `json:"redirect,optional"`      // 跳转
+	Sort        int64  `json:"sort,optional"`          // sort
+	Icon        string `json:"icon,optional"`          // 图标
+	IsHide      int64  `json:"is_hide,optional"`       // 是否隐藏
+	IsKeepAlive int64  `json:"is_keep_alive,optional"` // 是否缓存
+	ParentId    int64  `json:"parent_id,optional"`     // 父ID
+	IsHome      int64  `json:"is_home,optional"`       // 是否首页
+	IsMain      int64  `json:"is_main,optional"`       // 是否主菜单
+}
+
+type SysRoleAddRequest struct {
+	Name            string  `json:"name"`                    // 角色名称
+	Remark          string  `json:"remark,optional"`         // 备注
+	RoleType        int64   `json:"role_type,options=1|2|3"` // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+	SysMenuIds      []int64 `json:"sys_menu_ids"`            // 菜单IDS
+	SysInterfaceIds []int64 `json:"sys_interface_ids"`       // 接口IDS
+}
+
+type SysRoleDelRequest struct {
+	Id int64 `path:"id"` // 角色ID
+}
+
+type SysRoleInfoRequest struct {
+	Id int64 `form:"id"` // 角色ID
+}
+
+type SysRoleListRequest struct {
+	Current  int64  `form:"current,default=1,optional"`    // 页码
+	PageSize int64  `form:"page_size,default=10,optional"` // 页数
+	Name     string `form:"name,optional"`                 // 角色名称
+	Remark   string `form:"remark,optional"`               // 备注
+	RoleType int64  `form:"role_type,default=99,optional"` // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+}
+
+type SysRoleUpRequest struct {
+	Id       int64  `json:"id"`                                 // 角色ID
+	Name     string `json:"name,optional"`                      // 角色名称
+	Remark   string `json:"remark,optional"`                    // 备注
+	RoleType int64  `json:"role_type,optional,options=0|1|2|3"` // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
 }
 
 type SysUserAddRequest struct {

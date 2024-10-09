@@ -23,11 +23,13 @@ func NewTpmtServer(svcCtx *svc.ServiceContext) *TpmtServer {
 	}
 }
 
+// 用户登录
 func (s *TpmtServer) SysLogin(ctx context.Context, in *tpmtclient.SysLoginReq) (*tpmtclient.SysUserFindOneResp, error) {
 	l := logic.NewSysLoginLogic(ctx, s.svcCtx)
 	return l.SysLogin(in)
 }
 
+// 用户
 func (s *TpmtServer) SysUserAdd(ctx context.Context, in *tpmtclient.SysUserAddReq) (*tpmtclient.CommonResp, error) {
 	l := logic.NewSysUserAddLogic(ctx, s.svcCtx)
 	return l.SysUserAdd(in)
@@ -63,4 +65,82 @@ func (s *TpmtServer) SysUserResetPwd(ctx context.Context, in *tpmtclient.SysUser
 func (s *TpmtServer) SysUserUpMyPwd(ctx context.Context, in *tpmtclient.SysUserUpMyPwdReq) (*tpmtclient.CommonResp, error) {
 	l := logic.NewSysUserUpMyPwdLogic(ctx, s.svcCtx)
 	return l.SysUserUpMyPwd(in)
+}
+
+// 角色
+func (s *TpmtServer) SysRoleAdd(ctx context.Context, in *tpmtclient.SysRoleAddReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysRoleAddLogic(ctx, s.svcCtx)
+	return l.SysRoleAdd(in)
+}
+
+func (s *TpmtServer) SysRoleDelete(ctx context.Context, in *tpmtclient.SysRoleDeleteReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysRoleDeleteLogic(ctx, s.svcCtx)
+	return l.SysRoleDelete(in)
+}
+
+func (s *TpmtServer) SysRoleUpdate(ctx context.Context, in *tpmtclient.SysRoleUpdateReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysRoleUpdateLogic(ctx, s.svcCtx)
+	return l.SysRoleUpdate(in)
+}
+
+func (s *TpmtServer) SysRoleFindOne(ctx context.Context, in *tpmtclient.SysRoleFindOneReq) (*tpmtclient.SysRoleFindOneResp, error) {
+	l := logic.NewSysRoleFindOneLogic(ctx, s.svcCtx)
+	return l.SysRoleFindOne(in)
+}
+
+func (s *TpmtServer) SysRoleList(ctx context.Context, in *tpmtclient.SysRoleListReq) (*tpmtclient.SysRoleListResp, error) {
+	l := logic.NewSysRoleListLogic(ctx, s.svcCtx)
+	return l.SysRoleList(in)
+}
+
+// 菜单
+func (s *TpmtServer) SysMenuAdd(ctx context.Context, in *tpmtclient.SysMenuAddReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysMenuAddLogic(ctx, s.svcCtx)
+	return l.SysMenuAdd(in)
+}
+
+func (s *TpmtServer) SysMenuDelete(ctx context.Context, in *tpmtclient.SysMenuDeleteReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysMenuDeleteLogic(ctx, s.svcCtx)
+	return l.SysMenuDelete(in)
+}
+
+func (s *TpmtServer) SysMenuUpdate(ctx context.Context, in *tpmtclient.SysMenuUpdateReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysMenuUpdateLogic(ctx, s.svcCtx)
+	return l.SysMenuUpdate(in)
+}
+
+func (s *TpmtServer) SysMenuFindOne(ctx context.Context, in *tpmtclient.SysMenuFindOneReq) (*tpmtclient.SysMenuFindOneResp, error) {
+	l := logic.NewSysMenuFindOneLogic(ctx, s.svcCtx)
+	return l.SysMenuFindOne(in)
+}
+
+func (s *TpmtServer) SysMenuList(ctx context.Context, in *tpmtclient.SysMenuListReq) (*tpmtclient.SysMenuListResp, error) {
+	l := logic.NewSysMenuListLogic(ctx, s.svcCtx)
+	return l.SysMenuList(in)
+}
+
+// 接口
+func (s *TpmtServer) SysInterfaceAdd(ctx context.Context, in *tpmtclient.SysInterfaceAddReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysInterfaceAddLogic(ctx, s.svcCtx)
+	return l.SysInterfaceAdd(in)
+}
+
+func (s *TpmtServer) SysInterfaceDelete(ctx context.Context, in *tpmtclient.SysInterfaceDeleteReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysInterfaceDeleteLogic(ctx, s.svcCtx)
+	return l.SysInterfaceDelete(in)
+}
+
+func (s *TpmtServer) SysInterfaceUpdate(ctx context.Context, in *tpmtclient.SysInterfaceUpdateReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysInterfaceUpdateLogic(ctx, s.svcCtx)
+	return l.SysInterfaceUpdate(in)
+}
+
+func (s *TpmtServer) SysInterfaceFindOne(ctx context.Context, in *tpmtclient.SysInterfaceFindOneReq) (*tpmtclient.SysInterfaceFindOneResp, error) {
+	l := logic.NewSysInterfaceFindOneLogic(ctx, s.svcCtx)
+	return l.SysInterfaceFindOne(in)
+}
+
+func (s *TpmtServer) SysInterfaceList(ctx context.Context, in *tpmtclient.SysInterfaceListReq) (*tpmtclient.SysInterfaceListResp, error) {
+	l := logic.NewSysInterfaceListLogic(ctx, s.svcCtx)
+	return l.SysInterfaceList(in)
 }

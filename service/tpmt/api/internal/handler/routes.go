@@ -6,6 +6,9 @@ package handler
 import (
 	"net/http"
 
+	sysInterface "tpmt-zt/service/tpmt/api/internal/handler/sysInterface"
+	sysMenu "tpmt-zt/service/tpmt/api/internal/handler/sysMenu"
+	sysRole "tpmt-zt/service/tpmt/api/internal/handler/sysRole"
 	sysUser "tpmt-zt/service/tpmt/api/internal/handler/sysUser"
 	"tpmt-zt/service/tpmt/api/internal/svc"
 
@@ -21,6 +24,99 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: LoginHandler(serverCtx),
 			},
 		},
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/tpmt/sysInterface",
+				Handler: sysInterface.SysInterfaceAddHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/sysInterface",
+				Handler: sysInterface.SysInterfaceUpHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysInterface",
+				Handler: sysInterface.SysInterfaceListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodDelete,
+				Path:    "/tpmt/sysInterface/:id",
+				Handler: sysInterface.SysInterfaceDelHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysInterfaceInfo",
+				Handler: sysInterface.SysInterfaceInfoHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/tpmt/sysMenu",
+				Handler: sysMenu.SysMenuAddHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/sysMenu",
+				Handler: sysMenu.SysMenuUpHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysMenu",
+				Handler: sysMenu.SysMenuListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodDelete,
+				Path:    "/tpmt/sysMenu/:id",
+				Handler: sysMenu.SysMenuDelHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysMenuInfo",
+				Handler: sysMenu.SysMenuInfoHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/tpmt/sysRole",
+				Handler: sysRole.SysRoleAddHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/sysRole",
+				Handler: sysRole.SysRoleUpHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysRole",
+				Handler: sysRole.SysRoleListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodDelete,
+				Path:    "/tpmt/sysRole/:id",
+				Handler: sysRole.SysRoleDelHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysRoleInfo",
+				Handler: sysRole.SysRoleInfoHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
