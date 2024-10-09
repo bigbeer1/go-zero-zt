@@ -50,6 +50,21 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Path:    "/tpmt/sysUserInfo",
 				Handler: sysUser.SysUserInfoHandler(serverCtx),
 			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/sysUserResetPwd",
+				Handler: sysUser.SysUserResetPwdHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/sysUserUpMyInfo",
+				Handler: sysUser.SysUserUpMyInfoHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/sysUserUpMyPwd",
+				Handler: sysUser.SysUserUpMyPwdHandler(serverCtx),
+			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)

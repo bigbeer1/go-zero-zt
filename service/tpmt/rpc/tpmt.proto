@@ -84,6 +84,25 @@ message SysLoginReq{
 	string  password = 2;  // 姓名
 }
 
+// SysUser重置密码
+message SysUserResetPwdReq{
+	string  id = 1;  // 用户id
+	string  password = 2;  // 密码
+	string  updated_name = 3;  // 更新人
+}
+
+// SysUser重置密码返回
+message SysUserResetPwdResp{
+	string  password = 1;  // 密码
+}
+
+// 用户修改自己的密码Req
+message SysUserUpMyPwdReq{
+	string  id = 1;  // 用户id
+	string  old_password = 2;  // 旧密码
+	string  new_password = 3;  // 新密码
+}
+
 //SysUser end---------------------
 
 service Tpmt {
@@ -96,5 +115,12 @@ service Tpmt {
   rpc SysUserUpdate(SysUserUpdateReq) returns(CommonResp);
   rpc SysUserFindOne(SysUserFindOneReq) returns(SysUserFindOneResp);
   rpc SysUserList(SysUserListReq) returns(SysUserListResp);
+
+	// 重置用户密码
+	rpc SysUserResetPwd(SysUserResetPwdReq) returns(SysUserResetPwdResp);
+
+	// 用户修改自己的密码
+	rpc SysUserUpMyPwd(SysUserUpMyPwdReq) returns(CommonResp);
+
 
 }

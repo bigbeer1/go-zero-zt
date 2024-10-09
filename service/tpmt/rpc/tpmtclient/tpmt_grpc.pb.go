@@ -24,6 +24,10 @@ type TpmtClient interface {
 	SysUserUpdate(ctx context.Context, in *SysUserUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysUserFindOne(ctx context.Context, in *SysUserFindOneReq, opts ...grpc.CallOption) (*SysUserFindOneResp, error)
 	SysUserList(ctx context.Context, in *SysUserListReq, opts ...grpc.CallOption) (*SysUserListResp, error)
+	// 重置用户密码
+	SysUserResetPwd(ctx context.Context, in *SysUserResetPwdReq, opts ...grpc.CallOption) (*SysUserResetPwdResp, error)
+	// 用户修改自己的密码
+	SysUserUpMyPwd(ctx context.Context, in *SysUserUpMyPwdReq, opts ...grpc.CallOption) (*CommonResp, error)
 }
 
 type tpmtClient struct {
@@ -88,6 +92,24 @@ func (c *tpmtClient) SysUserList(ctx context.Context, in *SysUserListReq, opts .
 	return out, nil
 }
 
+func (c *tpmtClient) SysUserResetPwd(ctx context.Context, in *SysUserResetPwdReq, opts ...grpc.CallOption) (*SysUserResetPwdResp, error) {
+	out := new(SysUserResetPwdResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysUserResetPwd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysUserUpMyPwd(ctx context.Context, in *SysUserUpMyPwdReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysUserUpMyPwd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TpmtServer is the server API for Tpmt service.
 // All implementations must embed UnimplementedTpmtServer
 // for forward compatibility
@@ -98,6 +120,10 @@ type TpmtServer interface {
 	SysUserUpdate(context.Context, *SysUserUpdateReq) (*CommonResp, error)
 	SysUserFindOne(context.Context, *SysUserFindOneReq) (*SysUserFindOneResp, error)
 	SysUserList(context.Context, *SysUserListReq) (*SysUserListResp, error)
+	// 重置用户密码
+	SysUserResetPwd(context.Context, *SysUserResetPwdReq) (*SysUserResetPwdResp, error)
+	// 用户修改自己的密码
+	SysUserUpMyPwd(context.Context, *SysUserUpMyPwdReq) (*CommonResp, error)
 	mustEmbedUnimplementedTpmtServer()
 }
 
@@ -122,6 +148,12 @@ func (UnimplementedTpmtServer) SysUserFindOne(context.Context, *SysUserFindOneRe
 }
 func (UnimplementedTpmtServer) SysUserList(context.Context, *SysUserListReq) (*SysUserListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysUserList not implemented")
+}
+func (UnimplementedTpmtServer) SysUserResetPwd(context.Context, *SysUserResetPwdReq) (*SysUserResetPwdResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysUserResetPwd not implemented")
+}
+func (UnimplementedTpmtServer) SysUserUpMyPwd(context.Context, *SysUserUpMyPwdReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysUserUpMyPwd not implemented")
 }
 func (UnimplementedTpmtServer) mustEmbedUnimplementedTpmtServer() {}
 
@@ -244,6 +276,42 @@ func _Tpmt_SysUserList_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tpmt_SysUserResetPwd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysUserResetPwdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysUserResetPwd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysUserResetPwd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysUserResetPwd(ctx, req.(*SysUserResetPwdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysUserUpMyPwd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysUserUpMyPwdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysUserUpMyPwd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysUserUpMyPwd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysUserUpMyPwd(ctx, req.(*SysUserUpMyPwdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Tpmt_ServiceDesc is the grpc.ServiceDesc for Tpmt service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -274,6 +342,14 @@ var Tpmt_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SysUserList",
 			Handler:    _Tpmt_SysUserList_Handler,
+		},
+		{
+			MethodName: "SysUserResetPwd",
+			Handler:    _Tpmt_SysUserResetPwd_Handler,
+		},
+		{
+			MethodName: "SysUserUpMyPwd",
+			Handler:    _Tpmt_SysUserUpMyPwd_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

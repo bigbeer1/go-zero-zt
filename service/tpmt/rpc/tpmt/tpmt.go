@@ -14,16 +14,19 @@ import (
 )
 
 type (
-	CommonResp         = tpmtclient.CommonResp
-	SysLoginReq        = tpmtclient.SysLoginReq
-	SysUserAddReq      = tpmtclient.SysUserAddReq
-	SysUserDeleteReq   = tpmtclient.SysUserDeleteReq
-	SysUserFindOneReq  = tpmtclient.SysUserFindOneReq
-	SysUserFindOneResp = tpmtclient.SysUserFindOneResp
-	SysUserListData    = tpmtclient.SysUserListData
-	SysUserListReq     = tpmtclient.SysUserListReq
-	SysUserListResp    = tpmtclient.SysUserListResp
-	SysUserUpdateReq   = tpmtclient.SysUserUpdateReq
+	CommonResp          = tpmtclient.CommonResp
+	SysLoginReq         = tpmtclient.SysLoginReq
+	SysUserAddReq       = tpmtclient.SysUserAddReq
+	SysUserDeleteReq    = tpmtclient.SysUserDeleteReq
+	SysUserFindOneReq   = tpmtclient.SysUserFindOneReq
+	SysUserFindOneResp  = tpmtclient.SysUserFindOneResp
+	SysUserListData     = tpmtclient.SysUserListData
+	SysUserListReq      = tpmtclient.SysUserListReq
+	SysUserListResp     = tpmtclient.SysUserListResp
+	SysUserResetPwdReq  = tpmtclient.SysUserResetPwdReq
+	SysUserResetPwdResp = tpmtclient.SysUserResetPwdResp
+	SysUserUpMyPwdReq   = tpmtclient.SysUserUpMyPwdReq
+	SysUserUpdateReq    = tpmtclient.SysUserUpdateReq
 
 	Tpmt interface {
 		SysLogin(ctx context.Context, in *SysLoginReq, opts ...grpc.CallOption) (*SysUserFindOneResp, error)
@@ -32,6 +35,10 @@ type (
 		SysUserUpdate(ctx context.Context, in *SysUserUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
 		SysUserFindOne(ctx context.Context, in *SysUserFindOneReq, opts ...grpc.CallOption) (*SysUserFindOneResp, error)
 		SysUserList(ctx context.Context, in *SysUserListReq, opts ...grpc.CallOption) (*SysUserListResp, error)
+		// 重置用户密码
+		SysUserResetPwd(ctx context.Context, in *SysUserResetPwdReq, opts ...grpc.CallOption) (*SysUserResetPwdResp, error)
+		// 用户修改自己的密码
+		SysUserUpMyPwd(ctx context.Context, in *SysUserUpMyPwdReq, opts ...grpc.CallOption) (*CommonResp, error)
 	}
 
 	defaultTpmt struct {
@@ -73,4 +80,16 @@ func (m *defaultTpmt) SysUserFindOne(ctx context.Context, in *SysUserFindOneReq,
 func (m *defaultTpmt) SysUserList(ctx context.Context, in *SysUserListReq, opts ...grpc.CallOption) (*SysUserListResp, error) {
 	client := tpmtclient.NewTpmtClient(m.cli.Conn())
 	return client.SysUserList(ctx, in, opts...)
+}
+
+// 重置用户密码
+func (m *defaultTpmt) SysUserResetPwd(ctx context.Context, in *SysUserResetPwdReq, opts ...grpc.CallOption) (*SysUserResetPwdResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysUserResetPwd(ctx, in, opts...)
+}
+
+// 用户修改自己的密码
+func (m *defaultTpmt) SysUserUpMyPwd(ctx context.Context, in *SysUserUpMyPwdReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysUserUpMyPwd(ctx, in, opts...)
 }

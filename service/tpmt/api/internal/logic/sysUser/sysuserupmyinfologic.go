@@ -13,42 +13,38 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type SysUserUpLogic struct {
+type SysUserUpMyInfoLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewSysUserUpLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysUserUpLogic {
-	return &SysUserUpLogic{
+func NewSysUserUpMyInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysUserUpMyInfoLogic {
+	return &SysUserUpMyInfoLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *SysUserUpLogic) SysUserUp(req *types.SysUserUpRequest) (resp *types.Response, err error) {
+func (l *SysUserUpMyInfoLogic) SysUserUpMyInfo(req *types.SysUserUpMyInfoRequest) (resp *types.Response, err error) {
 
 	tokenData := jwtx.ParseToken(l.ctx)
 
-	//  不能重置自己
-	if tokenData.Uid == req.Id {
-		return nil, common.NewDefaultError("该接口不能修改自身")
-	}
-
 	_, err = l.svcCtx.TpmtRpc.SysUserUpdate(l.ctx, &tpmtclient.SysUserUpdateReq{
-		Id:          req.Id,             // 用户ID
-		NickName:    req.NickName,       // 姓名
-		State:       req.State,          // 状态 1:正常 2:停用 3:封禁
-		UpdatedName: tokenData.NickName, // 更新人
+		Id:          tokenData.Uid, // 用户ID
+		NickName:    req.NickName,  // 姓名
+		UpdatedName: req.NickName,  // 更新人
 	})
 
 	if err != nil {
 		return nil, common.NewDefaultError(err.Error())
 	}
+
 	return &types.Response{
 		Code: 0,
 		Msg:  msg.Success,
 		Data: nil,
 	}, nil
+
 }

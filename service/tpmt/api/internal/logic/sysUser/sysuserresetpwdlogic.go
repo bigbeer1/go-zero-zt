@@ -13,31 +13,32 @@ import (
 	"github.com/zeromicro/go-zero/core/logx"
 )
 
-type SysUserDelLogic struct {
+type SysUserResetPwdLogic struct {
 	logx.Logger
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
 
-func NewSysUserDelLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysUserDelLogic {
-	return &SysUserDelLogic{
+func NewSysUserResetPwdLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysUserResetPwdLogic {
+	return &SysUserResetPwdLogic{
 		Logger: logx.WithContext(ctx),
 		ctx:    ctx,
 		svcCtx: svcCtx,
 	}
 }
 
-func (l *SysUserDelLogic) SysUserDel(req *types.SysUserDelRequest) (resp *types.Response, err error) {
-	// 用户登录信息
+func (l *SysUserResetPwdLogic) SysUserResetPwd(req *types.SysUserResetPwdRequest) (resp *types.Response, err error) {
 	tokenData := jwtx.ParseToken(l.ctx)
 
+	//  不能重置自己
 	if tokenData.Uid == req.Id {
-		return nil, common.NewDefaultError("该接口不能删除自身")
+		return nil, common.NewDefaultError("该接口不能修改自身")
 	}
 
-	_, err = l.svcCtx.TpmtRpc.SysUserDelete(l.ctx, &tpmtclient.SysUserDeleteReq{
-		Id:          req.Id,             // 用户ID
-		DeletedName: tokenData.NickName, // 删除人
+	res, err := l.svcCtx.TpmtRpc.SysUserResetPwd(l.ctx, &tpmtclient.SysUserResetPwdReq{
+		Id:          req.Id,
+		Password:    req.Password,
+		UpdatedName: tokenData.NickName,
 	})
 
 	if err != nil {
@@ -47,6 +48,6 @@ func (l *SysUserDelLogic) SysUserDel(req *types.SysUserDelRequest) (resp *types.
 	return &types.Response{
 		Code: 0,
 		Msg:  msg.Success,
-		Data: nil,
+		Data: res.Password,
 	}, nil
 }

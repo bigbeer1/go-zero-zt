@@ -36,6 +36,20 @@ type SysUserListRequest struct {
 	State    int64  `form:"state,default=99,optional"`     // 状态 1:正常 2:停用 3:封禁
 }
 
+type SysUserResetPwdRequest struct {
+	Id       string `json:"id"`                // 用户ID
+	Password string `json:"password,optional"` // 密码
+}
+
+type SysUserUpMyInfoRequest struct {
+	NickName string `json:"nick_name"` // 姓名
+}
+
+type SysUserUpMyPwdRequest struct {
+	OldPassword string `json:"old_password"` // 旧密码
+	NewPassword string `json:"new_password"` // 新密码
+}
+
 type SysUserUpRequest struct {
 	Id       string `json:"id"`                  // 用户ID
 	NickName string `json:"nick_name,optional"`  // 姓名

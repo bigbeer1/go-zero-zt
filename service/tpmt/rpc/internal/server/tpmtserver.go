@@ -52,3 +52,15 @@ func (s *TpmtServer) SysUserList(ctx context.Context, in *tpmtclient.SysUserList
 	l := logic.NewSysUserListLogic(ctx, s.svcCtx)
 	return l.SysUserList(in)
 }
+
+// 重置用户密码
+func (s *TpmtServer) SysUserResetPwd(ctx context.Context, in *tpmtclient.SysUserResetPwdReq) (*tpmtclient.SysUserResetPwdResp, error) {
+	l := logic.NewSysUserResetPwdLogic(ctx, s.svcCtx)
+	return l.SysUserResetPwd(in)
+}
+
+// 用户修改自己的密码
+func (s *TpmtServer) SysUserUpMyPwd(ctx context.Context, in *tpmtclient.SysUserUpMyPwdReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysUserUpMyPwdLogic(ctx, s.svcCtx)
+	return l.SysUserUpMyPwd(in)
+}
