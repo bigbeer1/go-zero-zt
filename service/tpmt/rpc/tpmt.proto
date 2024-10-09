@@ -132,6 +132,8 @@ message SysRoleUpdateReq{
 	string  remark = 3;  // 备注
 	int64   role_type = 4;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
 	string  updated_name = 5;  // 更新人
+	repeated int64  menu_ids = 6;  // 菜单ids
+	repeated int64  interface_ids = 7;  // 接口ids
 }
 
 // SysRole 单个查询
@@ -301,6 +303,15 @@ message SysMenuListData{
 	int64   updated_at = 18;  // 更新时间
 }
 
+message SysMenuByRoleIdReq{
+	int64   role_id = 1;  // 角色ID
+}
+
+// SysMenu 分页查询返回
+message SysMenuByRoleIdResp{
+	repeated  SysMenuListData list = 1;  // 内容
+}
+
 //SysMenu end---------------------
 
 
@@ -388,6 +399,17 @@ message SysInterfaceListData{
 	int64   sort = 11;  // sort
 }
 
+message SysInterfaceByRoleIdReq{
+	int64   role_id = 1;  // 角色ID
+}
+
+
+// SysInterface 分页查询返回
+message SysInterfaceByRoleIdResp{
+	repeated  SysInterfaceListData list = 1;  // 内容
+}
+
+
 //SysInterface end---------------------
 
 
@@ -425,6 +447,9 @@ service Tpmt {
 	rpc SysMenuFindOne(SysMenuFindOneReq) returns(SysMenuFindOneResp);
 	rpc SysMenuList(SysMenuListReq) returns(SysMenuListResp);
 
+	// 通过角色ID获取菜单信息
+	rpc SysMenuByRoleId(SysMenuByRoleIdReq) returns(SysMenuByRoleIdResp);
+
 
 	// 接口
 	rpc SysInterfaceAdd(SysInterfaceAddReq) returns(CommonResp);
@@ -432,5 +457,8 @@ service Tpmt {
 	rpc SysInterfaceUpdate(SysInterfaceUpdateReq) returns(CommonResp);
 	rpc SysInterfaceFindOne(SysInterfaceFindOneReq) returns(SysInterfaceFindOneResp);
 	rpc SysInterfaceList(SysInterfaceListReq) returns(SysInterfaceListResp);
+
+	// 通过角色ID获取接口信息
+	rpc SysInterfaceByRoleId(SysInterfaceByRoleIdReq) returns(SysInterfaceByRoleIdResp);
 
 }

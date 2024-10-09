@@ -119,6 +119,12 @@ func (s *TpmtServer) SysMenuList(ctx context.Context, in *tpmtclient.SysMenuList
 	return l.SysMenuList(in)
 }
 
+// 通过角色ID获取菜单信息
+func (s *TpmtServer) SysMenuByRoleId(ctx context.Context, in *tpmtclient.SysMenuByRoleIdReq) (*tpmtclient.SysMenuByRoleIdResp, error) {
+	l := logic.NewSysMenuByRoleIdLogic(ctx, s.svcCtx)
+	return l.SysMenuByRoleId(in)
+}
+
 // 接口
 func (s *TpmtServer) SysInterfaceAdd(ctx context.Context, in *tpmtclient.SysInterfaceAddReq) (*tpmtclient.CommonResp, error) {
 	l := logic.NewSysInterfaceAddLogic(ctx, s.svcCtx)
@@ -143,4 +149,10 @@ func (s *TpmtServer) SysInterfaceFindOne(ctx context.Context, in *tpmtclient.Sys
 func (s *TpmtServer) SysInterfaceList(ctx context.Context, in *tpmtclient.SysInterfaceListReq) (*tpmtclient.SysInterfaceListResp, error) {
 	l := logic.NewSysInterfaceListLogic(ctx, s.svcCtx)
 	return l.SysInterfaceList(in)
+}
+
+// 通过角色ID获取接口信息
+func (s *TpmtServer) SysInterfaceByRoleId(ctx context.Context, in *tpmtclient.SysInterfaceByRoleIdReq) (*tpmtclient.SysInterfaceByRoleIdResp, error) {
+	l := logic.NewSysInterfaceByRoleIdLogic(ctx, s.svcCtx)
+	return l.SysInterfaceByRoleId(in)
 }

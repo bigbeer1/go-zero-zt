@@ -31,11 +31,14 @@ var (
 type (
 	sysRoleMenuModel interface {
 		Insert(ctx context.Context, data *SysRoleMenu) (sql.Result, error)
+		TransInsert(ctx context.Context, session sqlx.Session, data *SysRoleMenu) (sql.Result, error)
 		FindOne(ctx context.Context, id int64) (*SysRoleMenu, error)
 		Update(ctx context.Context, data *SysRoleMenu) error
 		Delete(ctx context.Context, id int64) error
+		TransDeleteByRoleId(ctx context.Context, session sqlx.Session, roleId int64) error
 		FindCount(ctx context.Context, countBuilder squirrel.SelectBuilder) (int64, error)
 		FindList(ctx context.Context, rowBuilder squirrel.SelectBuilder, current, pageSize int64) ([]*SysRoleMenu, error)
+		FindAll(ctx context.Context, rowBuilder squirrel.SelectBuilder) ([]*SysRoleMenu, error)
 		RowBuilder() squirrel.SelectBuilder
 		CountBuilder(field string) squirrel.SelectBuilder
 		SumBuilder(field string) squirrel.SelectBuilder
@@ -72,6 +75,14 @@ func (m *defaultSysRoleMenuModel) Delete(ctx context.Context, id int64) error {
 	return err
 }
 
+func (m *defaultSysRoleMenuModel) TransDeleteByRoleId(ctx context.Context, session sqlx.Session, roleId int64) error {
+	_, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+		query := fmt.Sprintf("delete from %s where `role_id` = ?", m.table)
+		return session.ExecCtx(ctx, query, roleId)
+	})
+	return err
+}
+
 func (m *defaultSysRoleMenuModel) FindOne(ctx context.Context, id int64) (*SysRoleMenu, error) {
 	sysRoleMenuIdKey := fmt.Sprintf("%s%v", cacheSysRoleMenuIdPrefix, id)
 	var resp SysRoleMenu
@@ -88,6 +99,15 @@ func (m *defaultSysRoleMenuModel) FindOne(ctx context.Context, id int64) (*SysRo
 		return nil, err
 	}
 
+}
+
+func (m *defaultSysRoleMenuModel) TransInsert(ctx context.Context, session sqlx.Session, data *SysRoleMenu) (sql.Result, error) {
+	sysRoleMenuIdKey := fmt.Sprintf("%s%v", cacheSysRoleMenuIdPrefix, data.Id)
+	ret, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?)", m.table, sysRoleMenuRowsExpectAutoSet)
+		return session.ExecCtx(ctx, query, data.RoleId, data.MenuId, data.CreatedName, data.CreatedAt)
+	}, sysRoleMenuIdKey)
+	return ret, err
 }
 
 func (m *defaultSysRoleMenuModel) Insert(ctx context.Context, data *SysRoleMenu) (sql.Result, error) {
@@ -147,6 +167,25 @@ func (m *defaultSysRoleMenuModel) FindList(ctx context.Context, rowBuilder squir
 	offset := (current - 1) * pageSize
 
 	query, values, err := rowBuilder.Offset(uint64(offset)).Limit(uint64(pageSize)).ToSql()
+	if err != nil {
+		return nil, err
+	}
+
+	var resp []*SysRoleMenu
+	err = m.QueryRowsNoCacheCtx(ctx, &resp, query, values...)
+	switch err {
+	case nil:
+		return resp, nil
+	case sqlc.ErrNotFound:
+		return nil, nil
+	default:
+		return nil, err
+	}
+}
+
+func (m *defaultSysRoleMenuModel) FindAll(ctx context.Context, rowBuilder squirrel.SelectBuilder) ([]*SysRoleMenu, error) {
+
+	query, values, err := rowBuilder.ToSql()
 	if err != nil {
 		return nil, err
 	}

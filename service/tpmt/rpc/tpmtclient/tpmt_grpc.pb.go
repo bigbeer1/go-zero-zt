@@ -42,12 +42,16 @@ type TpmtClient interface {
 	SysMenuUpdate(ctx context.Context, in *SysMenuUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysMenuFindOne(ctx context.Context, in *SysMenuFindOneReq, opts ...grpc.CallOption) (*SysMenuFindOneResp, error)
 	SysMenuList(ctx context.Context, in *SysMenuListReq, opts ...grpc.CallOption) (*SysMenuListResp, error)
+	// 通过角色ID获取菜单信息
+	SysMenuByRoleId(ctx context.Context, in *SysMenuByRoleIdReq, opts ...grpc.CallOption) (*SysMenuByRoleIdResp, error)
 	// 接口
 	SysInterfaceAdd(ctx context.Context, in *SysInterfaceAddReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysInterfaceDelete(ctx context.Context, in *SysInterfaceDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysInterfaceUpdate(ctx context.Context, in *SysInterfaceUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysInterfaceFindOne(ctx context.Context, in *SysInterfaceFindOneReq, opts ...grpc.CallOption) (*SysInterfaceFindOneResp, error)
 	SysInterfaceList(ctx context.Context, in *SysInterfaceListReq, opts ...grpc.CallOption) (*SysInterfaceListResp, error)
+	// 通过角色ID获取接口信息
+	SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdResp, error)
 }
 
 type tpmtClient struct {
@@ -220,6 +224,15 @@ func (c *tpmtClient) SysMenuList(ctx context.Context, in *SysMenuListReq, opts .
 	return out, nil
 }
 
+func (c *tpmtClient) SysMenuByRoleId(ctx context.Context, in *SysMenuByRoleIdReq, opts ...grpc.CallOption) (*SysMenuByRoleIdResp, error) {
+	out := new(SysMenuByRoleIdResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysMenuByRoleId", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *tpmtClient) SysInterfaceAdd(ctx context.Context, in *SysInterfaceAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
 	out := new(CommonResp)
 	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysInterfaceAdd", in, out, opts...)
@@ -265,6 +278,15 @@ func (c *tpmtClient) SysInterfaceList(ctx context.Context, in *SysInterfaceListR
 	return out, nil
 }
 
+func (c *tpmtClient) SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdResp, error) {
+	out := new(SysInterfaceByRoleIdResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysInterfaceByRoleId", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TpmtServer is the server API for Tpmt service.
 // All implementations must embed UnimplementedTpmtServer
 // for forward compatibility
@@ -293,12 +315,16 @@ type TpmtServer interface {
 	SysMenuUpdate(context.Context, *SysMenuUpdateReq) (*CommonResp, error)
 	SysMenuFindOne(context.Context, *SysMenuFindOneReq) (*SysMenuFindOneResp, error)
 	SysMenuList(context.Context, *SysMenuListReq) (*SysMenuListResp, error)
+	// 通过角色ID获取菜单信息
+	SysMenuByRoleId(context.Context, *SysMenuByRoleIdReq) (*SysMenuByRoleIdResp, error)
 	// 接口
 	SysInterfaceAdd(context.Context, *SysInterfaceAddReq) (*CommonResp, error)
 	SysInterfaceDelete(context.Context, *SysInterfaceDeleteReq) (*CommonResp, error)
 	SysInterfaceUpdate(context.Context, *SysInterfaceUpdateReq) (*CommonResp, error)
 	SysInterfaceFindOne(context.Context, *SysInterfaceFindOneReq) (*SysInterfaceFindOneResp, error)
 	SysInterfaceList(context.Context, *SysInterfaceListReq) (*SysInterfaceListResp, error)
+	// 通过角色ID获取接口信息
+	SysInterfaceByRoleId(context.Context, *SysInterfaceByRoleIdReq) (*SysInterfaceByRoleIdResp, error)
 	mustEmbedUnimplementedTpmtServer()
 }
 
@@ -360,6 +386,9 @@ func (UnimplementedTpmtServer) SysMenuFindOne(context.Context, *SysMenuFindOneRe
 func (UnimplementedTpmtServer) SysMenuList(context.Context, *SysMenuListReq) (*SysMenuListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysMenuList not implemented")
 }
+func (UnimplementedTpmtServer) SysMenuByRoleId(context.Context, *SysMenuByRoleIdReq) (*SysMenuByRoleIdResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysMenuByRoleId not implemented")
+}
 func (UnimplementedTpmtServer) SysInterfaceAdd(context.Context, *SysInterfaceAddReq) (*CommonResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceAdd not implemented")
 }
@@ -374,6 +403,9 @@ func (UnimplementedTpmtServer) SysInterfaceFindOne(context.Context, *SysInterfac
 }
 func (UnimplementedTpmtServer) SysInterfaceList(context.Context, *SysInterfaceListReq) (*SysInterfaceListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceList not implemented")
+}
+func (UnimplementedTpmtServer) SysInterfaceByRoleId(context.Context, *SysInterfaceByRoleIdReq) (*SysInterfaceByRoleIdResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceByRoleId not implemented")
 }
 func (UnimplementedTpmtServer) mustEmbedUnimplementedTpmtServer() {}
 
@@ -712,6 +744,24 @@ func _Tpmt_SysMenuList_Handler(srv interface{}, ctx context.Context, dec func(in
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tpmt_SysMenuByRoleId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysMenuByRoleIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysMenuByRoleId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysMenuByRoleId",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysMenuByRoleId(ctx, req.(*SysMenuByRoleIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Tpmt_SysInterfaceAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SysInterfaceAddReq)
 	if err := dec(in); err != nil {
@@ -802,6 +852,24 @@ func _Tpmt_SysInterfaceList_Handler(srv interface{}, ctx context.Context, dec fu
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tpmt_SysInterfaceByRoleId_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysInterfaceByRoleIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysInterfaceByRoleId(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysInterfaceByRoleId",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysInterfaceByRoleId(ctx, req.(*SysInterfaceByRoleIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Tpmt_ServiceDesc is the grpc.ServiceDesc for Tpmt service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -882,6 +950,10 @@ var Tpmt_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _Tpmt_SysMenuList_Handler,
 		},
 		{
+			MethodName: "SysMenuByRoleId",
+			Handler:    _Tpmt_SysMenuByRoleId_Handler,
+		},
+		{
 			MethodName: "SysInterfaceAdd",
 			Handler:    _Tpmt_SysInterfaceAdd_Handler,
 		},
@@ -900,6 +972,10 @@ var Tpmt_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SysInterfaceList",
 			Handler:    _Tpmt_SysInterfaceList_Handler,
+		},
+		{
+			MethodName: "SysInterfaceByRoleId",
+			Handler:    _Tpmt_SysInterfaceByRoleId_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

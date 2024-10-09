@@ -134,10 +134,12 @@ type SysRoleListRequest struct {
 }
 
 type SysRoleUpRequest struct {
-	Id       int64  `json:"id"`                                 // 角色ID
-	Name     string `json:"name,optional"`                      // 角色名称
-	Remark   string `json:"remark,optional"`                    // 备注
-	RoleType int64  `json:"role_type,optional,options=0|1|2|3"` // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+	Id              int64   `json:"id"`                                 // 角色ID
+	Name            string  `json:"name,optional"`                      // 角色名称
+	Remark          string  `json:"remark,optional"`                    // 备注
+	RoleType        int64   `json:"role_type,optional,options=0|1|2|3"` // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+	SysMenuIds      []int64 `json:"sys_menu_ids"`                       // 菜单IDS
+	SysInterfaceIds []int64 `json:"sys_interface_ids"`                  // 接口IDS
 }
 
 type SysUserAddRequest struct {

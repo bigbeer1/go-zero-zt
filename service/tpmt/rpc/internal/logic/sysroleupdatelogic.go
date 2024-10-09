@@ -5,7 +5,9 @@ import (
 	"errors"
 	"fmt"
 	"github.com/zeromicro/go-zero/core/stores/sqlc"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
 	"time"
+	"tpmt-zt/service/tpmt/model"
 
 	"tpmt-zt/service/tpmt/rpc/internal/svc"
 	"tpmt-zt/service/tpmt/rpc/tpmtclient"
@@ -60,10 +62,88 @@ func (l *SysRoleUpdateLogic) SysRoleUpdate(in *tpmtclient.SysRoleUpdateReq) (*tp
 	res.UpdatedAt.Time = time.Now()
 	res.UpdatedAt.Valid = true
 
-	err = l.svcCtx.SysRoleModel.Update(l.ctx, res)
+	err = l.svcCtx.SysRoleModel.TransCtx(l.ctx, func(ctx context.Context, session sqlx.Session) error {
+
+		// 更新角色数据
+		err = l.svcCtx.SysRoleModel.TransUpdate(ctx, session, res)
+		if err != nil {
+			return err
+		}
+
+		// 删除角色和菜单中间表内的关系 然后重写添加
+		err = l.svcCtx.SysRoleMenuModel.TransDeleteByRoleId(ctx, session, in.Id)
+		if err != nil {
+			return err
+		}
+
+		// 菜单IDS和角色 添加到  中间表去确定关系
+		for _, menuId := range in.MenuIds {
+			res, err := l.svcCtx.SysMenuModel.FindOne(ctx, menuId)
+			if err != nil {
+				if errors.Is(err, sqlc.ErrNotFound) {
+					return fmt.Errorf("SysMenu没有该ID:%v", menuId)
+				}
+				return err
+			}
+
+			// 判断该数据是否被删除
+			if res.DeletedAt.Valid == true {
+				return fmt.Errorf("SysMenu该ID已被删除：%v", menuId)
+			}
+
+			// 加菜单和角色ID 添加到中间表去
+			_, err = l.svcCtx.SysRoleMenuModel.TransInsert(l.ctx, session, &model.SysRoleMenu{
+				RoleId:      in.Id,
+				MenuId:      menuId,
+				CreatedName: in.UpdatedName,
+				CreatedAt:   time.Now(),
+			})
+			if err != nil {
+				return err
+			}
+
+		}
+
+		// 删除角色和接口中间表内的关系 然后重写添加
+		err = l.svcCtx.SysRoleInterfaceModel.TransDeleteByRoleId(ctx, session, in.Id)
+		if err != nil {
+			return err
+		}
+
+		// 接口IDS和角色 添加到  中间表去确定关系
+		for _, interfaceId := range in.InterfaceIds {
+			res, err := l.svcCtx.SysInterfaceModel.FindOne(l.ctx, interfaceId)
+			if err != nil {
+				if errors.Is(err, sqlc.ErrNotFound) {
+					return fmt.Errorf("SysInterfaceId没有该ID:%v", interfaceId)
+				}
+				return err
+			}
+
+			// 判断该数据是否被删除
+			if res.DeletedAt.Valid == true {
+				return fmt.Errorf("SysInterfaceId该ID已被删除：%v", interfaceId)
+			}
+
+			// 加菜单和角色ID 添加到中间表去
+			_, err = l.svcCtx.SysRoleInterfaceModel.TransInsert(l.ctx, session, &model.SysRoleInterface{
+				RoleId:      in.Id,
+				InterfaceId: interfaceId,
+				CreatedName: in.UpdatedName,
+				CreatedAt:   time.Now(),
+			})
+			if err != nil {
+				return err
+			}
+
+		}
+
+		return nil
+	})
 
 	if err != nil {
 		return nil, err
 	}
+
 	return &tpmtclient.CommonResp{}, nil
 }

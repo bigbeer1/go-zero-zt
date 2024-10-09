@@ -14,43 +14,47 @@ import (
 )
 
 type (
-	CommonResp              = tpmtclient.CommonResp
-	SysInterfaceAddReq      = tpmtclient.SysInterfaceAddReq
-	SysInterfaceDeleteReq   = tpmtclient.SysInterfaceDeleteReq
-	SysInterfaceFindOneReq  = tpmtclient.SysInterfaceFindOneReq
-	SysInterfaceFindOneResp = tpmtclient.SysInterfaceFindOneResp
-	SysInterfaceListData    = tpmtclient.SysInterfaceListData
-	SysInterfaceListReq     = tpmtclient.SysInterfaceListReq
-	SysInterfaceListResp    = tpmtclient.SysInterfaceListResp
-	SysInterfaceUpdateReq   = tpmtclient.SysInterfaceUpdateReq
-	SysLoginReq             = tpmtclient.SysLoginReq
-	SysMenuAddReq           = tpmtclient.SysMenuAddReq
-	SysMenuDeleteReq        = tpmtclient.SysMenuDeleteReq
-	SysMenuFindOneReq       = tpmtclient.SysMenuFindOneReq
-	SysMenuFindOneResp      = tpmtclient.SysMenuFindOneResp
-	SysMenuListData         = tpmtclient.SysMenuListData
-	SysMenuListReq          = tpmtclient.SysMenuListReq
-	SysMenuListResp         = tpmtclient.SysMenuListResp
-	SysMenuUpdateReq        = tpmtclient.SysMenuUpdateReq
-	SysRoleAddReq           = tpmtclient.SysRoleAddReq
-	SysRoleDeleteReq        = tpmtclient.SysRoleDeleteReq
-	SysRoleFindOneReq       = tpmtclient.SysRoleFindOneReq
-	SysRoleFindOneResp      = tpmtclient.SysRoleFindOneResp
-	SysRoleListData         = tpmtclient.SysRoleListData
-	SysRoleListReq          = tpmtclient.SysRoleListReq
-	SysRoleListResp         = tpmtclient.SysRoleListResp
-	SysRoleUpdateReq        = tpmtclient.SysRoleUpdateReq
-	SysUserAddReq           = tpmtclient.SysUserAddReq
-	SysUserDeleteReq        = tpmtclient.SysUserDeleteReq
-	SysUserFindOneReq       = tpmtclient.SysUserFindOneReq
-	SysUserFindOneResp      = tpmtclient.SysUserFindOneResp
-	SysUserListData         = tpmtclient.SysUserListData
-	SysUserListReq          = tpmtclient.SysUserListReq
-	SysUserListResp         = tpmtclient.SysUserListResp
-	SysUserResetPwdReq      = tpmtclient.SysUserResetPwdReq
-	SysUserResetPwdResp     = tpmtclient.SysUserResetPwdResp
-	SysUserUpMyPwdReq       = tpmtclient.SysUserUpMyPwdReq
-	SysUserUpdateReq        = tpmtclient.SysUserUpdateReq
+	CommonResp               = tpmtclient.CommonResp
+	SysInterfaceAddReq       = tpmtclient.SysInterfaceAddReq
+	SysInterfaceByRoleIdReq  = tpmtclient.SysInterfaceByRoleIdReq
+	SysInterfaceByRoleIdResp = tpmtclient.SysInterfaceByRoleIdResp
+	SysInterfaceDeleteReq    = tpmtclient.SysInterfaceDeleteReq
+	SysInterfaceFindOneReq   = tpmtclient.SysInterfaceFindOneReq
+	SysInterfaceFindOneResp  = tpmtclient.SysInterfaceFindOneResp
+	SysInterfaceListData     = tpmtclient.SysInterfaceListData
+	SysInterfaceListReq      = tpmtclient.SysInterfaceListReq
+	SysInterfaceListResp     = tpmtclient.SysInterfaceListResp
+	SysInterfaceUpdateReq    = tpmtclient.SysInterfaceUpdateReq
+	SysLoginReq              = tpmtclient.SysLoginReq
+	SysMenuAddReq            = tpmtclient.SysMenuAddReq
+	SysMenuByRoleIdReq       = tpmtclient.SysMenuByRoleIdReq
+	SysMenuByRoleIdResp      = tpmtclient.SysMenuByRoleIdResp
+	SysMenuDeleteReq         = tpmtclient.SysMenuDeleteReq
+	SysMenuFindOneReq        = tpmtclient.SysMenuFindOneReq
+	SysMenuFindOneResp       = tpmtclient.SysMenuFindOneResp
+	SysMenuListData          = tpmtclient.SysMenuListData
+	SysMenuListReq           = tpmtclient.SysMenuListReq
+	SysMenuListResp          = tpmtclient.SysMenuListResp
+	SysMenuUpdateReq         = tpmtclient.SysMenuUpdateReq
+	SysRoleAddReq            = tpmtclient.SysRoleAddReq
+	SysRoleDeleteReq         = tpmtclient.SysRoleDeleteReq
+	SysRoleFindOneReq        = tpmtclient.SysRoleFindOneReq
+	SysRoleFindOneResp       = tpmtclient.SysRoleFindOneResp
+	SysRoleListData          = tpmtclient.SysRoleListData
+	SysRoleListReq           = tpmtclient.SysRoleListReq
+	SysRoleListResp          = tpmtclient.SysRoleListResp
+	SysRoleUpdateReq         = tpmtclient.SysRoleUpdateReq
+	SysUserAddReq            = tpmtclient.SysUserAddReq
+	SysUserDeleteReq         = tpmtclient.SysUserDeleteReq
+	SysUserFindOneReq        = tpmtclient.SysUserFindOneReq
+	SysUserFindOneResp       = tpmtclient.SysUserFindOneResp
+	SysUserListData          = tpmtclient.SysUserListData
+	SysUserListReq           = tpmtclient.SysUserListReq
+	SysUserListResp          = tpmtclient.SysUserListResp
+	SysUserResetPwdReq       = tpmtclient.SysUserResetPwdReq
+	SysUserResetPwdResp      = tpmtclient.SysUserResetPwdResp
+	SysUserUpMyPwdReq        = tpmtclient.SysUserUpMyPwdReq
+	SysUserUpdateReq         = tpmtclient.SysUserUpdateReq
 
 	Tpmt interface {
 		// 用户登录
@@ -77,12 +81,16 @@ type (
 		SysMenuUpdate(ctx context.Context, in *SysMenuUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
 		SysMenuFindOne(ctx context.Context, in *SysMenuFindOneReq, opts ...grpc.CallOption) (*SysMenuFindOneResp, error)
 		SysMenuList(ctx context.Context, in *SysMenuListReq, opts ...grpc.CallOption) (*SysMenuListResp, error)
+		// 通过角色ID获取菜单信息
+		SysMenuByRoleId(ctx context.Context, in *SysMenuByRoleIdReq, opts ...grpc.CallOption) (*SysMenuByRoleIdResp, error)
 		// 接口
 		SysInterfaceAdd(ctx context.Context, in *SysInterfaceAddReq, opts ...grpc.CallOption) (*CommonResp, error)
 		SysInterfaceDelete(ctx context.Context, in *SysInterfaceDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
 		SysInterfaceUpdate(ctx context.Context, in *SysInterfaceUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
 		SysInterfaceFindOne(ctx context.Context, in *SysInterfaceFindOneReq, opts ...grpc.CallOption) (*SysInterfaceFindOneResp, error)
 		SysInterfaceList(ctx context.Context, in *SysInterfaceListReq, opts ...grpc.CallOption) (*SysInterfaceListResp, error)
+		// 通过角色ID获取接口信息
+		SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdResp, error)
 	}
 
 	defaultTpmt struct {
@@ -192,6 +200,12 @@ func (m *defaultTpmt) SysMenuList(ctx context.Context, in *SysMenuListReq, opts 
 	return client.SysMenuList(ctx, in, opts...)
 }
 
+// 通过角色ID获取菜单信息
+func (m *defaultTpmt) SysMenuByRoleId(ctx context.Context, in *SysMenuByRoleIdReq, opts ...grpc.CallOption) (*SysMenuByRoleIdResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysMenuByRoleId(ctx, in, opts...)
+}
+
 // 接口
 func (m *defaultTpmt) SysInterfaceAdd(ctx context.Context, in *SysInterfaceAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
 	client := tpmtclient.NewTpmtClient(m.cli.Conn())
@@ -216,4 +230,10 @@ func (m *defaultTpmt) SysInterfaceFindOne(ctx context.Context, in *SysInterfaceF
 func (m *defaultTpmt) SysInterfaceList(ctx context.Context, in *SysInterfaceListReq, opts ...grpc.CallOption) (*SysInterfaceListResp, error) {
 	client := tpmtclient.NewTpmtClient(m.cli.Conn())
 	return client.SysInterfaceList(ctx, in, opts...)
+}
+
+// 通过角色ID获取接口信息
+func (m *defaultTpmt) SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysInterfaceByRoleId(ctx, in, opts...)
 }

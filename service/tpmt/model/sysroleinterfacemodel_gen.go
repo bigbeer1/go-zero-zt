@@ -31,11 +31,14 @@ var (
 type (
 	sysRoleInterfaceModel interface {
 		Insert(ctx context.Context, data *SysRoleInterface) (sql.Result, error)
+		TransInsert(ctx context.Context, session sqlx.Session, data *SysRoleInterface) (sql.Result, error)
 		FindOne(ctx context.Context, id int64) (*SysRoleInterface, error)
 		Update(ctx context.Context, data *SysRoleInterface) error
 		Delete(ctx context.Context, id int64) error
+		TransDeleteByRoleId(ctx context.Context, session sqlx.Session, roleId int64) error
 		FindCount(ctx context.Context, countBuilder squirrel.SelectBuilder) (int64, error)
 		FindList(ctx context.Context, rowBuilder squirrel.SelectBuilder, current, pageSize int64) ([]*SysRoleInterface, error)
+		FindAll(ctx context.Context, rowBuilder squirrel.SelectBuilder) ([]*SysRoleInterface, error)
 		RowBuilder() squirrel.SelectBuilder
 		CountBuilder(field string) squirrel.SelectBuilder
 		SumBuilder(field string) squirrel.SelectBuilder
@@ -72,6 +75,14 @@ func (m *defaultSysRoleInterfaceModel) Delete(ctx context.Context, id int64) err
 	return err
 }
 
+func (m *defaultSysRoleInterfaceModel) TransDeleteByRoleId(ctx context.Context, session sqlx.Session, roleId int64) error {
+	_, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+		query := fmt.Sprintf("delete from %s where `role_id` = ?", m.table)
+		return session.ExecCtx(ctx, query, roleId)
+	})
+	return err
+}
+
 func (m *defaultSysRoleInterfaceModel) FindOne(ctx context.Context, id int64) (*SysRoleInterface, error) {
 	sysRoleInterfaceIdKey := fmt.Sprintf("%s%v", cacheSysRoleInterfaceIdPrefix, id)
 	var resp SysRoleInterface
@@ -88,6 +99,15 @@ func (m *defaultSysRoleInterfaceModel) FindOne(ctx context.Context, id int64) (*
 		return nil, err
 	}
 
+}
+
+func (m *defaultSysRoleInterfaceModel) TransInsert(ctx context.Context, session sqlx.Session, data *SysRoleInterface) (sql.Result, error) {
+	sysRoleInterfaceIdKey := fmt.Sprintf("%s%v", cacheSysRoleInterfaceIdPrefix, data.Id)
+	ret, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?)", m.table, sysRoleInterfaceRowsExpectAutoSet)
+		return session.ExecCtx(ctx, query, data.RoleId, data.InterfaceId, data.CreatedName, data.CreatedAt)
+	}, sysRoleInterfaceIdKey)
+	return ret, err
 }
 
 func (m *defaultSysRoleInterfaceModel) Insert(ctx context.Context, data *SysRoleInterface) (sql.Result, error) {
@@ -147,6 +167,25 @@ func (m *defaultSysRoleInterfaceModel) FindList(ctx context.Context, rowBuilder 
 	offset := (current - 1) * pageSize
 
 	query, values, err := rowBuilder.Offset(uint64(offset)).Limit(uint64(pageSize)).ToSql()
+	if err != nil {
+		return nil, err
+	}
+
+	var resp []*SysRoleInterface
+	err = m.QueryRowsNoCacheCtx(ctx, &resp, query, values...)
+	switch err {
+	case nil:
+		return resp, nil
+	case sqlc.ErrNotFound:
+		return nil, nil
+	default:
+		return nil, err
+	}
+}
+
+func (m *defaultSysRoleInterfaceModel) FindAll(ctx context.Context, rowBuilder squirrel.SelectBuilder) ([]*SysRoleInterface, error) {
+
+	query, values, err := rowBuilder.ToSql()
 	if err != nil {
 		return nil, err
 	}

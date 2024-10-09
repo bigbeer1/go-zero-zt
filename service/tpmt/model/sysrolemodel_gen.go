@@ -34,6 +34,7 @@ type (
 		TransInsert(ctx context.Context, session sqlx.Session, data *SysRole) (sql.Result, error)
 		FindOne(ctx context.Context, id int64) (*SysRole, error)
 		Update(ctx context.Context, data *SysRole) error
+		TransUpdate(ctx context.Context, session sqlx.Session, data *SysRole) error
 		Delete(ctx context.Context, id int64) error
 		FindCount(ctx context.Context, countBuilder squirrel.SelectBuilder) (int64, error)
 		FindList(ctx context.Context, rowBuilder squirrel.SelectBuilder, current, pageSize int64) ([]*SysRole, error)
@@ -119,6 +120,15 @@ func (m *defaultSysRoleModel) Update(ctx context.Context, data *SysRole) error {
 	_, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, sysRoleRowsWithPlaceHolder)
 		return conn.ExecCtx(ctx, query, data.Name, data.Remark, data.RoleType, data.CreatedName, data.CreatedAt, data.UpdatedName, data.UpdatedAt, data.DeletedAt, data.DeletedName, data.Id)
+	}, sysRoleIdKey)
+	return err
+}
+
+func (m *defaultSysRoleModel) TransUpdate(ctx context.Context, session sqlx.Session, data *SysRole) error {
+	sysRoleIdKey := fmt.Sprintf("%s%v", cacheSysRoleIdPrefix, data.Id)
+	_, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, sysRoleRowsWithPlaceHolder)
+		return session.ExecCtx(ctx, query, data.Name, data.Remark, data.RoleType, data.CreatedName, data.CreatedAt, data.UpdatedName, data.UpdatedAt, data.DeletedAt, data.DeletedName, data.Id)
 	}, sysRoleIdKey)
 	return err
 }
