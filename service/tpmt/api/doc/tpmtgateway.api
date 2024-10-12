@@ -1,0 +1,85 @@
+syntax = "v1"
+
+
+type (
+    TpmtGatewayAddRequest {
+		GatewayName  string  `json:"gateway_name,optional"`  // 网关名称
+		GatewayModel  string  `json:"gateway_model,optional"`  // 网关型号
+		ManuFacturer  string  `json:"manu_facturer,optional"`  // 生产厂家
+		Agreement  int64  `json:"agreement,optional"`  // 协议 默认1:modbus
+		BaudRate  int64  `json:"baud_rate,optional"`  // 波特率
+		Parity  string  `json:"parity,optional"`  // 校验
+		DataBits  int64  `json:"data_bits,optional"`  // 数据位
+		StopBits  int64  `json:"stop_bits,optional"`  // 停止位
+		ComPort  string  `json:"com_port,optional"`  // com端口
+		AddressCode  int64  `json:"address_code,optional"`  // 地址码
+    }
+
+    TpmtGatewayDelRequest {
+		Id  string  `path:"id"`  // 采集器ID/网关
+    }
+
+    TpmtGatewayUpRequest {
+		Id  string  `json:"id"`  // 采集器ID/网关
+		GatewayName  string  `json:"gateway_name,optional"`  // 网关名称
+		GatewayModel  string  `json:"gateway_model,optional"`  // 网关型号
+		ManuFacturer  string  `json:"manu_facturer,optional"`  // 生产厂家
+		Agreement  int64  `json:"agreement,optional"`  // 协议 默认1:modbus
+		BaudRate  int64  `json:"baud_rate,optional"`  // 波特率
+		Parity  string  `json:"parity,optional"`  // 校验
+		DataBits  int64  `json:"data_bits,optional"`  // 数据位
+		StopBits  int64  `json:"stop_bits,optional"`  // 停止位
+		ComPort  string  `json:"com_port,optional"`  // com端口
+		AddressCode  int64  `json:"address_code,optional"`  // 地址码      
+    }
+
+
+    TpmtGatewayListRequest {
+		Current  int64  `form:"current,default=1,optional"`  // 页码
+		PageSize  int64  `form:"page_size,default=10,optional"`  // 页数
+		GatewayName  string  `form:"gateway_name,optional"`  // 网关名称
+		GatewayModel  string  `form:"gateway_model,optional"`  // 网关型号
+		ManuFacturer  string  `form:"manu_facturer,optional"`  // 生产厂家
+		Agreement  int64  `form:"agreement,default=99,optional"`  // 协议 默认1:modbus
+		BaudRate  int64  `form:"baud_rate,default=99,optional"`  // 波特率
+		Parity  string  `form:"parity,optional"`  // 校验
+		DataBits  int64  `form:"data_bits,default=99,optional"`  // 数据位
+		StopBits  int64  `form:"stop_bits,default=99,optional"`  // 停止位
+		ComPort  string  `form:"com_port,optional"`  // com端口
+		AddressCode  int64  `form:"address_code,default=99,optional"`  // 地址码       
+    }
+
+    TpmtGatewayInfoRequest {
+		Id  string  `form:"id"`  // 采集器ID/网关          
+    }
+
+)
+
+@server(
+    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
+    jwt: Auth
+    group: tpmtGateway
+)
+
+service Tpmt {
+
+    // 添加
+    @handler TpmtGatewayAdd
+    post /tpmt/tpmtGateway (TpmtGatewayAddRequest) returns (Response)
+
+    // 删除
+    @handler TpmtGatewayDel
+    delete /tpmt/tpmtGateway/:id (TpmtGatewayDelRequest) returns (Response)
+
+    // 更新
+    @handler TpmtGatewayUp
+    put /tpmt/tpmtGateway (TpmtGatewayUpRequest) returns (Response)
+
+    // 分页查询
+    @handler TpmtGatewayList
+    get /tpmt/tpmtGateway (TpmtGatewayListRequest) returns (Response)
+
+    // 查询详细信息
+    @handler TpmtGatewayInfo
+    get /tpmt/tpmtGatewayInfo (TpmtGatewayInfoRequest) returns (Response)
+}

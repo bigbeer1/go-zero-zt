@@ -1,7 +1,7 @@
 Name: tpmt.rpc
 ListenOn: 0.0.0.0:1101
 Mode: dev
-Timeout: 30000
+Timeout: 3000000
 
 Log:
   ServiceName: tpmt.rpc

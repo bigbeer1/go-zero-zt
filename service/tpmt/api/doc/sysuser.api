@@ -7,6 +7,7 @@ type (
         NickName string `json:"nick_name"`         // 姓名
         Password string `json:"password"`          // 密码
         State int64 `json:"state,options=1|2|3,"`  // 状态 1:正常 2:停用 3:封禁
+        RoldId int64 `json:"role_id,optional"`  // 角色ID
     }
 
     SysUserDelRequest {
@@ -17,6 +18,7 @@ type (
         Id string `json:"id"`                        // 用户ID
         NickName string `json:"nick_name,optional"`  // 姓名
         State int64 `json:"state,options=1|2|3"`     // 状态 1:正常 2:停用 3:封禁
+        RoldId int64 `json:"role_id"`  // 角色ID
     }
 
 
@@ -49,6 +51,7 @@ type (
     SysUserUpMyInfoRequest {
         NickName string `json:"nick_name"`  // 姓名
     }
+
 )
 
 
@@ -98,4 +101,8 @@ service Tpmt {
     // 修改自己的用户信息
     @handler SysUserUpMyInfo
     put /tpmt/sysUserUpMyInfo (SysUserUpMyInfoRequest) returns (Response)
+
+    // 登录完成后获取用户详细信息
+    @handler SysUserLoginInfo
+    get /tpmt/sysUserLoginInfo returns (Response)
 }

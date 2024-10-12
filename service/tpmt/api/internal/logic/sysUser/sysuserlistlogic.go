@@ -64,4 +64,7 @@ type SysUserDataList struct {
 	CreatedAt   int64  `json:"created_at"`   // 创建时间,
 	UpdatedName string `json:"updated_name"` // 更新人,
 	UpdatedAt   int64  `json:"updated_at"`   // 更新时间
+	RoleId      int64  `json:"role_id"`      // 角色ID
+	RoleName    string `json:"role_name"`    // 角色名称
+	RoleType    int64  `json:"role_type"`    // 角色类型
 }

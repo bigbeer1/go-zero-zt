@@ -2,7 +2,7 @@ Name: tpmt-api
 Host: 0.0.0.0
 Port: 1001
 Mode: dev
-Timeout: 30000
+Timeout: 3000000
 
 
 Log:
@@ -16,7 +16,7 @@ TpmtRpc:
     Hosts:
       - 127.0.0.1:30000
     Key: tpmt.rpc
-  Timeout: 30000
+  Timeout: 3000000
 
 Auth:
   AccessSecret: uOvKLmVfztaX9999999

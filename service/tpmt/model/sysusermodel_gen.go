@@ -31,8 +31,10 @@ var (
 type (
 	sysUserModel interface {
 		Insert(ctx context.Context, data *SysUser) (sql.Result, error)
+		TransInsert(ctx context.Context, session sqlx.Session, data *SysUser) (sql.Result, error)
 		FindOne(ctx context.Context, id string) (*SysUser, error)
 		Update(ctx context.Context, data *SysUser) error
+		TransUpdate(ctx context.Context, session sqlx.Session, data *SysUser) error
 		FindCount(ctx context.Context, countBuilder squirrel.SelectBuilder) (int64, error)
 		FindList(ctx context.Context, rowBuilder squirrel.SelectBuilder, current, pageSize int64) ([]*SysUser, error)
 		RowBuilder() squirrel.SelectBuilder
@@ -97,12 +99,32 @@ func (m *defaultSysUserModel) Insert(ctx context.Context, data *SysUser) (sql.Re
 	return ret, err
 }
 
+func (m *defaultSysUserModel) TransInsert(ctx context.Context, session sqlx.Session, data *SysUser) (sql.Result, error) {
+	sysUserAccountKey := fmt.Sprintf("%s%v", cacheSysUserAccountPrefix, data.Account)
+	sysUserIdKey := fmt.Sprintf("%s%v", cacheSysUserIdPrefix, data.Id)
+	ret, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", m.table, sysUserRowsExpectAutoSet)
+		return session.ExecCtx(ctx, query, data.Id, data.Account, data.NickName, data.Password, data.State, data.CreatedName, data.CreatedAt, data.UpdatedName, data.UpdatedAt, data.DeletedAt, data.DeletedName)
+	}, sysUserIdKey, sysUserAccountKey)
+	return ret, err
+}
+
 func (m *defaultSysUserModel) Update(ctx context.Context, data *SysUser) error {
 	sysUserAccountKey := fmt.Sprintf("%s%v", cacheSysUserAccountPrefix, data.Account)
 	sysUserIdKey := fmt.Sprintf("%s%v", cacheSysUserIdPrefix, data.Id)
 	_, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, sysUserRowsWithPlaceHolder)
 		return conn.ExecCtx(ctx, query, data.Account, data.NickName, data.Password, data.State, data.CreatedName, data.CreatedAt, data.UpdatedName, data.UpdatedAt, data.DeletedAt, data.DeletedName, data.Id)
+	}, sysUserIdKey, sysUserAccountKey)
+	return err
+}
+
+func (m *defaultSysUserModel) TransUpdate(ctx context.Context, session sqlx.Session, data *SysUser) error {
+	sysUserAccountKey := fmt.Sprintf("%s%v", cacheSysUserAccountPrefix, data.Account)
+	sysUserIdKey := fmt.Sprintf("%s%v", cacheSysUserIdPrefix, data.Id)
+	_, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, sysUserRowsWithPlaceHolder)
+		return session.ExecCtx(ctx, query, data.Account, data.NickName, data.Password, data.State, data.CreatedName, data.CreatedAt, data.UpdatedName, data.UpdatedAt, data.DeletedAt, data.DeletedName, data.Id)
 	}, sysUserIdKey, sysUserAccountKey)
 	return err
 }

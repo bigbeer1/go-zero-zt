@@ -67,6 +67,32 @@ func (s *TpmtServer) SysUserUpMyPwd(ctx context.Context, in *tpmtclient.SysUserU
 	return l.SysUserUpMyPwd(in)
 }
 
+// 第三方用户
+func (s *TpmtServer) SysAuthAdd(ctx context.Context, in *tpmtclient.SysAuthAddReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysAuthAddLogic(ctx, s.svcCtx)
+	return l.SysAuthAdd(in)
+}
+
+func (s *TpmtServer) SysAuthDelete(ctx context.Context, in *tpmtclient.SysAuthDeleteReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysAuthDeleteLogic(ctx, s.svcCtx)
+	return l.SysAuthDelete(in)
+}
+
+func (s *TpmtServer) SysAuthUpdate(ctx context.Context, in *tpmtclient.SysAuthUpdateReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysAuthUpdateLogic(ctx, s.svcCtx)
+	return l.SysAuthUpdate(in)
+}
+
+func (s *TpmtServer) SysAuthFindOne(ctx context.Context, in *tpmtclient.SysAuthFindOneReq) (*tpmtclient.SysAuthFindOneResp, error) {
+	l := logic.NewSysAuthFindOneLogic(ctx, s.svcCtx)
+	return l.SysAuthFindOne(in)
+}
+
+func (s *TpmtServer) SysAuthList(ctx context.Context, in *tpmtclient.SysAuthListReq) (*tpmtclient.SysAuthListResp, error) {
+	l := logic.NewSysAuthListLogic(ctx, s.svcCtx)
+	return l.SysAuthList(in)
+}
+
 // 角色
 func (s *TpmtServer) SysRoleAdd(ctx context.Context, in *tpmtclient.SysRoleAddReq) (*tpmtclient.CommonResp, error) {
 	l := logic.NewSysRoleAddLogic(ctx, s.svcCtx)
@@ -155,4 +181,108 @@ func (s *TpmtServer) SysInterfaceList(ctx context.Context, in *tpmtclient.SysInt
 func (s *TpmtServer) SysInterfaceByRoleId(ctx context.Context, in *tpmtclient.SysInterfaceByRoleIdReq) (*tpmtclient.SysInterfaceByRoleIdResp, error) {
 	l := logic.NewSysInterfaceByRoleIdLogic(ctx, s.svcCtx)
 	return l.SysInterfaceByRoleId(in)
+}
+
+// 字典类型
+func (s *TpmtServer) SysDictTypeAdd(ctx context.Context, in *tpmtclient.SysDictTypeAddReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysDictTypeAddLogic(ctx, s.svcCtx)
+	return l.SysDictTypeAdd(in)
+}
+
+func (s *TpmtServer) SysDictTypeDelete(ctx context.Context, in *tpmtclient.SysDictTypeDeleteReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysDictTypeDeleteLogic(ctx, s.svcCtx)
+	return l.SysDictTypeDelete(in)
+}
+
+func (s *TpmtServer) SysDictTypeUpdate(ctx context.Context, in *tpmtclient.SysDictTypeUpdateReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysDictTypeUpdateLogic(ctx, s.svcCtx)
+	return l.SysDictTypeUpdate(in)
+}
+
+func (s *TpmtServer) SysDictTypeFindOne(ctx context.Context, in *tpmtclient.SysDictTypeFindOneReq) (*tpmtclient.SysDictTypeFindOneResp, error) {
+	l := logic.NewSysDictTypeFindOneLogic(ctx, s.svcCtx)
+	return l.SysDictTypeFindOne(in)
+}
+
+func (s *TpmtServer) SysDictTypeList(ctx context.Context, in *tpmtclient.SysDictTypeListReq) (*tpmtclient.SysDictTypeListResp, error) {
+	l := logic.NewSysDictTypeListLogic(ctx, s.svcCtx)
+	return l.SysDictTypeList(in)
+}
+
+// 字典
+func (s *TpmtServer) SysDictAdd(ctx context.Context, in *tpmtclient.SysDictAddReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysDictAddLogic(ctx, s.svcCtx)
+	return l.SysDictAdd(in)
+}
+
+func (s *TpmtServer) SysDictDelete(ctx context.Context, in *tpmtclient.SysDictDeleteReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysDictDeleteLogic(ctx, s.svcCtx)
+	return l.SysDictDelete(in)
+}
+
+func (s *TpmtServer) SysDictUpdate(ctx context.Context, in *tpmtclient.SysDictUpdateReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewSysDictUpdateLogic(ctx, s.svcCtx)
+	return l.SysDictUpdate(in)
+}
+
+func (s *TpmtServer) SysDictFindOne(ctx context.Context, in *tpmtclient.SysDictFindOneReq) (*tpmtclient.SysDictFindOneResp, error) {
+	l := logic.NewSysDictFindOneLogic(ctx, s.svcCtx)
+	return l.SysDictFindOne(in)
+}
+
+func (s *TpmtServer) SysDictList(ctx context.Context, in *tpmtclient.SysDictListReq) (*tpmtclient.SysDictListResp, error) {
+	l := logic.NewSysDictListLogic(ctx, s.svcCtx)
+	return l.SysDictList(in)
+}
+
+// 资产
+func (s *TpmtServer) TpmtAssetAdd(ctx context.Context, in *tpmtclient.TpmtAssetAddReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtAssetAddLogic(ctx, s.svcCtx)
+	return l.TpmtAssetAdd(in)
+}
+
+func (s *TpmtServer) TpmtAssetDelete(ctx context.Context, in *tpmtclient.TpmtAssetDeleteReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtAssetDeleteLogic(ctx, s.svcCtx)
+	return l.TpmtAssetDelete(in)
+}
+
+func (s *TpmtServer) TpmtAssetUpdate(ctx context.Context, in *tpmtclient.TpmtAssetUpdateReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtAssetUpdateLogic(ctx, s.svcCtx)
+	return l.TpmtAssetUpdate(in)
+}
+
+func (s *TpmtServer) TpmtAssetFindOne(ctx context.Context, in *tpmtclient.TpmtAssetFindOneReq) (*tpmtclient.TpmtAssetFindOneResp, error) {
+	l := logic.NewTpmtAssetFindOneLogic(ctx, s.svcCtx)
+	return l.TpmtAssetFindOne(in)
+}
+
+func (s *TpmtServer) TpmtAssetList(ctx context.Context, in *tpmtclient.TpmtAssetListReq) (*tpmtclient.TpmtAssetListResp, error) {
+	l := logic.NewTpmtAssetListLogic(ctx, s.svcCtx)
+	return l.TpmtAssetList(in)
+}
+
+// 网关
+func (s *TpmtServer) TpmtGatewayAdd(ctx context.Context, in *tpmtclient.TpmtGatewayAddReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtGatewayAddLogic(ctx, s.svcCtx)
+	return l.TpmtGatewayAdd(in)
+}
+
+func (s *TpmtServer) TpmtGatewayDelete(ctx context.Context, in *tpmtclient.TpmtGatewayDeleteReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtGatewayDeleteLogic(ctx, s.svcCtx)
+	return l.TpmtGatewayDelete(in)
+}
+
+func (s *TpmtServer) TpmtGatewayUpdate(ctx context.Context, in *tpmtclient.TpmtGatewayUpdateReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtGatewayUpdateLogic(ctx, s.svcCtx)
+	return l.TpmtGatewayUpdate(in)
+}
+
+func (s *TpmtServer) TpmtGatewayFindOne(ctx context.Context, in *tpmtclient.TpmtGatewayFindOneReq) (*tpmtclient.TpmtGatewayFindOneResp, error) {
+	l := logic.NewTpmtGatewayFindOneLogic(ctx, s.svcCtx)
+	return l.TpmtGatewayFindOne(in)
+}
+
+func (s *TpmtServer) TpmtGatewayList(ctx context.Context, in *tpmtclient.TpmtGatewayListReq) (*tpmtclient.TpmtGatewayListResp, error) {
+	l := logic.NewTpmtGatewayListLogic(ctx, s.svcCtx)
+	return l.TpmtGatewayList(in)
 }

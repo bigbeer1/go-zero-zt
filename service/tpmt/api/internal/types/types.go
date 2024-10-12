@@ -9,6 +9,98 @@ type Response struct {
 	Data interface{} `json:"data"` // 数据
 }
 
+type SysAuthAddRequest struct {
+	NickName  string `json:"nick_name,optional"`  // 机构名
+	AuthToken string `json:"auth_token,optional"` // 令牌
+	State     int64  `json:"state,optional"`      // 状态 1:正常 2:停用 3:封禁
+}
+
+type SysAuthDelRequest struct {
+	Id string `path:"id"` // 第三方用户ID
+}
+
+type SysAuthInfoRequest struct {
+	Id string `form:"id"` // 第三方用户ID
+}
+
+type SysAuthListRequest struct {
+	Current   int64  `form:"current,default=1,optional"`    // 页码
+	PageSize  int64  `form:"page_size,default=10,optional"` // 页数
+	NickName  string `form:"nick_name,optional"`            // 机构名
+	AuthToken string `form:"auth_token,optional"`           // 令牌
+	State     int64  `form:"state,default=99,optional"`     // 状态 1:正常 2:停用 3:封禁
+}
+
+type SysAuthUpRequest struct {
+	Id        string `json:"id"`                  // 第三方用户ID
+	NickName  string `json:"nick_name,optional"`  // 机构名
+	AuthToken string `json:"auth_token,optional"` // 令牌
+	State     int64  `json:"state,optional"`      // 状态 1:正常 2:停用 3:封禁
+}
+
+type SysDictAddRequest struct {
+	DictType  string `json:"dict_type,optional"`  // 字典类型
+	DictLabel string `json:"dict_label,optional"` // 字典标签
+	DictValue string `json:"dict_value,optional"` // 字典键值
+	Sort      int64  `json:"sort,optional"`       // 排序
+	Remark    string `json:"remark,optional"`     // 备注
+	State     int64  `json:"state,optional"`      // 状态
+}
+
+type SysDictDelRequest struct {
+	Id int64 `path:"id"` // 字典类型ID
+}
+
+type SysDictListRequest struct {
+	Current   int64  `form:"current,default=1,optional"`    // 页码
+	PageSize  int64  `form:"page_size,default=10,optional"` // 页数
+	DictType  string `form:"dict_type,optional"`            // 字典类型
+	DictLabel string `form:"dict_label,optional"`           // 字典标签
+	DictValue string `form:"dict_value,optional"`           // 字典键值
+	Remark    string `form:"remark,optional"`               // 备注
+	State     int64  `form:"state,default=99,optional"`     // 状态
+}
+
+type SysDictTypeAddRequest struct {
+	Name     string `json:"name,optional"`      // 字典名称
+	DictType string `json:"dict_type,optional"` // 字典类型
+	State    int64  `json:"state,optional"`     // 状态
+	Remark   string `json:"remark,optional"`    // 描述
+	Sort     int64  `json:"sort,optional"`      // 排序
+}
+
+type SysDictTypeDelRequest struct {
+	Id int64 `path:"id"` // 字典类型ID
+}
+
+type SysDictTypeListRequest struct {
+	Current  int64  `form:"current,default=1,optional"`    // 页码
+	PageSize int64  `form:"page_size,default=10,optional"` // 页数
+	Name     string `form:"name,optional"`                 // 字典名称
+	DictType string `form:"dict_type,optional"`            // 字典类型
+	State    int64  `form:"state,default=99,optional"`     // 状态
+	Remark   string `form:"remark,optional"`               // 描述
+}
+
+type SysDictTypeUpRequest struct {
+	Id       int64  `json:"id"`                 // 字典类型ID
+	Name     string `json:"name,optional"`      // 字典名称
+	DictType string `json:"dict_type,optional"` // 字典类型
+	State    int64  `json:"state,optional"`     // 状态
+	Remark   string `json:"remark,optional"`    // 描述
+	Sort     int64  `json:"sort,optional"`      // 排序
+}
+
+type SysDictUpRequest struct {
+	Id        int64  `json:"id"`                  // 字典类型ID
+	DictType  string `json:"dict_type,optional"`  // 字典类型
+	DictLabel string `json:"dict_label,optional"` // 字典标签
+	DictValue string `json:"dict_value,optional"` // 字典键值
+	Sort      int64  `json:"sort,optional"`       // 排序
+	Remark    string `json:"remark,optional"`     // 备注
+	State     int64  `json:"state,optional"`      // 状态
+}
+
 type SysInterfaceAddRequest struct {
 	Name               string `json:"name"`                 // 接口名称
 	Path               string `json:"path"`                 // 接口地址
@@ -147,6 +239,7 @@ type SysUserAddRequest struct {
 	NickName string `json:"nick_name"`            // 姓名
 	Password string `json:"password"`             // 密码
 	State    int64  `json:"state,options=1|2|3,"` // 状态 1:正常 2:停用 3:封禁
+	RoldId   int64  `json:"role_id,optional"`     // 角色ID
 }
 
 type SysUserDelRequest struct {
@@ -182,4 +275,96 @@ type SysUserUpRequest struct {
 	Id       string `json:"id"`                  // 用户ID
 	NickName string `json:"nick_name,optional"`  // 姓名
 	State    int64  `json:"state,options=1|2|3"` // 状态 1:正常 2:停用 3:封禁
+	RoldId   int64  `json:"role_id"`             // 角色ID
+}
+
+type TpmtAssetAddRequest struct {
+	AssetType    int64  `json:"asset_type,optional"`    // 资产类型
+	AssetCode    string `json:"asset_code,optional"`    // 资产编号
+	AssetName    string `json:"asset_name,optional"`    // 资产名称
+	AssetModel   string `json:"asset_model,optional"`   // 资产型号
+	ManuFacturer string `json:"manu_facturer,optional"` // 生产厂家
+	Voltage      string `json:"voltage,optional"`       // 电压
+	Capacity     string `json:"capacity,optional"`      // 容量
+}
+
+type TpmtAssetDelRequest struct {
+	Id string `path:"id"` // 资产ID
+}
+
+type TpmtAssetInfoRequest struct {
+	Id string `form:"id"` // 资产ID
+}
+
+type TpmtAssetListRequest struct {
+	Current      int64  `form:"current,default=1,optional"`     // 页码
+	PageSize     int64  `form:"page_size,default=10,optional"`  // 页数
+	AssetType    int64  `form:"asset_type,default=99,optional"` // 资产类型
+	AssetCode    string `form:"asset_code,optional"`            // 资产编号
+	AssetName    string `form:"asset_name,optional"`            // 资产名称
+	AssetModel   string `form:"asset_model,optional"`           // 资产型号
+	ManuFacturer string `form:"manu_facturer,optional"`         // 生产厂家
+	Voltage      string `form:"voltage,optional"`               // 电压
+	Capacity     string `form:"capacity,optional"`              // 容量
+}
+
+type TpmtAssetUpRequest struct {
+	Id           string `json:"id"`                     // 资产ID
+	AssetType    int64  `json:"asset_type,optional"`    // 资产类型
+	AssetCode    string `json:"asset_code,optional"`    // 资产编号
+	AssetName    string `json:"asset_name,optional"`    // 资产名称
+	AssetModel   string `json:"asset_model,optional"`   // 资产型号
+	ManuFacturer string `json:"manu_facturer,optional"` // 生产厂家
+	Voltage      string `json:"voltage,optional"`       // 电压
+	Capacity     string `json:"capacity,optional"`      // 容量
+}
+
+type TpmtGatewayAddRequest struct {
+	GatewayName  string `json:"gateway_name,optional"`  // 网关名称
+	GatewayModel string `json:"gateway_model,optional"` // 网关型号
+	ManuFacturer string `json:"manu_facturer,optional"` // 生产厂家
+	Agreement    int64  `json:"agreement,optional"`     // 协议 默认1:modbus
+	BaudRate     int64  `json:"baud_rate,optional"`     // 波特率
+	Parity       string `json:"parity,optional"`        // 校验
+	DataBits     int64  `json:"data_bits,optional"`     // 数据位
+	StopBits     int64  `json:"stop_bits,optional"`     // 停止位
+	ComPort      string `json:"com_port,optional"`      // com端口
+	AddressCode  int64  `json:"address_code,optional"`  // 地址码
+}
+
+type TpmtGatewayDelRequest struct {
+	Id string `path:"id"` // 采集器ID/网关
+}
+
+type TpmtGatewayInfoRequest struct {
+	Id string `form:"id"` // 采集器ID/网关
+}
+
+type TpmtGatewayListRequest struct {
+	Current      int64  `form:"current,default=1,optional"`       // 页码
+	PageSize     int64  `form:"page_size,default=10,optional"`    // 页数
+	GatewayName  string `form:"gateway_name,optional"`            // 网关名称
+	GatewayModel string `form:"gateway_model,optional"`           // 网关型号
+	ManuFacturer string `form:"manu_facturer,optional"`           // 生产厂家
+	Agreement    int64  `form:"agreement,default=99,optional"`    // 协议 默认1:modbus
+	BaudRate     int64  `form:"baud_rate,default=99,optional"`    // 波特率
+	Parity       string `form:"parity,optional"`                  // 校验
+	DataBits     int64  `form:"data_bits,default=99,optional"`    // 数据位
+	StopBits     int64  `form:"stop_bits,default=99,optional"`    // 停止位
+	ComPort      string `form:"com_port,optional"`                // com端口
+	AddressCode  int64  `form:"address_code,default=99,optional"` // 地址码
+}
+
+type TpmtGatewayUpRequest struct {
+	Id           string `json:"id"`                     // 采集器ID/网关
+	GatewayName  string `json:"gateway_name,optional"`  // 网关名称
+	GatewayModel string `json:"gateway_model,optional"` // 网关型号
+	ManuFacturer string `json:"manu_facturer,optional"` // 生产厂家
+	Agreement    int64  `json:"agreement,optional"`     // 协议 默认1:modbus
+	BaudRate     int64  `json:"baud_rate,optional"`     // 波特率
+	Parity       string `json:"parity,optional"`        // 校验
+	DataBits     int64  `json:"data_bits,optional"`     // 数据位
+	StopBits     int64  `json:"stop_bits,optional"`     // 停止位
+	ComPort      string `json:"com_port,optional"`      // com端口
+	AddressCode  int64  `json:"address_code,optional"`  // 地址码
 }

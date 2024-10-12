@@ -1,9 +1,14 @@
 syntax = "v1"
 
 import "doc/sysuser.api"
+import "doc/sysauth.api"
 import "doc/sysrole.api"
 import "doc/sysmenu.api"
 import "doc/sysinterface.api"
+import "doc/sysdicttype.api"
+import "doc/sysdict.api"
+import "doc/tpmtasset.api"
+import "doc/tpmtgateway.api"
 
 type (
 	Response {

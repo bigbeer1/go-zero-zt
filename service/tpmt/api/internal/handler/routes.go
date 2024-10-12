@@ -6,10 +6,15 @@ package handler
 import (
 	"net/http"
 
+	sysAuth "tpmt-zt/service/tpmt/api/internal/handler/sysAuth"
+	sysDict "tpmt-zt/service/tpmt/api/internal/handler/sysDict"
+	sysDictType "tpmt-zt/service/tpmt/api/internal/handler/sysDictType"
 	sysInterface "tpmt-zt/service/tpmt/api/internal/handler/sysInterface"
 	sysMenu "tpmt-zt/service/tpmt/api/internal/handler/sysMenu"
 	sysRole "tpmt-zt/service/tpmt/api/internal/handler/sysRole"
 	sysUser "tpmt-zt/service/tpmt/api/internal/handler/sysUser"
+	tpmtAsset "tpmt-zt/service/tpmt/api/internal/handler/tpmtAsset"
+	tpmtGateway "tpmt-zt/service/tpmt/api/internal/handler/tpmtGateway"
 	"tpmt-zt/service/tpmt/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -24,6 +29,89 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: LoginHandler(serverCtx),
 			},
 		},
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/tpmt/sysAuth",
+				Handler: sysAuth.SysAuthAddHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/sysAuth",
+				Handler: sysAuth.SysAuthUpHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysAuth",
+				Handler: sysAuth.SysAuthListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodDelete,
+				Path:    "/tpmt/sysAuth/:id",
+				Handler: sysAuth.SysAuthDelHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysAuthInfo",
+				Handler: sysAuth.SysAuthInfoHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/tpmt/sysDict",
+				Handler: sysDict.SysDictAddHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/sysDict",
+				Handler: sysDict.SysDictUpHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysDict",
+				Handler: sysDict.SysDictListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodDelete,
+				Path:    "/tpmt/sysDict/:id",
+				Handler: sysDict.SysDictDelHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/tpmt/sysDictType",
+				Handler: sysDictType.SysDictTypeAddHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/sysDictType",
+				Handler: sysDictType.SysDictTypeUpHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysDictType",
+				Handler: sysDictType.SysDictTypeListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodDelete,
+				Path:    "/tpmt/sysDictType/:id",
+				Handler: sysDictType.SysDictTypeDelHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
@@ -147,6 +235,11 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: sysUser.SysUserInfoHandler(serverCtx),
 			},
 			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/sysUserLoginInfo",
+				Handler: sysUser.SysUserLoginInfoHandler(serverCtx),
+			},
+			{
 				Method:  http.MethodPut,
 				Path:    "/tpmt/sysUserResetPwd",
 				Handler: sysUser.SysUserResetPwdHandler(serverCtx),
@@ -160,6 +253,68 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Method:  http.MethodPut,
 				Path:    "/tpmt/sysUserUpMyPwd",
 				Handler: sysUser.SysUserUpMyPwdHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/tpmt/tpmtAsset",
+				Handler: tpmtAsset.TpmtAssetAddHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/tpmtAsset",
+				Handler: tpmtAsset.TpmtAssetUpHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/tpmtAsset",
+				Handler: tpmtAsset.TpmtAssetListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodDelete,
+				Path:    "/tpmt/tpmtAsset/:id",
+				Handler: tpmtAsset.TpmtAssetDelHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/tpmtAssetInfo",
+				Handler: tpmtAsset.TpmtAssetInfoHandler(serverCtx),
+			},
+		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/tpmt/tpmtGateway",
+				Handler: tpmtGateway.TpmtGatewayAddHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/tpmtGateway",
+				Handler: tpmtGateway.TpmtGatewayUpHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/tpmtGateway",
+				Handler: tpmtGateway.TpmtGatewayListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodDelete,
+				Path:    "/tpmt/tpmtGateway/:id",
+				Handler: tpmtGateway.TpmtGatewayDelHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/tpmtGatewayInfo",
+				Handler: tpmtGateway.TpmtGatewayInfoHandler(serverCtx),
 			},
 		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),

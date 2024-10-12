@@ -1,0 +1,76 @@
+syntax = "v1"
+
+
+type (
+    TpmtAssetAddRequest {
+		AssetType  int64  `json:"asset_type,optional"`  // 资产类型
+		AssetCode  string  `json:"asset_code,optional"`  // 资产编号
+		AssetName  string  `json:"asset_name,optional"`  // 资产名称
+		AssetModel  string  `json:"asset_model,optional"`  // 资产型号
+		ManuFacturer  string  `json:"manu_facturer,optional"`  // 生产厂家
+		Voltage  string  `json:"voltage,optional"`  // 电压
+		Capacity  string  `json:"capacity,optional"`  // 容量
+    }
+
+    TpmtAssetDelRequest {
+		Id  string  `path:"id"`  // 资产ID
+    }
+
+    TpmtAssetUpRequest {
+		Id  string  `json:"id"`  // 资产ID
+		AssetType  int64  `json:"asset_type,optional"`  // 资产类型
+		AssetCode  string  `json:"asset_code,optional"`  // 资产编号
+		AssetName  string  `json:"asset_name,optional"`  // 资产名称
+		AssetModel  string  `json:"asset_model,optional"`  // 资产型号
+		ManuFacturer  string  `json:"manu_facturer,optional"`  // 生产厂家
+		Voltage  string  `json:"voltage,optional"`  // 电压
+		Capacity  string  `json:"capacity,optional"`  // 容量      
+    }
+
+
+    TpmtAssetListRequest {
+		Current  int64  `form:"current,default=1,optional"`  // 页码
+		PageSize  int64  `form:"page_size,default=10,optional"`  // 页数
+		AssetType  int64  `form:"asset_type,default=99,optional"`  // 资产类型
+		AssetCode  string  `form:"asset_code,optional"`  // 资产编号
+		AssetName  string  `form:"asset_name,optional"`  // 资产名称
+		AssetModel  string  `form:"asset_model,optional"`  // 资产型号
+		ManuFacturer  string  `form:"manu_facturer,optional"`  // 生产厂家
+		Voltage  string  `form:"voltage,optional"`  // 电压
+		Capacity  string  `form:"capacity,optional"`  // 容量       
+    }
+
+    TpmtAssetInfoRequest {
+		Id  string  `form:"id"`  // 资产ID          
+    }
+
+)
+
+@server(
+    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
+    jwt: Auth
+    group: tpmtAsset
+)
+
+service Tpmt {
+
+    // 添加
+    @handler TpmtAssetAdd
+    post /tpmt/tpmtAsset (TpmtAssetAddRequest) returns (Response)
+
+    // 删除
+    @handler TpmtAssetDel
+    delete /tpmt/tpmtAsset/:id (TpmtAssetDelRequest) returns (Response)
+
+    // 更新
+    @handler TpmtAssetUp
+    put /tpmt/tpmtAsset (TpmtAssetUpRequest) returns (Response)
+
+    // 分页查询
+    @handler TpmtAssetList
+    get /tpmt/tpmtAsset (TpmtAssetListRequest) returns (Response)
+
+    // 查询详细信息
+    @handler TpmtAssetInfo
+    get /tpmt/tpmtAssetInfo (TpmtAssetInfoRequest) returns (Response)
+}

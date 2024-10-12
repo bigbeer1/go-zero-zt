@@ -42,9 +42,17 @@ func (l *SysRoleInfoLogic) SysRoleInfo(req *types.SysRoleInfoRequest) (resp *typ
 		RoleId: req.Id,
 	})
 
+	if err != nil {
+		return nil, common.NewDefaultError(err.Error())
+	}
+
 	interfaceRep, err := l.svcCtx.TpmtRpc.SysInterfaceByRoleId(l.ctx, &tpmtclient.SysInterfaceByRoleIdReq{
 		RoleId: req.Id,
 	})
+
+	if err != nil {
+		return nil, common.NewDefaultError(err.Error())
+	}
 
 	var result SysRoleFindOneResp
 	_ = copier.Copy(&result, res)

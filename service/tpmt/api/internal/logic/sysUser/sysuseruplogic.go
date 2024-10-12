@@ -41,6 +41,7 @@ func (l *SysUserUpLogic) SysUserUp(req *types.SysUserUpRequest) (resp *types.Res
 		NickName:    req.NickName,       // 姓名
 		State:       req.State,          // 状态 1:正常 2:停用 3:封禁
 		UpdatedName: tokenData.NickName, // 更新人
+		RoleId:      req.RoldId,         // 角色Id
 	})
 
 	if err != nil {

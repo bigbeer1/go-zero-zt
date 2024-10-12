@@ -13,97 +13,179 @@ message CommonResp {
 
 // SysUser 添加
 message SysUserAddReq{
-	string  account = 1;  // 用户名
-	string  nick_name = 2;  // 姓名
-	string  password = 3;  // 密码
-	int64   state = 4;  // 状态 1:正常 2:停用 3:封禁
-	string  created_name = 5;  // 创建人
+  string  account = 1;  // 用户名
+  string  nick_name = 2;  // 姓名
+  string  password = 3;  // 密码
+  int64   state = 4;  // 状态 1:正常 2:停用 3:封禁
+  string  created_name = 5;  // 创建人
+  int64   role_id = 6; // 角色Id
 }
 
 // SysUser 删除
 message SysUserDeleteReq{
-	string  id = 1;  // 用户ID
-	string  deleted_name = 2;  // 删除人
+  string  id = 1;  // 用户ID
+  string  deleted_name = 2;  // 删除人
 }
 
 // SysUser 更新
 message SysUserUpdateReq{
-	string  id = 1;  // 用户ID
-	string  nick_name = 3;  // 姓名
-	int64   state = 5;  // 状态 1:正常 2:停用 3:封禁
-	string  updated_name = 6;  // 更新人
+  string  id = 1;  // 用户ID
+  string  nick_name = 3;  // 姓名
+  int64   state = 5;  // 状态 1:正常 2:停用 3:封禁
+  string  updated_name = 6;  // 更新人
+  int64   role_id = 7; // 角色ID
 }
 
 // SysUser 单个查询
 message SysUserFindOneReq{
-	string  id = 1;  // 用户ID
+  string  id = 1;  // 用户ID
 }
 
 // SysUser 单个查询返回
 message SysUserFindOneResp{
-	string  id = 1;  // 用户ID
-	string  account = 2;  // 用户名
-	string  nick_name = 3;  // 姓名
-	int64   state = 5;  // 状态 1:正常 2:停用 3:封禁
-	string  created_name = 6;  // 创建人
-	int64   created_at = 7;  // 创建时间
-	string  updated_name = 8;  // 更新人
-	int64   updated_at = 9;  // 更新时间
+  string  id = 1;  // 用户ID
+  string  account = 2;  // 用户名
+  string  nick_name = 3;  // 姓名
+  int64   state = 5;  // 状态 1:正常 2:停用 3:封禁
+  string  created_name = 6;  // 创建人
+  int64   created_at = 7;  // 创建时间
+  string  updated_name = 8;  // 更新人
+  int64   updated_at = 9;  // 更新时间
+  int64   role_id = 10;  // 角色ID
+  string   role_name = 11;  // 角色名称
+  int64   role_type = 12;  // 角色类型
 }
 
 
 // SysUser 分页查询
 message SysUserListReq{
-	int64  current = 1;  // 页码
-	int64  page_size = 2;  // 页数
-	string  nick_name = 4;  // 姓名
-	int64   state = 6;  // 状态 1:正常 2:停用 3:封禁
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  string  nick_name = 4;  // 姓名
+  int64   state = 6;  // 状态 1:正常 2:停用 3:封禁
 }
 
 // SysUser 分页查询返回
 message SysUserListResp{
-	int64  total = 1;  // 总数
-	repeated  SysUserListData list = 2;  // 内容
+  int64  total = 1;  // 总数
+  repeated  SysUserListData list = 2;  // 内容
 }
 
 // SysUser 列表信息
 message SysUserListData{
-	string  id = 1;  // 用户ID
-	string  account = 2;  // 用户名
-	string  nick_name = 3;  // 姓名
-	int64   state = 5;  // 状态 1:正常 2:停用 3:封禁
-	string  created_name = 6;  // 创建人
-	int64   created_at = 7;  // 创建时间
-	string  updated_name = 8;  // 更新人
-	int64   updated_at = 9;  // 更新时间
+  string  id = 1;  // 用户ID
+  string  account = 2;  // 用户名
+  string  nick_name = 3;  // 姓名
+  int64   state = 5;  // 状态 1:正常 2:停用 3:封禁
+  string  created_name = 6;  // 创建人
+  int64   created_at = 7;  // 创建时间
+  string  updated_name = 8;  // 更新人
+  int64   updated_at = 9;  // 更新时间
+  int64   role_id = 10;  // 角色ID
+  string   role_name = 11;  // 角色名称
+  int64   role_type = 12;  // 角色类型
 }
 
 // SysUser 列表信息
 message SysLoginReq{
-	string  account = 1;  // 用户名
-	string  password = 2;  // 姓名
+  string  account = 1;  // 用户名
+  string  password = 2;  // 姓名
 }
 
 // SysUser重置密码
 message SysUserResetPwdReq{
-	string  id = 1;  // 用户id
-	string  password = 2;  // 密码
-	string  updated_name = 3;  // 更新人
+  string  id = 1;  // 用户id
+  string  password = 2;  // 密码
+  string  updated_name = 3;  // 更新人
 }
 
 // SysUser重置密码返回
 message SysUserResetPwdResp{
-	string  password = 1;  // 密码
+  string  password = 1;  // 密码
 }
 
 // 用户修改自己的密码Req
 message SysUserUpMyPwdReq{
-	string  id = 1;  // 用户id
-	string  old_password = 2;  // 旧密码
-	string  new_password = 3;  // 新密码
+  string  id = 1;  // 用户id
+  string  old_password = 2;  // 旧密码
+  string  new_password = 3;  // 新密码
 }
 
 //SysUser end---------------------
+
+
+
+//SysAuth start-------------------
+
+// SysAuth 添加
+message SysAuthAddReq{
+  string  created_name = 1;  // 创建人
+  string  nick_name = 2;  // 机构名
+  string  auth_token = 3;  // 令牌
+  int64   state = 4;  // 状态 1:正常 2:停用 3:封禁
+}
+
+// SysAuth 删除
+message SysAuthDeleteReq{
+  string  id = 1;  // 第三方用户ID
+  string  deleted_name = 2;  // 删除人
+}
+
+// SysAuth 更新
+message SysAuthUpdateReq{
+  string  id = 1;  // 第三方用户ID
+  string  updated_name = 2;  // 更新人
+  string  nick_name = 3;  // 机构名
+  string  auth_token = 4;  // 令牌
+  int64   state = 5;  // 状态 1:正常 2:停用 3:封禁
+}
+
+// SysAuth 单个查询
+message SysAuthFindOneReq{
+  string  id = 1;  // 第三方用户ID
+}
+
+// SysAuth 单个查询返回
+message SysAuthFindOneResp{
+  string  id = 1;  // 第三方用户ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  nick_name = 6;  // 机构名
+  string  auth_token = 7;  // 令牌
+  int64   state = 8;  // 状态 1:正常 2:停用 3:封禁
+}
+
+
+// SysAuth 分页查询
+message SysAuthListReq{
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  string  nick_name = 3;  // 机构名
+  string  auth_token = 4;  // 令牌
+  int64   state = 5;  // 状态 1:正常 2:停用 3:封禁
+}
+
+// SysAuth 分页查询返回
+message SysAuthListResp{
+  int64  total = 1;  // 总数
+  repeated  SysAuthListData list = 2;  // 内容
+}
+
+// SysAuth 列表信息
+message SysAuthListData{
+  string  id = 1;  // 第三方用户ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  nick_name = 6;  // 机构名
+  string  auth_token = 7;  // 令牌
+  int64   state = 8;  // 状态 1:正常 2:停用 3:封禁
+}
+
+//SysAuth end---------------------
 
 
 
@@ -111,74 +193,74 @@ message SysUserUpMyPwdReq{
 
 // SysRole 添加
 message SysRoleAddReq{
-	string  name = 1;  // 角色名称
-	string  remark = 2;  // 备注
-	int64   role_type = 3;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
-	string  created_name = 4;  // 创建人
-	repeated int64  menu_ids = 5;  // 菜单ids
-	repeated int64  interface_ids = 6;  // 接口ids
+  string  name = 1;  // 角色名称
+  string  remark = 2;  // 备注
+  int64   role_type = 3;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+  string  created_name = 4;  // 创建人
+  repeated int64  menu_ids = 5;  // 菜单ids
+  repeated int64  interface_ids = 6;  // 接口ids
 }
 
 // SysRole 删除
 message SysRoleDeleteReq{
-	int64   id = 1;  // 角色ID
-	string  deleted_name = 2;  // 删除人
+  int64   id = 1;  // 角色ID
+  string  deleted_name = 2;  // 删除人
 }
 
 // SysRole 更新
 message SysRoleUpdateReq{
-	int64   id = 1;  // 角色ID
-	string  name = 2;  // 角色名称
-	string  remark = 3;  // 备注
-	int64   role_type = 4;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
-	string  updated_name = 5;  // 更新人
-	repeated int64  menu_ids = 6;  // 菜单ids
-	repeated int64  interface_ids = 7;  // 接口ids
+  int64   id = 1;  // 角色ID
+  string  name = 2;  // 角色名称
+  string  remark = 3;  // 备注
+  int64   role_type = 4;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+  string  updated_name = 5;  // 更新人
+  repeated int64  menu_ids = 6;  // 菜单ids
+  repeated int64  interface_ids = 7;  // 接口ids
 }
 
 // SysRole 单个查询
 message SysRoleFindOneReq{
-	int64   id = 1;  // 角色ID
+  int64   id = 1;  // 角色ID
 }
 
 // SysRole 单个查询返回
 message SysRoleFindOneResp{
-	int64   id = 1;  // 角色ID
-	string  name = 2;  // 角色名称
-	string  remark = 3;  // 备注
-	int64   role_type = 4;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
-	string  created_name = 5;  // 创建人
-	int64   created_at = 6;  // 创建时间
-	string  updated_name = 7;  // 更新人
-	int64   updated_at = 8;  // 更新时间
+  int64   id = 1;  // 角色ID
+  string  name = 2;  // 角色名称
+  string  remark = 3;  // 备注
+  int64   role_type = 4;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+  string  created_name = 5;  // 创建人
+  int64   created_at = 6;  // 创建时间
+  string  updated_name = 7;  // 更新人
+  int64   updated_at = 8;  // 更新时间
 }
 
 
 // SysRole 分页查询
 message SysRoleListReq{
-	int64  current = 1;  // 页码
-	int64  page_size = 2;  // 页数
-	string  name = 3;  // 角色名称
-	string  remark = 4;  // 备注
-	int64   role_type = 5;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  string  name = 3;  // 角色名称
+  string  remark = 4;  // 备注
+  int64   role_type = 5;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
 }
 
 // SysRole 分页查询返回
 message SysRoleListResp{
-	int64  total = 1;  // 总数
-	repeated  SysRoleListData list = 2;  // 内容
+  int64  total = 1;  // 总数
+  repeated  SysRoleListData list = 2;  // 内容
 }
 
 // SysRole 列表信息
 message SysRoleListData{
-	int64   id = 1;  // 角色ID
-	string  name = 2;  // 角色名称
-	string  remark = 3;  // 备注
-	int64   role_type = 4;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
-	string  created_name = 5;  // 创建人
-	int64   created_at = 6;  // 创建时间
-	string  updated_name = 7;  // 更新人
-	int64   updated_at = 8;  // 更新时间
+  int64   id = 1;  // 角色ID
+  string  name = 2;  // 角色名称
+  string  remark = 3;  // 备注
+  int64   role_type = 4;  // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
+  string  created_name = 5;  // 创建人
+  int64   created_at = 6;  // 创建时间
+  string  updated_name = 7;  // 更新人
+  int64   updated_at = 8;  // 更新时间
 }
 
 //SysRole end---------------------
@@ -188,128 +270,128 @@ message SysRoleListData{
 
 // SysMenu 添加
 message SysMenuAddReq{
-	int64   menu_type = 1;  // 菜单类型(层级关系)
-	string  name = 2;  // 菜单名称
-	string  title = 3;  // 标题
-	string  path = 4;  // 路径
-	string  component = 5;  // 本地路径
-	string  redirect = 6;  // 跳转
-	int64   sort = 7;  // sort
-	string  icon = 8;  // 图标
-	int64   is_hide = 9;  // 是否隐藏
-	int64   is_keep_alive = 10;  // 是否缓存
-	int64   parent_id = 11;  // 父ID
-	int64   is_home = 12;  // 是否首页
-	int64   is_main = 13;  // 是否主菜单
-	string  created_name = 14;  // 创建人
+  int64   menu_type = 1;  // 菜单类型(层级关系)
+  string  name = 2;  // 菜单名称
+  string  title = 3;  // 标题
+  string  path = 4;  // 路径
+  string  component = 5;  // 本地路径
+  string  redirect = 6;  // 跳转
+  int64   sort = 7;  // sort
+  string  icon = 8;  // 图标
+  int64   is_hide = 9;  // 是否隐藏
+  int64   is_keep_alive = 10;  // 是否缓存
+  int64   parent_id = 11;  // 父ID
+  int64   is_home = 12;  // 是否首页
+  int64   is_main = 13;  // 是否主菜单
+  string  created_name = 14;  // 创建人
 }
 
 // SysMenu 删除
 message SysMenuDeleteReq{
-	int64   id = 1;  // 菜单ID
-	string  deleted_name = 2;  // 删除人
+  int64   id = 1;  // 菜单ID
+  string  deleted_name = 2;  // 删除人
 }
 
 // SysMenu 更新
 message SysMenuUpdateReq{
-	int64   id = 1;  // 菜单ID
-	int64   menu_type = 2;  // 菜单类型(层级关系)
-	string  name = 3;  // 菜单名称
-	string  title = 4;  // 标题
-	string  path = 5;  // 路径
-	string  component = 6;  // 本地路径
-	string  redirect = 7;  // 跳转
-	int64   sort = 8;  // sort
-	string  icon = 9;  // 图标
-	int64   is_hide = 10;  // 是否隐藏
-	int64   is_keep_alive = 11;  // 是否缓存
-	int64   parent_id = 12;  // 父ID
-	int64   is_home = 13;  // 是否首页
-	int64   is_main = 14;  // 是否主菜单
-	string  updated_name = 15;  // 更新人
+  int64   id = 1;  // 菜单ID
+  int64   menu_type = 2;  // 菜单类型(层级关系)
+  string  name = 3;  // 菜单名称
+  string  title = 4;  // 标题
+  string  path = 5;  // 路径
+  string  component = 6;  // 本地路径
+  string  redirect = 7;  // 跳转
+  int64   sort = 8;  // sort
+  string  icon = 9;  // 图标
+  int64   is_hide = 10;  // 是否隐藏
+  int64   is_keep_alive = 11;  // 是否缓存
+  int64   parent_id = 12;  // 父ID
+  int64   is_home = 13;  // 是否首页
+  int64   is_main = 14;  // 是否主菜单
+  string  updated_name = 15;  // 更新人
 }
 
 // SysMenu 单个查询
 message SysMenuFindOneReq{
-	int64   id = 1;  // 菜单ID
+  int64   id = 1;  // 菜单ID
 }
 
 // SysMenu 单个查询返回
 message SysMenuFindOneResp{
-	int64   id = 1;  // 菜单ID
-	int64   menu_type = 2;  // 菜单类型(层级关系)
-	string  name = 3;  // 菜单名称
-	string  title = 4;  // 标题
-	string  path = 5;  // 路径
-	string  component = 6;  // 本地路径
-	string  redirect = 7;  // 跳转
-	int64   sort = 8;  // sort
-	string  icon = 9;  // 图标
-	int64   is_hide = 10;  // 是否隐藏
-	int64   is_keep_alive = 11;  // 是否缓存
-	int64   parent_id = 12;  // 父ID
-	int64   is_home = 13;  // 是否首页
-	int64   is_main = 14;  // 是否主菜单
-	string  created_name = 15;  // 创建人
-	int64   created_at = 16;  // 创建时间
-	string  updated_name = 17;  // 更新人
-	int64   updated_at = 18;  // 更新时间
+  int64   id = 1;  // 菜单ID
+  int64   menu_type = 2;  // 菜单类型(层级关系)
+  string  name = 3;  // 菜单名称
+  string  title = 4;  // 标题
+  string  path = 5;  // 路径
+  string  component = 6;  // 本地路径
+  string  redirect = 7;  // 跳转
+  int64   sort = 8;  // sort
+  string  icon = 9;  // 图标
+  int64   is_hide = 10;  // 是否隐藏
+  int64   is_keep_alive = 11;  // 是否缓存
+  int64   parent_id = 12;  // 父ID
+  int64   is_home = 13;  // 是否首页
+  int64   is_main = 14;  // 是否主菜单
+  string  created_name = 15;  // 创建人
+  int64   created_at = 16;  // 创建时间
+  string  updated_name = 17;  // 更新人
+  int64   updated_at = 18;  // 更新时间
 }
 
 
 // SysMenu 分页查询
 message SysMenuListReq{
-	int64  current = 1;  // 页码
-	int64  page_size = 2;  // 页数
-	int64   menu_type = 3;  // 菜单类型(层级关系)
-	string  name = 4;  // 菜单名称
-	string  title = 5;  // 标题
-	string  path = 6;  // 路径
-	string  component = 7;  // 本地路径
-	string  redirect = 8;  // 跳转
-	string  icon = 9;  // 图标
-	int64   is_hide = 10;  // 是否隐藏
-	int64   is_keep_alive = 11;  // 是否缓存
-	int64   parent_id = 12;  // 父ID
-	int64   is_home = 13;  // 是否首页
-	int64   is_main = 14;  // 是否主菜单
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  int64   menu_type = 3;  // 菜单类型(层级关系)
+  string  name = 4;  // 菜单名称
+  string  title = 5;  // 标题
+  string  path = 6;  // 路径
+  string  component = 7;  // 本地路径
+  string  redirect = 8;  // 跳转
+  string  icon = 9;  // 图标
+  int64   is_hide = 10;  // 是否隐藏
+  int64   is_keep_alive = 11;  // 是否缓存
+  int64   parent_id = 12;  // 父ID
+  int64   is_home = 13;  // 是否首页
+  int64   is_main = 14;  // 是否主菜单
 }
 
 // SysMenu 分页查询返回
 message SysMenuListResp{
-	int64  total = 1;  // 总数
-	repeated  SysMenuListData list = 2;  // 内容
+  int64  total = 1;  // 总数
+  repeated  SysMenuListData list = 2;  // 内容
 }
 
 // SysMenu 列表信息
 message SysMenuListData{
-	int64   id = 1;  // 菜单ID
-	int64   menu_type = 2;  // 菜单类型(层级关系)
-	string  name = 3;  // 菜单名称
-	string  title = 4;  // 标题
-	string  path = 5;  // 路径
-	string  component = 6;  // 本地路径
-	string  redirect = 7;  // 跳转
-	int64   sort = 8;  // sort
-	string  icon = 9;  // 图标
-	int64   is_hide = 10;  // 是否隐藏
-	int64   is_keep_alive = 11;  // 是否缓存
-	int64   parent_id = 12;  // 父ID
-	int64   is_home = 13;  // 是否首页
-	int64   is_main = 14;  // 是否主菜单
-	string  created_name = 15;  // 创建人
-	int64   created_at = 16;  // 创建时间
-	string  updated_name = 17;  // 更新人
-	int64   updated_at = 18;  // 更新时间
+  int64   id = 1;  // 菜单ID
+  int64   menu_type = 2;  // 菜单类型(层级关系)
+  string  name = 3;  // 菜单名称
+  string  title = 4;  // 标题
+  string  path = 5;  // 路径
+  string  component = 6;  // 本地路径
+  string  redirect = 7;  // 跳转
+  int64   sort = 8;  // sort
+  string  icon = 9;  // 图标
+  int64   is_hide = 10;  // 是否隐藏
+  int64   is_keep_alive = 11;  // 是否缓存
+  int64   parent_id = 12;  // 父ID
+  int64   is_home = 13;  // 是否首页
+  int64   is_main = 14;  // 是否主菜单
+  string  created_name = 15;  // 创建人
+  int64   created_at = 16;  // 创建时间
+  string  updated_name = 17;  // 更新人
+  int64   updated_at = 18;  // 更新时间
 }
 
 message SysMenuByRoleIdReq{
-	int64   role_id = 1;  // 角色ID
+  int64   role_id = 1;  // 角色ID
 }
 
 // SysMenu 分页查询返回
 message SysMenuByRoleIdResp{
-	repeated  SysMenuListData list = 1;  // 内容
+  repeated  SysMenuListData list = 1;  // 内容
 }
 
 //SysMenu end---------------------
@@ -319,146 +401,552 @@ message SysMenuByRoleIdResp{
 
 // SysInterface 添加
 message SysInterfaceAddReq{
-	string  created_name = 1;  // 创建人
-	string  name = 2;  // 接口名称
-	string  path = 3;  // 接口地址
-	string  interface_type = 4;  // 接口类型
-	string  interface_group_name = 5;  // 接口分组名称
-	string  remark = 6;  // 备注
-	int64   sort = 7;  // sort
+  string  created_name = 1;  // 创建人
+  string  name = 2;  // 接口名称
+  string  path = 3;  // 接口地址
+  string  interface_type = 4;  // 接口类型
+  string  interface_group_name = 5;  // 接口分组名称
+  string  remark = 6;  // 备注
+  int64   sort = 7;  // sort
 }
 
 // SysInterface 删除
 message SysInterfaceDeleteReq{
-	int64   id = 1;  // 接口ID
-	string  deleted_name = 2;  // 删除人
+  int64   id = 1;  // 接口ID
+  string  deleted_name = 2;  // 删除人
 }
 
 // SysInterface 更新
 message SysInterfaceUpdateReq{
-	int64   id = 1;  // 接口ID
-	string  updated_name = 2;  // 更新人
-	string  name = 3;  // 接口名称
-	string  path = 4;  // 接口地址
-	string  interface_type = 5;  // 接口类型
-	string  interface_group_name = 6;  // 接口分组名称
-	string  remark = 7;  // 备注
-	int64   sort = 8;  // sort
+  int64   id = 1;  // 接口ID
+  string  updated_name = 2;  // 更新人
+  string  name = 3;  // 接口名称
+  string  path = 4;  // 接口地址
+  string  interface_type = 5;  // 接口类型
+  string  interface_group_name = 6;  // 接口分组名称
+  string  remark = 7;  // 备注
+  int64   sort = 8;  // sort
 }
 
 // SysInterface 单个查询
 message SysInterfaceFindOneReq{
-	int64   id = 1;  // 接口ID
+  int64   id = 1;  // 接口ID
 }
 
 // SysInterface 单个查询返回
 message SysInterfaceFindOneResp{
-	int64   id = 1;  // 接口ID
-	int64   created_at = 2;  // 创建时间
-	int64   updated_at = 3;  // 更新时间
-	string  created_name = 4;  // 创建人
-	string  updated_name = 5;  // 更新人
-	string  name = 6;  // 接口名称
-	string  path = 7;  // 接口地址
-	string  interface_type = 8;  // 接口类型
-	string  interface_group_name = 9;  // 接口分组名称
-	string  remark = 10;  // 备注
-	int64   sort = 11;  // sort
+  int64   id = 1;  // 接口ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  name = 6;  // 接口名称
+  string  path = 7;  // 接口地址
+  string  interface_type = 8;  // 接口类型
+  string  interface_group_name = 9;  // 接口分组名称
+  string  remark = 10;  // 备注
+  int64   sort = 11;  // sort
 }
 
 
 // SysInterface 分页查询
 message SysInterfaceListReq{
-	int64  current = 1;  // 页码
-	int64  page_size = 2;  // 页数
-	string  name = 3;  // 接口名称
-	string  path = 4;  // 接口地址
-	string  interface_type = 5;  // 接口类型
-	string  interface_group_name = 6;  // 接口分组名称
-	string  remark = 7;  // 备注
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  string  name = 3;  // 接口名称
+  string  path = 4;  // 接口地址
+  string  interface_type = 5;  // 接口类型
+  string  interface_group_name = 6;  // 接口分组名称
+  string  remark = 7;  // 备注
 }
 
 // SysInterface 分页查询返回
 message SysInterfaceListResp{
-	int64  total = 1;  // 总数
-	repeated  SysInterfaceListData list = 2;  // 内容
+  int64  total = 1;  // 总数
+  repeated  SysInterfaceListData list = 2;  // 内容
 }
 
 // SysInterface 列表信息
 message SysInterfaceListData{
-	int64   id = 1;  // 接口ID
-	int64   created_at = 2;  // 创建时间
-	int64   updated_at = 3;  // 更新时间
-	string  created_name = 4;  // 创建人
-	string  updated_name = 5;  // 更新人
-	string  name = 6;  // 接口名称
-	string  path = 7;  // 接口地址
-	string  interface_type = 8;  // 接口类型
-	string  interface_group_name = 9;  // 接口分组名称
-	string  remark = 10;  // 备注
-	int64   sort = 11;  // sort
+  int64   id = 1;  // 接口ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  name = 6;  // 接口名称
+  string  path = 7;  // 接口地址
+  string  interface_type = 8;  // 接口类型
+  string  interface_group_name = 9;  // 接口分组名称
+  string  remark = 10;  // 备注
+  int64   sort = 11;  // sort
 }
 
 message SysInterfaceByRoleIdReq{
-	int64   role_id = 1;  // 角色ID
+  int64   role_id = 1;  // 角色ID
 }
 
 
 // SysInterface 分页查询返回
 message SysInterfaceByRoleIdResp{
-	repeated  SysInterfaceListData list = 1;  // 内容
+  repeated  SysInterfaceListData list = 1;  // 内容
 }
 
 
 //SysInterface end---------------------
 
 
+//SysDictType start-------------------
+
+// SysDictType 添加
+message SysDictTypeAddReq{
+  string  created_name = 1;  // 创建人
+  string  name = 2;  // 字典名称
+  string  dict_type = 3;  // 字典类型
+  int64   state = 4;  // 状态
+  string  remark = 5;  // 描述
+  int64   sort = 6;  // 排序
+}
+
+// SysDictType 删除
+message SysDictTypeDeleteReq{
+  int64   id = 1;  // 字典类型ID
+  string  deleted_name = 2;  // 删除人
+}
+
+// SysDictType 更新
+message SysDictTypeUpdateReq{
+  int64   id = 1;  // 字典类型ID
+  string  updated_name = 2;  // 更新人
+  string  name = 3;  // 字典名称
+  string  dict_type = 4;  // 字典类型
+  int64   state = 5;  // 状态
+  string  remark = 6;  // 描述
+  int64   sort = 7;  // 排序
+}
+
+// SysDictType 单个查询
+message SysDictTypeFindOneReq{
+  int64   id = 1;  // 字典类型ID
+}
+
+// SysDictType 单个查询返回
+message SysDictTypeFindOneResp{
+  int64   id = 1;  // 字典类型ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  name = 6;  // 字典名称
+  string  dict_type = 7;  // 字典类型
+  int64   state = 8;  // 状态
+  string  remark = 9;  // 描述
+  int64   sort = 10;  // 排序
+}
+
+
+// SysDictType 分页查询
+message SysDictTypeListReq{
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  string  name = 3;  // 字典名称
+  string  dict_type = 4;  // 字典类型
+  int64   state = 5;  // 状态
+  string  remark = 6;  // 描述
+}
+
+// SysDictType 分页查询返回
+message SysDictTypeListResp{
+  int64  total = 1;  // 总数
+  repeated  SysDictTypeListData list = 2;  // 内容
+}
+
+// SysDictType 列表信息
+message SysDictTypeListData{
+  int64   id = 1;  // 字典类型ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  name = 6;  // 字典名称
+  string  dict_type = 7;  // 字典类型
+  int64   state = 8;  // 状态
+  string  remark = 9;  // 描述
+  int64   sort = 10;  // 排序
+}
+
+//SysDictType end---------------------
+
+
+
+//SysDict start-------------------
+
+// SysDict 添加
+message SysDictAddReq{
+  string  created_name = 1;  // 创建人
+  string  dict_type = 2;  // 字典类型
+  string  dict_label = 3;  // 字典标签
+  string  dict_value = 4;  // 字典键值
+  int64   sort = 5;  // 排序
+  string  remark = 6;  // 备注
+  int64   state = 7;  // 状态
+}
+
+// SysDict 删除
+message SysDictDeleteReq{
+  int64   id = 1;  // 字典类型ID
+  string  deleted_name = 2;  // 删除人
+}
+
+// SysDict 更新
+message SysDictUpdateReq{
+  int64   id = 1;  // 字典类型ID
+  string  updated_name = 2;  // 更新人
+  string  dict_type = 3;  // 字典类型
+  string  dict_label = 4;  // 字典标签
+  string  dict_value = 5;  // 字典键值
+  int64   sort = 6;  // 排序
+  string  remark = 7;  // 备注
+  int64   state = 8;  // 状态
+}
+
+// SysDict 单个查询
+message SysDictFindOneReq{
+  int64   id = 1;  // 字典类型ID
+}
+
+// SysDict 单个查询返回
+message SysDictFindOneResp{
+  int64   id = 1;  // 字典类型ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  dict_type = 6;  // 字典类型
+  string  dict_label = 7;  // 字典标签
+  string  dict_value = 8;  // 字典键值
+  int64   sort = 9;  // 排序
+  string  remark = 10;  // 备注
+  int64   state = 11;  // 状态
+}
+
+
+// SysDict 分页查询
+message SysDictListReq{
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  string  dict_type = 3;  // 字典类型
+  string  dict_label = 4;  // 字典标签
+  string  dict_value = 5;  // 字典键值
+  string  remark = 6;  // 备注
+  int64   state = 7;  // 状态
+}
+
+// SysDict 分页查询返回
+message SysDictListResp{
+  int64  total = 1;  // 总数
+  repeated  SysDictListData list = 2;  // 内容
+}
+
+// SysDict 列表信息
+message SysDictListData{
+  int64   id = 1;  // 字典类型ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  dict_type = 6;  // 字典类型
+  string  dict_label = 7;  // 字典标签
+  string  dict_value = 8;  // 字典键值
+  int64   sort = 9;  // 排序
+  string  remark = 10;  // 备注
+  int64   state = 11;  // 状态
+}
+
+//SysDict end---------------------
+
+
+//TpmtAsset start-------------------
+
+// TpmtAsset 添加
+message TpmtAssetAddReq{
+  int64   asset_type = 1;  // 资产类型
+  string  asset_code = 2;  // 资产编号
+  string  asset_name = 3;  // 资产名称
+  string  asset_model = 4;  // 资产型号
+  string  manu_facturer = 5;  // 生产厂家
+  string  voltage = 6;  // 电压
+  string  capacity = 7;  // 容量
+  string  created_name = 8;  // 创建人
+}
+
+// TpmtAsset 删除
+message TpmtAssetDeleteReq{
+  string  id = 1;  // 资产ID
+}
+
+// TpmtAsset 更新
+message TpmtAssetUpdateReq{
+  string  id = 1;  // 资产ID
+  int64   asset_type = 2;  // 资产类型
+  string  asset_code = 3;  // 资产编号
+  string  asset_name = 4;  // 资产名称
+  string  asset_model = 5;  // 资产型号
+  string  manu_facturer = 6;  // 生产厂家
+  string  voltage = 7;  // 电压
+  string  capacity = 8;  // 容量
+  string  updated_name = 9;  // 更新人
+}
+
+// TpmtAsset 单个查询
+message TpmtAssetFindOneReq{
+  string  id = 1;  // 资产ID
+}
+
+// TpmtAsset 单个查询返回
+message TpmtAssetFindOneResp{
+  string  id = 1;  // 资产ID
+  int64   asset_type = 2;  // 资产类型
+  string  asset_code = 3;  // 资产编号
+  string  asset_name = 4;  // 资产名称
+  string  asset_model = 5;  // 资产型号
+  string  manu_facturer = 6;  // 生产厂家
+  string  voltage = 7;  // 电压
+  string  capacity = 8;  // 容量
+  int64   created_at = 9;  // 创建时间
+  string  created_name = 10;  // 创建人
+  int64   updated_at = 11;  // 更新时间
+  string  updated_name = 12;  // 更新人
+}
+
+
+// TpmtAsset 分页查询
+message TpmtAssetListReq{
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  int64   asset_type = 3;  // 资产类型
+  string  asset_code = 4;  // 资产编号
+  string  asset_name = 5;  // 资产名称
+  string  asset_model = 6;  // 资产型号
+  string  manu_facturer = 7;  // 生产厂家
+  string  voltage = 8;  // 电压
+  string  capacity = 9;  // 容量
+}
+
+// TpmtAsset 分页查询返回
+message TpmtAssetListResp{
+  int64  total = 1;  // 总数
+  repeated  TpmtAssetListData list = 2;  // 内容
+}
+
+// TpmtAsset 列表信息
+message TpmtAssetListData{
+  string  id = 1;  // 资产ID
+  int64   asset_type = 2;  // 资产类型
+  string  asset_code = 3;  // 资产编号
+  string  asset_name = 4;  // 资产名称
+  string  asset_model = 5;  // 资产型号
+  string  manu_facturer = 6;  // 生产厂家
+  string  voltage = 7;  // 电压
+  string  capacity = 8;  // 容量
+  int64   created_at = 9;  // 创建时间
+  string  created_name = 10;  // 创建人
+  int64   updated_at = 11;  // 更新时间
+  string  updated_name = 12;  // 更新人
+}
+
+//TpmtAsset end---------------------
+
+
+
+//TpmtGateway start-------------------
+
+// TpmtGateway 添加
+message TpmtGatewayAddReq{
+  string  created_name = 1;  // 创建人
+  string  gateway_name = 2;  // 网关名称
+  string  gateway_model = 3;  // 网关型号
+  string  manu_facturer = 4;  // 生产厂家
+  int64   agreement = 5;  // 协议 默认1:modbus
+  int64   baud_rate = 6;  // 波特率
+  string  parity = 7;  // 校验
+  int64   data_bits = 8;  // 数据位
+  int64   stop_bits = 9;  // 停止位
+  string  com_port = 10;  // com端口
+  int64   address_code = 11;  // 地址码
+}
+
+// TpmtGateway 删除
+message TpmtGatewayDeleteReq{
+  string  id = 1;  // 采集器ID/网关
+}
+
+// TpmtGateway 更新
+message TpmtGatewayUpdateReq{
+  string  id = 1;  // 采集器ID/网关
+  string  updated_name = 2;  // 更新人
+  string  gateway_name = 3;  // 网关名称
+  string  gateway_model = 4;  // 网关型号
+  string  manu_facturer = 5;  // 生产厂家
+  int64   agreement = 6;  // 协议 默认1:modbus
+  int64   baud_rate = 7;  // 波特率
+  string  parity = 8;  // 校验
+  int64   data_bits = 9;  // 数据位
+  int64   stop_bits = 10;  // 停止位
+  string  com_port = 11;  // com端口
+  int64   address_code = 12;  // 地址码
+}
+
+// TpmtGateway 单个查询
+message TpmtGatewayFindOneReq{
+  string  id = 1;  // 采集器ID/网关
+}
+
+// TpmtGateway 单个查询返回
+message TpmtGatewayFindOneResp{
+  string  id = 1;  // 采集器ID/网关
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  gateway_name = 6;  // 网关名称
+  string  gateway_model = 7;  // 网关型号
+  string  manu_facturer = 8;  // 生产厂家
+  int64   agreement = 9;  // 协议 默认1:modbus
+  int64   baud_rate = 10;  // 波特率
+  string  parity = 11;  // 校验
+  int64   data_bits = 12;  // 数据位
+  int64   stop_bits = 13;  // 停止位
+  string  com_port = 14;  // com端口
+  int64   address_code = 15;  // 地址码
+}
+
+
+// TpmtGateway 分页查询
+message TpmtGatewayListReq{
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  string  gateway_name = 3;  // 网关名称
+  string  gateway_model = 4;  // 网关型号
+  string  manu_facturer = 5;  // 生产厂家
+  int64   agreement = 6;  // 协议 默认1:modbus
+  int64   baud_rate = 7;  // 波特率
+  string  parity = 8;  // 校验
+  int64   data_bits = 9;  // 数据位
+  int64   stop_bits = 10;  // 停止位
+  string  com_port = 11;  // com端口
+  int64   address_code = 12;  // 地址码
+}
+
+// TpmtGateway 分页查询返回
+message TpmtGatewayListResp{
+  int64  total = 1;  // 总数
+  repeated  TpmtGatewayListData list = 2;  // 内容
+}
+
+// TpmtGateway 列表信息
+message TpmtGatewayListData{
+  string  id = 1;  // 采集器ID/网关
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  gateway_name = 6;  // 网关名称
+  string  gateway_model = 7;  // 网关型号
+  string  manu_facturer = 8;  // 生产厂家
+  int64   agreement = 9;  // 协议 默认1:modbus
+  int64   baud_rate = 10;  // 波特率
+  string  parity = 11;  // 校验
+  int64   data_bits = 12;  // 数据位
+  int64   stop_bits = 13;  // 停止位
+  string  com_port = 14;  // com端口
+  int64   address_code = 15;  // 地址码
+}
+
+//TpmtGateway end---------------------
+
+
+
 service Tpmt {
 
-	// 用户登录
-	rpc SysLogin(SysLoginReq) returns(SysUserFindOneResp);
+  // 用户登录
+  rpc SysLogin(SysLoginReq) returns(SysUserFindOneResp);
 
-	// 用户
+  // 用户
   rpc SysUserAdd(SysUserAddReq) returns(CommonResp);
   rpc SysUserDelete(SysUserDeleteReq) returns(CommonResp);
   rpc SysUserUpdate(SysUserUpdateReq) returns(CommonResp);
   rpc SysUserFindOne(SysUserFindOneReq) returns(SysUserFindOneResp);
   rpc SysUserList(SysUserListReq) returns(SysUserListResp);
 
-	// 重置用户密码
-	rpc SysUserResetPwd(SysUserResetPwdReq) returns(SysUserResetPwdResp);
+  // 重置用户密码
+  rpc SysUserResetPwd(SysUserResetPwdReq) returns(SysUserResetPwdResp);
 
-	// 用户修改自己的密码
-	rpc SysUserUpMyPwd(SysUserUpMyPwdReq) returns(CommonResp);
+  // 用户修改自己的密码
+  rpc SysUserUpMyPwd(SysUserUpMyPwdReq) returns(CommonResp);
 
-
-	// 角色
-	rpc SysRoleAdd(SysRoleAddReq) returns(CommonResp);
-	rpc SysRoleDelete(SysRoleDeleteReq) returns(CommonResp);
-	rpc SysRoleUpdate(SysRoleUpdateReq) returns(CommonResp);
-	rpc SysRoleFindOne(SysRoleFindOneReq) returns(SysRoleFindOneResp);
-	rpc SysRoleList(SysRoleListReq) returns(SysRoleListResp);
-
-
-	// 菜单
-	rpc SysMenuAdd(SysMenuAddReq) returns(CommonResp);
-	rpc SysMenuDelete(SysMenuDeleteReq) returns(CommonResp);
-	rpc SysMenuUpdate(SysMenuUpdateReq) returns(CommonResp);
-	rpc SysMenuFindOne(SysMenuFindOneReq) returns(SysMenuFindOneResp);
-	rpc SysMenuList(SysMenuListReq) returns(SysMenuListResp);
-
-	// 通过角色ID获取菜单信息
-	rpc SysMenuByRoleId(SysMenuByRoleIdReq) returns(SysMenuByRoleIdResp);
+  // 第三方用户
+  rpc SysAuthAdd(SysAuthAddReq) returns(CommonResp);
+  rpc SysAuthDelete(SysAuthDeleteReq) returns(CommonResp);
+  rpc SysAuthUpdate(SysAuthUpdateReq) returns(CommonResp);
+  rpc SysAuthFindOne(SysAuthFindOneReq) returns(SysAuthFindOneResp);
+  rpc SysAuthList(SysAuthListReq) returns(SysAuthListResp);
 
 
-	// 接口
-	rpc SysInterfaceAdd(SysInterfaceAddReq) returns(CommonResp);
-	rpc SysInterfaceDelete(SysInterfaceDeleteReq) returns(CommonResp);
-	rpc SysInterfaceUpdate(SysInterfaceUpdateReq) returns(CommonResp);
-	rpc SysInterfaceFindOne(SysInterfaceFindOneReq) returns(SysInterfaceFindOneResp);
-	rpc SysInterfaceList(SysInterfaceListReq) returns(SysInterfaceListResp);
+  // 角色
+  rpc SysRoleAdd(SysRoleAddReq) returns(CommonResp);
+  rpc SysRoleDelete(SysRoleDeleteReq) returns(CommonResp);
+  rpc SysRoleUpdate(SysRoleUpdateReq) returns(CommonResp);
+  rpc SysRoleFindOne(SysRoleFindOneReq) returns(SysRoleFindOneResp);
+  rpc SysRoleList(SysRoleListReq) returns(SysRoleListResp);
 
-	// 通过角色ID获取接口信息
-	rpc SysInterfaceByRoleId(SysInterfaceByRoleIdReq) returns(SysInterfaceByRoleIdResp);
+
+  // 菜单
+  rpc SysMenuAdd(SysMenuAddReq) returns(CommonResp);
+  rpc SysMenuDelete(SysMenuDeleteReq) returns(CommonResp);
+  rpc SysMenuUpdate(SysMenuUpdateReq) returns(CommonResp);
+  rpc SysMenuFindOne(SysMenuFindOneReq) returns(SysMenuFindOneResp);
+  rpc SysMenuList(SysMenuListReq) returns(SysMenuListResp);
+
+  // 通过角色ID获取菜单信息
+  rpc SysMenuByRoleId(SysMenuByRoleIdReq) returns(SysMenuByRoleIdResp);
+
+
+  // 接口
+  rpc SysInterfaceAdd(SysInterfaceAddReq) returns(CommonResp);
+  rpc SysInterfaceDelete(SysInterfaceDeleteReq) returns(CommonResp);
+  rpc SysInterfaceUpdate(SysInterfaceUpdateReq) returns(CommonResp);
+  rpc SysInterfaceFindOne(SysInterfaceFindOneReq) returns(SysInterfaceFindOneResp);
+  rpc SysInterfaceList(SysInterfaceListReq) returns(SysInterfaceListResp);
+
+  // 通过角色ID获取接口信息
+  rpc SysInterfaceByRoleId(SysInterfaceByRoleIdReq) returns(SysInterfaceByRoleIdResp);
+
+  // 字典类型
+  rpc SysDictTypeAdd(SysDictTypeAddReq) returns(CommonResp);
+  rpc SysDictTypeDelete(SysDictTypeDeleteReq) returns(CommonResp);
+  rpc SysDictTypeUpdate(SysDictTypeUpdateReq) returns(CommonResp);
+  rpc SysDictTypeFindOne(SysDictTypeFindOneReq) returns(SysDictTypeFindOneResp);
+  rpc SysDictTypeList(SysDictTypeListReq) returns(SysDictTypeListResp);
+
+  // 字典
+  rpc SysDictAdd(SysDictAddReq) returns(CommonResp);
+  rpc SysDictDelete(SysDictDeleteReq) returns(CommonResp);
+  rpc SysDictUpdate(SysDictUpdateReq) returns(CommonResp);
+  rpc SysDictFindOne(SysDictFindOneReq) returns(SysDictFindOneResp);
+  rpc SysDictList(SysDictListReq) returns(SysDictListResp);
+
+  // 资产
+  rpc TpmtAssetAdd(TpmtAssetAddReq) returns(CommonResp);
+  rpc TpmtAssetDelete(TpmtAssetDeleteReq) returns(CommonResp);
+  rpc TpmtAssetUpdate(TpmtAssetUpdateReq) returns(CommonResp);
+  rpc TpmtAssetFindOne(TpmtAssetFindOneReq) returns(TpmtAssetFindOneResp);
+  rpc TpmtAssetList(TpmtAssetListReq) returns(TpmtAssetListResp);
+
+  // 网关
+  rpc TpmtGatewayAdd(TpmtGatewayAddReq) returns(CommonResp);
+  rpc TpmtGatewayDelete(TpmtGatewayDeleteReq) returns(CommonResp);
+  rpc TpmtGatewayUpdate(TpmtGatewayUpdateReq) returns(CommonResp);
+  rpc TpmtGatewayFindOne(TpmtGatewayFindOneReq) returns(TpmtGatewayFindOneResp);
+  rpc TpmtGatewayList(TpmtGatewayListReq) returns(TpmtGatewayListResp);
 
 }

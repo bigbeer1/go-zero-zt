@@ -1,0 +1,64 @@
+syntax = "v1"
+
+
+type (
+    SysAuthAddRequest {
+		NickName  string  `json:"nick_name,optional"`  // 机构名
+		AuthToken  string  `json:"auth_token,optional"`  // 令牌
+		State  int64  `json:"state,optional"`  // 状态 1:正常 2:停用 3:封禁
+    }
+
+    SysAuthDelRequest {
+		Id  string  `path:"id"`  // 第三方用户ID
+    }
+
+    SysAuthUpRequest {
+		Id  string  `json:"id"`  // 第三方用户ID
+		NickName  string  `json:"nick_name,optional"`  // 机构名
+		AuthToken  string  `json:"auth_token,optional"`  // 令牌
+		State  int64  `json:"state,optional"`  // 状态 1:正常 2:停用 3:封禁      
+    }
+
+
+    SysAuthListRequest {
+		Current  int64  `form:"current,default=1,optional"`  // 页码
+		PageSize  int64  `form:"page_size,default=10,optional"`  // 页数
+		NickName  string  `form:"nick_name,optional"`  // 机构名
+		AuthToken  string  `form:"auth_token,optional"`  // 令牌
+		State  int64  `form:"state,default=99,optional"`  // 状态 1:正常 2:停用 3:封禁       
+    }
+
+    SysAuthInfoRequest {
+		Id  string  `form:"id"`  // 第三方用户ID          
+    }
+
+)
+
+@server(
+    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
+    jwt: Auth
+    group: sysAuth
+)
+
+service Tpmt {
+
+    // 添加
+    @handler SysAuthAdd
+    post /tpmt/sysAuth (SysAuthAddRequest) returns (Response)
+
+    // 删除
+    @handler SysAuthDel
+    delete /tpmt/sysAuth/:id (SysAuthDelRequest) returns (Response)
+
+    // 更新
+    @handler SysAuthUp
+    put /tpmt/sysAuth (SysAuthUpRequest) returns (Response)
+
+    // 分页查询
+    @handler SysAuthList
+    get /tpmt/sysAuth (SysAuthListRequest) returns (Response)
+
+    // 查询详细信息
+    @handler SysAuthInfo
+    get /tpmt/sysAuthInfo (SysAuthInfoRequest) returns (Response)
+}

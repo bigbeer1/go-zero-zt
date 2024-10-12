@@ -37,6 +37,7 @@ func (l *SysUserAddLogic) SysUserAdd(req *types.SysUserAddRequest) (resp *types.
 		Password:    req.Password,       // 密码
 		State:       req.State,          // 状态 1:正常 2:停用 3:封禁
 		CreatedName: tokenData.NickName, // 创建人
+		RoleId:      req.RoldId,         // 角色ID
 	})
 
 	if err != nil {

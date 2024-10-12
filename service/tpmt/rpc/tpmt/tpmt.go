@@ -15,6 +15,30 @@ import (
 
 type (
 	CommonResp               = tpmtclient.CommonResp
+	SysAuthAddReq            = tpmtclient.SysAuthAddReq
+	SysAuthDeleteReq         = tpmtclient.SysAuthDeleteReq
+	SysAuthFindOneReq        = tpmtclient.SysAuthFindOneReq
+	SysAuthFindOneResp       = tpmtclient.SysAuthFindOneResp
+	SysAuthListData          = tpmtclient.SysAuthListData
+	SysAuthListReq           = tpmtclient.SysAuthListReq
+	SysAuthListResp          = tpmtclient.SysAuthListResp
+	SysAuthUpdateReq         = tpmtclient.SysAuthUpdateReq
+	SysDictAddReq            = tpmtclient.SysDictAddReq
+	SysDictDeleteReq         = tpmtclient.SysDictDeleteReq
+	SysDictFindOneReq        = tpmtclient.SysDictFindOneReq
+	SysDictFindOneResp       = tpmtclient.SysDictFindOneResp
+	SysDictListData          = tpmtclient.SysDictListData
+	SysDictListReq           = tpmtclient.SysDictListReq
+	SysDictListResp          = tpmtclient.SysDictListResp
+	SysDictTypeAddReq        = tpmtclient.SysDictTypeAddReq
+	SysDictTypeDeleteReq     = tpmtclient.SysDictTypeDeleteReq
+	SysDictTypeFindOneReq    = tpmtclient.SysDictTypeFindOneReq
+	SysDictTypeFindOneResp   = tpmtclient.SysDictTypeFindOneResp
+	SysDictTypeListData      = tpmtclient.SysDictTypeListData
+	SysDictTypeListReq       = tpmtclient.SysDictTypeListReq
+	SysDictTypeListResp      = tpmtclient.SysDictTypeListResp
+	SysDictTypeUpdateReq     = tpmtclient.SysDictTypeUpdateReq
+	SysDictUpdateReq         = tpmtclient.SysDictUpdateReq
 	SysInterfaceAddReq       = tpmtclient.SysInterfaceAddReq
 	SysInterfaceByRoleIdReq  = tpmtclient.SysInterfaceByRoleIdReq
 	SysInterfaceByRoleIdResp = tpmtclient.SysInterfaceByRoleIdResp
@@ -55,6 +79,22 @@ type (
 	SysUserResetPwdResp      = tpmtclient.SysUserResetPwdResp
 	SysUserUpMyPwdReq        = tpmtclient.SysUserUpMyPwdReq
 	SysUserUpdateReq         = tpmtclient.SysUserUpdateReq
+	TpmtAssetAddReq          = tpmtclient.TpmtAssetAddReq
+	TpmtAssetDeleteReq       = tpmtclient.TpmtAssetDeleteReq
+	TpmtAssetFindOneReq      = tpmtclient.TpmtAssetFindOneReq
+	TpmtAssetFindOneResp     = tpmtclient.TpmtAssetFindOneResp
+	TpmtAssetListData        = tpmtclient.TpmtAssetListData
+	TpmtAssetListReq         = tpmtclient.TpmtAssetListReq
+	TpmtAssetListResp        = tpmtclient.TpmtAssetListResp
+	TpmtAssetUpdateReq       = tpmtclient.TpmtAssetUpdateReq
+	TpmtGatewayAddReq        = tpmtclient.TpmtGatewayAddReq
+	TpmtGatewayDeleteReq     = tpmtclient.TpmtGatewayDeleteReq
+	TpmtGatewayFindOneReq    = tpmtclient.TpmtGatewayFindOneReq
+	TpmtGatewayFindOneResp   = tpmtclient.TpmtGatewayFindOneResp
+	TpmtGatewayListData      = tpmtclient.TpmtGatewayListData
+	TpmtGatewayListReq       = tpmtclient.TpmtGatewayListReq
+	TpmtGatewayListResp      = tpmtclient.TpmtGatewayListResp
+	TpmtGatewayUpdateReq     = tpmtclient.TpmtGatewayUpdateReq
 
 	Tpmt interface {
 		// 用户登录
@@ -69,6 +109,12 @@ type (
 		SysUserResetPwd(ctx context.Context, in *SysUserResetPwdReq, opts ...grpc.CallOption) (*SysUserResetPwdResp, error)
 		// 用户修改自己的密码
 		SysUserUpMyPwd(ctx context.Context, in *SysUserUpMyPwdReq, opts ...grpc.CallOption) (*CommonResp, error)
+		// 第三方用户
+		SysAuthAdd(ctx context.Context, in *SysAuthAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+		SysAuthDelete(ctx context.Context, in *SysAuthDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+		SysAuthUpdate(ctx context.Context, in *SysAuthUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+		SysAuthFindOne(ctx context.Context, in *SysAuthFindOneReq, opts ...grpc.CallOption) (*SysAuthFindOneResp, error)
+		SysAuthList(ctx context.Context, in *SysAuthListReq, opts ...grpc.CallOption) (*SysAuthListResp, error)
 		// 角色
 		SysRoleAdd(ctx context.Context, in *SysRoleAddReq, opts ...grpc.CallOption) (*CommonResp, error)
 		SysRoleDelete(ctx context.Context, in *SysRoleDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
@@ -91,6 +137,30 @@ type (
 		SysInterfaceList(ctx context.Context, in *SysInterfaceListReq, opts ...grpc.CallOption) (*SysInterfaceListResp, error)
 		// 通过角色ID获取接口信息
 		SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdResp, error)
+		// 字典类型
+		SysDictTypeAdd(ctx context.Context, in *SysDictTypeAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+		SysDictTypeDelete(ctx context.Context, in *SysDictTypeDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+		SysDictTypeUpdate(ctx context.Context, in *SysDictTypeUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+		SysDictTypeFindOne(ctx context.Context, in *SysDictTypeFindOneReq, opts ...grpc.CallOption) (*SysDictTypeFindOneResp, error)
+		SysDictTypeList(ctx context.Context, in *SysDictTypeListReq, opts ...grpc.CallOption) (*SysDictTypeListResp, error)
+		// 字典
+		SysDictAdd(ctx context.Context, in *SysDictAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+		SysDictDelete(ctx context.Context, in *SysDictDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+		SysDictUpdate(ctx context.Context, in *SysDictUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+		SysDictFindOne(ctx context.Context, in *SysDictFindOneReq, opts ...grpc.CallOption) (*SysDictFindOneResp, error)
+		SysDictList(ctx context.Context, in *SysDictListReq, opts ...grpc.CallOption) (*SysDictListResp, error)
+		// 资产
+		TpmtAssetAdd(ctx context.Context, in *TpmtAssetAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtAssetDelete(ctx context.Context, in *TpmtAssetDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtAssetUpdate(ctx context.Context, in *TpmtAssetUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtAssetFindOne(ctx context.Context, in *TpmtAssetFindOneReq, opts ...grpc.CallOption) (*TpmtAssetFindOneResp, error)
+		TpmtAssetList(ctx context.Context, in *TpmtAssetListReq, opts ...grpc.CallOption) (*TpmtAssetListResp, error)
+		// 网关
+		TpmtGatewayAdd(ctx context.Context, in *TpmtGatewayAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtGatewayDelete(ctx context.Context, in *TpmtGatewayDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtGatewayUpdate(ctx context.Context, in *TpmtGatewayUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtGatewayFindOne(ctx context.Context, in *TpmtGatewayFindOneReq, opts ...grpc.CallOption) (*TpmtGatewayFindOneResp, error)
+		TpmtGatewayList(ctx context.Context, in *TpmtGatewayListReq, opts ...grpc.CallOption) (*TpmtGatewayListResp, error)
 	}
 
 	defaultTpmt struct {
@@ -146,6 +216,32 @@ func (m *defaultTpmt) SysUserResetPwd(ctx context.Context, in *SysUserResetPwdRe
 func (m *defaultTpmt) SysUserUpMyPwd(ctx context.Context, in *SysUserUpMyPwdReq, opts ...grpc.CallOption) (*CommonResp, error) {
 	client := tpmtclient.NewTpmtClient(m.cli.Conn())
 	return client.SysUserUpMyPwd(ctx, in, opts...)
+}
+
+// 第三方用户
+func (m *defaultTpmt) SysAuthAdd(ctx context.Context, in *SysAuthAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysAuthAdd(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysAuthDelete(ctx context.Context, in *SysAuthDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysAuthDelete(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysAuthUpdate(ctx context.Context, in *SysAuthUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysAuthUpdate(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysAuthFindOne(ctx context.Context, in *SysAuthFindOneReq, opts ...grpc.CallOption) (*SysAuthFindOneResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysAuthFindOne(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysAuthList(ctx context.Context, in *SysAuthListReq, opts ...grpc.CallOption) (*SysAuthListResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysAuthList(ctx, in, opts...)
 }
 
 // 角色
@@ -236,4 +332,108 @@ func (m *defaultTpmt) SysInterfaceList(ctx context.Context, in *SysInterfaceList
 func (m *defaultTpmt) SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdResp, error) {
 	client := tpmtclient.NewTpmtClient(m.cli.Conn())
 	return client.SysInterfaceByRoleId(ctx, in, opts...)
+}
+
+// 字典类型
+func (m *defaultTpmt) SysDictTypeAdd(ctx context.Context, in *SysDictTypeAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysDictTypeAdd(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysDictTypeDelete(ctx context.Context, in *SysDictTypeDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysDictTypeDelete(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysDictTypeUpdate(ctx context.Context, in *SysDictTypeUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysDictTypeUpdate(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysDictTypeFindOne(ctx context.Context, in *SysDictTypeFindOneReq, opts ...grpc.CallOption) (*SysDictTypeFindOneResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysDictTypeFindOne(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysDictTypeList(ctx context.Context, in *SysDictTypeListReq, opts ...grpc.CallOption) (*SysDictTypeListResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysDictTypeList(ctx, in, opts...)
+}
+
+// 字典
+func (m *defaultTpmt) SysDictAdd(ctx context.Context, in *SysDictAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysDictAdd(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysDictDelete(ctx context.Context, in *SysDictDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysDictDelete(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysDictUpdate(ctx context.Context, in *SysDictUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysDictUpdate(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysDictFindOne(ctx context.Context, in *SysDictFindOneReq, opts ...grpc.CallOption) (*SysDictFindOneResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysDictFindOne(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) SysDictList(ctx context.Context, in *SysDictListReq, opts ...grpc.CallOption) (*SysDictListResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.SysDictList(ctx, in, opts...)
+}
+
+// 资产
+func (m *defaultTpmt) TpmtAssetAdd(ctx context.Context, in *TpmtAssetAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtAssetAdd(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtAssetDelete(ctx context.Context, in *TpmtAssetDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtAssetDelete(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtAssetUpdate(ctx context.Context, in *TpmtAssetUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtAssetUpdate(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtAssetFindOne(ctx context.Context, in *TpmtAssetFindOneReq, opts ...grpc.CallOption) (*TpmtAssetFindOneResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtAssetFindOne(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtAssetList(ctx context.Context, in *TpmtAssetListReq, opts ...grpc.CallOption) (*TpmtAssetListResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtAssetList(ctx, in, opts...)
+}
+
+// 网关
+func (m *defaultTpmt) TpmtGatewayAdd(ctx context.Context, in *TpmtGatewayAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtGatewayAdd(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtGatewayDelete(ctx context.Context, in *TpmtGatewayDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtGatewayDelete(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtGatewayUpdate(ctx context.Context, in *TpmtGatewayUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtGatewayUpdate(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtGatewayFindOne(ctx context.Context, in *TpmtGatewayFindOneReq, opts ...grpc.CallOption) (*TpmtGatewayFindOneResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtGatewayFindOne(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtGatewayList(ctx context.Context, in *TpmtGatewayListReq, opts ...grpc.CallOption) (*TpmtGatewayListResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtGatewayList(ctx, in, opts...)
 }

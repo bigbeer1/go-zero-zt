@@ -30,6 +30,12 @@ type TpmtClient interface {
 	SysUserResetPwd(ctx context.Context, in *SysUserResetPwdReq, opts ...grpc.CallOption) (*SysUserResetPwdResp, error)
 	// 用户修改自己的密码
 	SysUserUpMyPwd(ctx context.Context, in *SysUserUpMyPwdReq, opts ...grpc.CallOption) (*CommonResp, error)
+	// 第三方用户
+	SysAuthAdd(ctx context.Context, in *SysAuthAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysAuthDelete(ctx context.Context, in *SysAuthDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysAuthUpdate(ctx context.Context, in *SysAuthUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysAuthFindOne(ctx context.Context, in *SysAuthFindOneReq, opts ...grpc.CallOption) (*SysAuthFindOneResp, error)
+	SysAuthList(ctx context.Context, in *SysAuthListReq, opts ...grpc.CallOption) (*SysAuthListResp, error)
 	// 角色
 	SysRoleAdd(ctx context.Context, in *SysRoleAddReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysRoleDelete(ctx context.Context, in *SysRoleDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
@@ -52,6 +58,30 @@ type TpmtClient interface {
 	SysInterfaceList(ctx context.Context, in *SysInterfaceListReq, opts ...grpc.CallOption) (*SysInterfaceListResp, error)
 	// 通过角色ID获取接口信息
 	SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdResp, error)
+	// 字典类型
+	SysDictTypeAdd(ctx context.Context, in *SysDictTypeAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysDictTypeDelete(ctx context.Context, in *SysDictTypeDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysDictTypeUpdate(ctx context.Context, in *SysDictTypeUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysDictTypeFindOne(ctx context.Context, in *SysDictTypeFindOneReq, opts ...grpc.CallOption) (*SysDictTypeFindOneResp, error)
+	SysDictTypeList(ctx context.Context, in *SysDictTypeListReq, opts ...grpc.CallOption) (*SysDictTypeListResp, error)
+	// 字典
+	SysDictAdd(ctx context.Context, in *SysDictAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysDictDelete(ctx context.Context, in *SysDictDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysDictUpdate(ctx context.Context, in *SysDictUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+	SysDictFindOne(ctx context.Context, in *SysDictFindOneReq, opts ...grpc.CallOption) (*SysDictFindOneResp, error)
+	SysDictList(ctx context.Context, in *SysDictListReq, opts ...grpc.CallOption) (*SysDictListResp, error)
+	// 资产
+	TpmtAssetAdd(ctx context.Context, in *TpmtAssetAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+	TpmtAssetDelete(ctx context.Context, in *TpmtAssetDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+	TpmtAssetUpdate(ctx context.Context, in *TpmtAssetUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+	TpmtAssetFindOne(ctx context.Context, in *TpmtAssetFindOneReq, opts ...grpc.CallOption) (*TpmtAssetFindOneResp, error)
+	TpmtAssetList(ctx context.Context, in *TpmtAssetListReq, opts ...grpc.CallOption) (*TpmtAssetListResp, error)
+	// 网关
+	TpmtGatewayAdd(ctx context.Context, in *TpmtGatewayAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+	TpmtGatewayDelete(ctx context.Context, in *TpmtGatewayDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+	TpmtGatewayUpdate(ctx context.Context, in *TpmtGatewayUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+	TpmtGatewayFindOne(ctx context.Context, in *TpmtGatewayFindOneReq, opts ...grpc.CallOption) (*TpmtGatewayFindOneResp, error)
+	TpmtGatewayList(ctx context.Context, in *TpmtGatewayListReq, opts ...grpc.CallOption) (*TpmtGatewayListResp, error)
 }
 
 type tpmtClient struct {
@@ -128,6 +158,51 @@ func (c *tpmtClient) SysUserResetPwd(ctx context.Context, in *SysUserResetPwdReq
 func (c *tpmtClient) SysUserUpMyPwd(ctx context.Context, in *SysUserUpMyPwdReq, opts ...grpc.CallOption) (*CommonResp, error) {
 	out := new(CommonResp)
 	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysUserUpMyPwd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysAuthAdd(ctx context.Context, in *SysAuthAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysAuthAdd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysAuthDelete(ctx context.Context, in *SysAuthDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysAuthDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysAuthUpdate(ctx context.Context, in *SysAuthUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysAuthUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysAuthFindOne(ctx context.Context, in *SysAuthFindOneReq, opts ...grpc.CallOption) (*SysAuthFindOneResp, error) {
+	out := new(SysAuthFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysAuthFindOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysAuthList(ctx context.Context, in *SysAuthListReq, opts ...grpc.CallOption) (*SysAuthListResp, error) {
+	out := new(SysAuthListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysAuthList", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -287,6 +362,186 @@ func (c *tpmtClient) SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceB
 	return out, nil
 }
 
+func (c *tpmtClient) SysDictTypeAdd(ctx context.Context, in *SysDictTypeAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysDictTypeAdd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysDictTypeDelete(ctx context.Context, in *SysDictTypeDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysDictTypeDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysDictTypeUpdate(ctx context.Context, in *SysDictTypeUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysDictTypeUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysDictTypeFindOne(ctx context.Context, in *SysDictTypeFindOneReq, opts ...grpc.CallOption) (*SysDictTypeFindOneResp, error) {
+	out := new(SysDictTypeFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysDictTypeFindOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysDictTypeList(ctx context.Context, in *SysDictTypeListReq, opts ...grpc.CallOption) (*SysDictTypeListResp, error) {
+	out := new(SysDictTypeListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysDictTypeList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysDictAdd(ctx context.Context, in *SysDictAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysDictAdd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysDictDelete(ctx context.Context, in *SysDictDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysDictDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysDictUpdate(ctx context.Context, in *SysDictUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysDictUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysDictFindOne(ctx context.Context, in *SysDictFindOneReq, opts ...grpc.CallOption) (*SysDictFindOneResp, error) {
+	out := new(SysDictFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysDictFindOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) SysDictList(ctx context.Context, in *SysDictListReq, opts ...grpc.CallOption) (*SysDictListResp, error) {
+	out := new(SysDictListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/SysDictList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtAssetAdd(ctx context.Context, in *TpmtAssetAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtAssetAdd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtAssetDelete(ctx context.Context, in *TpmtAssetDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtAssetDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtAssetUpdate(ctx context.Context, in *TpmtAssetUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtAssetUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtAssetFindOne(ctx context.Context, in *TpmtAssetFindOneReq, opts ...grpc.CallOption) (*TpmtAssetFindOneResp, error) {
+	out := new(TpmtAssetFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtAssetFindOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtAssetList(ctx context.Context, in *TpmtAssetListReq, opts ...grpc.CallOption) (*TpmtAssetListResp, error) {
+	out := new(TpmtAssetListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtAssetList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtGatewayAdd(ctx context.Context, in *TpmtGatewayAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtGatewayAdd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtGatewayDelete(ctx context.Context, in *TpmtGatewayDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtGatewayDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtGatewayUpdate(ctx context.Context, in *TpmtGatewayUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtGatewayUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtGatewayFindOne(ctx context.Context, in *TpmtGatewayFindOneReq, opts ...grpc.CallOption) (*TpmtGatewayFindOneResp, error) {
+	out := new(TpmtGatewayFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtGatewayFindOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtGatewayList(ctx context.Context, in *TpmtGatewayListReq, opts ...grpc.CallOption) (*TpmtGatewayListResp, error) {
+	out := new(TpmtGatewayListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtGatewayList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TpmtServer is the server API for Tpmt service.
 // All implementations must embed UnimplementedTpmtServer
 // for forward compatibility
@@ -303,6 +558,12 @@ type TpmtServer interface {
 	SysUserResetPwd(context.Context, *SysUserResetPwdReq) (*SysUserResetPwdResp, error)
 	// 用户修改自己的密码
 	SysUserUpMyPwd(context.Context, *SysUserUpMyPwdReq) (*CommonResp, error)
+	// 第三方用户
+	SysAuthAdd(context.Context, *SysAuthAddReq) (*CommonResp, error)
+	SysAuthDelete(context.Context, *SysAuthDeleteReq) (*CommonResp, error)
+	SysAuthUpdate(context.Context, *SysAuthUpdateReq) (*CommonResp, error)
+	SysAuthFindOne(context.Context, *SysAuthFindOneReq) (*SysAuthFindOneResp, error)
+	SysAuthList(context.Context, *SysAuthListReq) (*SysAuthListResp, error)
 	// 角色
 	SysRoleAdd(context.Context, *SysRoleAddReq) (*CommonResp, error)
 	SysRoleDelete(context.Context, *SysRoleDeleteReq) (*CommonResp, error)
@@ -325,6 +586,30 @@ type TpmtServer interface {
 	SysInterfaceList(context.Context, *SysInterfaceListReq) (*SysInterfaceListResp, error)
 	// 通过角色ID获取接口信息
 	SysInterfaceByRoleId(context.Context, *SysInterfaceByRoleIdReq) (*SysInterfaceByRoleIdResp, error)
+	// 字典类型
+	SysDictTypeAdd(context.Context, *SysDictTypeAddReq) (*CommonResp, error)
+	SysDictTypeDelete(context.Context, *SysDictTypeDeleteReq) (*CommonResp, error)
+	SysDictTypeUpdate(context.Context, *SysDictTypeUpdateReq) (*CommonResp, error)
+	SysDictTypeFindOne(context.Context, *SysDictTypeFindOneReq) (*SysDictTypeFindOneResp, error)
+	SysDictTypeList(context.Context, *SysDictTypeListReq) (*SysDictTypeListResp, error)
+	// 字典
+	SysDictAdd(context.Context, *SysDictAddReq) (*CommonResp, error)
+	SysDictDelete(context.Context, *SysDictDeleteReq) (*CommonResp, error)
+	SysDictUpdate(context.Context, *SysDictUpdateReq) (*CommonResp, error)
+	SysDictFindOne(context.Context, *SysDictFindOneReq) (*SysDictFindOneResp, error)
+	SysDictList(context.Context, *SysDictListReq) (*SysDictListResp, error)
+	// 资产
+	TpmtAssetAdd(context.Context, *TpmtAssetAddReq) (*CommonResp, error)
+	TpmtAssetDelete(context.Context, *TpmtAssetDeleteReq) (*CommonResp, error)
+	TpmtAssetUpdate(context.Context, *TpmtAssetUpdateReq) (*CommonResp, error)
+	TpmtAssetFindOne(context.Context, *TpmtAssetFindOneReq) (*TpmtAssetFindOneResp, error)
+	TpmtAssetList(context.Context, *TpmtAssetListReq) (*TpmtAssetListResp, error)
+	// 网关
+	TpmtGatewayAdd(context.Context, *TpmtGatewayAddReq) (*CommonResp, error)
+	TpmtGatewayDelete(context.Context, *TpmtGatewayDeleteReq) (*CommonResp, error)
+	TpmtGatewayUpdate(context.Context, *TpmtGatewayUpdateReq) (*CommonResp, error)
+	TpmtGatewayFindOne(context.Context, *TpmtGatewayFindOneReq) (*TpmtGatewayFindOneResp, error)
+	TpmtGatewayList(context.Context, *TpmtGatewayListReq) (*TpmtGatewayListResp, error)
 	mustEmbedUnimplementedTpmtServer()
 }
 
@@ -355,6 +640,21 @@ func (UnimplementedTpmtServer) SysUserResetPwd(context.Context, *SysUserResetPwd
 }
 func (UnimplementedTpmtServer) SysUserUpMyPwd(context.Context, *SysUserUpMyPwdReq) (*CommonResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysUserUpMyPwd not implemented")
+}
+func (UnimplementedTpmtServer) SysAuthAdd(context.Context, *SysAuthAddReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysAuthAdd not implemented")
+}
+func (UnimplementedTpmtServer) SysAuthDelete(context.Context, *SysAuthDeleteReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysAuthDelete not implemented")
+}
+func (UnimplementedTpmtServer) SysAuthUpdate(context.Context, *SysAuthUpdateReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysAuthUpdate not implemented")
+}
+func (UnimplementedTpmtServer) SysAuthFindOne(context.Context, *SysAuthFindOneReq) (*SysAuthFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysAuthFindOne not implemented")
+}
+func (UnimplementedTpmtServer) SysAuthList(context.Context, *SysAuthListReq) (*SysAuthListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysAuthList not implemented")
 }
 func (UnimplementedTpmtServer) SysRoleAdd(context.Context, *SysRoleAddReq) (*CommonResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysRoleAdd not implemented")
@@ -406,6 +706,66 @@ func (UnimplementedTpmtServer) SysInterfaceList(context.Context, *SysInterfaceLi
 }
 func (UnimplementedTpmtServer) SysInterfaceByRoleId(context.Context, *SysInterfaceByRoleIdReq) (*SysInterfaceByRoleIdResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceByRoleId not implemented")
+}
+func (UnimplementedTpmtServer) SysDictTypeAdd(context.Context, *SysDictTypeAddReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysDictTypeAdd not implemented")
+}
+func (UnimplementedTpmtServer) SysDictTypeDelete(context.Context, *SysDictTypeDeleteReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysDictTypeDelete not implemented")
+}
+func (UnimplementedTpmtServer) SysDictTypeUpdate(context.Context, *SysDictTypeUpdateReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysDictTypeUpdate not implemented")
+}
+func (UnimplementedTpmtServer) SysDictTypeFindOne(context.Context, *SysDictTypeFindOneReq) (*SysDictTypeFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysDictTypeFindOne not implemented")
+}
+func (UnimplementedTpmtServer) SysDictTypeList(context.Context, *SysDictTypeListReq) (*SysDictTypeListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysDictTypeList not implemented")
+}
+func (UnimplementedTpmtServer) SysDictAdd(context.Context, *SysDictAddReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysDictAdd not implemented")
+}
+func (UnimplementedTpmtServer) SysDictDelete(context.Context, *SysDictDeleteReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysDictDelete not implemented")
+}
+func (UnimplementedTpmtServer) SysDictUpdate(context.Context, *SysDictUpdateReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysDictUpdate not implemented")
+}
+func (UnimplementedTpmtServer) SysDictFindOne(context.Context, *SysDictFindOneReq) (*SysDictFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysDictFindOne not implemented")
+}
+func (UnimplementedTpmtServer) SysDictList(context.Context, *SysDictListReq) (*SysDictListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysDictList not implemented")
+}
+func (UnimplementedTpmtServer) TpmtAssetAdd(context.Context, *TpmtAssetAddReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtAssetAdd not implemented")
+}
+func (UnimplementedTpmtServer) TpmtAssetDelete(context.Context, *TpmtAssetDeleteReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtAssetDelete not implemented")
+}
+func (UnimplementedTpmtServer) TpmtAssetUpdate(context.Context, *TpmtAssetUpdateReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtAssetUpdate not implemented")
+}
+func (UnimplementedTpmtServer) TpmtAssetFindOne(context.Context, *TpmtAssetFindOneReq) (*TpmtAssetFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtAssetFindOne not implemented")
+}
+func (UnimplementedTpmtServer) TpmtAssetList(context.Context, *TpmtAssetListReq) (*TpmtAssetListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtAssetList not implemented")
+}
+func (UnimplementedTpmtServer) TpmtGatewayAdd(context.Context, *TpmtGatewayAddReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtGatewayAdd not implemented")
+}
+func (UnimplementedTpmtServer) TpmtGatewayDelete(context.Context, *TpmtGatewayDeleteReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtGatewayDelete not implemented")
+}
+func (UnimplementedTpmtServer) TpmtGatewayUpdate(context.Context, *TpmtGatewayUpdateReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtGatewayUpdate not implemented")
+}
+func (UnimplementedTpmtServer) TpmtGatewayFindOne(context.Context, *TpmtGatewayFindOneReq) (*TpmtGatewayFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtGatewayFindOne not implemented")
+}
+func (UnimplementedTpmtServer) TpmtGatewayList(context.Context, *TpmtGatewayListReq) (*TpmtGatewayListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtGatewayList not implemented")
 }
 func (UnimplementedTpmtServer) mustEmbedUnimplementedTpmtServer() {}
 
@@ -560,6 +920,96 @@ func _Tpmt_SysUserUpMyPwd_Handler(srv interface{}, ctx context.Context, dec func
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
 		return srv.(TpmtServer).SysUserUpMyPwd(ctx, req.(*SysUserUpMyPwdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysAuthAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysAuthAddReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysAuthAdd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysAuthAdd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysAuthAdd(ctx, req.(*SysAuthAddReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysAuthDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysAuthDeleteReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysAuthDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysAuthDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysAuthDelete(ctx, req.(*SysAuthDeleteReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysAuthUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysAuthUpdateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysAuthUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysAuthUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysAuthUpdate(ctx, req.(*SysAuthUpdateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysAuthFindOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysAuthFindOneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysAuthFindOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysAuthFindOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysAuthFindOne(ctx, req.(*SysAuthFindOneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysAuthList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysAuthListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysAuthList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysAuthList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysAuthList(ctx, req.(*SysAuthListReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -870,6 +1320,366 @@ func _Tpmt_SysInterfaceByRoleId_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tpmt_SysDictTypeAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysDictTypeAddReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysDictTypeAdd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysDictTypeAdd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysDictTypeAdd(ctx, req.(*SysDictTypeAddReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysDictTypeDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysDictTypeDeleteReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysDictTypeDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysDictTypeDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysDictTypeDelete(ctx, req.(*SysDictTypeDeleteReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysDictTypeUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysDictTypeUpdateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysDictTypeUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysDictTypeUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysDictTypeUpdate(ctx, req.(*SysDictTypeUpdateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysDictTypeFindOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysDictTypeFindOneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysDictTypeFindOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysDictTypeFindOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysDictTypeFindOne(ctx, req.(*SysDictTypeFindOneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysDictTypeList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysDictTypeListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysDictTypeList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysDictTypeList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysDictTypeList(ctx, req.(*SysDictTypeListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysDictAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysDictAddReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysDictAdd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysDictAdd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysDictAdd(ctx, req.(*SysDictAddReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysDictDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysDictDeleteReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysDictDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysDictDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysDictDelete(ctx, req.(*SysDictDeleteReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysDictUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysDictUpdateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysDictUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysDictUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysDictUpdate(ctx, req.(*SysDictUpdateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysDictFindOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysDictFindOneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysDictFindOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysDictFindOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysDictFindOne(ctx, req.(*SysDictFindOneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_SysDictList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysDictListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).SysDictList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/SysDictList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).SysDictList(ctx, req.(*SysDictListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtAssetAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtAssetAddReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtAssetAdd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtAssetAdd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtAssetAdd(ctx, req.(*TpmtAssetAddReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtAssetDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtAssetDeleteReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtAssetDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtAssetDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtAssetDelete(ctx, req.(*TpmtAssetDeleteReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtAssetUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtAssetUpdateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtAssetUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtAssetUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtAssetUpdate(ctx, req.(*TpmtAssetUpdateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtAssetFindOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtAssetFindOneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtAssetFindOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtAssetFindOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtAssetFindOne(ctx, req.(*TpmtAssetFindOneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtAssetList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtAssetListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtAssetList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtAssetList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtAssetList(ctx, req.(*TpmtAssetListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtGatewayAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtGatewayAddReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtGatewayAdd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtGatewayAdd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtGatewayAdd(ctx, req.(*TpmtGatewayAddReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtGatewayDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtGatewayDeleteReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtGatewayDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtGatewayDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtGatewayDelete(ctx, req.(*TpmtGatewayDeleteReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtGatewayUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtGatewayUpdateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtGatewayUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtGatewayUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtGatewayUpdate(ctx, req.(*TpmtGatewayUpdateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtGatewayFindOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtGatewayFindOneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtGatewayFindOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtGatewayFindOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtGatewayFindOne(ctx, req.(*TpmtGatewayFindOneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtGatewayList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtGatewayListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtGatewayList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtGatewayList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtGatewayList(ctx, req.(*TpmtGatewayListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Tpmt_ServiceDesc is the grpc.ServiceDesc for Tpmt service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -908,6 +1718,26 @@ var Tpmt_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SysUserUpMyPwd",
 			Handler:    _Tpmt_SysUserUpMyPwd_Handler,
+		},
+		{
+			MethodName: "SysAuthAdd",
+			Handler:    _Tpmt_SysAuthAdd_Handler,
+		},
+		{
+			MethodName: "SysAuthDelete",
+			Handler:    _Tpmt_SysAuthDelete_Handler,
+		},
+		{
+			MethodName: "SysAuthUpdate",
+			Handler:    _Tpmt_SysAuthUpdate_Handler,
+		},
+		{
+			MethodName: "SysAuthFindOne",
+			Handler:    _Tpmt_SysAuthFindOne_Handler,
+		},
+		{
+			MethodName: "SysAuthList",
+			Handler:    _Tpmt_SysAuthList_Handler,
 		},
 		{
 			MethodName: "SysRoleAdd",
@@ -976,6 +1806,86 @@ var Tpmt_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SysInterfaceByRoleId",
 			Handler:    _Tpmt_SysInterfaceByRoleId_Handler,
+		},
+		{
+			MethodName: "SysDictTypeAdd",
+			Handler:    _Tpmt_SysDictTypeAdd_Handler,
+		},
+		{
+			MethodName: "SysDictTypeDelete",
+			Handler:    _Tpmt_SysDictTypeDelete_Handler,
+		},
+		{
+			MethodName: "SysDictTypeUpdate",
+			Handler:    _Tpmt_SysDictTypeUpdate_Handler,
+		},
+		{
+			MethodName: "SysDictTypeFindOne",
+			Handler:    _Tpmt_SysDictTypeFindOne_Handler,
+		},
+		{
+			MethodName: "SysDictTypeList",
+			Handler:    _Tpmt_SysDictTypeList_Handler,
+		},
+		{
+			MethodName: "SysDictAdd",
+			Handler:    _Tpmt_SysDictAdd_Handler,
+		},
+		{
+			MethodName: "SysDictDelete",
+			Handler:    _Tpmt_SysDictDelete_Handler,
+		},
+		{
+			MethodName: "SysDictUpdate",
+			Handler:    _Tpmt_SysDictUpdate_Handler,
+		},
+		{
+			MethodName: "SysDictFindOne",
+			Handler:    _Tpmt_SysDictFindOne_Handler,
+		},
+		{
+			MethodName: "SysDictList",
+			Handler:    _Tpmt_SysDictList_Handler,
+		},
+		{
+			MethodName: "TpmtAssetAdd",
+			Handler:    _Tpmt_TpmtAssetAdd_Handler,
+		},
+		{
+			MethodName: "TpmtAssetDelete",
+			Handler:    _Tpmt_TpmtAssetDelete_Handler,
+		},
+		{
+			MethodName: "TpmtAssetUpdate",
+			Handler:    _Tpmt_TpmtAssetUpdate_Handler,
+		},
+		{
+			MethodName: "TpmtAssetFindOne",
+			Handler:    _Tpmt_TpmtAssetFindOne_Handler,
+		},
+		{
+			MethodName: "TpmtAssetList",
+			Handler:    _Tpmt_TpmtAssetList_Handler,
+		},
+		{
+			MethodName: "TpmtGatewayAdd",
+			Handler:    _Tpmt_TpmtGatewayAdd_Handler,
+		},
+		{
+			MethodName: "TpmtGatewayDelete",
+			Handler:    _Tpmt_TpmtGatewayDelete_Handler,
+		},
+		{
+			MethodName: "TpmtGatewayUpdate",
+			Handler:    _Tpmt_TpmtGatewayUpdate_Handler,
+		},
+		{
+			MethodName: "TpmtGatewayFindOne",
+			Handler:    _Tpmt_TpmtGatewayFindOne_Handler,
+		},
+		{
+			MethodName: "TpmtGatewayList",
+			Handler:    _Tpmt_TpmtGatewayList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
