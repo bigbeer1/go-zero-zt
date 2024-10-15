@@ -31,8 +31,10 @@ var (
 type (
 	sysAuthModel interface {
 		Insert(ctx context.Context, data *SysAuth) (sql.Result, error)
+		TransInsert(ctx context.Context, session sqlx.Session, data *SysAuth) (sql.Result, error)
 		FindOne(ctx context.Context, id string) (*SysAuth, error)
 		Update(ctx context.Context, data *SysAuth) error
+		TransUpdate(ctx context.Context, session sqlx.Session, data *SysAuth) error
 		Delete(ctx context.Context, id string) error
 		FindCount(ctx context.Context, countBuilder squirrel.SelectBuilder) (int64, error)
 		FindList(ctx context.Context, rowBuilder squirrel.SelectBuilder, current, pageSize int64) ([]*SysAuth, error)
@@ -104,11 +106,29 @@ func (m *defaultSysAuthModel) Insert(ctx context.Context, data *SysAuth) (sql.Re
 	return ret, err
 }
 
+func (m *defaultSysAuthModel) TransInsert(ctx context.Context, session sqlx.Session, data *SysAuth) (sql.Result, error) {
+	sysAuthIdKey := fmt.Sprintf("%s%v", cacheSysAuthIdPrefix, data.Id)
+	ret, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+		query := fmt.Sprintf("insert into %s (%s) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", m.table, sysAuthRowsExpectAutoSet)
+		return session.ExecCtx(ctx, query, data.Id, data.CreatedAt, data.UpdatedAt, data.DeletedAt, data.CreatedName, data.UpdatedName, data.DeletedName, data.NickName, data.AuthToken, data.State)
+	}, sysAuthIdKey)
+	return ret, err
+}
+
 func (m *defaultSysAuthModel) Update(ctx context.Context, data *SysAuth) error {
 	sysAuthIdKey := fmt.Sprintf("%s%v", cacheSysAuthIdPrefix, data.Id)
 	_, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, sysAuthRowsWithPlaceHolder)
 		return conn.ExecCtx(ctx, query, data.CreatedAt, data.UpdatedAt, data.DeletedAt, data.CreatedName, data.UpdatedName, data.DeletedName, data.NickName, data.AuthToken, data.State, data.Id)
+	}, sysAuthIdKey)
+	return err
+}
+
+func (m *defaultSysAuthModel) TransUpdate(ctx context.Context, session sqlx.Session, data *SysAuth) error {
+	sysAuthIdKey := fmt.Sprintf("%s%v", cacheSysAuthIdPrefix, data.Id)
+	_, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
+		query := fmt.Sprintf("update %s set %s where `id` = ?", m.table, sysAuthRowsWithPlaceHolder)
+		return session.ExecCtx(ctx, query, data.CreatedAt, data.UpdatedAt, data.DeletedAt, data.CreatedName, data.UpdatedName, data.DeletedName, data.NickName, data.AuthToken, data.State, data.Id)
 	}, sysAuthIdKey)
 	return err
 }

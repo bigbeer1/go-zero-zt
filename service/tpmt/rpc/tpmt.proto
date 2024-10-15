@@ -121,8 +121,8 @@ message SysUserUpMyPwdReq{
 message SysAuthAddReq{
   string  created_name = 1;  // 创建人
   string  nick_name = 2;  // 机构名
-  string  auth_token = 3;  // 令牌
   int64   state = 4;  // 状态 1:正常 2:停用 3:封禁
+  int64   role_id = 5;  // 角色id
 }
 
 // SysAuth 删除
@@ -135,9 +135,8 @@ message SysAuthDeleteReq{
 message SysAuthUpdateReq{
   string  id = 1;  // 第三方用户ID
   string  updated_name = 2;  // 更新人
-  string  nick_name = 3;  // 机构名
-  string  auth_token = 4;  // 令牌
   int64   state = 5;  // 状态 1:正常 2:停用 3:封禁
+  int64   role_id = 6;  // 角色id
 }
 
 // SysAuth 单个查询

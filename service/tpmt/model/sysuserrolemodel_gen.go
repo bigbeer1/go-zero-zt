@@ -26,7 +26,7 @@ var (
 	sysUserRoleRowsWithPlaceHolder = strings.Join(stringx.Remove(sysUserRoleFieldNames, "`id`", "`create_at`", "`create_time`", "`update_at`", "`update_time`"), "=?,") + "=?"
 
 	cacheSysUserRoleIdPrefix         = "cache:sysUserRole:id:"
-	cacheSysUserRoleIdByUserIdPrefix = "cache:sysUserRole:userid:"
+	cacheSysUserRoleIdByUserIdPrefix = "cache:sysUserRole:userid:usertype:"
 )
 
 type (
@@ -34,10 +34,10 @@ type (
 		Insert(ctx context.Context, data *SysUserRole) (sql.Result, error)
 		TransInsert(ctx context.Context, session sqlx.Session, data *SysUserRole) (sql.Result, error)
 		FindOne(ctx context.Context, id int64) (*SysUserRole, error)
-		FindByUserId(ctx context.Context, userId string) (*SysUserRole, error)
+		FindByUserIdAndUserType(ctx context.Context, userId string, userType int64) (*SysUserRole, error)
 		Update(ctx context.Context, data *SysUserRole) error
 		Delete(ctx context.Context, id int64) error
-		TransDelete(ctx context.Context, data *SysUserRole) error
+		TransDelete(ctx context.Context, session sqlx.Session, data *SysUserRole) error
 		FindCount(ctx context.Context, countBuilder squirrel.SelectBuilder) (int64, error)
 		FindList(ctx context.Context, rowBuilder squirrel.SelectBuilder, current, pageSize int64) ([]*SysUserRole, error)
 		RowBuilder() squirrel.SelectBuilder
@@ -77,12 +77,12 @@ func (m *defaultSysUserRoleModel) Delete(ctx context.Context, id int64) error {
 	return err
 }
 
-func (m *defaultSysUserRoleModel) TransDelete(ctx context.Context, data *SysUserRole) error {
+func (m *defaultSysUserRoleModel) TransDelete(ctx context.Context, session sqlx.Session, data *SysUserRole) error {
 	sysUserRoleIdKey := fmt.Sprintf("%s%v", cacheSysUserRoleIdPrefix, data.Id)
-	sysUserRoleIdByUserIdKey := fmt.Sprintf("%s%v", cacheSysUserRoleIdByUserIdPrefix, data.UserId)
+	sysUserRoleIdByUserIdKey := fmt.Sprintf("%s%v:%v", cacheSysUserRoleIdByUserIdPrefix, data.Id, data.UserType)
 	_, err := m.ExecCtx(ctx, func(ctx context.Context, conn sqlx.SqlConn) (result sql.Result, err error) {
 		query := fmt.Sprintf("delete from %s where `id` = ?", m.table)
-		return conn.ExecCtx(ctx, query, data.Id)
+		return session.ExecCtx(ctx, query, data.Id)
 	}, sysUserRoleIdKey, sysUserRoleIdByUserIdKey)
 	return err
 }
@@ -105,8 +105,8 @@ func (m *defaultSysUserRoleModel) FindOne(ctx context.Context, id int64) (*SysUs
 
 }
 
-func (m *defaultSysUserRoleModel) FindByUserId(ctx context.Context, userId string) (*SysUserRole, error) {
-	sysUserRoleIdByUserIdKey := fmt.Sprintf("%s%v", cacheSysUserRoleIdByUserIdPrefix, userId)
+func (m *defaultSysUserRoleModel) FindByUserIdAndUserType(ctx context.Context, userId string, userType int64) (*SysUserRole, error) {
+	sysUserRoleIdByUserIdKey := fmt.Sprintf("%s%v:%v", cacheSysUserRoleIdByUserIdPrefix, userId, userType)
 	var resp SysUserRole
 	err := m.QueryRowCtx(ctx, &resp, sysUserRoleIdByUserIdKey, func(ctx context.Context, conn sqlx.SqlConn, v any) error {
 		query := fmt.Sprintf("select %s from %s where `user_id` = ? limit 1", sysUserRoleRows, m.table)

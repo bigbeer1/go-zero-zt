@@ -91,8 +91,8 @@ func (l *SysUserAddLogic) SysUserAdd(in *tpmtclient.SysUserAddReq) (*tpmtclient.
 				UserId: userId,
 				RoleId: role.Id,
 				UserType: sql.NullInt64{
-					Int64: role.RoleType,
-					Valid: role.RoleType != 0,
+					Int64: 1,
+					Valid: true,
 				},
 				CreatedName: in.CreatedName,
 				CreatedAt:   time.Now(),

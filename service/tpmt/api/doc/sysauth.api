@@ -3,9 +3,9 @@ syntax = "v1"
 
 type (
     SysAuthAddRequest {
-		NickName  string  `json:"nick_name,optional"`  // 机构名
-		AuthToken  string  `json:"auth_token,optional"`  // 令牌
-		State  int64  `json:"state,optional"`  // 状态 1:正常 2:停用 3:封禁
+		NickName  string  `json:"nick_name"`  // 机构名
+		State  int64  `json:"state"`  // 状态 1:正常 2:停用 3:封禁
+        RoldId int64 `json:"role_id,optional"`  // 角色ID
     }
 
     SysAuthDelRequest {
@@ -14,9 +14,8 @@ type (
 
     SysAuthUpRequest {
 		Id  string  `json:"id"`  // 第三方用户ID
-		NickName  string  `json:"nick_name,optional"`  // 机构名
-		AuthToken  string  `json:"auth_token,optional"`  // 令牌
-		State  int64  `json:"state,optional"`  // 状态 1:正常 2:停用 3:封禁      
+		State  int64  `json:"state,optional"`  // 状态 1:正常 2:停用 3:封禁
+        RoldId int64 `json:"role_id"`  // 角色ID
     }
 
 

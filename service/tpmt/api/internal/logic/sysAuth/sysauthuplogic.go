@@ -34,9 +34,8 @@ func (l *SysAuthUpLogic) SysAuthUp(req *types.SysAuthUpRequest) (resp *types.Res
 	_, err = l.svcCtx.TpmtRpc.SysAuthUpdate(l.ctx, &tpmtclient.SysAuthUpdateReq{
 		Id:          req.Id,             // 第三方用户ID
 		UpdatedName: tokenData.NickName, // 更新人
-		NickName:    req.NickName,       // 机构名
-		AuthToken:   req.AuthToken,      // 令牌
 		State:       req.State,          // 状态 1:正常 2:停用 3:封禁
+		RoleId:      req.RoldId,         // 角色ID
 	})
 	if err != nil {
 		return nil, common.NewDefaultError(err.Error())

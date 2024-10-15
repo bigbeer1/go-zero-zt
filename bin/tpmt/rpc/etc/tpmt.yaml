@@ -23,3 +23,8 @@ CacheRedis:
     Pass: "G6200000000"
 
 Salt: "dabenxiong999"
+
+
+Auth:
+  AccessSecret: uOvKLmVfztaX9999999
+  AccessExpire: 86400

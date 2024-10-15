@@ -69,7 +69,7 @@ func (l *SysUserUpdateLogic) SysUserUpdate(in *tpmtclient.SysUserUpdateReq) (*tp
 		}
 
 		// 如果查询用户角色中间表
-		userRole, err := l.svcCtx.SysUserRoleModel.FindByUserId(l.ctx, res.Id)
+		userRole, err := l.svcCtx.SysUserRoleModel.FindByUserIdAndUserType(l.ctx, res.Id, 1)
 		if err != nil {
 			if !errors.Is(err, sqlc.ErrNotFound) {
 				return err
@@ -104,8 +104,8 @@ func (l *SysUserUpdateLogic) SysUserUpdate(in *tpmtclient.SysUserUpdateReq) (*tp
 					UserId: res.Id,
 					RoleId: role.Id,
 					UserType: sql.NullInt64{
-						Int64: role.RoleType,
-						Valid: role.RoleType != 0,
+						Int64: 1,
+						Valid: true,
 					},
 					CreatedName: in.UpdatedName,
 					CreatedAt:   time.Now(),
@@ -121,7 +121,7 @@ func (l *SysUserUpdateLogic) SysUserUpdate(in *tpmtclient.SysUserUpdateReq) (*tp
 				if in.RoleId == 0 {
 					// 直接删除用户角色中间表信息
 					// 删除用户角色中间表信息
-					err := l.svcCtx.SysUserRoleModel.TransDelete(l.ctx, userRole)
+					err := l.svcCtx.SysUserRoleModel.TransDelete(l.ctx, session, userRole)
 					if err != nil {
 						return err
 					}
@@ -146,7 +146,7 @@ func (l *SysUserUpdateLogic) SysUserUpdate(in *tpmtclient.SysUserUpdateReq) (*tp
 					}
 
 					// 删除用户角色中间表信息
-					err = l.svcCtx.SysUserRoleModel.TransDelete(l.ctx, userRole)
+					err = l.svcCtx.SysUserRoleModel.TransDelete(l.ctx, session, userRole)
 					if err != nil {
 						return err
 					}
@@ -157,8 +157,8 @@ func (l *SysUserUpdateLogic) SysUserUpdate(in *tpmtclient.SysUserUpdateReq) (*tp
 						UserId: res.Id,
 						RoleId: role.Id,
 						UserType: sql.NullInt64{
-							Int64: role.RoleType,
-							Valid: role.RoleType != 0,
+							Int64: 1,
+							Valid: true,
 						},
 						CreatedName: in.UpdatedName,
 						CreatedAt:   time.Now(),
