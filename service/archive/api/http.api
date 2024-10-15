@@ -1,0 +1,19 @@
+import "doc/applogger.api"
+
+type (
+	Response {
+		Code int         `json:"code"`
+		Msg  string      `json:"msg"`
+		Data interface{} `json:"data"`
+	}
+)
+
+info (
+	title:      "管理端微服务"
+	author:     "陈国栋"
+	email:      "747321301@qq.com"
+	desc:       "日志微服务"
+	version:    "V1"
+	createTime: "2022-09-28"
+)
+

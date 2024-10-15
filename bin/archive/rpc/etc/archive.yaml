@@ -1,0 +1,19 @@
+Name: archive.rpc
+ListenOn: 0.0.0.0:1102
+Timeout: 3000000
+
+Log:
+  ServiceName: archive-rpc
+  Level: info
+
+Etcd:
+  Hosts:
+    - 127.0.0.1:30000
+  Key: archive.rpc
+
+
+Tdengine:
+  Host: "127.0.0.1"
+  Port: 6041
+  UserName: root
+  Pass: POOTACA93V

@@ -66,6 +66,7 @@ type (
 @server(
     //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
     jwt: Auth
+	middleware: CheckAuth // 路由中间件声明鉴权
     group: sysMenu
 )
 

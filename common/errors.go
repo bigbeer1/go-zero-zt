@@ -2,6 +2,7 @@ package common
 
 import (
 	"strings"
+	"tpmt-zt/common/msg"
 )
 
 const DefaultCode = 1001 // 默认错误
@@ -38,6 +39,10 @@ type CodeError struct {
 	Code int         `json:"code"`
 	Msg  string      `json:"msg"`
 	Data interface{} `json:"data"`
+}
+
+func NewParamError(data interface{}) error {
+	return &CodeError{Code: ParamErrorCode, Msg: msg.ParamError, Data: data}
 }
 
 func NewCodeError(code int, msg string, data interface{}) error {

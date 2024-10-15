@@ -10,6 +10,8 @@ type Config struct {
 
 	TpmtRpc zrpc.RpcClientConf
 
+	ArchiveRpc zrpc.RpcClientConf // 日志RPC
+
 	Auth struct {
 		AccessSecret string
 		AccessExpire int64

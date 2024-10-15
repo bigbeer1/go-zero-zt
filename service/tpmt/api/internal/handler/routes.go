@@ -22,301 +22,331 @@ import (
 
 func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/login",
-				Handler: LoginHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/login",
+					Handler: LoginHandler(serverCtx),
+				},
+			}...,
+		),
 	)
 
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/tpmt/sysAuth",
-				Handler: sysAuth.SysAuthAddHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/sysAuth",
-				Handler: sysAuth.SysAuthUpHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysAuth",
-				Handler: sysAuth.SysAuthListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodDelete,
-				Path:    "/tpmt/sysAuth/:id",
-				Handler: sysAuth.SysAuthDelHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysAuthInfo",
-				Handler: sysAuth.SysAuthInfoHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/tpmt/sysAuth",
+					Handler: sysAuth.SysAuthAddHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/sysAuth",
+					Handler: sysAuth.SysAuthUpHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysAuth",
+					Handler: sysAuth.SysAuthListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodDelete,
+					Path:    "/tpmt/sysAuth/:id",
+					Handler: sysAuth.SysAuthDelHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysAuthInfo",
+					Handler: sysAuth.SysAuthInfoHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/tpmt/sysDict",
-				Handler: sysDict.SysDictAddHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/sysDict",
-				Handler: sysDict.SysDictUpHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysDict",
-				Handler: sysDict.SysDictListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodDelete,
-				Path:    "/tpmt/sysDict/:id",
-				Handler: sysDict.SysDictDelHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/tpmt/sysDict",
+					Handler: sysDict.SysDictAddHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/sysDict",
+					Handler: sysDict.SysDictUpHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysDict",
+					Handler: sysDict.SysDictListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodDelete,
+					Path:    "/tpmt/sysDict/:id",
+					Handler: sysDict.SysDictDelHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/tpmt/sysDictType",
-				Handler: sysDictType.SysDictTypeAddHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/sysDictType",
-				Handler: sysDictType.SysDictTypeUpHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysDictType",
-				Handler: sysDictType.SysDictTypeListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodDelete,
-				Path:    "/tpmt/sysDictType/:id",
-				Handler: sysDictType.SysDictTypeDelHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/tpmt/sysDictType",
+					Handler: sysDictType.SysDictTypeAddHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/sysDictType",
+					Handler: sysDictType.SysDictTypeUpHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysDictType",
+					Handler: sysDictType.SysDictTypeListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodDelete,
+					Path:    "/tpmt/sysDictType/:id",
+					Handler: sysDictType.SysDictTypeDelHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/tpmt/sysInterface",
-				Handler: sysInterface.SysInterfaceAddHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/sysInterface",
-				Handler: sysInterface.SysInterfaceUpHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysInterface",
-				Handler: sysInterface.SysInterfaceListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodDelete,
-				Path:    "/tpmt/sysInterface/:id",
-				Handler: sysInterface.SysInterfaceDelHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysInterfaceInfo",
-				Handler: sysInterface.SysInterfaceInfoHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/tpmt/sysInterface",
+					Handler: sysInterface.SysInterfaceAddHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/sysInterface",
+					Handler: sysInterface.SysInterfaceUpHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysInterface",
+					Handler: sysInterface.SysInterfaceListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodDelete,
+					Path:    "/tpmt/sysInterface/:id",
+					Handler: sysInterface.SysInterfaceDelHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysInterfaceInfo",
+					Handler: sysInterface.SysInterfaceInfoHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/tpmt/sysMenu",
-				Handler: sysMenu.SysMenuAddHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/sysMenu",
-				Handler: sysMenu.SysMenuUpHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysMenu",
-				Handler: sysMenu.SysMenuListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodDelete,
-				Path:    "/tpmt/sysMenu/:id",
-				Handler: sysMenu.SysMenuDelHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysMenuInfo",
-				Handler: sysMenu.SysMenuInfoHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/tpmt/sysMenu",
+					Handler: sysMenu.SysMenuAddHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/sysMenu",
+					Handler: sysMenu.SysMenuUpHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysMenu",
+					Handler: sysMenu.SysMenuListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodDelete,
+					Path:    "/tpmt/sysMenu/:id",
+					Handler: sysMenu.SysMenuDelHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysMenuInfo",
+					Handler: sysMenu.SysMenuInfoHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/tpmt/sysRole",
-				Handler: sysRole.SysRoleAddHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/sysRole",
-				Handler: sysRole.SysRoleUpHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysRole",
-				Handler: sysRole.SysRoleListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodDelete,
-				Path:    "/tpmt/sysRole/:id",
-				Handler: sysRole.SysRoleDelHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysRoleInfo",
-				Handler: sysRole.SysRoleInfoHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/tpmt/sysRole",
+					Handler: sysRole.SysRoleAddHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/sysRole",
+					Handler: sysRole.SysRoleUpHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysRole",
+					Handler: sysRole.SysRoleListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodDelete,
+					Path:    "/tpmt/sysRole/:id",
+					Handler: sysRole.SysRoleDelHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysRoleInfo",
+					Handler: sysRole.SysRoleInfoHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/tpmt/sysUser",
-				Handler: sysUser.SysUserAddHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/sysUser",
-				Handler: sysUser.SysUserUpHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysUser",
-				Handler: sysUser.SysUserListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodDelete,
-				Path:    "/tpmt/sysUser/:id",
-				Handler: sysUser.SysUserDelHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysUserInfo",
-				Handler: sysUser.SysUserInfoHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/sysUserLoginInfo",
-				Handler: sysUser.SysUserLoginInfoHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/sysUserResetPwd",
-				Handler: sysUser.SysUserResetPwdHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/sysUserUpMyInfo",
-				Handler: sysUser.SysUserUpMyInfoHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/sysUserUpMyPwd",
-				Handler: sysUser.SysUserUpMyPwdHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/tpmt/sysUser",
+					Handler: sysUser.SysUserAddHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/sysUser",
+					Handler: sysUser.SysUserUpHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysUser",
+					Handler: sysUser.SysUserListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodDelete,
+					Path:    "/tpmt/sysUser/:id",
+					Handler: sysUser.SysUserDelHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysUserInfo",
+					Handler: sysUser.SysUserInfoHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/sysUserLoginInfo",
+					Handler: sysUser.SysUserLoginInfoHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/sysUserResetPwd",
+					Handler: sysUser.SysUserResetPwdHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/sysUserUpMyInfo",
+					Handler: sysUser.SysUserUpMyInfoHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/sysUserUpMyPwd",
+					Handler: sysUser.SysUserUpMyPwdHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/tpmt/tpmtAsset",
-				Handler: tpmtAsset.TpmtAssetAddHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/tpmtAsset",
-				Handler: tpmtAsset.TpmtAssetUpHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/tpmtAsset",
-				Handler: tpmtAsset.TpmtAssetListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodDelete,
-				Path:    "/tpmt/tpmtAsset/:id",
-				Handler: tpmtAsset.TpmtAssetDelHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/tpmtAssetInfo",
-				Handler: tpmtAsset.TpmtAssetInfoHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/tpmt/tpmtAsset",
+					Handler: tpmtAsset.TpmtAssetAddHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/tpmtAsset",
+					Handler: tpmtAsset.TpmtAssetUpHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/tpmtAsset",
+					Handler: tpmtAsset.TpmtAssetListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodDelete,
+					Path:    "/tpmt/tpmtAsset/:id",
+					Handler: tpmtAsset.TpmtAssetDelHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/tpmtAssetInfo",
+					Handler: tpmtAsset.TpmtAssetInfoHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 
 	server.AddRoutes(
-		[]rest.Route{
-			{
-				Method:  http.MethodPost,
-				Path:    "/tpmt/tpmtGateway",
-				Handler: tpmtGateway.TpmtGatewayAddHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodPut,
-				Path:    "/tpmt/tpmtGateway",
-				Handler: tpmtGateway.TpmtGatewayUpHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/tpmtGateway",
-				Handler: tpmtGateway.TpmtGatewayListHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodDelete,
-				Path:    "/tpmt/tpmtGateway/:id",
-				Handler: tpmtGateway.TpmtGatewayDelHandler(serverCtx),
-			},
-			{
-				Method:  http.MethodGet,
-				Path:    "/tpmt/tpmtGatewayInfo",
-				Handler: tpmtGateway.TpmtGatewayInfoHandler(serverCtx),
-			},
-		},
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodPost,
+					Path:    "/tpmt/tpmtGateway",
+					Handler: tpmtGateway.TpmtGatewayAddHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodPut,
+					Path:    "/tpmt/tpmtGateway",
+					Handler: tpmtGateway.TpmtGatewayUpHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/tpmtGateway",
+					Handler: tpmtGateway.TpmtGatewayListHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodDelete,
+					Path:    "/tpmt/tpmtGateway/:id",
+					Handler: tpmtGateway.TpmtGatewayDelHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/tpmtGatewayInfo",
+					Handler: tpmtGateway.TpmtGatewayInfoHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 }
