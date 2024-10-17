@@ -16,7 +16,7 @@ type Config struct {
 
 	Salt string
 
-	Auth struct {
+	AuthY struct {
 		AccessSecret string
 		AccessExpire int64
 	}

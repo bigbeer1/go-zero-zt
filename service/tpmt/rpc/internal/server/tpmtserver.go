@@ -286,3 +286,29 @@ func (s *TpmtServer) TpmtGatewayList(ctx context.Context, in *tpmtclient.TpmtGat
 	l := logic.NewTpmtGatewayListLogic(ctx, s.svcCtx)
 	return l.TpmtGatewayList(in)
 }
+
+// 监控点
+func (s *TpmtServer) TpmtMonitorPointAdd(ctx context.Context, in *tpmtclient.TpmtMonitorPointAddReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtMonitorPointAddLogic(ctx, s.svcCtx)
+	return l.TpmtMonitorPointAdd(in)
+}
+
+func (s *TpmtServer) TpmtMonitorPointDelete(ctx context.Context, in *tpmtclient.TpmtMonitorPointDeleteReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtMonitorPointDeleteLogic(ctx, s.svcCtx)
+	return l.TpmtMonitorPointDelete(in)
+}
+
+func (s *TpmtServer) TpmtMonitorPointUpdate(ctx context.Context, in *tpmtclient.TpmtMonitorPointUpdateReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtMonitorPointUpdateLogic(ctx, s.svcCtx)
+	return l.TpmtMonitorPointUpdate(in)
+}
+
+func (s *TpmtServer) TpmtMonitorPointFindOne(ctx context.Context, in *tpmtclient.TpmtMonitorPointFindOneReq) (*tpmtclient.TpmtMonitorPointFindOneResp, error) {
+	l := logic.NewTpmtMonitorPointFindOneLogic(ctx, s.svcCtx)
+	return l.TpmtMonitorPointFindOne(in)
+}
+
+func (s *TpmtServer) TpmtMonitorPointList(ctx context.Context, in *tpmtclient.TpmtMonitorPointListReq) (*tpmtclient.TpmtMonitorPointListResp, error) {
+	l := logic.NewTpmtMonitorPointListLogic(ctx, s.svcCtx)
+	return l.TpmtMonitorPointList(in)
+}

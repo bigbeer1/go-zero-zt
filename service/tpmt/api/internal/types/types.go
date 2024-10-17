@@ -367,3 +367,90 @@ type TpmtGatewayUpRequest struct {
 	ComPort      string `json:"com_port,optional"`      // com端口
 	AddressCode  int64  `json:"address_code,optional"`  // 地址码
 }
+
+type TpmtMonitorPointAddRequest struct {
+	SerialNumber              string  `json:"serial_number,"`                       // 编号
+	Name                      string  `json:"name,"`                                // 监测点名称
+	RegisterAddress           string  `json:"register_address,"`                    // 寄存器地址
+	PointCollectorInstruction int64   `json:"point_collector_instruction,optional"` // 采集器指令  1: 01  2: 02  3:03  4:04
+	PointAnalysisRule         int64   `json:"point_analysis_rule,optional"`         // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+	PointType                 int64   `json:"point_type,optional"`                  // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+	PointCategory             int64   `json:"point_category,optional"`              // 类别：1:遥信/2:遥测/3:遥脉
+	PointGroup                int64   `json:"point_group,optional"`                 // 分组
+	CircuitType               int64   `json:"circuit_type,optional"`                // 回路类型
+	YxDecode                  string  `json:"yx_decode,optional"`                   // 遥信解译
+	DataBits                  int64   `json:"data_bits,optional"`                   // 数据位
+	Coefficient               float64 `json:"coefficient,optional"`                 // 系数
+	RetainDecimals            int64   `json:"retain_decimals,optional"`             // 保留小数位
+	Unit                      string  `json:"unit,optional"`                        // 单位
+	AlarmDuration             int64   `json:"alarm_duration,optional"`              // 持续时间
+	AlarmUpValue              float64 `json:"alarm_up_value,optional"`              // 告警上限
+	AlarmDownValue            float64 `json:"alarm_down_value,optional"`            // 告警下限
+	WarningUpValue            float64 `json:"warning_up_value,optional"`            // 预警上限
+	WarningDownValue          float64 `json:"warning_down_value,optional"`          // 预警下限
+	IsDisplacementWarning     int64   `json:"is_displacement_warning,optional"`     // 变位预警 0 不启用 1:启用
+	TpmtGatewayId             string  `json:"tpmt_gateway_id,optional"`             // 网关ID
+	AssetId                   string  `json:"asset_id,optional"`                    // 资产ID
+	Sort                      int64   `json:"sort,optional"`                        // 排序
+}
+
+type TpmtMonitorPointDelRequest struct {
+	Id int64 `path:"id"` // 监测点ID
+}
+
+type TpmtMonitorPointInfoRequest struct {
+	Id int64 `form:"id"` // 监测点ID
+}
+
+type TpmtMonitorPointListRequest struct {
+	Current                   int64   `form:"current,default=1,optional"`                      // 页码
+	PageSize                  int64   `form:"page_size,default=10,optional"`                   // 页数
+	SerialNumber              string  `form:"serial_number,optional"`                          // 编号
+	Name                      string  `form:"name,optional"`                                   // 监测点名称
+	RegisterAddress           string  `form:"register_address,optional"`                       // 寄存器地址
+	PointCollectorInstruction int64   `form:"point_collector_instruction,default=99,optional"` // 采集器指令  1: 01  2: 02  3:03  4:04
+	PointAnalysisRule         int64   `form:"point_analysis_rule,default=99,optional"`         // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+	PointType                 int64   `form:"point_type,default=99,optional"`                  // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+	PointCategory             int64   `form:"point_category,default=99,optional"`              // 类别：1:遥信/2:遥测/3:遥脉
+	PointGroup                int64   `form:"point_group,default=99,optional"`                 // 分组
+	CircuitType               int64   `form:"circuit_type,default=99,optional"`                // 回路类型
+	YxDecode                  string  `form:"yx_decode,optional"`                              // 遥信解译
+	DataBits                  int64   `form:"data_bits,default=99,optional"`                   // 数据位
+	Coefficient               float64 `form:"coefficient,optional"`                            // 系数
+	RetainDecimals            int64   `form:"retain_decimals,default=99,optional"`             // 保留小数位
+	Unit                      string  `form:"unit,optional"`                                   // 单位
+	AlarmDuration             int64   `form:"alarm_duration,default=99,optional"`              // 持续时间
+	AlarmUpValue              float64 `form:"alarm_up_value,optional"`                         // 告警上限
+	AlarmDownValue            float64 `form:"alarm_down_value,optional"`                       // 告警下限
+	WarningUpValue            float64 `form:"warning_up_value,optional"`                       // 预警上限
+	WarningDownValue          float64 `form:"warning_down_value,optional"`                     // 预警下限
+	IsDisplacementWarning     int64   `form:"is_displacement_warning,default=99,optional"`     // 变位预警 0 不启用 1:启用
+	TpmtGatewayId             string  `form:"tpmt_gateway_id,optional"`                        // 网关ID
+	AssetId                   string  `form:"asset_id,optional"`                               // 资产ID
+}
+
+type TpmtMonitorPointUpRequest struct {
+	Id                        int64   `json:"id"`                                   // 监测点ID
+	SerialNumber              string  `json:"serial_number,optional"`               // 编号
+	Name                      string  `json:"name,optional"`                        // 监测点名称
+	RegisterAddress           string  `json:"register_address,optional"`            // 寄存器地址
+	PointCollectorInstruction int64   `json:"point_collector_instruction,optional"` // 采集器指令  1: 01  2: 02  3:03  4:04
+	PointAnalysisRule         int64   `json:"point_analysis_rule,optional"`         // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+	PointType                 int64   `json:"point_type,optional"`                  // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+	PointCategory             int64   `json:"point_category,optional"`              // 类别：1:遥信/2:遥测/3:遥脉
+	PointGroup                int64   `json:"point_group,optional"`                 // 分组
+	CircuitType               int64   `json:"circuit_type,optional"`                // 回路类型
+	YxDecode                  string  `json:"yx_decode,optional"`                   // 遥信解译
+	DataBits                  int64   `json:"data_bits,optional"`                   // 数据位
+	Coefficient               float64 `json:"coefficient,optional"`                 // 系数
+	RetainDecimals            int64   `json:"retain_decimals,optional"`             // 保留小数位
+	Unit                      string  `json:"unit,optional"`                        // 单位
+	AlarmDuration             int64   `json:"alarm_duration,optional"`              // 持续时间
+	AlarmUpValue              float64 `json:"alarm_up_value,optional"`              // 告警上限
+	AlarmDownValue            float64 `json:"alarm_down_value,optional"`            // 告警下限
+	WarningUpValue            float64 `json:"warning_up_value,optional"`            // 预警上限
+	WarningDownValue          float64 `json:"warning_down_value,optional"`          // 预警下限
+	IsDisplacementWarning     int64   `json:"is_displacement_warning,optional"`     // 变位预警 0 不启用 1:启用
+	AssetId                   string  `json:"asset_id,optional"`                    // 资产ID
+	Sort                      int64   `json:"sort,optional"`                        // 排序
+}

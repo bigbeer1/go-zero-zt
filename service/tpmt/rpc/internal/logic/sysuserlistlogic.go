@@ -78,7 +78,7 @@ func (l *SysUserListLogic) SysUserList(in *tpmtclient.SysUserListReq) (*tpmtclie
 	var list []*tpmtclient.SysUserListData
 	for _, item := range all {
 		// 查询用户角色信息
-		userRole, err := l.svcCtx.SysUserRoleModel.FindByUserId(l.ctx, item.Id)
+		userRole, err := l.svcCtx.SysUserRoleModel.FindByUserIdAndUserType(l.ctx, item.Id, 1)
 		if err != nil {
 			if !errors.Is(err, sqlc.ErrNotFound) {
 				return nil, err

@@ -42,7 +42,7 @@ func (l *SysUserFindOneLogic) SysUserFindOne(in *tpmtclient.SysUserFindOneReq) (
 	}
 
 	// 查询用户角色信息
-	userRole, err := l.svcCtx.SysUserRoleModel.FindByUserId(l.ctx, res.Id)
+	userRole, err := l.svcCtx.SysUserRoleModel.FindByUserIdAndUserType(l.ctx, res.Id, 1)
 	if err != nil {
 		if !errors.Is(err, sqlc.ErrNotFound) {
 			return nil, err

@@ -14,87 +14,95 @@ import (
 )
 
 type (
-	CommonResp               = tpmtclient.CommonResp
-	SysAuthAddReq            = tpmtclient.SysAuthAddReq
-	SysAuthDeleteReq         = tpmtclient.SysAuthDeleteReq
-	SysAuthFindOneReq        = tpmtclient.SysAuthFindOneReq
-	SysAuthFindOneResp       = tpmtclient.SysAuthFindOneResp
-	SysAuthListData          = tpmtclient.SysAuthListData
-	SysAuthListReq           = tpmtclient.SysAuthListReq
-	SysAuthListResp          = tpmtclient.SysAuthListResp
-	SysAuthUpdateReq         = tpmtclient.SysAuthUpdateReq
-	SysDictAddReq            = tpmtclient.SysDictAddReq
-	SysDictDeleteReq         = tpmtclient.SysDictDeleteReq
-	SysDictFindOneReq        = tpmtclient.SysDictFindOneReq
-	SysDictFindOneResp       = tpmtclient.SysDictFindOneResp
-	SysDictListData          = tpmtclient.SysDictListData
-	SysDictListReq           = tpmtclient.SysDictListReq
-	SysDictListResp          = tpmtclient.SysDictListResp
-	SysDictTypeAddReq        = tpmtclient.SysDictTypeAddReq
-	SysDictTypeDeleteReq     = tpmtclient.SysDictTypeDeleteReq
-	SysDictTypeFindOneReq    = tpmtclient.SysDictTypeFindOneReq
-	SysDictTypeFindOneResp   = tpmtclient.SysDictTypeFindOneResp
-	SysDictTypeListData      = tpmtclient.SysDictTypeListData
-	SysDictTypeListReq       = tpmtclient.SysDictTypeListReq
-	SysDictTypeListResp      = tpmtclient.SysDictTypeListResp
-	SysDictTypeUpdateReq     = tpmtclient.SysDictTypeUpdateReq
-	SysDictUpdateReq         = tpmtclient.SysDictUpdateReq
-	SysInterfaceAddReq       = tpmtclient.SysInterfaceAddReq
-	SysInterfaceByRoleIdReq  = tpmtclient.SysInterfaceByRoleIdReq
-	SysInterfaceByRoleIdResp = tpmtclient.SysInterfaceByRoleIdResp
-	SysInterfaceDeleteReq    = tpmtclient.SysInterfaceDeleteReq
-	SysInterfaceFindOneReq   = tpmtclient.SysInterfaceFindOneReq
-	SysInterfaceFindOneResp  = tpmtclient.SysInterfaceFindOneResp
-	SysInterfaceListData     = tpmtclient.SysInterfaceListData
-	SysInterfaceListReq      = tpmtclient.SysInterfaceListReq
-	SysInterfaceListResp     = tpmtclient.SysInterfaceListResp
-	SysInterfaceUpdateReq    = tpmtclient.SysInterfaceUpdateReq
-	SysLoginReq              = tpmtclient.SysLoginReq
-	SysMenuAddReq            = tpmtclient.SysMenuAddReq
-	SysMenuByRoleIdReq       = tpmtclient.SysMenuByRoleIdReq
-	SysMenuByRoleIdResp      = tpmtclient.SysMenuByRoleIdResp
-	SysMenuDeleteReq         = tpmtclient.SysMenuDeleteReq
-	SysMenuFindOneReq        = tpmtclient.SysMenuFindOneReq
-	SysMenuFindOneResp       = tpmtclient.SysMenuFindOneResp
-	SysMenuListData          = tpmtclient.SysMenuListData
-	SysMenuListReq           = tpmtclient.SysMenuListReq
-	SysMenuListResp          = tpmtclient.SysMenuListResp
-	SysMenuUpdateReq         = tpmtclient.SysMenuUpdateReq
-	SysRoleAddReq            = tpmtclient.SysRoleAddReq
-	SysRoleDeleteReq         = tpmtclient.SysRoleDeleteReq
-	SysRoleFindOneReq        = tpmtclient.SysRoleFindOneReq
-	SysRoleFindOneResp       = tpmtclient.SysRoleFindOneResp
-	SysRoleListData          = tpmtclient.SysRoleListData
-	SysRoleListReq           = tpmtclient.SysRoleListReq
-	SysRoleListResp          = tpmtclient.SysRoleListResp
-	SysRoleUpdateReq         = tpmtclient.SysRoleUpdateReq
-	SysUserAddReq            = tpmtclient.SysUserAddReq
-	SysUserDeleteReq         = tpmtclient.SysUserDeleteReq
-	SysUserFindOneReq        = tpmtclient.SysUserFindOneReq
-	SysUserFindOneResp       = tpmtclient.SysUserFindOneResp
-	SysUserListData          = tpmtclient.SysUserListData
-	SysUserListReq           = tpmtclient.SysUserListReq
-	SysUserListResp          = tpmtclient.SysUserListResp
-	SysUserResetPwdReq       = tpmtclient.SysUserResetPwdReq
-	SysUserResetPwdResp      = tpmtclient.SysUserResetPwdResp
-	SysUserUpMyPwdReq        = tpmtclient.SysUserUpMyPwdReq
-	SysUserUpdateReq         = tpmtclient.SysUserUpdateReq
-	TpmtAssetAddReq          = tpmtclient.TpmtAssetAddReq
-	TpmtAssetDeleteReq       = tpmtclient.TpmtAssetDeleteReq
-	TpmtAssetFindOneReq      = tpmtclient.TpmtAssetFindOneReq
-	TpmtAssetFindOneResp     = tpmtclient.TpmtAssetFindOneResp
-	TpmtAssetListData        = tpmtclient.TpmtAssetListData
-	TpmtAssetListReq         = tpmtclient.TpmtAssetListReq
-	TpmtAssetListResp        = tpmtclient.TpmtAssetListResp
-	TpmtAssetUpdateReq       = tpmtclient.TpmtAssetUpdateReq
-	TpmtGatewayAddReq        = tpmtclient.TpmtGatewayAddReq
-	TpmtGatewayDeleteReq     = tpmtclient.TpmtGatewayDeleteReq
-	TpmtGatewayFindOneReq    = tpmtclient.TpmtGatewayFindOneReq
-	TpmtGatewayFindOneResp   = tpmtclient.TpmtGatewayFindOneResp
-	TpmtGatewayListData      = tpmtclient.TpmtGatewayListData
-	TpmtGatewayListReq       = tpmtclient.TpmtGatewayListReq
-	TpmtGatewayListResp      = tpmtclient.TpmtGatewayListResp
-	TpmtGatewayUpdateReq     = tpmtclient.TpmtGatewayUpdateReq
+	CommonResp                  = tpmtclient.CommonResp
+	SysAuthAddReq               = tpmtclient.SysAuthAddReq
+	SysAuthDeleteReq            = tpmtclient.SysAuthDeleteReq
+	SysAuthFindOneReq           = tpmtclient.SysAuthFindOneReq
+	SysAuthFindOneResp          = tpmtclient.SysAuthFindOneResp
+	SysAuthListData             = tpmtclient.SysAuthListData
+	SysAuthListReq              = tpmtclient.SysAuthListReq
+	SysAuthListResp             = tpmtclient.SysAuthListResp
+	SysAuthUpdateReq            = tpmtclient.SysAuthUpdateReq
+	SysDictAddReq               = tpmtclient.SysDictAddReq
+	SysDictDeleteReq            = tpmtclient.SysDictDeleteReq
+	SysDictFindOneReq           = tpmtclient.SysDictFindOneReq
+	SysDictFindOneResp          = tpmtclient.SysDictFindOneResp
+	SysDictListData             = tpmtclient.SysDictListData
+	SysDictListReq              = tpmtclient.SysDictListReq
+	SysDictListResp             = tpmtclient.SysDictListResp
+	SysDictTypeAddReq           = tpmtclient.SysDictTypeAddReq
+	SysDictTypeDeleteReq        = tpmtclient.SysDictTypeDeleteReq
+	SysDictTypeFindOneReq       = tpmtclient.SysDictTypeFindOneReq
+	SysDictTypeFindOneResp      = tpmtclient.SysDictTypeFindOneResp
+	SysDictTypeListData         = tpmtclient.SysDictTypeListData
+	SysDictTypeListReq          = tpmtclient.SysDictTypeListReq
+	SysDictTypeListResp         = tpmtclient.SysDictTypeListResp
+	SysDictTypeUpdateReq        = tpmtclient.SysDictTypeUpdateReq
+	SysDictUpdateReq            = tpmtclient.SysDictUpdateReq
+	SysInterfaceAddReq          = tpmtclient.SysInterfaceAddReq
+	SysInterfaceByRoleIdReq     = tpmtclient.SysInterfaceByRoleIdReq
+	SysInterfaceByRoleIdResp    = tpmtclient.SysInterfaceByRoleIdResp
+	SysInterfaceDeleteReq       = tpmtclient.SysInterfaceDeleteReq
+	SysInterfaceFindOneReq      = tpmtclient.SysInterfaceFindOneReq
+	SysInterfaceFindOneResp     = tpmtclient.SysInterfaceFindOneResp
+	SysInterfaceListData        = tpmtclient.SysInterfaceListData
+	SysInterfaceListReq         = tpmtclient.SysInterfaceListReq
+	SysInterfaceListResp        = tpmtclient.SysInterfaceListResp
+	SysInterfaceUpdateReq       = tpmtclient.SysInterfaceUpdateReq
+	SysLoginReq                 = tpmtclient.SysLoginReq
+	SysMenuAddReq               = tpmtclient.SysMenuAddReq
+	SysMenuByRoleIdReq          = tpmtclient.SysMenuByRoleIdReq
+	SysMenuByRoleIdResp         = tpmtclient.SysMenuByRoleIdResp
+	SysMenuDeleteReq            = tpmtclient.SysMenuDeleteReq
+	SysMenuFindOneReq           = tpmtclient.SysMenuFindOneReq
+	SysMenuFindOneResp          = tpmtclient.SysMenuFindOneResp
+	SysMenuListData             = tpmtclient.SysMenuListData
+	SysMenuListReq              = tpmtclient.SysMenuListReq
+	SysMenuListResp             = tpmtclient.SysMenuListResp
+	SysMenuUpdateReq            = tpmtclient.SysMenuUpdateReq
+	SysRoleAddReq               = tpmtclient.SysRoleAddReq
+	SysRoleDeleteReq            = tpmtclient.SysRoleDeleteReq
+	SysRoleFindOneReq           = tpmtclient.SysRoleFindOneReq
+	SysRoleFindOneResp          = tpmtclient.SysRoleFindOneResp
+	SysRoleListData             = tpmtclient.SysRoleListData
+	SysRoleListReq              = tpmtclient.SysRoleListReq
+	SysRoleListResp             = tpmtclient.SysRoleListResp
+	SysRoleUpdateReq            = tpmtclient.SysRoleUpdateReq
+	SysUserAddReq               = tpmtclient.SysUserAddReq
+	SysUserDeleteReq            = tpmtclient.SysUserDeleteReq
+	SysUserFindOneReq           = tpmtclient.SysUserFindOneReq
+	SysUserFindOneResp          = tpmtclient.SysUserFindOneResp
+	SysUserListData             = tpmtclient.SysUserListData
+	SysUserListReq              = tpmtclient.SysUserListReq
+	SysUserListResp             = tpmtclient.SysUserListResp
+	SysUserResetPwdReq          = tpmtclient.SysUserResetPwdReq
+	SysUserResetPwdResp         = tpmtclient.SysUserResetPwdResp
+	SysUserUpMyPwdReq           = tpmtclient.SysUserUpMyPwdReq
+	SysUserUpdateReq            = tpmtclient.SysUserUpdateReq
+	TpmtAssetAddReq             = tpmtclient.TpmtAssetAddReq
+	TpmtAssetDeleteReq          = tpmtclient.TpmtAssetDeleteReq
+	TpmtAssetFindOneReq         = tpmtclient.TpmtAssetFindOneReq
+	TpmtAssetFindOneResp        = tpmtclient.TpmtAssetFindOneResp
+	TpmtAssetListData           = tpmtclient.TpmtAssetListData
+	TpmtAssetListReq            = tpmtclient.TpmtAssetListReq
+	TpmtAssetListResp           = tpmtclient.TpmtAssetListResp
+	TpmtAssetUpdateReq          = tpmtclient.TpmtAssetUpdateReq
+	TpmtGatewayAddReq           = tpmtclient.TpmtGatewayAddReq
+	TpmtGatewayDeleteReq        = tpmtclient.TpmtGatewayDeleteReq
+	TpmtGatewayFindOneReq       = tpmtclient.TpmtGatewayFindOneReq
+	TpmtGatewayFindOneResp      = tpmtclient.TpmtGatewayFindOneResp
+	TpmtGatewayListData         = tpmtclient.TpmtGatewayListData
+	TpmtGatewayListReq          = tpmtclient.TpmtGatewayListReq
+	TpmtGatewayListResp         = tpmtclient.TpmtGatewayListResp
+	TpmtGatewayUpdateReq        = tpmtclient.TpmtGatewayUpdateReq
+	TpmtMonitorPointAddReq      = tpmtclient.TpmtMonitorPointAddReq
+	TpmtMonitorPointDeleteReq   = tpmtclient.TpmtMonitorPointDeleteReq
+	TpmtMonitorPointFindOneReq  = tpmtclient.TpmtMonitorPointFindOneReq
+	TpmtMonitorPointFindOneResp = tpmtclient.TpmtMonitorPointFindOneResp
+	TpmtMonitorPointListData    = tpmtclient.TpmtMonitorPointListData
+	TpmtMonitorPointListReq     = tpmtclient.TpmtMonitorPointListReq
+	TpmtMonitorPointListResp    = tpmtclient.TpmtMonitorPointListResp
+	TpmtMonitorPointUpdateReq   = tpmtclient.TpmtMonitorPointUpdateReq
 
 	Tpmt interface {
 		// 用户登录
@@ -161,6 +169,12 @@ type (
 		TpmtGatewayUpdate(ctx context.Context, in *TpmtGatewayUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
 		TpmtGatewayFindOne(ctx context.Context, in *TpmtGatewayFindOneReq, opts ...grpc.CallOption) (*TpmtGatewayFindOneResp, error)
 		TpmtGatewayList(ctx context.Context, in *TpmtGatewayListReq, opts ...grpc.CallOption) (*TpmtGatewayListResp, error)
+		// 监控点
+		TpmtMonitorPointAdd(ctx context.Context, in *TpmtMonitorPointAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtMonitorPointDelete(ctx context.Context, in *TpmtMonitorPointDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtMonitorPointUpdate(ctx context.Context, in *TpmtMonitorPointUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtMonitorPointFindOne(ctx context.Context, in *TpmtMonitorPointFindOneReq, opts ...grpc.CallOption) (*TpmtMonitorPointFindOneResp, error)
+		TpmtMonitorPointList(ctx context.Context, in *TpmtMonitorPointListReq, opts ...grpc.CallOption) (*TpmtMonitorPointListResp, error)
 	}
 
 	defaultTpmt struct {
@@ -436,4 +450,30 @@ func (m *defaultTpmt) TpmtGatewayFindOne(ctx context.Context, in *TpmtGatewayFin
 func (m *defaultTpmt) TpmtGatewayList(ctx context.Context, in *TpmtGatewayListReq, opts ...grpc.CallOption) (*TpmtGatewayListResp, error) {
 	client := tpmtclient.NewTpmtClient(m.cli.Conn())
 	return client.TpmtGatewayList(ctx, in, opts...)
+}
+
+// 监控点
+func (m *defaultTpmt) TpmtMonitorPointAdd(ctx context.Context, in *TpmtMonitorPointAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtMonitorPointAdd(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtMonitorPointDelete(ctx context.Context, in *TpmtMonitorPointDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtMonitorPointDelete(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtMonitorPointUpdate(ctx context.Context, in *TpmtMonitorPointUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtMonitorPointUpdate(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtMonitorPointFindOne(ctx context.Context, in *TpmtMonitorPointFindOneReq, opts ...grpc.CallOption) (*TpmtMonitorPointFindOneResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtMonitorPointFindOne(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtMonitorPointList(ctx context.Context, in *TpmtMonitorPointListReq, opts ...grpc.CallOption) (*TpmtMonitorPointListResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtMonitorPointList(ctx, in, opts...)
 }

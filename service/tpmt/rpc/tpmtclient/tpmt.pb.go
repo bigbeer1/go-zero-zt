@@ -7072,6 +7072,1310 @@ func (x *TpmtGatewayListData) GetAddressCode() int64 {
 	return 0
 }
 
+// TpmtMonitorPoint 添加
+type TpmtMonitorPointAddReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	CreatedName               string  `protobuf:"bytes,1,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"`                                              // 创建人
+	SerialNumber              string  `protobuf:"bytes,2,opt,name=serial_number,json=serialNumber,proto3" json:"serial_number,omitempty"`                                           // 编号
+	Name                      string  `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`                                                                               // 监测点名称
+	RegisterAddress           string  `protobuf:"bytes,4,opt,name=register_address,json=registerAddress,proto3" json:"register_address,omitempty"`                                  // 寄存器地址
+	PointCollectorInstruction int64   `protobuf:"varint,5,opt,name=point_collector_instruction,json=pointCollectorInstruction,proto3" json:"point_collector_instruction,omitempty"` // 采集器指令  1: 01  2: 02  3:03  4:04
+	PointAnalysisRule         int64   `protobuf:"varint,6,opt,name=point_analysis_rule,json=pointAnalysisRule,proto3" json:"point_analysis_rule,omitempty"`                         // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+	PointType                 int64   `protobuf:"varint,7,opt,name=point_type,json=pointType,proto3" json:"point_type,omitempty"`                                                   // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+	PointCategory             int64   `protobuf:"varint,8,opt,name=point_category,json=pointCategory,proto3" json:"point_category,omitempty"`                                       // 类别：1:遥信/2:遥测/3:遥脉
+	PointGroup                int64   `protobuf:"varint,9,opt,name=point_group,json=pointGroup,proto3" json:"point_group,omitempty"`                                                // 分组
+	CircuitType               int64   `protobuf:"varint,10,opt,name=circuit_type,json=circuitType,proto3" json:"circuit_type,omitempty"`                                            // 回路类型
+	YxDecode                  string  `protobuf:"bytes,11,opt,name=yx_decode,json=yxDecode,proto3" json:"yx_decode,omitempty"`                                                      // 遥信解译
+	DataBits                  int64   `protobuf:"varint,12,opt,name=data_bits,json=dataBits,proto3" json:"data_bits,omitempty"`                                                     // 数据位
+	Coefficient               float64 `protobuf:"fixed64,13,opt,name=coefficient,proto3" json:"coefficient,omitempty"`                                                              // 系数
+	RetainDecimals            int64   `protobuf:"varint,14,opt,name=retain_decimals,json=retainDecimals,proto3" json:"retain_decimals,omitempty"`                                   // 保留小数位
+	Unit                      string  `protobuf:"bytes,15,opt,name=unit,proto3" json:"unit,omitempty"`                                                                              // 单位
+	AlarmDuration             int64   `protobuf:"varint,16,opt,name=alarm_duration,json=alarmDuration,proto3" json:"alarm_duration,omitempty"`                                      // 持续时间
+	AlarmUpValue              float64 `protobuf:"fixed64,17,opt,name=alarm_up_value,json=alarmUpValue,proto3" json:"alarm_up_value,omitempty"`                                      // 告警上限
+	AlarmDownValue            float64 `protobuf:"fixed64,18,opt,name=alarm_down_value,json=alarmDownValue,proto3" json:"alarm_down_value,omitempty"`                                // 告警下限
+	WarningUpValue            float64 `protobuf:"fixed64,19,opt,name=warning_up_value,json=warningUpValue,proto3" json:"warning_up_value,omitempty"`                                // 预警上限
+	WarningDownValue          float64 `protobuf:"fixed64,20,opt,name=warning_down_value,json=warningDownValue,proto3" json:"warning_down_value,omitempty"`                          // 预警下限
+	IsDisplacementWarning     int64   `protobuf:"varint,21,opt,name=is_displacement_warning,json=isDisplacementWarning,proto3" json:"is_displacement_warning,omitempty"`            // 变位预警 0 不启用 1:启用
+	TpmtGatewayId             string  `protobuf:"bytes,22,opt,name=tpmt_gateway_id,json=tpmtGatewayId,proto3" json:"tpmt_gateway_id,omitempty"`                                     // 网关ID
+	AssetId                   string  `protobuf:"bytes,23,opt,name=asset_id,json=assetId,proto3" json:"asset_id,omitempty"`                                                         // 资产ID
+	Sort                      int64   `protobuf:"varint,24,opt,name=sort,proto3" json:"sort,omitempty"`                                                                             // 排序
+}
+
+func (x *TpmtMonitorPointAddReq) Reset() {
+	*x = TpmtMonitorPointAddReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_tpmt_proto_msgTypes[81]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TpmtMonitorPointAddReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TpmtMonitorPointAddReq) ProtoMessage() {}
+
+func (x *TpmtMonitorPointAddReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tpmt_proto_msgTypes[81]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TpmtMonitorPointAddReq.ProtoReflect.Descriptor instead.
+func (*TpmtMonitorPointAddReq) Descriptor() ([]byte, []int) {
+	return file_tpmt_proto_rawDescGZIP(), []int{81}
+}
+
+func (x *TpmtMonitorPointAddReq) GetCreatedName() string {
+	if x != nil {
+		return x.CreatedName
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointAddReq) GetSerialNumber() string {
+	if x != nil {
+		return x.SerialNumber
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointAddReq) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointAddReq) GetRegisterAddress() string {
+	if x != nil {
+		return x.RegisterAddress
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointAddReq) GetPointCollectorInstruction() int64 {
+	if x != nil {
+		return x.PointCollectorInstruction
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetPointAnalysisRule() int64 {
+	if x != nil {
+		return x.PointAnalysisRule
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetPointType() int64 {
+	if x != nil {
+		return x.PointType
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetPointCategory() int64 {
+	if x != nil {
+		return x.PointCategory
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetPointGroup() int64 {
+	if x != nil {
+		return x.PointGroup
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetCircuitType() int64 {
+	if x != nil {
+		return x.CircuitType
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetYxDecode() string {
+	if x != nil {
+		return x.YxDecode
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointAddReq) GetDataBits() int64 {
+	if x != nil {
+		return x.DataBits
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetCoefficient() float64 {
+	if x != nil {
+		return x.Coefficient
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetRetainDecimals() int64 {
+	if x != nil {
+		return x.RetainDecimals
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetUnit() string {
+	if x != nil {
+		return x.Unit
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointAddReq) GetAlarmDuration() int64 {
+	if x != nil {
+		return x.AlarmDuration
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetAlarmUpValue() float64 {
+	if x != nil {
+		return x.AlarmUpValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetAlarmDownValue() float64 {
+	if x != nil {
+		return x.AlarmDownValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetWarningUpValue() float64 {
+	if x != nil {
+		return x.WarningUpValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetWarningDownValue() float64 {
+	if x != nil {
+		return x.WarningDownValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetIsDisplacementWarning() int64 {
+	if x != nil {
+		return x.IsDisplacementWarning
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointAddReq) GetTpmtGatewayId() string {
+	if x != nil {
+		return x.TpmtGatewayId
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointAddReq) GetAssetId() string {
+	if x != nil {
+		return x.AssetId
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointAddReq) GetSort() int64 {
+	if x != nil {
+		return x.Sort
+	}
+	return 0
+}
+
+// TpmtMonitorPoint 删除
+type TpmtMonitorPointDeleteReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // 监测点ID
+}
+
+func (x *TpmtMonitorPointDeleteReq) Reset() {
+	*x = TpmtMonitorPointDeleteReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_tpmt_proto_msgTypes[82]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TpmtMonitorPointDeleteReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TpmtMonitorPointDeleteReq) ProtoMessage() {}
+
+func (x *TpmtMonitorPointDeleteReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tpmt_proto_msgTypes[82]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TpmtMonitorPointDeleteReq.ProtoReflect.Descriptor instead.
+func (*TpmtMonitorPointDeleteReq) Descriptor() ([]byte, []int) {
+	return file_tpmt_proto_rawDescGZIP(), []int{82}
+}
+
+func (x *TpmtMonitorPointDeleteReq) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+// TpmtMonitorPoint 更新
+type TpmtMonitorPointUpdateReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id                        int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                                                  // 监测点ID
+	UpdatedName               string  `protobuf:"bytes,2,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"`                                              // 更新人
+	SerialNumber              string  `protobuf:"bytes,3,opt,name=serial_number,json=serialNumber,proto3" json:"serial_number,omitempty"`                                           // 编号
+	Name                      string  `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`                                                                               // 监测点名称
+	RegisterAddress           string  `protobuf:"bytes,5,opt,name=register_address,json=registerAddress,proto3" json:"register_address,omitempty"`                                  // 寄存器地址
+	PointCollectorInstruction int64   `protobuf:"varint,6,opt,name=point_collector_instruction,json=pointCollectorInstruction,proto3" json:"point_collector_instruction,omitempty"` // 采集器指令  1: 01  2: 02  3:03  4:04
+	PointAnalysisRule         int64   `protobuf:"varint,7,opt,name=point_analysis_rule,json=pointAnalysisRule,proto3" json:"point_analysis_rule,omitempty"`                         // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+	PointType                 int64   `protobuf:"varint,8,opt,name=point_type,json=pointType,proto3" json:"point_type,omitempty"`                                                   // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+	PointCategory             int64   `protobuf:"varint,9,opt,name=point_category,json=pointCategory,proto3" json:"point_category,omitempty"`                                       // 类别：1:遥信/2:遥测/3:遥脉
+	PointGroup                int64   `protobuf:"varint,10,opt,name=point_group,json=pointGroup,proto3" json:"point_group,omitempty"`                                               // 分组
+	CircuitType               int64   `protobuf:"varint,11,opt,name=circuit_type,json=circuitType,proto3" json:"circuit_type,omitempty"`                                            // 回路类型
+	YxDecode                  string  `protobuf:"bytes,12,opt,name=yx_decode,json=yxDecode,proto3" json:"yx_decode,omitempty"`                                                      // 遥信解译
+	DataBits                  int64   `protobuf:"varint,13,opt,name=data_bits,json=dataBits,proto3" json:"data_bits,omitempty"`                                                     // 数据位
+	Coefficient               float64 `protobuf:"fixed64,14,opt,name=coefficient,proto3" json:"coefficient,omitempty"`                                                              // 系数
+	RetainDecimals            int64   `protobuf:"varint,15,opt,name=retain_decimals,json=retainDecimals,proto3" json:"retain_decimals,omitempty"`                                   // 保留小数位
+	Unit                      string  `protobuf:"bytes,16,opt,name=unit,proto3" json:"unit,omitempty"`                                                                              // 单位
+	AlarmDuration             int64   `protobuf:"varint,17,opt,name=alarm_duration,json=alarmDuration,proto3" json:"alarm_duration,omitempty"`                                      // 持续时间
+	AlarmUpValue              float64 `protobuf:"fixed64,18,opt,name=alarm_up_value,json=alarmUpValue,proto3" json:"alarm_up_value,omitempty"`                                      // 告警上限
+	AlarmDownValue            float64 `protobuf:"fixed64,19,opt,name=alarm_down_value,json=alarmDownValue,proto3" json:"alarm_down_value,omitempty"`                                // 告警下限
+	WarningUpValue            float64 `protobuf:"fixed64,20,opt,name=warning_up_value,json=warningUpValue,proto3" json:"warning_up_value,omitempty"`                                // 预警上限
+	WarningDownValue          float64 `protobuf:"fixed64,21,opt,name=warning_down_value,json=warningDownValue,proto3" json:"warning_down_value,omitempty"`                          // 预警下限
+	IsDisplacementWarning     int64   `protobuf:"varint,22,opt,name=is_displacement_warning,json=isDisplacementWarning,proto3" json:"is_displacement_warning,omitempty"`            // 变位预警 0 不启用 1:启用
+	AssetId                   string  `protobuf:"bytes,24,opt,name=asset_id,json=assetId,proto3" json:"asset_id,omitempty"`                                                         // 资产ID
+	Sort                      int64   `protobuf:"varint,25,opt,name=sort,proto3" json:"sort,omitempty"`                                                                             // 排序
+}
+
+func (x *TpmtMonitorPointUpdateReq) Reset() {
+	*x = TpmtMonitorPointUpdateReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_tpmt_proto_msgTypes[83]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TpmtMonitorPointUpdateReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TpmtMonitorPointUpdateReq) ProtoMessage() {}
+
+func (x *TpmtMonitorPointUpdateReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tpmt_proto_msgTypes[83]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TpmtMonitorPointUpdateReq.ProtoReflect.Descriptor instead.
+func (*TpmtMonitorPointUpdateReq) Descriptor() ([]byte, []int) {
+	return file_tpmt_proto_rawDescGZIP(), []int{83}
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetUpdatedName() string {
+	if x != nil {
+		return x.UpdatedName
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetSerialNumber() string {
+	if x != nil {
+		return x.SerialNumber
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetRegisterAddress() string {
+	if x != nil {
+		return x.RegisterAddress
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetPointCollectorInstruction() int64 {
+	if x != nil {
+		return x.PointCollectorInstruction
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetPointAnalysisRule() int64 {
+	if x != nil {
+		return x.PointAnalysisRule
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetPointType() int64 {
+	if x != nil {
+		return x.PointType
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetPointCategory() int64 {
+	if x != nil {
+		return x.PointCategory
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetPointGroup() int64 {
+	if x != nil {
+		return x.PointGroup
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetCircuitType() int64 {
+	if x != nil {
+		return x.CircuitType
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetYxDecode() string {
+	if x != nil {
+		return x.YxDecode
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetDataBits() int64 {
+	if x != nil {
+		return x.DataBits
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetCoefficient() float64 {
+	if x != nil {
+		return x.Coefficient
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetRetainDecimals() int64 {
+	if x != nil {
+		return x.RetainDecimals
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetUnit() string {
+	if x != nil {
+		return x.Unit
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetAlarmDuration() int64 {
+	if x != nil {
+		return x.AlarmDuration
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetAlarmUpValue() float64 {
+	if x != nil {
+		return x.AlarmUpValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetAlarmDownValue() float64 {
+	if x != nil {
+		return x.AlarmDownValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetWarningUpValue() float64 {
+	if x != nil {
+		return x.WarningUpValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetWarningDownValue() float64 {
+	if x != nil {
+		return x.WarningDownValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetIsDisplacementWarning() int64 {
+	if x != nil {
+		return x.IsDisplacementWarning
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetAssetId() string {
+	if x != nil {
+		return x.AssetId
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointUpdateReq) GetSort() int64 {
+	if x != nil {
+		return x.Sort
+	}
+	return 0
+}
+
+// TpmtMonitorPoint 单个查询
+type TpmtMonitorPointFindOneReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // 监测点ID
+}
+
+func (x *TpmtMonitorPointFindOneReq) Reset() {
+	*x = TpmtMonitorPointFindOneReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_tpmt_proto_msgTypes[84]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TpmtMonitorPointFindOneReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TpmtMonitorPointFindOneReq) ProtoMessage() {}
+
+func (x *TpmtMonitorPointFindOneReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tpmt_proto_msgTypes[84]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TpmtMonitorPointFindOneReq.ProtoReflect.Descriptor instead.
+func (*TpmtMonitorPointFindOneReq) Descriptor() ([]byte, []int) {
+	return file_tpmt_proto_rawDescGZIP(), []int{84}
+}
+
+func (x *TpmtMonitorPointFindOneReq) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+// TpmtMonitorPoint 单个查询返回
+type TpmtMonitorPointFindOneResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id                        int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                                                  // 监测点ID
+	CreatedAt                 int64   `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`                                                   // 创建时间
+	UpdatedAt                 int64   `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`                                                   // 更新时间
+	CreatedName               string  `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"`                                              // 创建人
+	UpdatedName               string  `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"`                                              // 更新人
+	SerialNumber              string  `protobuf:"bytes,6,opt,name=serial_number,json=serialNumber,proto3" json:"serial_number,omitempty"`                                           // 编号
+	Name                      string  `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`                                                                               // 监测点名称
+	RegisterAddress           string  `protobuf:"bytes,8,opt,name=register_address,json=registerAddress,proto3" json:"register_address,omitempty"`                                  // 寄存器地址
+	PointCollectorInstruction int64   `protobuf:"varint,9,opt,name=point_collector_instruction,json=pointCollectorInstruction,proto3" json:"point_collector_instruction,omitempty"` // 采集器指令  1: 01  2: 02  3:03  4:04
+	PointAnalysisRule         int64   `protobuf:"varint,10,opt,name=point_analysis_rule,json=pointAnalysisRule,proto3" json:"point_analysis_rule,omitempty"`                        // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+	PointType                 int64   `protobuf:"varint,11,opt,name=point_type,json=pointType,proto3" json:"point_type,omitempty"`                                                  // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+	PointCategory             int64   `protobuf:"varint,12,opt,name=point_category,json=pointCategory,proto3" json:"point_category,omitempty"`                                      // 类别：1:遥信/2:遥测/3:遥脉
+	PointGroup                int64   `protobuf:"varint,13,opt,name=point_group,json=pointGroup,proto3" json:"point_group,omitempty"`                                               // 分组
+	CircuitType               int64   `protobuf:"varint,14,opt,name=circuit_type,json=circuitType,proto3" json:"circuit_type,omitempty"`                                            // 回路类型
+	YxDecode                  string  `protobuf:"bytes,15,opt,name=yx_decode,json=yxDecode,proto3" json:"yx_decode,omitempty"`                                                      // 遥信解译
+	DataBits                  int64   `protobuf:"varint,16,opt,name=data_bits,json=dataBits,proto3" json:"data_bits,omitempty"`                                                     // 数据位
+	Coefficient               float64 `protobuf:"fixed64,17,opt,name=coefficient,proto3" json:"coefficient,omitempty"`                                                              // 系数
+	RetainDecimals            int64   `protobuf:"varint,18,opt,name=retain_decimals,json=retainDecimals,proto3" json:"retain_decimals,omitempty"`                                   // 保留小数位
+	Unit                      string  `protobuf:"bytes,19,opt,name=unit,proto3" json:"unit,omitempty"`                                                                              // 单位
+	AlarmDuration             int64   `protobuf:"varint,20,opt,name=alarm_duration,json=alarmDuration,proto3" json:"alarm_duration,omitempty"`                                      // 持续时间
+	AlarmUpValue              float64 `protobuf:"fixed64,21,opt,name=alarm_up_value,json=alarmUpValue,proto3" json:"alarm_up_value,omitempty"`                                      // 告警上限
+	AlarmDownValue            float64 `protobuf:"fixed64,22,opt,name=alarm_down_value,json=alarmDownValue,proto3" json:"alarm_down_value,omitempty"`                                // 告警下限
+	WarningUpValue            float64 `protobuf:"fixed64,23,opt,name=warning_up_value,json=warningUpValue,proto3" json:"warning_up_value,omitempty"`                                // 预警上限
+	WarningDownValue          float64 `protobuf:"fixed64,24,opt,name=warning_down_value,json=warningDownValue,proto3" json:"warning_down_value,omitempty"`                          // 预警下限
+	IsDisplacementWarning     int64   `protobuf:"varint,25,opt,name=is_displacement_warning,json=isDisplacementWarning,proto3" json:"is_displacement_warning,omitempty"`            // 变位预警 0 不启用 1:启用
+	TpmtGatewayId             string  `protobuf:"bytes,26,opt,name=tpmt_gateway_id,json=tpmtGatewayId,proto3" json:"tpmt_gateway_id,omitempty"`                                     // 网关ID
+	AssetId                   string  `protobuf:"bytes,27,opt,name=asset_id,json=assetId,proto3" json:"asset_id,omitempty"`                                                         // 资产ID
+	Sort                      int64   `protobuf:"varint,28,opt,name=sort,proto3" json:"sort,omitempty"`                                                                             // 排序
+}
+
+func (x *TpmtMonitorPointFindOneResp) Reset() {
+	*x = TpmtMonitorPointFindOneResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_tpmt_proto_msgTypes[85]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TpmtMonitorPointFindOneResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TpmtMonitorPointFindOneResp) ProtoMessage() {}
+
+func (x *TpmtMonitorPointFindOneResp) ProtoReflect() protoreflect.Message {
+	mi := &file_tpmt_proto_msgTypes[85]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TpmtMonitorPointFindOneResp.ProtoReflect.Descriptor instead.
+func (*TpmtMonitorPointFindOneResp) Descriptor() ([]byte, []int) {
+	return file_tpmt_proto_rawDescGZIP(), []int{85}
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetCreatedAt() int64 {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetUpdatedAt() int64 {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetCreatedName() string {
+	if x != nil {
+		return x.CreatedName
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetUpdatedName() string {
+	if x != nil {
+		return x.UpdatedName
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetSerialNumber() string {
+	if x != nil {
+		return x.SerialNumber
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetRegisterAddress() string {
+	if x != nil {
+		return x.RegisterAddress
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetPointCollectorInstruction() int64 {
+	if x != nil {
+		return x.PointCollectorInstruction
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetPointAnalysisRule() int64 {
+	if x != nil {
+		return x.PointAnalysisRule
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetPointType() int64 {
+	if x != nil {
+		return x.PointType
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetPointCategory() int64 {
+	if x != nil {
+		return x.PointCategory
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetPointGroup() int64 {
+	if x != nil {
+		return x.PointGroup
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetCircuitType() int64 {
+	if x != nil {
+		return x.CircuitType
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetYxDecode() string {
+	if x != nil {
+		return x.YxDecode
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetDataBits() int64 {
+	if x != nil {
+		return x.DataBits
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetCoefficient() float64 {
+	if x != nil {
+		return x.Coefficient
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetRetainDecimals() int64 {
+	if x != nil {
+		return x.RetainDecimals
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetUnit() string {
+	if x != nil {
+		return x.Unit
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetAlarmDuration() int64 {
+	if x != nil {
+		return x.AlarmDuration
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetAlarmUpValue() float64 {
+	if x != nil {
+		return x.AlarmUpValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetAlarmDownValue() float64 {
+	if x != nil {
+		return x.AlarmDownValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetWarningUpValue() float64 {
+	if x != nil {
+		return x.WarningUpValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetWarningDownValue() float64 {
+	if x != nil {
+		return x.WarningDownValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetIsDisplacementWarning() int64 {
+	if x != nil {
+		return x.IsDisplacementWarning
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetTpmtGatewayId() string {
+	if x != nil {
+		return x.TpmtGatewayId
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetAssetId() string {
+	if x != nil {
+		return x.AssetId
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointFindOneResp) GetSort() int64 {
+	if x != nil {
+		return x.Sort
+	}
+	return 0
+}
+
+// TpmtMonitorPoint 分页查询
+type TpmtMonitorPointListReq struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Current                   int64  `protobuf:"varint,1,opt,name=current,proto3" json:"current,omitempty"`                                                                        // 页码
+	PageSize                  int64  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`                                                      // 页数
+	SerialNumber              string `protobuf:"bytes,3,opt,name=serial_number,json=serialNumber,proto3" json:"serial_number,omitempty"`                                           // 编号
+	Name                      string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`                                                                               // 监测点名称
+	RegisterAddress           string `protobuf:"bytes,5,opt,name=register_address,json=registerAddress,proto3" json:"register_address,omitempty"`                                  // 寄存器地址
+	PointCollectorInstruction int64  `protobuf:"varint,6,opt,name=point_collector_instruction,json=pointCollectorInstruction,proto3" json:"point_collector_instruction,omitempty"` // 采集器指令  1: 01  2: 02  3:03  4:04
+	PointAnalysisRule         int64  `protobuf:"varint,7,opt,name=point_analysis_rule,json=pointAnalysisRule,proto3" json:"point_analysis_rule,omitempty"`                         // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+	PointType                 int64  `protobuf:"varint,8,opt,name=point_type,json=pointType,proto3" json:"point_type,omitempty"`                                                   // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+	PointCategory             int64  `protobuf:"varint,9,opt,name=point_category,json=pointCategory,proto3" json:"point_category,omitempty"`                                       // 类别：1:遥信/2:遥测/3:遥脉
+	PointGroup                int64  `protobuf:"varint,10,opt,name=point_group,json=pointGroup,proto3" json:"point_group,omitempty"`                                               // 分组
+	CircuitType               int64  `protobuf:"varint,11,opt,name=circuit_type,json=circuitType,proto3" json:"circuit_type,omitempty"`                                            // 回路类型
+	DataBits                  int64  `protobuf:"varint,13,opt,name=data_bits,json=dataBits,proto3" json:"data_bits,omitempty"`                                                     // 数据位
+	IsDisplacementWarning     int64  `protobuf:"varint,22,opt,name=is_displacement_warning,json=isDisplacementWarning,proto3" json:"is_displacement_warning,omitempty"`            // 变位预警 0 不启用 1:启用
+	TpmtGatewayId             string `protobuf:"bytes,23,opt,name=tpmt_gateway_id,json=tpmtGatewayId,proto3" json:"tpmt_gateway_id,omitempty"`                                     // 网关ID
+	AssetId                   string `protobuf:"bytes,24,opt,name=asset_id,json=assetId,proto3" json:"asset_id,omitempty"`                                                         // 资产ID
+}
+
+func (x *TpmtMonitorPointListReq) Reset() {
+	*x = TpmtMonitorPointListReq{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_tpmt_proto_msgTypes[86]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TpmtMonitorPointListReq) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TpmtMonitorPointListReq) ProtoMessage() {}
+
+func (x *TpmtMonitorPointListReq) ProtoReflect() protoreflect.Message {
+	mi := &file_tpmt_proto_msgTypes[86]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TpmtMonitorPointListReq.ProtoReflect.Descriptor instead.
+func (*TpmtMonitorPointListReq) Descriptor() ([]byte, []int) {
+	return file_tpmt_proto_rawDescGZIP(), []int{86}
+}
+
+func (x *TpmtMonitorPointListReq) GetCurrent() int64 {
+	if x != nil {
+		return x.Current
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListReq) GetPageSize() int64 {
+	if x != nil {
+		return x.PageSize
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListReq) GetSerialNumber() string {
+	if x != nil {
+		return x.SerialNumber
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListReq) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListReq) GetRegisterAddress() string {
+	if x != nil {
+		return x.RegisterAddress
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListReq) GetPointCollectorInstruction() int64 {
+	if x != nil {
+		return x.PointCollectorInstruction
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListReq) GetPointAnalysisRule() int64 {
+	if x != nil {
+		return x.PointAnalysisRule
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListReq) GetPointType() int64 {
+	if x != nil {
+		return x.PointType
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListReq) GetPointCategory() int64 {
+	if x != nil {
+		return x.PointCategory
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListReq) GetPointGroup() int64 {
+	if x != nil {
+		return x.PointGroup
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListReq) GetCircuitType() int64 {
+	if x != nil {
+		return x.CircuitType
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListReq) GetDataBits() int64 {
+	if x != nil {
+		return x.DataBits
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListReq) GetIsDisplacementWarning() int64 {
+	if x != nil {
+		return x.IsDisplacementWarning
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListReq) GetTpmtGatewayId() string {
+	if x != nil {
+		return x.TpmtGatewayId
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListReq) GetAssetId() string {
+	if x != nil {
+		return x.AssetId
+	}
+	return ""
+}
+
+// TpmtMonitorPoint 分页查询返回
+type TpmtMonitorPointListResp struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Total int64                       `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"` // 总数
+	List  []*TpmtMonitorPointListData `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"`    // 内容
+}
+
+func (x *TpmtMonitorPointListResp) Reset() {
+	*x = TpmtMonitorPointListResp{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_tpmt_proto_msgTypes[87]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TpmtMonitorPointListResp) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TpmtMonitorPointListResp) ProtoMessage() {}
+
+func (x *TpmtMonitorPointListResp) ProtoReflect() protoreflect.Message {
+	mi := &file_tpmt_proto_msgTypes[87]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TpmtMonitorPointListResp.ProtoReflect.Descriptor instead.
+func (*TpmtMonitorPointListResp) Descriptor() ([]byte, []int) {
+	return file_tpmt_proto_rawDescGZIP(), []int{87}
+}
+
+func (x *TpmtMonitorPointListResp) GetTotal() int64 {
+	if x != nil {
+		return x.Total
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListResp) GetList() []*TpmtMonitorPointListData {
+	if x != nil {
+		return x.List
+	}
+	return nil
+}
+
+// TpmtMonitorPoint 列表信息
+type TpmtMonitorPointListData struct {
+	state         protoimpl.MessageState
+	sizeCache     protoimpl.SizeCache
+	unknownFields protoimpl.UnknownFields
+
+	Id                        int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                                                  // 监测点ID
+	CreatedAt                 int64   `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`                                                   // 创建时间
+	UpdatedAt                 int64   `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`                                                   // 更新时间
+	CreatedName               string  `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"`                                              // 创建人
+	UpdatedName               string  `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"`                                              // 更新人
+	SerialNumber              string  `protobuf:"bytes,6,opt,name=serial_number,json=serialNumber,proto3" json:"serial_number,omitempty"`                                           // 编号
+	Name                      string  `protobuf:"bytes,7,opt,name=name,proto3" json:"name,omitempty"`                                                                               // 监测点名称
+	RegisterAddress           string  `protobuf:"bytes,8,opt,name=register_address,json=registerAddress,proto3" json:"register_address,omitempty"`                                  // 寄存器地址
+	PointCollectorInstruction int64   `protobuf:"varint,9,opt,name=point_collector_instruction,json=pointCollectorInstruction,proto3" json:"point_collector_instruction,omitempty"` // 采集器指令  1: 01  2: 02  3:03  4:04
+	PointAnalysisRule         int64   `protobuf:"varint,10,opt,name=point_analysis_rule,json=pointAnalysisRule,proto3" json:"point_analysis_rule,omitempty"`                        // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+	PointType                 int64   `protobuf:"varint,11,opt,name=point_type,json=pointType,proto3" json:"point_type,omitempty"`                                                  // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+	PointCategory             int64   `protobuf:"varint,12,opt,name=point_category,json=pointCategory,proto3" json:"point_category,omitempty"`                                      // 类别：1:遥信/2:遥测/3:遥脉
+	PointGroup                int64   `protobuf:"varint,13,opt,name=point_group,json=pointGroup,proto3" json:"point_group,omitempty"`                                               // 分组
+	CircuitType               int64   `protobuf:"varint,14,opt,name=circuit_type,json=circuitType,proto3" json:"circuit_type,omitempty"`                                            // 回路类型
+	YxDecode                  string  `protobuf:"bytes,15,opt,name=yx_decode,json=yxDecode,proto3" json:"yx_decode,omitempty"`                                                      // 遥信解译
+	DataBits                  int64   `protobuf:"varint,16,opt,name=data_bits,json=dataBits,proto3" json:"data_bits,omitempty"`                                                     // 数据位
+	Coefficient               float64 `protobuf:"fixed64,17,opt,name=coefficient,proto3" json:"coefficient,omitempty"`                                                              // 系数
+	RetainDecimals            int64   `protobuf:"varint,18,opt,name=retain_decimals,json=retainDecimals,proto3" json:"retain_decimals,omitempty"`                                   // 保留小数位
+	Unit                      string  `protobuf:"bytes,19,opt,name=unit,proto3" json:"unit,omitempty"`                                                                              // 单位
+	AlarmDuration             int64   `protobuf:"varint,20,opt,name=alarm_duration,json=alarmDuration,proto3" json:"alarm_duration,omitempty"`                                      // 持续时间
+	AlarmUpValue              float64 `protobuf:"fixed64,21,opt,name=alarm_up_value,json=alarmUpValue,proto3" json:"alarm_up_value,omitempty"`                                      // 告警上限
+	AlarmDownValue            float64 `protobuf:"fixed64,22,opt,name=alarm_down_value,json=alarmDownValue,proto3" json:"alarm_down_value,omitempty"`                                // 告警下限
+	WarningUpValue            float64 `protobuf:"fixed64,23,opt,name=warning_up_value,json=warningUpValue,proto3" json:"warning_up_value,omitempty"`                                // 预警上限
+	WarningDownValue          float64 `protobuf:"fixed64,24,opt,name=warning_down_value,json=warningDownValue,proto3" json:"warning_down_value,omitempty"`                          // 预警下限
+	IsDisplacementWarning     int64   `protobuf:"varint,25,opt,name=is_displacement_warning,json=isDisplacementWarning,proto3" json:"is_displacement_warning,omitempty"`            // 变位预警 0 不启用 1:启用
+	TpmtGatewayId             string  `protobuf:"bytes,26,opt,name=tpmt_gateway_id,json=tpmtGatewayId,proto3" json:"tpmt_gateway_id,omitempty"`                                     // 网关ID
+	AssetId                   string  `protobuf:"bytes,27,opt,name=asset_id,json=assetId,proto3" json:"asset_id,omitempty"`                                                         // 资产ID
+	Sort                      int64   `protobuf:"varint,28,opt,name=sort,proto3" json:"sort,omitempty"`                                                                             // 排序
+}
+
+func (x *TpmtMonitorPointListData) Reset() {
+	*x = TpmtMonitorPointListData{}
+	if protoimpl.UnsafeEnabled {
+		mi := &file_tpmt_proto_msgTypes[88]
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		ms.StoreMessageInfo(mi)
+	}
+}
+
+func (x *TpmtMonitorPointListData) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*TpmtMonitorPointListData) ProtoMessage() {}
+
+func (x *TpmtMonitorPointListData) ProtoReflect() protoreflect.Message {
+	mi := &file_tpmt_proto_msgTypes[88]
+	if protoimpl.UnsafeEnabled && x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use TpmtMonitorPointListData.ProtoReflect.Descriptor instead.
+func (*TpmtMonitorPointListData) Descriptor() ([]byte, []int) {
+	return file_tpmt_proto_rawDescGZIP(), []int{88}
+}
+
+func (x *TpmtMonitorPointListData) GetId() int64 {
+	if x != nil {
+		return x.Id
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetCreatedAt() int64 {
+	if x != nil {
+		return x.CreatedAt
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetUpdatedAt() int64 {
+	if x != nil {
+		return x.UpdatedAt
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetCreatedName() string {
+	if x != nil {
+		return x.CreatedName
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListData) GetUpdatedName() string {
+	if x != nil {
+		return x.UpdatedName
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListData) GetSerialNumber() string {
+	if x != nil {
+		return x.SerialNumber
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListData) GetName() string {
+	if x != nil {
+		return x.Name
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListData) GetRegisterAddress() string {
+	if x != nil {
+		return x.RegisterAddress
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListData) GetPointCollectorInstruction() int64 {
+	if x != nil {
+		return x.PointCollectorInstruction
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetPointAnalysisRule() int64 {
+	if x != nil {
+		return x.PointAnalysisRule
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetPointType() int64 {
+	if x != nil {
+		return x.PointType
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetPointCategory() int64 {
+	if x != nil {
+		return x.PointCategory
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetPointGroup() int64 {
+	if x != nil {
+		return x.PointGroup
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetCircuitType() int64 {
+	if x != nil {
+		return x.CircuitType
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetYxDecode() string {
+	if x != nil {
+		return x.YxDecode
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListData) GetDataBits() int64 {
+	if x != nil {
+		return x.DataBits
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetCoefficient() float64 {
+	if x != nil {
+		return x.Coefficient
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetRetainDecimals() int64 {
+	if x != nil {
+		return x.RetainDecimals
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetUnit() string {
+	if x != nil {
+		return x.Unit
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListData) GetAlarmDuration() int64 {
+	if x != nil {
+		return x.AlarmDuration
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetAlarmUpValue() float64 {
+	if x != nil {
+		return x.AlarmUpValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetAlarmDownValue() float64 {
+	if x != nil {
+		return x.AlarmDownValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetWarningUpValue() float64 {
+	if x != nil {
+		return x.WarningUpValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetWarningDownValue() float64 {
+	if x != nil {
+		return x.WarningDownValue
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetIsDisplacementWarning() int64 {
+	if x != nil {
+		return x.IsDisplacementWarning
+	}
+	return 0
+}
+
+func (x *TpmtMonitorPointListData) GetTpmtGatewayId() string {
+	if x != nil {
+		return x.TpmtGatewayId
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListData) GetAssetId() string {
+	if x != nil {
+		return x.AssetId
+	}
+	return ""
+}
+
+func (x *TpmtMonitorPointListData) GetSort() int64 {
+	if x != nil {
+		return x.Sort
+	}
+	return 0
+}
+
 var File_tpmt_proto protoreflect.FileDescriptor
 
 var file_tpmt_proto_rawDesc = []byte{
@@ -8023,7 +9327,298 @@ var file_tpmt_proto_rawDesc = []byte{
 	0x08, 0x63, 0x6f, 0x6d, 0x5f, 0x70, 0x6f, 0x72, 0x74, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x09, 0x52,
 	0x07, 0x63, 0x6f, 0x6d, 0x50, 0x6f, 0x72, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x61, 0x64, 0x64, 0x72,
 	0x65, 0x73, 0x73, 0x5f, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b,
-	0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x43, 0x6f, 0x64, 0x65, 0x32, 0xfb, 0x1d, 0x0a, 0x04,
+	0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x43, 0x6f, 0x64, 0x65, 0x22, 0x90, 0x07, 0x0a, 0x16,
+	0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74,
+	0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
+	0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72,
+	0x65, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x73, 0x65, 0x72,
+	0x69, 0x61, 0x6c, 0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0c, 0x73, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x12,
+	0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61,
+	0x6d, 0x65, 0x12, 0x29, 0x0a, 0x10, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x5f, 0x61,
+	0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x72, 0x65,
+	0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x3e, 0x0a,
+	0x1b, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x6f, 0x72,
+	0x5f, 0x69, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x19, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74,
+	0x6f, 0x72, 0x49, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x2e, 0x0a,
+	0x13, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x5f,
+	0x72, 0x75, 0x6c, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x11, 0x70, 0x6f, 0x69, 0x6e,
+	0x74, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x52, 0x75, 0x6c, 0x65, 0x12, 0x1d, 0x0a,
+	0x0a, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x09, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x25, 0x0a, 0x0e,
+	0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x08,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x43, 0x61, 0x74, 0x65, 0x67,
+	0x6f, 0x72, 0x79, 0x12, 0x1f, 0x0a, 0x0b, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x67, 0x72, 0x6f,
+	0x75, 0x70, 0x18, 0x09, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x47,
+	0x72, 0x6f, 0x75, 0x70, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x69, 0x72, 0x63, 0x75, 0x69, 0x74, 0x5f,
+	0x74, 0x79, 0x70, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x63, 0x69, 0x72, 0x63,
+	0x75, 0x69, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x79, 0x78, 0x5f, 0x64, 0x65,
+	0x63, 0x6f, 0x64, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x79, 0x78, 0x44, 0x65,
+	0x63, 0x6f, 0x64, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x61, 0x74, 0x61, 0x5f, 0x62, 0x69, 0x74,
+	0x73, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x64, 0x61, 0x74, 0x61, 0x42, 0x69, 0x74,
+	0x73, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x65, 0x66, 0x66, 0x69, 0x63, 0x69, 0x65, 0x6e, 0x74,
+	0x18, 0x0d, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0b, 0x63, 0x6f, 0x65, 0x66, 0x66, 0x69, 0x63, 0x69,
+	0x65, 0x6e, 0x74, 0x12, 0x27, 0x0a, 0x0f, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6e, 0x5f, 0x64, 0x65,
+	0x63, 0x69, 0x6d, 0x61, 0x6c, 0x73, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e, 0x72, 0x65,
+	0x74, 0x61, 0x69, 0x6e, 0x44, 0x65, 0x63, 0x69, 0x6d, 0x61, 0x6c, 0x73, 0x12, 0x12, 0x0a, 0x04,
+	0x75, 0x6e, 0x69, 0x74, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x75, 0x6e, 0x69, 0x74,
+	0x12, 0x25, 0x0a, 0x0e, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x5f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69,
+	0x6f, 0x6e, 0x18, 0x10, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x44,
+	0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x24, 0x0a, 0x0e, 0x61, 0x6c, 0x61, 0x72, 0x6d,
+	0x5f, 0x75, 0x70, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x11, 0x20, 0x01, 0x28, 0x01, 0x52,
+	0x0c, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x55, 0x70, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x28, 0x0a,
+	0x10, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x5f, 0x64, 0x6f, 0x77, 0x6e, 0x5f, 0x76, 0x61, 0x6c, 0x75,
+	0x65, 0x18, 0x12, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0e, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x44, 0x6f,
+	0x77, 0x6e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x28, 0x0a, 0x10, 0x77, 0x61, 0x72, 0x6e, 0x69,
+	0x6e, 0x67, 0x5f, 0x75, 0x70, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x13, 0x20, 0x01, 0x28,
+	0x01, 0x52, 0x0e, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x55, 0x70, 0x56, 0x61, 0x6c, 0x75,
+	0x65, 0x12, 0x2c, 0x0a, 0x12, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x5f, 0x64, 0x6f, 0x77,
+	0x6e, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x14, 0x20, 0x01, 0x28, 0x01, 0x52, 0x10, 0x77,
+	0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x44, 0x6f, 0x77, 0x6e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12,
+	0x36, 0x0a, 0x17, 0x69, 0x73, 0x5f, 0x64, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x6d, 0x65,
+	0x6e, 0x74, 0x5f, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x18, 0x15, 0x20, 0x01, 0x28, 0x03,
+	0x52, 0x15, 0x69, 0x73, 0x44, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x6d, 0x65, 0x6e, 0x74,
+	0x57, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x12, 0x26, 0x0a, 0x0f, 0x74, 0x70, 0x6d, 0x74, 0x5f,
+	0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x5f, 0x69, 0x64, 0x18, 0x16, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x0d, 0x74, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x49, 0x64, 0x12,
+	0x19, 0x0a, 0x08, 0x61, 0x73, 0x73, 0x65, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x17, 0x20, 0x01, 0x28,
+	0x09, 0x52, 0x07, 0x61, 0x73, 0x73, 0x65, 0x74, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f,
+	0x72, 0x74, 0x18, 0x18, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x22, 0x2b,
+	0x0a, 0x19, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69,
+	0x6e, 0x74, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69,
+	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x22, 0xfb, 0x06, 0x0a, 0x19,
+	0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
+	0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d,
+	0x73, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x03, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x0c, 0x73, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65,
+	0x72, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x29, 0x0a, 0x10, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65,
+	0x72, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
+	0x12, 0x3e, 0x0a, 0x1b, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63,
+	0x74, 0x6f, 0x72, 0x5f, 0x69, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18,
+	0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x19, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x43, 0x6f, 0x6c, 0x6c,
+	0x65, 0x63, 0x74, 0x6f, 0x72, 0x49, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e,
+	0x12, 0x2e, 0x0a, 0x13, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x73,
+	0x69, 0x73, 0x5f, 0x72, 0x75, 0x6c, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x03, 0x52, 0x11, 0x70,
+	0x6f, 0x69, 0x6e, 0x74, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x52, 0x75, 0x6c, 0x65,
+	0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x08,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12,
+	0x25, 0x0a, 0x0e, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72,
+	0x79, 0x18, 0x09, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x43, 0x61,
+	0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x12, 0x1f, 0x0a, 0x0b, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f,
+	0x67, 0x72, 0x6f, 0x75, 0x70, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x6f, 0x69,
+	0x6e, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x69, 0x72, 0x63, 0x75,
+	0x69, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x63,
+	0x69, 0x72, 0x63, 0x75, 0x69, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x79, 0x78,
+	0x5f, 0x64, 0x65, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x79,
+	0x78, 0x44, 0x65, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x61, 0x74, 0x61, 0x5f,
+	0x62, 0x69, 0x74, 0x73, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x64, 0x61, 0x74, 0x61,
+	0x42, 0x69, 0x74, 0x73, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x65, 0x66, 0x66, 0x69, 0x63, 0x69,
+	0x65, 0x6e, 0x74, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0b, 0x63, 0x6f, 0x65, 0x66, 0x66,
+	0x69, 0x63, 0x69, 0x65, 0x6e, 0x74, 0x12, 0x27, 0x0a, 0x0f, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6e,
+	0x5f, 0x64, 0x65, 0x63, 0x69, 0x6d, 0x61, 0x6c, 0x73, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x0e, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6e, 0x44, 0x65, 0x63, 0x69, 0x6d, 0x61, 0x6c, 0x73, 0x12,
+	0x12, 0x0a, 0x04, 0x75, 0x6e, 0x69, 0x74, 0x18, 0x10, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x75,
+	0x6e, 0x69, 0x74, 0x12, 0x25, 0x0a, 0x0e, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x5f, 0x64, 0x75, 0x72,
+	0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x11, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x61, 0x6c, 0x61,
+	0x72, 0x6d, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x24, 0x0a, 0x0e, 0x61, 0x6c,
+	0x61, 0x72, 0x6d, 0x5f, 0x75, 0x70, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x12, 0x20, 0x01,
+	0x28, 0x01, 0x52, 0x0c, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x55, 0x70, 0x56, 0x61, 0x6c, 0x75, 0x65,
+	0x12, 0x28, 0x0a, 0x10, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x5f, 0x64, 0x6f, 0x77, 0x6e, 0x5f, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x18, 0x13, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0e, 0x61, 0x6c, 0x61, 0x72,
+	0x6d, 0x44, 0x6f, 0x77, 0x6e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x28, 0x0a, 0x10, 0x77, 0x61,
+	0x72, 0x6e, 0x69, 0x6e, 0x67, 0x5f, 0x75, 0x70, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x14,
+	0x20, 0x01, 0x28, 0x01, 0x52, 0x0e, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x55, 0x70, 0x56,
+	0x61, 0x6c, 0x75, 0x65, 0x12, 0x2c, 0x0a, 0x12, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x5f,
+	0x64, 0x6f, 0x77, 0x6e, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x15, 0x20, 0x01, 0x28, 0x01,
+	0x52, 0x10, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x44, 0x6f, 0x77, 0x6e, 0x56, 0x61, 0x6c,
+	0x75, 0x65, 0x12, 0x36, 0x0a, 0x17, 0x69, 0x73, 0x5f, 0x64, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x63,
+	0x65, 0x6d, 0x65, 0x6e, 0x74, 0x5f, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x18, 0x16, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x15, 0x69, 0x73, 0x44, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x6d,
+	0x65, 0x6e, 0x74, 0x57, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x12, 0x19, 0x0a, 0x08, 0x61, 0x73,
+	0x73, 0x65, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x18, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x73,
+	0x73, 0x65, 0x74, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x19, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x22, 0x2c, 0x0a, 0x1a, 0x54, 0x70, 0x6d,
+	0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x46, 0x69, 0x6e,
+	0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x22, 0x86, 0x08, 0x0a, 0x1b, 0x54, 0x70, 0x6d, 0x74,
+	0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x46, 0x69, 0x6e, 0x64,
+	0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74,
+	0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x64, 0x5f, 0x61, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64,
+	0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65,
+	0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
+	0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x73,
+	0x65, 0x72, 0x69, 0x61, 0x6c, 0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x06, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0c, 0x73, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72,
+	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
+	0x6e, 0x61, 0x6d, 0x65, 0x12, 0x29, 0x0a, 0x10, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72,
+	0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f,
+	0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12,
+	0x3e, 0x0a, 0x1b, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74,
+	0x6f, 0x72, 0x5f, 0x69, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x09,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x19, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x43, 0x6f, 0x6c, 0x6c, 0x65,
+	0x63, 0x74, 0x6f, 0x72, 0x49, 0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12,
+	0x2e, 0x0a, 0x13, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69,
+	0x73, 0x5f, 0x72, 0x75, 0x6c, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x11, 0x70, 0x6f,
+	0x69, 0x6e, 0x74, 0x41, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x52, 0x75, 0x6c, 0x65, 0x12,
+	0x1d, 0x0a, 0x0a, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0b, 0x20,
+	0x01, 0x28, 0x03, 0x52, 0x09, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x25,
+	0x0a, 0x0e, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79,
+	0x18, 0x0c, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x43, 0x61, 0x74,
+	0x65, 0x67, 0x6f, 0x72, 0x79, 0x12, 0x1f, 0x0a, 0x0b, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x67,
+	0x72, 0x6f, 0x75, 0x70, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x6f, 0x69, 0x6e,
+	0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x69, 0x72, 0x63, 0x75, 0x69,
+	0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x63, 0x69,
+	0x72, 0x63, 0x75, 0x69, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x79, 0x78, 0x5f,
+	0x64, 0x65, 0x63, 0x6f, 0x64, 0x65, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x79, 0x78,
+	0x44, 0x65, 0x63, 0x6f, 0x64, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x61, 0x74, 0x61, 0x5f, 0x62,
+	0x69, 0x74, 0x73, 0x18, 0x10, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x64, 0x61, 0x74, 0x61, 0x42,
+	0x69, 0x74, 0x73, 0x12, 0x20, 0x0a, 0x0b, 0x63, 0x6f, 0x65, 0x66, 0x66, 0x69, 0x63, 0x69, 0x65,
+	0x6e, 0x74, 0x18, 0x11, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0b, 0x63, 0x6f, 0x65, 0x66, 0x66, 0x69,
+	0x63, 0x69, 0x65, 0x6e, 0x74, 0x12, 0x27, 0x0a, 0x0f, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6e, 0x5f,
+	0x64, 0x65, 0x63, 0x69, 0x6d, 0x61, 0x6c, 0x73, 0x18, 0x12, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e,
+	0x72, 0x65, 0x74, 0x61, 0x69, 0x6e, 0x44, 0x65, 0x63, 0x69, 0x6d, 0x61, 0x6c, 0x73, 0x12, 0x12,
+	0x0a, 0x04, 0x75, 0x6e, 0x69, 0x74, 0x18, 0x13, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x75, 0x6e,
+	0x69, 0x74, 0x12, 0x25, 0x0a, 0x0e, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x5f, 0x64, 0x75, 0x72, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x18, 0x14, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x61, 0x6c, 0x61, 0x72,
+	0x6d, 0x44, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x24, 0x0a, 0x0e, 0x61, 0x6c, 0x61,
+	0x72, 0x6d, 0x5f, 0x75, 0x70, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x15, 0x20, 0x01, 0x28,
+	0x01, 0x52, 0x0c, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x55, 0x70, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12,
+	0x28, 0x0a, 0x10, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x5f, 0x64, 0x6f, 0x77, 0x6e, 0x5f, 0x76, 0x61,
+	0x6c, 0x75, 0x65, 0x18, 0x16, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0e, 0x61, 0x6c, 0x61, 0x72, 0x6d,
+	0x44, 0x6f, 0x77, 0x6e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x28, 0x0a, 0x10, 0x77, 0x61, 0x72,
+	0x6e, 0x69, 0x6e, 0x67, 0x5f, 0x75, 0x70, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x17, 0x20,
+	0x01, 0x28, 0x01, 0x52, 0x0e, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x55, 0x70, 0x56, 0x61,
+	0x6c, 0x75, 0x65, 0x12, 0x2c, 0x0a, 0x12, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x5f, 0x64,
+	0x6f, 0x77, 0x6e, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x18, 0x20, 0x01, 0x28, 0x01, 0x52,
+	0x10, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x44, 0x6f, 0x77, 0x6e, 0x56, 0x61, 0x6c, 0x75,
+	0x65, 0x12, 0x36, 0x0a, 0x17, 0x69, 0x73, 0x5f, 0x64, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x63, 0x65,
+	0x6d, 0x65, 0x6e, 0x74, 0x5f, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x18, 0x19, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x15, 0x69, 0x73, 0x44, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x6d, 0x65,
+	0x6e, 0x74, 0x57, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x12, 0x26, 0x0a, 0x0f, 0x74, 0x70, 0x6d,
+	0x74, 0x5f, 0x67, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x5f, 0x69, 0x64, 0x18, 0x1a, 0x20, 0x01,
+	0x28, 0x09, 0x52, 0x0d, 0x74, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x49,
+	0x64, 0x12, 0x19, 0x0a, 0x08, 0x61, 0x73, 0x73, 0x65, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x1b, 0x20,
+	0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x73, 0x73, 0x65, 0x74, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04,
+	0x73, 0x6f, 0x72, 0x74, 0x18, 0x1c, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74,
+	0x22, 0xc6, 0x04, 0x0a, 0x17, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72,
+	0x50, 0x6f, 0x69, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x12, 0x18, 0x0a, 0x07,
+	0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x63,
+	0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x73,
+	0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53,
+	0x69, 0x7a, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x73, 0x65, 0x72, 0x69, 0x61, 0x6c, 0x5f, 0x6e, 0x75,
+	0x6d, 0x62, 0x65, 0x72, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x73, 0x65, 0x72, 0x69,
+	0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x29, 0x0a, 0x10,
+	0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73,
+	0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72,
+	0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x3e, 0x0a, 0x1b, 0x70, 0x6f, 0x69, 0x6e, 0x74,
+	0x5f, 0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x5f, 0x69, 0x6e, 0x73, 0x74, 0x72,
+	0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x19, 0x70, 0x6f,
+	0x69, 0x6e, 0x74, 0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x49, 0x6e, 0x73, 0x74,
+	0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x2e, 0x0a, 0x13, 0x70, 0x6f, 0x69, 0x6e, 0x74,
+	0x5f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x5f, 0x72, 0x75, 0x6c, 0x65, 0x18, 0x07,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x11, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x41, 0x6e, 0x61, 0x6c, 0x79,
+	0x73, 0x69, 0x73, 0x52, 0x75, 0x6c, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x6f, 0x69, 0x6e, 0x74,
+	0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x70, 0x6f, 0x69,
+	0x6e, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x25, 0x0a, 0x0e, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f,
+	0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x09, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d,
+	0x70, 0x6f, 0x69, 0x6e, 0x74, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x12, 0x1f, 0x0a,
+	0x0b, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x18, 0x0a, 0x20, 0x01,
+	0x28, 0x03, 0x52, 0x0a, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x12, 0x21,
+	0x0a, 0x0c, 0x63, 0x69, 0x72, 0x63, 0x75, 0x69, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0b,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x63, 0x69, 0x72, 0x63, 0x75, 0x69, 0x74, 0x54, 0x79, 0x70,
+	0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x61, 0x74, 0x61, 0x5f, 0x62, 0x69, 0x74, 0x73, 0x18, 0x0d,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x64, 0x61, 0x74, 0x61, 0x42, 0x69, 0x74, 0x73, 0x12, 0x36,
+	0x0a, 0x17, 0x69, 0x73, 0x5f, 0x64, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x6d, 0x65, 0x6e,
+	0x74, 0x5f, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x18, 0x16, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x15, 0x69, 0x73, 0x44, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x57,
+	0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x12, 0x26, 0x0a, 0x0f, 0x74, 0x70, 0x6d, 0x74, 0x5f, 0x67,
+	0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x5f, 0x69, 0x64, 0x18, 0x17, 0x20, 0x01, 0x28, 0x09, 0x52,
+	0x0d, 0x74, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x49, 0x64, 0x12, 0x19,
+	0x0a, 0x08, 0x61, 0x73, 0x73, 0x65, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x18, 0x20, 0x01, 0x28, 0x09,
+	0x52, 0x07, 0x61, 0x73, 0x73, 0x65, 0x74, 0x49, 0x64, 0x22, 0x6a, 0x0a, 0x18, 0x54, 0x70, 0x6d,
+	0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x4c, 0x69, 0x73,
+	0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x01,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x38, 0x0a, 0x04, 0x6c,
+	0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x74, 0x70, 0x6d, 0x74,
+	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74,
+	0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x52,
+	0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0x83, 0x08, 0x0a, 0x18, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f,
+	0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61,
+	0x74, 0x61, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02,
+	0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74,
+	0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41,
+	0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18,
+	0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74,
+	0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
+	0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x4e,
+	0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e,
+	0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x23, 0x0a, 0x0d, 0x73, 0x65, 0x72, 0x69, 0x61, 0x6c,
+	0x5f, 0x6e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x73,
+	0x65, 0x72, 0x69, 0x61, 0x6c, 0x4e, 0x75, 0x6d, 0x62, 0x65, 0x72, 0x12, 0x12, 0x0a, 0x04, 0x6e,
+	0x61, 0x6d, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12,
+	0x29, 0x0a, 0x10, 0x72, 0x65, 0x67, 0x69, 0x73, 0x74, 0x65, 0x72, 0x5f, 0x61, 0x64, 0x64, 0x72,
+	0x65, 0x73, 0x73, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0f, 0x72, 0x65, 0x67, 0x69, 0x73,
+	0x74, 0x65, 0x72, 0x41, 0x64, 0x64, 0x72, 0x65, 0x73, 0x73, 0x12, 0x3e, 0x0a, 0x1b, 0x70, 0x6f,
+	0x69, 0x6e, 0x74, 0x5f, 0x63, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x5f, 0x69, 0x6e,
+	0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x09, 0x20, 0x01, 0x28, 0x03, 0x52,
+	0x19, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x43, 0x6f, 0x6c, 0x6c, 0x65, 0x63, 0x74, 0x6f, 0x72, 0x49,
+	0x6e, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x2e, 0x0a, 0x13, 0x70, 0x6f,
+	0x69, 0x6e, 0x74, 0x5f, 0x61, 0x6e, 0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x5f, 0x72, 0x75, 0x6c,
+	0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x11, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x41, 0x6e,
+	0x61, 0x6c, 0x79, 0x73, 0x69, 0x73, 0x52, 0x75, 0x6c, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x70, 0x6f,
+	0x69, 0x6e, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09,
+	0x70, 0x6f, 0x69, 0x6e, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x25, 0x0a, 0x0e, 0x70, 0x6f, 0x69,
+	0x6e, 0x74, 0x5f, 0x63, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79, 0x18, 0x0c, 0x20, 0x01, 0x28,
+	0x03, 0x52, 0x0d, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x43, 0x61, 0x74, 0x65, 0x67, 0x6f, 0x72, 0x79,
+	0x12, 0x1f, 0x0a, 0x0b, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x18,
+	0x0d, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0a, 0x70, 0x6f, 0x69, 0x6e, 0x74, 0x47, 0x72, 0x6f, 0x75,
+	0x70, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x69, 0x72, 0x63, 0x75, 0x69, 0x74, 0x5f, 0x74, 0x79, 0x70,
+	0x65, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x63, 0x69, 0x72, 0x63, 0x75, 0x69, 0x74,
+	0x54, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x79, 0x78, 0x5f, 0x64, 0x65, 0x63, 0x6f, 0x64,
+	0x65, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x79, 0x78, 0x44, 0x65, 0x63, 0x6f, 0x64,
+	0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x61, 0x74, 0x61, 0x5f, 0x62, 0x69, 0x74, 0x73, 0x18, 0x10,
+	0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x64, 0x61, 0x74, 0x61, 0x42, 0x69, 0x74, 0x73, 0x12, 0x20,
+	0x0a, 0x0b, 0x63, 0x6f, 0x65, 0x66, 0x66, 0x69, 0x63, 0x69, 0x65, 0x6e, 0x74, 0x18, 0x11, 0x20,
+	0x01, 0x28, 0x01, 0x52, 0x0b, 0x63, 0x6f, 0x65, 0x66, 0x66, 0x69, 0x63, 0x69, 0x65, 0x6e, 0x74,
+	0x12, 0x27, 0x0a, 0x0f, 0x72, 0x65, 0x74, 0x61, 0x69, 0x6e, 0x5f, 0x64, 0x65, 0x63, 0x69, 0x6d,
+	0x61, 0x6c, 0x73, 0x18, 0x12, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0e, 0x72, 0x65, 0x74, 0x61, 0x69,
+	0x6e, 0x44, 0x65, 0x63, 0x69, 0x6d, 0x61, 0x6c, 0x73, 0x12, 0x12, 0x0a, 0x04, 0x75, 0x6e, 0x69,
+	0x74, 0x18, 0x13, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x75, 0x6e, 0x69, 0x74, 0x12, 0x25, 0x0a,
+	0x0e, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x5f, 0x64, 0x75, 0x72, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x18,
+	0x14, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0d, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x44, 0x75, 0x72, 0x61,
+	0x74, 0x69, 0x6f, 0x6e, 0x12, 0x24, 0x0a, 0x0e, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x5f, 0x75, 0x70,
+	0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x15, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0c, 0x61, 0x6c,
+	0x61, 0x72, 0x6d, 0x55, 0x70, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x28, 0x0a, 0x10, 0x61, 0x6c,
+	0x61, 0x72, 0x6d, 0x5f, 0x64, 0x6f, 0x77, 0x6e, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x16,
+	0x20, 0x01, 0x28, 0x01, 0x52, 0x0e, 0x61, 0x6c, 0x61, 0x72, 0x6d, 0x44, 0x6f, 0x77, 0x6e, 0x56,
+	0x61, 0x6c, 0x75, 0x65, 0x12, 0x28, 0x0a, 0x10, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x5f,
+	0x75, 0x70, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x17, 0x20, 0x01, 0x28, 0x01, 0x52, 0x0e,
+	0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x55, 0x70, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x2c,
+	0x0a, 0x12, 0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x5f, 0x64, 0x6f, 0x77, 0x6e, 0x5f, 0x76,
+	0x61, 0x6c, 0x75, 0x65, 0x18, 0x18, 0x20, 0x01, 0x28, 0x01, 0x52, 0x10, 0x77, 0x61, 0x72, 0x6e,
+	0x69, 0x6e, 0x67, 0x44, 0x6f, 0x77, 0x6e, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x36, 0x0a, 0x17,
+	0x69, 0x73, 0x5f, 0x64, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x5f,
+	0x77, 0x61, 0x72, 0x6e, 0x69, 0x6e, 0x67, 0x18, 0x19, 0x20, 0x01, 0x28, 0x03, 0x52, 0x15, 0x69,
+	0x73, 0x44, 0x69, 0x73, 0x70, 0x6c, 0x61, 0x63, 0x65, 0x6d, 0x65, 0x6e, 0x74, 0x57, 0x61, 0x72,
+	0x6e, 0x69, 0x6e, 0x67, 0x12, 0x26, 0x0a, 0x0f, 0x74, 0x70, 0x6d, 0x74, 0x5f, 0x67, 0x61, 0x74,
+	0x65, 0x77, 0x61, 0x79, 0x5f, 0x69, 0x64, 0x18, 0x1a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x74,
+	0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x49, 0x64, 0x12, 0x19, 0x0a, 0x08,
+	0x61, 0x73, 0x73, 0x65, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x1b, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07,
+	0x61, 0x73, 0x73, 0x65, 0x74, 0x49, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18,
+	0x1c, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x32, 0xcf, 0x21, 0x0a, 0x04,
 	0x54, 0x70, 0x6d, 0x74, 0x12, 0x43, 0x0a, 0x08, 0x53, 0x79, 0x73, 0x4c, 0x6f, 0x67, 0x69, 0x6e,
 	0x12, 0x17, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79,
 	0x73, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x1a, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74,
@@ -8263,9 +9858,38 @@ var file_tpmt_proto_rawDesc = []byte{
 	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61,
 	0x79, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63,
 	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61,
-	0x79, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x42, 0x0e, 0x5a, 0x0c, 0x2e, 0x2f, 0x74,
-	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,
-	0x33,
+	0x79, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x13, 0x54, 0x70, 0x6d,
+	0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x41, 0x64, 0x64,
+	0x12, 0x22, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70,
+	0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x41, 0x64,
+	0x64, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
+	0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x16,
+	0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74,
+	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x25, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69,
+	0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50,
+	0x6f, 0x69, 0x6e, 0x74, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e,
+	0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f,
+	0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x16, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e,
+	0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12,
+	0x25, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d,
+	0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x55, 0x70, 0x64,
+	0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69,
+	0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6a,
+	0x0a, 0x17, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69,
+	0x6e, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12, 0x26, 0x2e, 0x74, 0x70, 0x6d, 0x74,
+	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74,
+	0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65,
+	0x71, 0x1a, 0x27, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54,
+	0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x46,
+	0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x61, 0x0a, 0x14, 0x54, 0x70,
+	0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x4c, 0x69,
+	0x73, 0x74, 0x12, 0x23, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
+	0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74,
+	0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
+	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72,
+	0x50, 0x6f, 0x69, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x42, 0x0e, 0x5a,
+	0x0c, 0x2e, 0x2f, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x62, 0x06, 0x70,
+	0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -8280,89 +9904,97 @@ func file_tpmt_proto_rawDescGZIP() []byte {
 	return file_tpmt_proto_rawDescData
 }
 
-var file_tpmt_proto_msgTypes = make([]protoimpl.MessageInfo, 81)
+var file_tpmt_proto_msgTypes = make([]protoimpl.MessageInfo, 89)
 var file_tpmt_proto_goTypes = []interface{}{
-	(*CommonResp)(nil),               // 0: tpmtclient.CommonResp
-	(*SysUserAddReq)(nil),            // 1: tpmtclient.SysUserAddReq
-	(*SysUserDeleteReq)(nil),         // 2: tpmtclient.SysUserDeleteReq
-	(*SysUserUpdateReq)(nil),         // 3: tpmtclient.SysUserUpdateReq
-	(*SysUserFindOneReq)(nil),        // 4: tpmtclient.SysUserFindOneReq
-	(*SysUserFindOneResp)(nil),       // 5: tpmtclient.SysUserFindOneResp
-	(*SysUserListReq)(nil),           // 6: tpmtclient.SysUserListReq
-	(*SysUserListResp)(nil),          // 7: tpmtclient.SysUserListResp
-	(*SysUserListData)(nil),          // 8: tpmtclient.SysUserListData
-	(*SysLoginReq)(nil),              // 9: tpmtclient.SysLoginReq
-	(*SysUserResetPwdReq)(nil),       // 10: tpmtclient.SysUserResetPwdReq
-	(*SysUserResetPwdResp)(nil),      // 11: tpmtclient.SysUserResetPwdResp
-	(*SysUserUpMyPwdReq)(nil),        // 12: tpmtclient.SysUserUpMyPwdReq
-	(*SysAuthAddReq)(nil),            // 13: tpmtclient.SysAuthAddReq
-	(*SysAuthDeleteReq)(nil),         // 14: tpmtclient.SysAuthDeleteReq
-	(*SysAuthUpdateReq)(nil),         // 15: tpmtclient.SysAuthUpdateReq
-	(*SysAuthFindOneReq)(nil),        // 16: tpmtclient.SysAuthFindOneReq
-	(*SysAuthFindOneResp)(nil),       // 17: tpmtclient.SysAuthFindOneResp
-	(*SysAuthListReq)(nil),           // 18: tpmtclient.SysAuthListReq
-	(*SysAuthListResp)(nil),          // 19: tpmtclient.SysAuthListResp
-	(*SysAuthListData)(nil),          // 20: tpmtclient.SysAuthListData
-	(*SysRoleAddReq)(nil),            // 21: tpmtclient.SysRoleAddReq
-	(*SysRoleDeleteReq)(nil),         // 22: tpmtclient.SysRoleDeleteReq
-	(*SysRoleUpdateReq)(nil),         // 23: tpmtclient.SysRoleUpdateReq
-	(*SysRoleFindOneReq)(nil),        // 24: tpmtclient.SysRoleFindOneReq
-	(*SysRoleFindOneResp)(nil),       // 25: tpmtclient.SysRoleFindOneResp
-	(*SysRoleListReq)(nil),           // 26: tpmtclient.SysRoleListReq
-	(*SysRoleListResp)(nil),          // 27: tpmtclient.SysRoleListResp
-	(*SysRoleListData)(nil),          // 28: tpmtclient.SysRoleListData
-	(*SysMenuAddReq)(nil),            // 29: tpmtclient.SysMenuAddReq
-	(*SysMenuDeleteReq)(nil),         // 30: tpmtclient.SysMenuDeleteReq
-	(*SysMenuUpdateReq)(nil),         // 31: tpmtclient.SysMenuUpdateReq
-	(*SysMenuFindOneReq)(nil),        // 32: tpmtclient.SysMenuFindOneReq
-	(*SysMenuFindOneResp)(nil),       // 33: tpmtclient.SysMenuFindOneResp
-	(*SysMenuListReq)(nil),           // 34: tpmtclient.SysMenuListReq
-	(*SysMenuListResp)(nil),          // 35: tpmtclient.SysMenuListResp
-	(*SysMenuListData)(nil),          // 36: tpmtclient.SysMenuListData
-	(*SysMenuByRoleIdReq)(nil),       // 37: tpmtclient.SysMenuByRoleIdReq
-	(*SysMenuByRoleIdResp)(nil),      // 38: tpmtclient.SysMenuByRoleIdResp
-	(*SysInterfaceAddReq)(nil),       // 39: tpmtclient.SysInterfaceAddReq
-	(*SysInterfaceDeleteReq)(nil),    // 40: tpmtclient.SysInterfaceDeleteReq
-	(*SysInterfaceUpdateReq)(nil),    // 41: tpmtclient.SysInterfaceUpdateReq
-	(*SysInterfaceFindOneReq)(nil),   // 42: tpmtclient.SysInterfaceFindOneReq
-	(*SysInterfaceFindOneResp)(nil),  // 43: tpmtclient.SysInterfaceFindOneResp
-	(*SysInterfaceListReq)(nil),      // 44: tpmtclient.SysInterfaceListReq
-	(*SysInterfaceListResp)(nil),     // 45: tpmtclient.SysInterfaceListResp
-	(*SysInterfaceListData)(nil),     // 46: tpmtclient.SysInterfaceListData
-	(*SysInterfaceByRoleIdReq)(nil),  // 47: tpmtclient.SysInterfaceByRoleIdReq
-	(*SysInterfaceByRoleIdResp)(nil), // 48: tpmtclient.SysInterfaceByRoleIdResp
-	(*SysDictTypeAddReq)(nil),        // 49: tpmtclient.SysDictTypeAddReq
-	(*SysDictTypeDeleteReq)(nil),     // 50: tpmtclient.SysDictTypeDeleteReq
-	(*SysDictTypeUpdateReq)(nil),     // 51: tpmtclient.SysDictTypeUpdateReq
-	(*SysDictTypeFindOneReq)(nil),    // 52: tpmtclient.SysDictTypeFindOneReq
-	(*SysDictTypeFindOneResp)(nil),   // 53: tpmtclient.SysDictTypeFindOneResp
-	(*SysDictTypeListReq)(nil),       // 54: tpmtclient.SysDictTypeListReq
-	(*SysDictTypeListResp)(nil),      // 55: tpmtclient.SysDictTypeListResp
-	(*SysDictTypeListData)(nil),      // 56: tpmtclient.SysDictTypeListData
-	(*SysDictAddReq)(nil),            // 57: tpmtclient.SysDictAddReq
-	(*SysDictDeleteReq)(nil),         // 58: tpmtclient.SysDictDeleteReq
-	(*SysDictUpdateReq)(nil),         // 59: tpmtclient.SysDictUpdateReq
-	(*SysDictFindOneReq)(nil),        // 60: tpmtclient.SysDictFindOneReq
-	(*SysDictFindOneResp)(nil),       // 61: tpmtclient.SysDictFindOneResp
-	(*SysDictListReq)(nil),           // 62: tpmtclient.SysDictListReq
-	(*SysDictListResp)(nil),          // 63: tpmtclient.SysDictListResp
-	(*SysDictListData)(nil),          // 64: tpmtclient.SysDictListData
-	(*TpmtAssetAddReq)(nil),          // 65: tpmtclient.TpmtAssetAddReq
-	(*TpmtAssetDeleteReq)(nil),       // 66: tpmtclient.TpmtAssetDeleteReq
-	(*TpmtAssetUpdateReq)(nil),       // 67: tpmtclient.TpmtAssetUpdateReq
-	(*TpmtAssetFindOneReq)(nil),      // 68: tpmtclient.TpmtAssetFindOneReq
-	(*TpmtAssetFindOneResp)(nil),     // 69: tpmtclient.TpmtAssetFindOneResp
-	(*TpmtAssetListReq)(nil),         // 70: tpmtclient.TpmtAssetListReq
-	(*TpmtAssetListResp)(nil),        // 71: tpmtclient.TpmtAssetListResp
-	(*TpmtAssetListData)(nil),        // 72: tpmtclient.TpmtAssetListData
-	(*TpmtGatewayAddReq)(nil),        // 73: tpmtclient.TpmtGatewayAddReq
-	(*TpmtGatewayDeleteReq)(nil),     // 74: tpmtclient.TpmtGatewayDeleteReq
-	(*TpmtGatewayUpdateReq)(nil),     // 75: tpmtclient.TpmtGatewayUpdateReq
-	(*TpmtGatewayFindOneReq)(nil),    // 76: tpmtclient.TpmtGatewayFindOneReq
-	(*TpmtGatewayFindOneResp)(nil),   // 77: tpmtclient.TpmtGatewayFindOneResp
-	(*TpmtGatewayListReq)(nil),       // 78: tpmtclient.TpmtGatewayListReq
-	(*TpmtGatewayListResp)(nil),      // 79: tpmtclient.TpmtGatewayListResp
-	(*TpmtGatewayListData)(nil),      // 80: tpmtclient.TpmtGatewayListData
+	(*CommonResp)(nil),                  // 0: tpmtclient.CommonResp
+	(*SysUserAddReq)(nil),               // 1: tpmtclient.SysUserAddReq
+	(*SysUserDeleteReq)(nil),            // 2: tpmtclient.SysUserDeleteReq
+	(*SysUserUpdateReq)(nil),            // 3: tpmtclient.SysUserUpdateReq
+	(*SysUserFindOneReq)(nil),           // 4: tpmtclient.SysUserFindOneReq
+	(*SysUserFindOneResp)(nil),          // 5: tpmtclient.SysUserFindOneResp
+	(*SysUserListReq)(nil),              // 6: tpmtclient.SysUserListReq
+	(*SysUserListResp)(nil),             // 7: tpmtclient.SysUserListResp
+	(*SysUserListData)(nil),             // 8: tpmtclient.SysUserListData
+	(*SysLoginReq)(nil),                 // 9: tpmtclient.SysLoginReq
+	(*SysUserResetPwdReq)(nil),          // 10: tpmtclient.SysUserResetPwdReq
+	(*SysUserResetPwdResp)(nil),         // 11: tpmtclient.SysUserResetPwdResp
+	(*SysUserUpMyPwdReq)(nil),           // 12: tpmtclient.SysUserUpMyPwdReq
+	(*SysAuthAddReq)(nil),               // 13: tpmtclient.SysAuthAddReq
+	(*SysAuthDeleteReq)(nil),            // 14: tpmtclient.SysAuthDeleteReq
+	(*SysAuthUpdateReq)(nil),            // 15: tpmtclient.SysAuthUpdateReq
+	(*SysAuthFindOneReq)(nil),           // 16: tpmtclient.SysAuthFindOneReq
+	(*SysAuthFindOneResp)(nil),          // 17: tpmtclient.SysAuthFindOneResp
+	(*SysAuthListReq)(nil),              // 18: tpmtclient.SysAuthListReq
+	(*SysAuthListResp)(nil),             // 19: tpmtclient.SysAuthListResp
+	(*SysAuthListData)(nil),             // 20: tpmtclient.SysAuthListData
+	(*SysRoleAddReq)(nil),               // 21: tpmtclient.SysRoleAddReq
+	(*SysRoleDeleteReq)(nil),            // 22: tpmtclient.SysRoleDeleteReq
+	(*SysRoleUpdateReq)(nil),            // 23: tpmtclient.SysRoleUpdateReq
+	(*SysRoleFindOneReq)(nil),           // 24: tpmtclient.SysRoleFindOneReq
+	(*SysRoleFindOneResp)(nil),          // 25: tpmtclient.SysRoleFindOneResp
+	(*SysRoleListReq)(nil),              // 26: tpmtclient.SysRoleListReq
+	(*SysRoleListResp)(nil),             // 27: tpmtclient.SysRoleListResp
+	(*SysRoleListData)(nil),             // 28: tpmtclient.SysRoleListData
+	(*SysMenuAddReq)(nil),               // 29: tpmtclient.SysMenuAddReq
+	(*SysMenuDeleteReq)(nil),            // 30: tpmtclient.SysMenuDeleteReq
+	(*SysMenuUpdateReq)(nil),            // 31: tpmtclient.SysMenuUpdateReq
+	(*SysMenuFindOneReq)(nil),           // 32: tpmtclient.SysMenuFindOneReq
+	(*SysMenuFindOneResp)(nil),          // 33: tpmtclient.SysMenuFindOneResp
+	(*SysMenuListReq)(nil),              // 34: tpmtclient.SysMenuListReq
+	(*SysMenuListResp)(nil),             // 35: tpmtclient.SysMenuListResp
+	(*SysMenuListData)(nil),             // 36: tpmtclient.SysMenuListData
+	(*SysMenuByRoleIdReq)(nil),          // 37: tpmtclient.SysMenuByRoleIdReq
+	(*SysMenuByRoleIdResp)(nil),         // 38: tpmtclient.SysMenuByRoleIdResp
+	(*SysInterfaceAddReq)(nil),          // 39: tpmtclient.SysInterfaceAddReq
+	(*SysInterfaceDeleteReq)(nil),       // 40: tpmtclient.SysInterfaceDeleteReq
+	(*SysInterfaceUpdateReq)(nil),       // 41: tpmtclient.SysInterfaceUpdateReq
+	(*SysInterfaceFindOneReq)(nil),      // 42: tpmtclient.SysInterfaceFindOneReq
+	(*SysInterfaceFindOneResp)(nil),     // 43: tpmtclient.SysInterfaceFindOneResp
+	(*SysInterfaceListReq)(nil),         // 44: tpmtclient.SysInterfaceListReq
+	(*SysInterfaceListResp)(nil),        // 45: tpmtclient.SysInterfaceListResp
+	(*SysInterfaceListData)(nil),        // 46: tpmtclient.SysInterfaceListData
+	(*SysInterfaceByRoleIdReq)(nil),     // 47: tpmtclient.SysInterfaceByRoleIdReq
+	(*SysInterfaceByRoleIdResp)(nil),    // 48: tpmtclient.SysInterfaceByRoleIdResp
+	(*SysDictTypeAddReq)(nil),           // 49: tpmtclient.SysDictTypeAddReq
+	(*SysDictTypeDeleteReq)(nil),        // 50: tpmtclient.SysDictTypeDeleteReq
+	(*SysDictTypeUpdateReq)(nil),        // 51: tpmtclient.SysDictTypeUpdateReq
+	(*SysDictTypeFindOneReq)(nil),       // 52: tpmtclient.SysDictTypeFindOneReq
+	(*SysDictTypeFindOneResp)(nil),      // 53: tpmtclient.SysDictTypeFindOneResp
+	(*SysDictTypeListReq)(nil),          // 54: tpmtclient.SysDictTypeListReq
+	(*SysDictTypeListResp)(nil),         // 55: tpmtclient.SysDictTypeListResp
+	(*SysDictTypeListData)(nil),         // 56: tpmtclient.SysDictTypeListData
+	(*SysDictAddReq)(nil),               // 57: tpmtclient.SysDictAddReq
+	(*SysDictDeleteReq)(nil),            // 58: tpmtclient.SysDictDeleteReq
+	(*SysDictUpdateReq)(nil),            // 59: tpmtclient.SysDictUpdateReq
+	(*SysDictFindOneReq)(nil),           // 60: tpmtclient.SysDictFindOneReq
+	(*SysDictFindOneResp)(nil),          // 61: tpmtclient.SysDictFindOneResp
+	(*SysDictListReq)(nil),              // 62: tpmtclient.SysDictListReq
+	(*SysDictListResp)(nil),             // 63: tpmtclient.SysDictListResp
+	(*SysDictListData)(nil),             // 64: tpmtclient.SysDictListData
+	(*TpmtAssetAddReq)(nil),             // 65: tpmtclient.TpmtAssetAddReq
+	(*TpmtAssetDeleteReq)(nil),          // 66: tpmtclient.TpmtAssetDeleteReq
+	(*TpmtAssetUpdateReq)(nil),          // 67: tpmtclient.TpmtAssetUpdateReq
+	(*TpmtAssetFindOneReq)(nil),         // 68: tpmtclient.TpmtAssetFindOneReq
+	(*TpmtAssetFindOneResp)(nil),        // 69: tpmtclient.TpmtAssetFindOneResp
+	(*TpmtAssetListReq)(nil),            // 70: tpmtclient.TpmtAssetListReq
+	(*TpmtAssetListResp)(nil),           // 71: tpmtclient.TpmtAssetListResp
+	(*TpmtAssetListData)(nil),           // 72: tpmtclient.TpmtAssetListData
+	(*TpmtGatewayAddReq)(nil),           // 73: tpmtclient.TpmtGatewayAddReq
+	(*TpmtGatewayDeleteReq)(nil),        // 74: tpmtclient.TpmtGatewayDeleteReq
+	(*TpmtGatewayUpdateReq)(nil),        // 75: tpmtclient.TpmtGatewayUpdateReq
+	(*TpmtGatewayFindOneReq)(nil),       // 76: tpmtclient.TpmtGatewayFindOneReq
+	(*TpmtGatewayFindOneResp)(nil),      // 77: tpmtclient.TpmtGatewayFindOneResp
+	(*TpmtGatewayListReq)(nil),          // 78: tpmtclient.TpmtGatewayListReq
+	(*TpmtGatewayListResp)(nil),         // 79: tpmtclient.TpmtGatewayListResp
+	(*TpmtGatewayListData)(nil),         // 80: tpmtclient.TpmtGatewayListData
+	(*TpmtMonitorPointAddReq)(nil),      // 81: tpmtclient.TpmtMonitorPointAddReq
+	(*TpmtMonitorPointDeleteReq)(nil),   // 82: tpmtclient.TpmtMonitorPointDeleteReq
+	(*TpmtMonitorPointUpdateReq)(nil),   // 83: tpmtclient.TpmtMonitorPointUpdateReq
+	(*TpmtMonitorPointFindOneReq)(nil),  // 84: tpmtclient.TpmtMonitorPointFindOneReq
+	(*TpmtMonitorPointFindOneResp)(nil), // 85: tpmtclient.TpmtMonitorPointFindOneResp
+	(*TpmtMonitorPointListReq)(nil),     // 86: tpmtclient.TpmtMonitorPointListReq
+	(*TpmtMonitorPointListResp)(nil),    // 87: tpmtclient.TpmtMonitorPointListResp
+	(*TpmtMonitorPointListData)(nil),    // 88: tpmtclient.TpmtMonitorPointListData
 }
 var file_tpmt_proto_depIdxs = []int32{
 	8,  // 0: tpmtclient.SysUserListResp.list:type_name -> tpmtclient.SysUserListData
@@ -8376,111 +10008,122 @@ var file_tpmt_proto_depIdxs = []int32{
 	64, // 8: tpmtclient.SysDictListResp.list:type_name -> tpmtclient.SysDictListData
 	72, // 9: tpmtclient.TpmtAssetListResp.list:type_name -> tpmtclient.TpmtAssetListData
 	80, // 10: tpmtclient.TpmtGatewayListResp.list:type_name -> tpmtclient.TpmtGatewayListData
-	9,  // 11: tpmtclient.Tpmt.SysLogin:input_type -> tpmtclient.SysLoginReq
-	1,  // 12: tpmtclient.Tpmt.SysUserAdd:input_type -> tpmtclient.SysUserAddReq
-	2,  // 13: tpmtclient.Tpmt.SysUserDelete:input_type -> tpmtclient.SysUserDeleteReq
-	3,  // 14: tpmtclient.Tpmt.SysUserUpdate:input_type -> tpmtclient.SysUserUpdateReq
-	4,  // 15: tpmtclient.Tpmt.SysUserFindOne:input_type -> tpmtclient.SysUserFindOneReq
-	6,  // 16: tpmtclient.Tpmt.SysUserList:input_type -> tpmtclient.SysUserListReq
-	10, // 17: tpmtclient.Tpmt.SysUserResetPwd:input_type -> tpmtclient.SysUserResetPwdReq
-	12, // 18: tpmtclient.Tpmt.SysUserUpMyPwd:input_type -> tpmtclient.SysUserUpMyPwdReq
-	13, // 19: tpmtclient.Tpmt.SysAuthAdd:input_type -> tpmtclient.SysAuthAddReq
-	14, // 20: tpmtclient.Tpmt.SysAuthDelete:input_type -> tpmtclient.SysAuthDeleteReq
-	15, // 21: tpmtclient.Tpmt.SysAuthUpdate:input_type -> tpmtclient.SysAuthUpdateReq
-	16, // 22: tpmtclient.Tpmt.SysAuthFindOne:input_type -> tpmtclient.SysAuthFindOneReq
-	18, // 23: tpmtclient.Tpmt.SysAuthList:input_type -> tpmtclient.SysAuthListReq
-	21, // 24: tpmtclient.Tpmt.SysRoleAdd:input_type -> tpmtclient.SysRoleAddReq
-	22, // 25: tpmtclient.Tpmt.SysRoleDelete:input_type -> tpmtclient.SysRoleDeleteReq
-	23, // 26: tpmtclient.Tpmt.SysRoleUpdate:input_type -> tpmtclient.SysRoleUpdateReq
-	24, // 27: tpmtclient.Tpmt.SysRoleFindOne:input_type -> tpmtclient.SysRoleFindOneReq
-	26, // 28: tpmtclient.Tpmt.SysRoleList:input_type -> tpmtclient.SysRoleListReq
-	29, // 29: tpmtclient.Tpmt.SysMenuAdd:input_type -> tpmtclient.SysMenuAddReq
-	30, // 30: tpmtclient.Tpmt.SysMenuDelete:input_type -> tpmtclient.SysMenuDeleteReq
-	31, // 31: tpmtclient.Tpmt.SysMenuUpdate:input_type -> tpmtclient.SysMenuUpdateReq
-	32, // 32: tpmtclient.Tpmt.SysMenuFindOne:input_type -> tpmtclient.SysMenuFindOneReq
-	34, // 33: tpmtclient.Tpmt.SysMenuList:input_type -> tpmtclient.SysMenuListReq
-	37, // 34: tpmtclient.Tpmt.SysMenuByRoleId:input_type -> tpmtclient.SysMenuByRoleIdReq
-	39, // 35: tpmtclient.Tpmt.SysInterfaceAdd:input_type -> tpmtclient.SysInterfaceAddReq
-	40, // 36: tpmtclient.Tpmt.SysInterfaceDelete:input_type -> tpmtclient.SysInterfaceDeleteReq
-	41, // 37: tpmtclient.Tpmt.SysInterfaceUpdate:input_type -> tpmtclient.SysInterfaceUpdateReq
-	42, // 38: tpmtclient.Tpmt.SysInterfaceFindOne:input_type -> tpmtclient.SysInterfaceFindOneReq
-	44, // 39: tpmtclient.Tpmt.SysInterfaceList:input_type -> tpmtclient.SysInterfaceListReq
-	47, // 40: tpmtclient.Tpmt.SysInterfaceByRoleId:input_type -> tpmtclient.SysInterfaceByRoleIdReq
-	49, // 41: tpmtclient.Tpmt.SysDictTypeAdd:input_type -> tpmtclient.SysDictTypeAddReq
-	50, // 42: tpmtclient.Tpmt.SysDictTypeDelete:input_type -> tpmtclient.SysDictTypeDeleteReq
-	51, // 43: tpmtclient.Tpmt.SysDictTypeUpdate:input_type -> tpmtclient.SysDictTypeUpdateReq
-	52, // 44: tpmtclient.Tpmt.SysDictTypeFindOne:input_type -> tpmtclient.SysDictTypeFindOneReq
-	54, // 45: tpmtclient.Tpmt.SysDictTypeList:input_type -> tpmtclient.SysDictTypeListReq
-	57, // 46: tpmtclient.Tpmt.SysDictAdd:input_type -> tpmtclient.SysDictAddReq
-	58, // 47: tpmtclient.Tpmt.SysDictDelete:input_type -> tpmtclient.SysDictDeleteReq
-	59, // 48: tpmtclient.Tpmt.SysDictUpdate:input_type -> tpmtclient.SysDictUpdateReq
-	60, // 49: tpmtclient.Tpmt.SysDictFindOne:input_type -> tpmtclient.SysDictFindOneReq
-	62, // 50: tpmtclient.Tpmt.SysDictList:input_type -> tpmtclient.SysDictListReq
-	65, // 51: tpmtclient.Tpmt.TpmtAssetAdd:input_type -> tpmtclient.TpmtAssetAddReq
-	66, // 52: tpmtclient.Tpmt.TpmtAssetDelete:input_type -> tpmtclient.TpmtAssetDeleteReq
-	67, // 53: tpmtclient.Tpmt.TpmtAssetUpdate:input_type -> tpmtclient.TpmtAssetUpdateReq
-	68, // 54: tpmtclient.Tpmt.TpmtAssetFindOne:input_type -> tpmtclient.TpmtAssetFindOneReq
-	70, // 55: tpmtclient.Tpmt.TpmtAssetList:input_type -> tpmtclient.TpmtAssetListReq
-	73, // 56: tpmtclient.Tpmt.TpmtGatewayAdd:input_type -> tpmtclient.TpmtGatewayAddReq
-	74, // 57: tpmtclient.Tpmt.TpmtGatewayDelete:input_type -> tpmtclient.TpmtGatewayDeleteReq
-	75, // 58: tpmtclient.Tpmt.TpmtGatewayUpdate:input_type -> tpmtclient.TpmtGatewayUpdateReq
-	76, // 59: tpmtclient.Tpmt.TpmtGatewayFindOne:input_type -> tpmtclient.TpmtGatewayFindOneReq
-	78, // 60: tpmtclient.Tpmt.TpmtGatewayList:input_type -> tpmtclient.TpmtGatewayListReq
-	5,  // 61: tpmtclient.Tpmt.SysLogin:output_type -> tpmtclient.SysUserFindOneResp
-	0,  // 62: tpmtclient.Tpmt.SysUserAdd:output_type -> tpmtclient.CommonResp
-	0,  // 63: tpmtclient.Tpmt.SysUserDelete:output_type -> tpmtclient.CommonResp
-	0,  // 64: tpmtclient.Tpmt.SysUserUpdate:output_type -> tpmtclient.CommonResp
-	5,  // 65: tpmtclient.Tpmt.SysUserFindOne:output_type -> tpmtclient.SysUserFindOneResp
-	7,  // 66: tpmtclient.Tpmt.SysUserList:output_type -> tpmtclient.SysUserListResp
-	11, // 67: tpmtclient.Tpmt.SysUserResetPwd:output_type -> tpmtclient.SysUserResetPwdResp
-	0,  // 68: tpmtclient.Tpmt.SysUserUpMyPwd:output_type -> tpmtclient.CommonResp
-	0,  // 69: tpmtclient.Tpmt.SysAuthAdd:output_type -> tpmtclient.CommonResp
-	0,  // 70: tpmtclient.Tpmt.SysAuthDelete:output_type -> tpmtclient.CommonResp
-	0,  // 71: tpmtclient.Tpmt.SysAuthUpdate:output_type -> tpmtclient.CommonResp
-	17, // 72: tpmtclient.Tpmt.SysAuthFindOne:output_type -> tpmtclient.SysAuthFindOneResp
-	19, // 73: tpmtclient.Tpmt.SysAuthList:output_type -> tpmtclient.SysAuthListResp
-	0,  // 74: tpmtclient.Tpmt.SysRoleAdd:output_type -> tpmtclient.CommonResp
-	0,  // 75: tpmtclient.Tpmt.SysRoleDelete:output_type -> tpmtclient.CommonResp
-	0,  // 76: tpmtclient.Tpmt.SysRoleUpdate:output_type -> tpmtclient.CommonResp
-	25, // 77: tpmtclient.Tpmt.SysRoleFindOne:output_type -> tpmtclient.SysRoleFindOneResp
-	27, // 78: tpmtclient.Tpmt.SysRoleList:output_type -> tpmtclient.SysRoleListResp
-	0,  // 79: tpmtclient.Tpmt.SysMenuAdd:output_type -> tpmtclient.CommonResp
-	0,  // 80: tpmtclient.Tpmt.SysMenuDelete:output_type -> tpmtclient.CommonResp
-	0,  // 81: tpmtclient.Tpmt.SysMenuUpdate:output_type -> tpmtclient.CommonResp
-	33, // 82: tpmtclient.Tpmt.SysMenuFindOne:output_type -> tpmtclient.SysMenuFindOneResp
-	35, // 83: tpmtclient.Tpmt.SysMenuList:output_type -> tpmtclient.SysMenuListResp
-	38, // 84: tpmtclient.Tpmt.SysMenuByRoleId:output_type -> tpmtclient.SysMenuByRoleIdResp
-	0,  // 85: tpmtclient.Tpmt.SysInterfaceAdd:output_type -> tpmtclient.CommonResp
-	0,  // 86: tpmtclient.Tpmt.SysInterfaceDelete:output_type -> tpmtclient.CommonResp
-	0,  // 87: tpmtclient.Tpmt.SysInterfaceUpdate:output_type -> tpmtclient.CommonResp
-	43, // 88: tpmtclient.Tpmt.SysInterfaceFindOne:output_type -> tpmtclient.SysInterfaceFindOneResp
-	45, // 89: tpmtclient.Tpmt.SysInterfaceList:output_type -> tpmtclient.SysInterfaceListResp
-	48, // 90: tpmtclient.Tpmt.SysInterfaceByRoleId:output_type -> tpmtclient.SysInterfaceByRoleIdResp
-	0,  // 91: tpmtclient.Tpmt.SysDictTypeAdd:output_type -> tpmtclient.CommonResp
-	0,  // 92: tpmtclient.Tpmt.SysDictTypeDelete:output_type -> tpmtclient.CommonResp
-	0,  // 93: tpmtclient.Tpmt.SysDictTypeUpdate:output_type -> tpmtclient.CommonResp
-	53, // 94: tpmtclient.Tpmt.SysDictTypeFindOne:output_type -> tpmtclient.SysDictTypeFindOneResp
-	55, // 95: tpmtclient.Tpmt.SysDictTypeList:output_type -> tpmtclient.SysDictTypeListResp
-	0,  // 96: tpmtclient.Tpmt.SysDictAdd:output_type -> tpmtclient.CommonResp
-	0,  // 97: tpmtclient.Tpmt.SysDictDelete:output_type -> tpmtclient.CommonResp
-	0,  // 98: tpmtclient.Tpmt.SysDictUpdate:output_type -> tpmtclient.CommonResp
-	61, // 99: tpmtclient.Tpmt.SysDictFindOne:output_type -> tpmtclient.SysDictFindOneResp
-	63, // 100: tpmtclient.Tpmt.SysDictList:output_type -> tpmtclient.SysDictListResp
-	0,  // 101: tpmtclient.Tpmt.TpmtAssetAdd:output_type -> tpmtclient.CommonResp
-	0,  // 102: tpmtclient.Tpmt.TpmtAssetDelete:output_type -> tpmtclient.CommonResp
-	0,  // 103: tpmtclient.Tpmt.TpmtAssetUpdate:output_type -> tpmtclient.CommonResp
-	69, // 104: tpmtclient.Tpmt.TpmtAssetFindOne:output_type -> tpmtclient.TpmtAssetFindOneResp
-	71, // 105: tpmtclient.Tpmt.TpmtAssetList:output_type -> tpmtclient.TpmtAssetListResp
-	0,  // 106: tpmtclient.Tpmt.TpmtGatewayAdd:output_type -> tpmtclient.CommonResp
-	0,  // 107: tpmtclient.Tpmt.TpmtGatewayDelete:output_type -> tpmtclient.CommonResp
-	0,  // 108: tpmtclient.Tpmt.TpmtGatewayUpdate:output_type -> tpmtclient.CommonResp
-	77, // 109: tpmtclient.Tpmt.TpmtGatewayFindOne:output_type -> tpmtclient.TpmtGatewayFindOneResp
-	79, // 110: tpmtclient.Tpmt.TpmtGatewayList:output_type -> tpmtclient.TpmtGatewayListResp
-	61, // [61:111] is the sub-list for method output_type
-	11, // [11:61] is the sub-list for method input_type
-	11, // [11:11] is the sub-list for extension type_name
-	11, // [11:11] is the sub-list for extension extendee
-	0,  // [0:11] is the sub-list for field type_name
+	88, // 11: tpmtclient.TpmtMonitorPointListResp.list:type_name -> tpmtclient.TpmtMonitorPointListData
+	9,  // 12: tpmtclient.Tpmt.SysLogin:input_type -> tpmtclient.SysLoginReq
+	1,  // 13: tpmtclient.Tpmt.SysUserAdd:input_type -> tpmtclient.SysUserAddReq
+	2,  // 14: tpmtclient.Tpmt.SysUserDelete:input_type -> tpmtclient.SysUserDeleteReq
+	3,  // 15: tpmtclient.Tpmt.SysUserUpdate:input_type -> tpmtclient.SysUserUpdateReq
+	4,  // 16: tpmtclient.Tpmt.SysUserFindOne:input_type -> tpmtclient.SysUserFindOneReq
+	6,  // 17: tpmtclient.Tpmt.SysUserList:input_type -> tpmtclient.SysUserListReq
+	10, // 18: tpmtclient.Tpmt.SysUserResetPwd:input_type -> tpmtclient.SysUserResetPwdReq
+	12, // 19: tpmtclient.Tpmt.SysUserUpMyPwd:input_type -> tpmtclient.SysUserUpMyPwdReq
+	13, // 20: tpmtclient.Tpmt.SysAuthAdd:input_type -> tpmtclient.SysAuthAddReq
+	14, // 21: tpmtclient.Tpmt.SysAuthDelete:input_type -> tpmtclient.SysAuthDeleteReq
+	15, // 22: tpmtclient.Tpmt.SysAuthUpdate:input_type -> tpmtclient.SysAuthUpdateReq
+	16, // 23: tpmtclient.Tpmt.SysAuthFindOne:input_type -> tpmtclient.SysAuthFindOneReq
+	18, // 24: tpmtclient.Tpmt.SysAuthList:input_type -> tpmtclient.SysAuthListReq
+	21, // 25: tpmtclient.Tpmt.SysRoleAdd:input_type -> tpmtclient.SysRoleAddReq
+	22, // 26: tpmtclient.Tpmt.SysRoleDelete:input_type -> tpmtclient.SysRoleDeleteReq
+	23, // 27: tpmtclient.Tpmt.SysRoleUpdate:input_type -> tpmtclient.SysRoleUpdateReq
+	24, // 28: tpmtclient.Tpmt.SysRoleFindOne:input_type -> tpmtclient.SysRoleFindOneReq
+	26, // 29: tpmtclient.Tpmt.SysRoleList:input_type -> tpmtclient.SysRoleListReq
+	29, // 30: tpmtclient.Tpmt.SysMenuAdd:input_type -> tpmtclient.SysMenuAddReq
+	30, // 31: tpmtclient.Tpmt.SysMenuDelete:input_type -> tpmtclient.SysMenuDeleteReq
+	31, // 32: tpmtclient.Tpmt.SysMenuUpdate:input_type -> tpmtclient.SysMenuUpdateReq
+	32, // 33: tpmtclient.Tpmt.SysMenuFindOne:input_type -> tpmtclient.SysMenuFindOneReq
+	34, // 34: tpmtclient.Tpmt.SysMenuList:input_type -> tpmtclient.SysMenuListReq
+	37, // 35: tpmtclient.Tpmt.SysMenuByRoleId:input_type -> tpmtclient.SysMenuByRoleIdReq
+	39, // 36: tpmtclient.Tpmt.SysInterfaceAdd:input_type -> tpmtclient.SysInterfaceAddReq
+	40, // 37: tpmtclient.Tpmt.SysInterfaceDelete:input_type -> tpmtclient.SysInterfaceDeleteReq
+	41, // 38: tpmtclient.Tpmt.SysInterfaceUpdate:input_type -> tpmtclient.SysInterfaceUpdateReq
+	42, // 39: tpmtclient.Tpmt.SysInterfaceFindOne:input_type -> tpmtclient.SysInterfaceFindOneReq
+	44, // 40: tpmtclient.Tpmt.SysInterfaceList:input_type -> tpmtclient.SysInterfaceListReq
+	47, // 41: tpmtclient.Tpmt.SysInterfaceByRoleId:input_type -> tpmtclient.SysInterfaceByRoleIdReq
+	49, // 42: tpmtclient.Tpmt.SysDictTypeAdd:input_type -> tpmtclient.SysDictTypeAddReq
+	50, // 43: tpmtclient.Tpmt.SysDictTypeDelete:input_type -> tpmtclient.SysDictTypeDeleteReq
+	51, // 44: tpmtclient.Tpmt.SysDictTypeUpdate:input_type -> tpmtclient.SysDictTypeUpdateReq
+	52, // 45: tpmtclient.Tpmt.SysDictTypeFindOne:input_type -> tpmtclient.SysDictTypeFindOneReq
+	54, // 46: tpmtclient.Tpmt.SysDictTypeList:input_type -> tpmtclient.SysDictTypeListReq
+	57, // 47: tpmtclient.Tpmt.SysDictAdd:input_type -> tpmtclient.SysDictAddReq
+	58, // 48: tpmtclient.Tpmt.SysDictDelete:input_type -> tpmtclient.SysDictDeleteReq
+	59, // 49: tpmtclient.Tpmt.SysDictUpdate:input_type -> tpmtclient.SysDictUpdateReq
+	60, // 50: tpmtclient.Tpmt.SysDictFindOne:input_type -> tpmtclient.SysDictFindOneReq
+	62, // 51: tpmtclient.Tpmt.SysDictList:input_type -> tpmtclient.SysDictListReq
+	65, // 52: tpmtclient.Tpmt.TpmtAssetAdd:input_type -> tpmtclient.TpmtAssetAddReq
+	66, // 53: tpmtclient.Tpmt.TpmtAssetDelete:input_type -> tpmtclient.TpmtAssetDeleteReq
+	67, // 54: tpmtclient.Tpmt.TpmtAssetUpdate:input_type -> tpmtclient.TpmtAssetUpdateReq
+	68, // 55: tpmtclient.Tpmt.TpmtAssetFindOne:input_type -> tpmtclient.TpmtAssetFindOneReq
+	70, // 56: tpmtclient.Tpmt.TpmtAssetList:input_type -> tpmtclient.TpmtAssetListReq
+	73, // 57: tpmtclient.Tpmt.TpmtGatewayAdd:input_type -> tpmtclient.TpmtGatewayAddReq
+	74, // 58: tpmtclient.Tpmt.TpmtGatewayDelete:input_type -> tpmtclient.TpmtGatewayDeleteReq
+	75, // 59: tpmtclient.Tpmt.TpmtGatewayUpdate:input_type -> tpmtclient.TpmtGatewayUpdateReq
+	76, // 60: tpmtclient.Tpmt.TpmtGatewayFindOne:input_type -> tpmtclient.TpmtGatewayFindOneReq
+	78, // 61: tpmtclient.Tpmt.TpmtGatewayList:input_type -> tpmtclient.TpmtGatewayListReq
+	81, // 62: tpmtclient.Tpmt.TpmtMonitorPointAdd:input_type -> tpmtclient.TpmtMonitorPointAddReq
+	82, // 63: tpmtclient.Tpmt.TpmtMonitorPointDelete:input_type -> tpmtclient.TpmtMonitorPointDeleteReq
+	83, // 64: tpmtclient.Tpmt.TpmtMonitorPointUpdate:input_type -> tpmtclient.TpmtMonitorPointUpdateReq
+	84, // 65: tpmtclient.Tpmt.TpmtMonitorPointFindOne:input_type -> tpmtclient.TpmtMonitorPointFindOneReq
+	86, // 66: tpmtclient.Tpmt.TpmtMonitorPointList:input_type -> tpmtclient.TpmtMonitorPointListReq
+	5,  // 67: tpmtclient.Tpmt.SysLogin:output_type -> tpmtclient.SysUserFindOneResp
+	0,  // 68: tpmtclient.Tpmt.SysUserAdd:output_type -> tpmtclient.CommonResp
+	0,  // 69: tpmtclient.Tpmt.SysUserDelete:output_type -> tpmtclient.CommonResp
+	0,  // 70: tpmtclient.Tpmt.SysUserUpdate:output_type -> tpmtclient.CommonResp
+	5,  // 71: tpmtclient.Tpmt.SysUserFindOne:output_type -> tpmtclient.SysUserFindOneResp
+	7,  // 72: tpmtclient.Tpmt.SysUserList:output_type -> tpmtclient.SysUserListResp
+	11, // 73: tpmtclient.Tpmt.SysUserResetPwd:output_type -> tpmtclient.SysUserResetPwdResp
+	0,  // 74: tpmtclient.Tpmt.SysUserUpMyPwd:output_type -> tpmtclient.CommonResp
+	0,  // 75: tpmtclient.Tpmt.SysAuthAdd:output_type -> tpmtclient.CommonResp
+	0,  // 76: tpmtclient.Tpmt.SysAuthDelete:output_type -> tpmtclient.CommonResp
+	0,  // 77: tpmtclient.Tpmt.SysAuthUpdate:output_type -> tpmtclient.CommonResp
+	17, // 78: tpmtclient.Tpmt.SysAuthFindOne:output_type -> tpmtclient.SysAuthFindOneResp
+	19, // 79: tpmtclient.Tpmt.SysAuthList:output_type -> tpmtclient.SysAuthListResp
+	0,  // 80: tpmtclient.Tpmt.SysRoleAdd:output_type -> tpmtclient.CommonResp
+	0,  // 81: tpmtclient.Tpmt.SysRoleDelete:output_type -> tpmtclient.CommonResp
+	0,  // 82: tpmtclient.Tpmt.SysRoleUpdate:output_type -> tpmtclient.CommonResp
+	25, // 83: tpmtclient.Tpmt.SysRoleFindOne:output_type -> tpmtclient.SysRoleFindOneResp
+	27, // 84: tpmtclient.Tpmt.SysRoleList:output_type -> tpmtclient.SysRoleListResp
+	0,  // 85: tpmtclient.Tpmt.SysMenuAdd:output_type -> tpmtclient.CommonResp
+	0,  // 86: tpmtclient.Tpmt.SysMenuDelete:output_type -> tpmtclient.CommonResp
+	0,  // 87: tpmtclient.Tpmt.SysMenuUpdate:output_type -> tpmtclient.CommonResp
+	33, // 88: tpmtclient.Tpmt.SysMenuFindOne:output_type -> tpmtclient.SysMenuFindOneResp
+	35, // 89: tpmtclient.Tpmt.SysMenuList:output_type -> tpmtclient.SysMenuListResp
+	38, // 90: tpmtclient.Tpmt.SysMenuByRoleId:output_type -> tpmtclient.SysMenuByRoleIdResp
+	0,  // 91: tpmtclient.Tpmt.SysInterfaceAdd:output_type -> tpmtclient.CommonResp
+	0,  // 92: tpmtclient.Tpmt.SysInterfaceDelete:output_type -> tpmtclient.CommonResp
+	0,  // 93: tpmtclient.Tpmt.SysInterfaceUpdate:output_type -> tpmtclient.CommonResp
+	43, // 94: tpmtclient.Tpmt.SysInterfaceFindOne:output_type -> tpmtclient.SysInterfaceFindOneResp
+	45, // 95: tpmtclient.Tpmt.SysInterfaceList:output_type -> tpmtclient.SysInterfaceListResp
+	48, // 96: tpmtclient.Tpmt.SysInterfaceByRoleId:output_type -> tpmtclient.SysInterfaceByRoleIdResp
+	0,  // 97: tpmtclient.Tpmt.SysDictTypeAdd:output_type -> tpmtclient.CommonResp
+	0,  // 98: tpmtclient.Tpmt.SysDictTypeDelete:output_type -> tpmtclient.CommonResp
+	0,  // 99: tpmtclient.Tpmt.SysDictTypeUpdate:output_type -> tpmtclient.CommonResp
+	53, // 100: tpmtclient.Tpmt.SysDictTypeFindOne:output_type -> tpmtclient.SysDictTypeFindOneResp
+	55, // 101: tpmtclient.Tpmt.SysDictTypeList:output_type -> tpmtclient.SysDictTypeListResp
+	0,  // 102: tpmtclient.Tpmt.SysDictAdd:output_type -> tpmtclient.CommonResp
+	0,  // 103: tpmtclient.Tpmt.SysDictDelete:output_type -> tpmtclient.CommonResp
+	0,  // 104: tpmtclient.Tpmt.SysDictUpdate:output_type -> tpmtclient.CommonResp
+	61, // 105: tpmtclient.Tpmt.SysDictFindOne:output_type -> tpmtclient.SysDictFindOneResp
+	63, // 106: tpmtclient.Tpmt.SysDictList:output_type -> tpmtclient.SysDictListResp
+	0,  // 107: tpmtclient.Tpmt.TpmtAssetAdd:output_type -> tpmtclient.CommonResp
+	0,  // 108: tpmtclient.Tpmt.TpmtAssetDelete:output_type -> tpmtclient.CommonResp
+	0,  // 109: tpmtclient.Tpmt.TpmtAssetUpdate:output_type -> tpmtclient.CommonResp
+	69, // 110: tpmtclient.Tpmt.TpmtAssetFindOne:output_type -> tpmtclient.TpmtAssetFindOneResp
+	71, // 111: tpmtclient.Tpmt.TpmtAssetList:output_type -> tpmtclient.TpmtAssetListResp
+	0,  // 112: tpmtclient.Tpmt.TpmtGatewayAdd:output_type -> tpmtclient.CommonResp
+	0,  // 113: tpmtclient.Tpmt.TpmtGatewayDelete:output_type -> tpmtclient.CommonResp
+	0,  // 114: tpmtclient.Tpmt.TpmtGatewayUpdate:output_type -> tpmtclient.CommonResp
+	77, // 115: tpmtclient.Tpmt.TpmtGatewayFindOne:output_type -> tpmtclient.TpmtGatewayFindOneResp
+	79, // 116: tpmtclient.Tpmt.TpmtGatewayList:output_type -> tpmtclient.TpmtGatewayListResp
+	0,  // 117: tpmtclient.Tpmt.TpmtMonitorPointAdd:output_type -> tpmtclient.CommonResp
+	0,  // 118: tpmtclient.Tpmt.TpmtMonitorPointDelete:output_type -> tpmtclient.CommonResp
+	0,  // 119: tpmtclient.Tpmt.TpmtMonitorPointUpdate:output_type -> tpmtclient.CommonResp
+	85, // 120: tpmtclient.Tpmt.TpmtMonitorPointFindOne:output_type -> tpmtclient.TpmtMonitorPointFindOneResp
+	87, // 121: tpmtclient.Tpmt.TpmtMonitorPointList:output_type -> tpmtclient.TpmtMonitorPointListResp
+	67, // [67:122] is the sub-list for method output_type
+	12, // [12:67] is the sub-list for method input_type
+	12, // [12:12] is the sub-list for extension type_name
+	12, // [12:12] is the sub-list for extension extendee
+	0,  // [0:12] is the sub-list for field type_name
 }
 
 func init() { file_tpmt_proto_init() }
@@ -9461,6 +11104,102 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
+		file_tpmt_proto_msgTypes[81].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TpmtMonitorPointAddReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_tpmt_proto_msgTypes[82].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TpmtMonitorPointDeleteReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_tpmt_proto_msgTypes[83].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TpmtMonitorPointUpdateReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_tpmt_proto_msgTypes[84].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TpmtMonitorPointFindOneReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_tpmt_proto_msgTypes[85].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TpmtMonitorPointFindOneResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_tpmt_proto_msgTypes[86].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TpmtMonitorPointListReq); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_tpmt_proto_msgTypes[87].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TpmtMonitorPointListResp); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
+		file_tpmt_proto_msgTypes[88].Exporter = func(v interface{}, i int) interface{} {
+			switch v := v.(*TpmtMonitorPointListData); i {
+			case 0:
+				return &v.state
+			case 1:
+				return &v.sizeCache
+			case 2:
+				return &v.unknownFields
+			default:
+				return nil
+			}
+		}
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
@@ -9468,7 +11207,7 @@ func file_tpmt_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_tpmt_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   81,
+			NumMessages:   89,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

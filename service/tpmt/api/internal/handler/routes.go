@@ -15,6 +15,7 @@ import (
 	sysUser "tpmt-zt/service/tpmt/api/internal/handler/sysUser"
 	tpmtAsset "tpmt-zt/service/tpmt/api/internal/handler/tpmtAsset"
 	tpmtGateway "tpmt-zt/service/tpmt/api/internal/handler/tpmtGateway"
+	tpmtMonitorPoint "tpmt-zt/service/tpmt/api/internal/handler/tpmtMonitorPoint"
 	"tpmt-zt/service/tpmt/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -347,6 +348,37 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				},
 			}...,
 		),
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		[]rest.Route{
+			{
+				Method:  http.MethodPost,
+				Path:    "/tpmt/tpmtMonitorPoint",
+				Handler: tpmtMonitorPoint.TpmtMonitorPointAddHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodPut,
+				Path:    "/tpmt/tpmtMonitorPoint",
+				Handler: tpmtMonitorPoint.TpmtMonitorPointUpHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/tpmtMonitorPoint",
+				Handler: tpmtMonitorPoint.TpmtMonitorPointListHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodDelete,
+				Path:    "/tpmt/tpmtMonitorPoint/:id",
+				Handler: tpmtMonitorPoint.TpmtMonitorPointDelHandler(serverCtx),
+			},
+			{
+				Method:  http.MethodGet,
+				Path:    "/tpmt/tpmtMonitorPointInfo",
+				Handler: tpmtMonitorPoint.TpmtMonitorPointInfoHandler(serverCtx),
+			},
+		},
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 }

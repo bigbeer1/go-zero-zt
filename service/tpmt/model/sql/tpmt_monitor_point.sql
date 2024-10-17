@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : mysql54
+ Source Server         : 本地mysql
  Source Server Type    : MySQL
  Source Server Version : 80028
- Source Host           : 10.132.105.54:33069
- Source Schema         : tpmt_tw
+ Source Host           : 127.0.0.1:33069
+ Source Schema         : tpmt
 
  Target Server Type    : MySQL
  Target Server Version : 80028
  File Encoding         : 65001
 
- Date: 12/10/2024 14:21:08
+ Date: 17/10/2024 15:39:33
 */
 
 SET NAMES utf8mb4;
