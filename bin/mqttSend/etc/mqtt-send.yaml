@@ -1,0 +1,12 @@
+Name: mqtt-send.rpc
+ListenOn: 127.0.0.1:1988
+Timeout: 30000
+
+Log:
+  ServiceName: mqtt-send
+  Level: info
+
+Etcd:
+  Hosts:
+    - 127.0.0.1:30000
+  Key: mqtt-send.rpc

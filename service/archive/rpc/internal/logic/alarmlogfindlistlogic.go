@@ -56,7 +56,6 @@ func (l *AlarmLogFindListLogic) AlarmLogFindList(in *archiveclient.AlarmLogFindL
 		AlarmType:    in.AlarmType,
 		AlarmGrade:   in.AlarmGrade,
 		AlarmContent: "",
-		AssetCode:    in.AssetCode,
 		AlarmState:   in.AlarmState,
 	}
 
@@ -79,7 +78,6 @@ func (l *AlarmLogFindListLogic) AlarmLogFindList(in *archiveclient.AlarmLogFindL
 			AlarmType:    item.AlarmType,
 			AlarmGrade:   item.AlarmGrade,
 			AlarmContent: item.AlarmContent,
-			AssetCode:    item.AssetCode,
 			AlarmState:   item.AlarmState,
 		})
 

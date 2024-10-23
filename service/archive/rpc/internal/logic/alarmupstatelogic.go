@@ -66,7 +66,6 @@ func (l *AlarmUpStateLogic) AlarmUpState(in *archiveclient.AlarmUpStateReq) (*ar
 			AlarmType:    item.AlarmType,
 			AlarmGrade:   item.AlarmGrade,
 			AlarmContent: item.AlarmContent,
-			AssetCode:    item.AssetCode,
 			AlarmState:   1,
 		}
 

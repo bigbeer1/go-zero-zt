@@ -1,0 +1,32 @@
+Name: tpmt-com
+Host: 0.0.0.0
+Port: 3199
+MaxBytes: 1048576000
+Timeout: 30000
+
+Log:
+  ServiceName: tpmt-com
+  Level: info
+
+Mysql:
+  DataSource: root:PXDNA999999@tcp(127.0.0.1:33069)/tpmt?charset=utf8mb4&parseTime=true&loc=Local
+
+
+CacheRedis:
+  - Host: "redis-1:6381"
+    Type: "cluster"
+    Pass: "G6200000000"
+
+
+
+TaskMaxLimit: 1000 # 最大任务数  限流器
+
+TimeLimit: 10 #限流器任务速率
+
+Mock: true #是否开启模拟
+
+RtuTimeout: 800 #RTU超时时间 毫秒
+
+CAuth:
+  AccessSecret: uOvKLmVfztaX9999999
+  AccessExpire: 86400

@@ -18,7 +18,7 @@ type AlarmLog struct {
 	AlarmType    int64     `json:"alarm_type"`    // 类型：1 越上限/2 越下限/ 3 变位 / 4 网关下线
 	AlarmGrade   int64     `json:"alarm_grade"`   // 等级：1 预警/2 告警 /3 提醒
 	AlarmContent string    `json:"alarm_content"` // 数据  返回内容
-	AssetCode    string    `json:"asset_code"`    // 柜号
+	AssetId      string    `json:"asset_id"`      // 资产ID
 	AlarmState   int64     `json:"alarm_state"`   // 状态 0 未读  1已读  2已确认
 }
 
@@ -28,10 +28,10 @@ func (t *AlarmLog) Insert(ctx context.Context, taos *sql.DB, tddb *TdDb) error {
 	dbName := fmt.Sprintf("INSERT INTO %s USING %s ", tddb.DbName, tddb.TableName)
 
 	// 拼接参数
-	tableData := fmt.Sprintf("Tags('%v') (`ts`,`id`,`mid`,`name`,`alarm_type`,`alarm_grade`,`alarm_content`,`asset_code`,`alarm_state`)", "1")
+	tableData := fmt.Sprintf("Tags('%v') (`ts`,`id`,`mid`,`name`,`alarm_type`,`alarm_grade`,`alarm_content`,`asset_id`,`alarm_state`)", "1")
 
 	value := fmt.Sprintf(" values ('%v','%v','%v','%v','%v','%v','%v','%v','%v');", t.Ts.Format(time.RFC3339Nano), t.Id, t.Mid, t.Name, t.AlarmType, t.AlarmGrade,
-		t.AlarmContent, t.AssetCode, t.AlarmState)
+		t.AlarmContent, t.AssetId, t.AlarmState)
 
 	sqlx := dbName + tableData + value
 
@@ -145,8 +145,8 @@ func (t *AlarmLog) fillFilter(sql squirrel.SelectBuilder) squirrel.SelectBuilder
 	if t.AlarmGrade != 99 {
 		sql = sql.Where(fmt.Sprintf(" `alarm_grade`= '%v' ", t.AlarmGrade))
 	}
-	if len(t.AssetCode) > 0 {
-		sql = sql.Where(fmt.Sprintf(" `asset_code`= '%v' ", t.AssetCode))
+	if len(t.AssetId) > 0 {
+		sql = sql.Where(fmt.Sprintf(" `asset_code`= '%v' ", t.AssetId))
 	}
 	if t.AlarmState != 99 {
 		sql = sql.Where(fmt.Sprintf(" `alarm_state`= '%v' ", t.AlarmState))

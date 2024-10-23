@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package mqttsendclient;
+
+option go_package = "./mqttsendclient";
+
+
+// 通用空返回
+message CommonResp{
+
+}
+
+message TwyMqttSendReq{
+    string mqtt_client_id = 1; // 这边我们使用任务ID作为Mqtt客户端Id
+    string mqtt_host = 2; // mqtt Ip
+    string mqtt_user = 3; // mqtt 账号
+    string mqtt_pass = 4; // mqtt 密码
+    string send_topic= 5; // mqtt 发送订阅地址
+    bytes data= 6; // 数据
+}
+
+
+
+service MqttSend {
+  // 给泰无忧发送信息
+  rpc TwyMqttSend(TwyMqttSendReq) returns(CommonResp);
+}

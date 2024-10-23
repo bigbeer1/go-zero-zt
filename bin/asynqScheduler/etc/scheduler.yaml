@@ -1,0 +1,25 @@
+Name: scheduler
+Host: 127.0.0.1
+Port: 3102
+
+Log:
+  ServiceName: asynqScheduler
+  Level: info
+
+Mysql:
+  DataSource: root:PXDNA93V@RKUm8TeE7@tcp(127.0.0.1:33069)/tpmt_db?charset=utf8mb4&parseTime=true&loc=Local
+
+
+CacheRedis:
+  - Host: "redis-1:6381"
+    Type: "cluster"
+    Pass: "G6200000000"
+
+
+SchedulerAlarmTasksTime : 10 #秒  网关告警检测时间
+
+ScheduledTasksTime : 30 #秒  自定义任务定时触发时间
+
+ScheduledTasksFailureRecordTime : 65 #秒  重试任务自定义触发时间
+
+

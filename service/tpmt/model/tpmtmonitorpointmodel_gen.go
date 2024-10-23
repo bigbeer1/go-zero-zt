@@ -40,6 +40,8 @@ type (
 		CountBuilder(field string) squirrel.SelectBuilder
 		SumBuilder(field string) squirrel.SelectBuilder
 		TransCtx(ctx context.Context, fn func(ctx context.Context, sqlx sqlx.Session) error) error
+		FindAll(ctx context.Context, rowBuilder squirrel.SelectBuilder) ([]*TpmtMonitorPoint, error)
+		GetRealData(ctx context.Context, redisKey string) string
 	}
 
 	defaultTpmtMonitorPointModel struct {
@@ -203,4 +205,38 @@ func (m *defaultTpmtMonitorPointModel) queryPrimary(ctx context.Context, conn sq
 
 func (m *defaultTpmtMonitorPointModel) tableName() string {
 	return m.table
+}
+
+func (m *defaultTpmtMonitorPointModel) FindAll(ctx context.Context, rowBuilder squirrel.SelectBuilder) ([]*TpmtMonitorPoint, error) {
+
+	query, values, err := rowBuilder.ToSql()
+	if err != nil {
+		return nil, err
+	}
+
+	var resp []*TpmtMonitorPoint
+	err = m.QueryRowsNoCacheCtx(ctx, &resp, query, values...)
+	switch err {
+	case nil:
+		return resp, nil
+	case sqlc.ErrNotFound:
+		return nil, nil
+	default:
+		return nil, err
+	}
+}
+
+func (m *defaultTpmtMonitorPointModel) GetRealData(ctx context.Context, redisKey string) string {
+	var resp string
+	err := m.CachedConn.GetCacheCtx(ctx, redisKey, &resp)
+
+	switch err {
+	case nil:
+		return resp
+	case sqlc.ErrNotFound:
+		return ""
+	default:
+		return ""
+	}
+
 }

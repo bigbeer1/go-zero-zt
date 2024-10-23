@@ -9,6 +9,13 @@ message CommonResp {
 
 }
 
+// 告警内容
+message AlarmRuleInfo  {
+  int64  level = 1;    // 告警等级
+  int64  rule_type = 2; // 1越上限,2越下限,3相同
+  string rule_data = 3; // 数值带单位
+}
+
 //SysUser start-------------------
 
 // SysUser 添加

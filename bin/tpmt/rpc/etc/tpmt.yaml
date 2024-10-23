@@ -25,6 +25,6 @@ CacheRedis:
 Salt: "dabenxiong999"
 
 
-AuthY:
+CAuth:
   AccessSecret: uOvKLmVfztaX9999999
   AccessExpire: 86400

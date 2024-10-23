@@ -14,6 +14,7 @@ import (
 )
 
 type (
+	AlarmRuleInfo               = tpmtclient.AlarmRuleInfo
 	CommonResp                  = tpmtclient.CommonResp
 	SysAuthAddReq               = tpmtclient.SysAuthAddReq
 	SysAuthDeleteReq            = tpmtclient.SysAuthDeleteReq

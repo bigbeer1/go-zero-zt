@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package websocketclient;
+
+option go_package = "./websocketclient";
+
+// 通用空返回
+message CommonResp{
+
+}
+
+message AlarmMessageReq{
+  int64   ts = 1;  // 告警事件
+  string  id = 2;  // 告警ID
+  string  mid = 3;  // 告警设备ID
+  string  name = 4;  // 告警设备名称
+  int64  alarm_type = 5;  // 告警类型
+  int64  alarm_grade = 6;  // 告警等级
+  string  alarm_content = 7;  // 告警内容
+  string  asset_code = 8;  // 柜号
+}
+
+
+
+service websocket {
+
+  // 发送告警消息
+  rpc AlarmMessage(AlarmMessageReq) returns(CommonResp);
+
+}

@@ -1,0 +1,53 @@
+Name: asynq-server
+Host: 127.0.0.1
+Port: 3101
+
+Log:
+  ServiceName: asynq-server
+  Level: error
+
+Mysql:
+  DataSource: root:PXDNA999999@tcp(127.0.0.1:33069)/tpmt?charset=utf8mb4&parseTime=true&loc=Local
+
+WebsocketRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:30000
+    Key: websocket.rpc
+
+
+MqttSendRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:30000
+    Key: mqtt-send.rpc
+
+Tdengine:
+  Host: "127.0.0.1"
+  Port: 6041
+  UserName: root
+  Pass: POOTACA93V
+
+CacheRedis:
+  - Host: "redis-1:6381"
+    Type: "cluster"
+    Pass: "G6200000000"
+
+TpmtRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:30000
+    Key: tpmt.rpc
+
+#redis实时数据保存时长
+RealDataTime: 10 #分钟
+
+AlarmLimit: 200 # 告警最高任务数
+
+DataSetLimit: 200 # 数据存储到时序数据库最高任务数
+
+# worker任务并发数
+Concurrency: 1000 #并发数
+
+# 自定义定时任务数
+ScheduledTasksLimit: 100

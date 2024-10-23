@@ -40,7 +40,7 @@ func (l *SysAuthAddLogic) SysAuthAdd(in *tpmtclient.SysAuthAddReq) (*tpmtclient.
 	timeUnix := time.Now().Unix()
 	id := uuid.NewV4().String()
 
-	token, err := jwtx.GetToken(l.svcCtx.Config.AuthY.AccessSecret, timeUnix, l.svcCtx.Config.AuthY.AccessExpire*90000, id,
+	token, err := jwtx.GetToken(l.svcCtx.Config.CAuth.AccessSecret, timeUnix, l.svcCtx.Config.CAuth.AccessExpire*90000, id,
 		common.AuthTokenType, in.NickName)
 
 	if err != nil {
