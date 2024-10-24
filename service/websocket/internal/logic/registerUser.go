@@ -47,7 +47,7 @@ func (l *Websocket) registerForMonitor(ctx context.Context, conn *websocket.Conn
 	defer global.MonitorUlock.Unlock()
 
 	remoteAddr := (*conn).RemoteAddr().String()
-	// 根据会话ip+端口存储 会话
+	// 根据会话conn+uid
 	sConnectionData := &global.SConnectionData{
 		Uid:  tokenData.TokenType + "|" + tokenData.Uid,
 		Conn: conn,

@@ -20,9 +20,9 @@ CAuth:
   AccessExpire: 86400
 
 CacheRedis:
-  - Host: redis-1:6381
-    Type: cluster
-    Pass: "G62m530oigInC30sf"
+  - Host: "redis-1:6381"
+    Type: "cluster"
+    Pass: "G6200000000"
 
 AuthenticationRpc:
   Etcd:
@@ -37,7 +37,7 @@ OnlineTime: 10 #用户离线保持在线时间  分析
 
 
 Mysql:
-  DataSource: root:PXDNA93V@RKUm8TeE7@tcp(127.0.0.1:33069)/tpmt_db?charset=utf8mb4&parseTime=true&loc=Local
+  DataSource: root:PXDNA999999@tcp(127.0.0.1:33069)/tpmt?charset=utf8mb4&parseTime=true&loc=Local
 
 
 RealTimeLimit: 100  # 实时数据并发查询协程数
