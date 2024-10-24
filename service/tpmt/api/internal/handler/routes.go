@@ -16,6 +16,7 @@ import (
 	tpmtAsset "tpmt-zt/service/tpmt/api/internal/handler/tpmtAsset"
 	tpmtGateway "tpmt-zt/service/tpmt/api/internal/handler/tpmtGateway"
 	tpmtMonitorPoint "tpmt-zt/service/tpmt/api/internal/handler/tpmtMonitorPoint"
+	tpmtMonitorPointGetData "tpmt-zt/service/tpmt/api/internal/handler/tpmtMonitorPointGetData"
 	"tpmt-zt/service/tpmt/api/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -379,6 +380,25 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: tpmtMonitorPoint.TpmtMonitorPointInfoHandler(serverCtx),
 			},
 		},
+		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
+	)
+
+	server.AddRoutes(
+		rest.WithMiddlewares(
+			[]rest.Middleware{serverCtx.CheckAuth},
+			[]rest.Route{
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/tpmtMonitorPointHistorical",
+					Handler: tpmtMonitorPointGetData.TpmtMonitorPointHistoricalHandler(serverCtx),
+				},
+				{
+					Method:  http.MethodGet,
+					Path:    "/tpmt/tpmtMonitorPointRealTime",
+					Handler: tpmtMonitorPointGetData.TpmtMonitorPointRealTimeListHandler(serverCtx),
+				},
+			}...,
+		),
 		rest.WithJwt(serverCtx.Config.Auth.AccessSecret),
 	)
 }

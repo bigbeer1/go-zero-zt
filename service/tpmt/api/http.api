@@ -10,6 +10,7 @@ import "doc/sysdict.api"
 import "doc/tpmtasset.api"
 import "doc/tpmtgateway.api"
 import "doc/tpmtmonitorpoint.api"
+import "doc/tpmtmonitorpointgetdata.api"
 
 type (
 	Response {

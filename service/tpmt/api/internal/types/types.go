@@ -429,6 +429,19 @@ type TpmtMonitorPointListRequest struct {
 	AssetId                   string  `form:"asset_id,optional"`                               // 资产ID
 }
 
+type TpmtMonitorPointRealTimeRequest struct {
+	Current       int64  `form:"current,default=1,optional"`         // 页码
+	PageSize      int64  `form:"page_size,default=10,optional"`      // 页数
+	SerialNumber  string `form:"serial_number,optional"`             // 编号
+	Name          string `form:"name,optional"`                      // 监测点名称
+	PointType     int64  `form:"point_type,default=99,optional"`     // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+	PointCategory int64  `form:"point_category,default=99,optional"` // 类别：1:遥信/2:遥测/3:遥脉
+	PointGroup    int64  `form:"point_group,default=99,optional"`    // 分组
+	CircuitType   int64  `form:"circuit_type,default=99,optional"`   // 回路类型
+	AssetId       string `form:"asset_id,optional"`                  // 资产ID
+	TpmtGatewayId string `form:"tpmt_gateway_id,optional"`           // 网关ID
+}
+
 type TpmtMonitorPointUpRequest struct {
 	Id                        int64   `json:"id"`                                   // 监测点ID
 	SerialNumber              string  `json:"serial_number,optional"`               // 编号
@@ -453,4 +466,10 @@ type TpmtMonitorPointUpRequest struct {
 	IsDisplacementWarning     int64   `json:"is_displacement_warning,optional"`     // 变位预警 0 不启用 1:启用
 	AssetId                   string  `json:"asset_id,optional"`                    // 资产ID
 	Sort                      int64   `json:"sort,optional"`                        // 排序
+}
+
+type TpmtmonitorPointHistoricalReq struct {
+	Ids                   []int64 `form:"ids"`                                // 监测点ID
+	TimeRangeStartDayTime int64   `form:"time_range_start_day_time,optional"` // 开始时间戳毫秒
+	TimeRangeEndDayTime   int64   `form:"time_range_end_day_time,optional"`   // 结束时间戳毫秒
 }

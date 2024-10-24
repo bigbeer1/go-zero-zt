@@ -100,14 +100,14 @@ func (l *TpmtMonitorPointListLogic) TpmtMonitorPointList(in *tpmtclient.TpmtMoni
 	}
 	// 网关ID
 	if len(in.TpmtGatewayId) > 0 {
-		whereBuilder = whereBuilder.Where(squirrel.Like{
-			"tpmt_gateway_id ": "%" + in.TpmtGatewayId + "%",
+		whereBuilder = whereBuilder.Where(squirrel.Eq{
+			"tpmt_gateway_id ": in.TpmtGatewayId,
 		})
 	}
 	// 资产ID
 	if len(in.AssetId) > 0 {
-		whereBuilder = whereBuilder.Where(squirrel.Like{
-			"asset_id ": "%" + in.AssetId + "%",
+		whereBuilder = whereBuilder.Where(squirrel.Eq{
+			"asset_id ": in.AssetId,
 		})
 	}
 
@@ -188,14 +188,14 @@ func (l *TpmtMonitorPointListLogic) TpmtMonitorPointList(in *tpmtclient.TpmtMoni
 	}
 	// 网关ID
 	if len(in.TpmtGatewayId) > 0 {
-		countBuilder = countBuilder.Where(squirrel.Like{
-			"tpmt_gateway_id ": "%" + in.TpmtGatewayId + "%",
+		countBuilder = countBuilder.Where(squirrel.Eq{
+			"tpmt_gateway_id ": in.TpmtGatewayId,
 		})
 	}
 	// 资产ID
 	if len(in.AssetId) > 0 {
-		countBuilder = countBuilder.Where(squirrel.Like{
-			"asset_id ": "%" + in.AssetId + "%",
+		countBuilder = countBuilder.Where(squirrel.Eq{
+			"asset_id ": in.AssetId,
 		})
 	}
 	count, err := l.svcCtx.TpmtMonitorPointModel.FindCount(l.ctx, countBuilder)

@@ -88,6 +88,12 @@ type TpmtClient interface {
 	TpmtMonitorPointUpdate(ctx context.Context, in *TpmtMonitorPointUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
 	TpmtMonitorPointFindOne(ctx context.Context, in *TpmtMonitorPointFindOneReq, opts ...grpc.CallOption) (*TpmtMonitorPointFindOneResp, error)
 	TpmtMonitorPointList(ctx context.Context, in *TpmtMonitorPointListReq, opts ...grpc.CallOption) (*TpmtMonitorPointListResp, error)
+	// 分页获取传感器实时数据
+	TpmtMonitorPointRealTimeList(ctx context.Context, in *TpmtMonitorPointRealTimeListReq, opts ...grpc.CallOption) (*TpmtMonitorPointRealTimeListResp, error)
+	// 获取单个传感器数据
+	TpmtMonitorPointRealTimeFindOne(ctx context.Context, in *TpmtMonitorPointRealTimeFindOneReq, opts ...grpc.CallOption) (*TpmtMonitorPointRealTimeFindOneResp, error)
+	// 获取历史数据接口
+	TpmtMonitorPointHistorical(ctx context.Context, in *TpmtMonitorPointHistoricalReq, opts ...grpc.CallOption) (*TpmtMonitorPointHistoricalResp, error)
 }
 
 type tpmtClient struct {
@@ -593,6 +599,33 @@ func (c *tpmtClient) TpmtMonitorPointList(ctx context.Context, in *TpmtMonitorPo
 	return out, nil
 }
 
+func (c *tpmtClient) TpmtMonitorPointRealTimeList(ctx context.Context, in *TpmtMonitorPointRealTimeListReq, opts ...grpc.CallOption) (*TpmtMonitorPointRealTimeListResp, error) {
+	out := new(TpmtMonitorPointRealTimeListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtMonitorPointRealTimeList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtMonitorPointRealTimeFindOne(ctx context.Context, in *TpmtMonitorPointRealTimeFindOneReq, opts ...grpc.CallOption) (*TpmtMonitorPointRealTimeFindOneResp, error) {
+	out := new(TpmtMonitorPointRealTimeFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtMonitorPointRealTimeFindOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtMonitorPointHistorical(ctx context.Context, in *TpmtMonitorPointHistoricalReq, opts ...grpc.CallOption) (*TpmtMonitorPointHistoricalResp, error) {
+	out := new(TpmtMonitorPointHistoricalResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtMonitorPointHistorical", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TpmtServer is the server API for Tpmt service.
 // All implementations must embed UnimplementedTpmtServer
 // for forward compatibility
@@ -667,6 +700,12 @@ type TpmtServer interface {
 	TpmtMonitorPointUpdate(context.Context, *TpmtMonitorPointUpdateReq) (*CommonResp, error)
 	TpmtMonitorPointFindOne(context.Context, *TpmtMonitorPointFindOneReq) (*TpmtMonitorPointFindOneResp, error)
 	TpmtMonitorPointList(context.Context, *TpmtMonitorPointListReq) (*TpmtMonitorPointListResp, error)
+	// 分页获取传感器实时数据
+	TpmtMonitorPointRealTimeList(context.Context, *TpmtMonitorPointRealTimeListReq) (*TpmtMonitorPointRealTimeListResp, error)
+	// 获取单个传感器数据
+	TpmtMonitorPointRealTimeFindOne(context.Context, *TpmtMonitorPointRealTimeFindOneReq) (*TpmtMonitorPointRealTimeFindOneResp, error)
+	// 获取历史数据接口
+	TpmtMonitorPointHistorical(context.Context, *TpmtMonitorPointHistoricalReq) (*TpmtMonitorPointHistoricalResp, error)
 	mustEmbedUnimplementedTpmtServer()
 }
 
@@ -838,6 +877,15 @@ func (UnimplementedTpmtServer) TpmtMonitorPointFindOne(context.Context, *TpmtMon
 }
 func (UnimplementedTpmtServer) TpmtMonitorPointList(context.Context, *TpmtMonitorPointListReq) (*TpmtMonitorPointListResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TpmtMonitorPointList not implemented")
+}
+func (UnimplementedTpmtServer) TpmtMonitorPointRealTimeList(context.Context, *TpmtMonitorPointRealTimeListReq) (*TpmtMonitorPointRealTimeListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtMonitorPointRealTimeList not implemented")
+}
+func (UnimplementedTpmtServer) TpmtMonitorPointRealTimeFindOne(context.Context, *TpmtMonitorPointRealTimeFindOneReq) (*TpmtMonitorPointRealTimeFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtMonitorPointRealTimeFindOne not implemented")
+}
+func (UnimplementedTpmtServer) TpmtMonitorPointHistorical(context.Context, *TpmtMonitorPointHistoricalReq) (*TpmtMonitorPointHistoricalResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtMonitorPointHistorical not implemented")
 }
 func (UnimplementedTpmtServer) mustEmbedUnimplementedTpmtServer() {}
 
@@ -1842,6 +1890,60 @@ func _Tpmt_TpmtMonitorPointList_Handler(srv interface{}, ctx context.Context, de
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tpmt_TpmtMonitorPointRealTimeList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtMonitorPointRealTimeListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtMonitorPointRealTimeList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtMonitorPointRealTimeList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtMonitorPointRealTimeList(ctx, req.(*TpmtMonitorPointRealTimeListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtMonitorPointRealTimeFindOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtMonitorPointRealTimeFindOneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtMonitorPointRealTimeFindOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtMonitorPointRealTimeFindOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtMonitorPointRealTimeFindOne(ctx, req.(*TpmtMonitorPointRealTimeFindOneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtMonitorPointHistorical_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtMonitorPointHistoricalReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtMonitorPointHistorical(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtMonitorPointHistorical",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtMonitorPointHistorical(ctx, req.(*TpmtMonitorPointHistoricalReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Tpmt_ServiceDesc is the grpc.ServiceDesc for Tpmt service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -2068,6 +2170,18 @@ var Tpmt_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TpmtMonitorPointList",
 			Handler:    _Tpmt_TpmtMonitorPointList_Handler,
+		},
+		{
+			MethodName: "TpmtMonitorPointRealTimeList",
+			Handler:    _Tpmt_TpmtMonitorPointRealTimeList_Handler,
+		},
+		{
+			MethodName: "TpmtMonitorPointRealTimeFindOne",
+			Handler:    _Tpmt_TpmtMonitorPointRealTimeFindOne_Handler,
+		},
+		{
+			MethodName: "TpmtMonitorPointHistorical",
+			Handler:    _Tpmt_TpmtMonitorPointHistorical_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

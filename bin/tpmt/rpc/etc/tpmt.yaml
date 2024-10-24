@@ -28,3 +28,9 @@ Salt: "dabenxiong999"
 CAuth:
   AccessSecret: uOvKLmVfztaX9999999
   AccessExpire: 86400
+
+Tdengine:
+  Host: "127.0.0.1"
+  Port: 6041
+  UserName: root
+  Pass: POOTACA93V

@@ -1,7 +1,9 @@
 package svc
 
 import (
+	"database/sql"
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
+	"tpmt-zt/common/tdenginex"
 	"tpmt-zt/service/tpmt/model"
 	"tpmt-zt/service/tpmt/rpc/internal/config"
 )
@@ -30,6 +32,9 @@ type ServiceContext struct {
 	TpmtGatewayModel model.TpmtGatewayModel // 网关
 
 	TpmtMonitorPointModel model.TpmtMonitorPointModel // 监测点
+
+	// 时序数据库连接
+	Taos *sql.DB
 }
 
 func NewServiceContext(c config.Config) *ServiceContext {
@@ -38,6 +43,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 
 	return &ServiceContext{
 		Config:                c,
+		Taos:                  tdenginex.NewTDengineManager(c.Tdengine),
 		SysUserModel:          model.NewSysUserModel(conn, c.CacheRedis),
 		SysUserRoleModel:      model.NewSysUserRoleModel(conn, c.CacheRedis),
 		SysAuthModel:          model.NewSysAuthModel(conn, c.CacheRedis),

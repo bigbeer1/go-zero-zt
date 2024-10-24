@@ -1030,7 +1030,157 @@ message TpmtMonitorPointListData{
   int64   sort = 28;  // 排序
 }
 
+
+message TpmtMonitorPointRealTimeListReq{
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  string  serial_number = 6;  // 编号
+  string  name = 7;  // 监测点名称
+  int64   point_type = 9;  // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+  int64   point_category = 10;  // 类别：1:遥信/2:遥测/3:遥脉
+  int64   point_group = 12;  // 分组
+  int64   circuit_type = 13; // 回路类型
+  string  tpmt_gateway_id = 22;  // 网关ID
+  string  asset_id = 23;  // 资产ID
+}
+
+
+// TpmtMonitorPointRealTimeList 分页查询返回
+message TpmtMonitorPointRealTimeListResp{
+  int64  total = 1;  // 总数
+  repeated  TpmtMonitorPointRealTimeData list = 2;  // 内容
+}
+// TpmtMonitorPointRealTimeList 列表信息
+message TpmtMonitorPointRealTimeData{
+  int64   id = 1;  // 监测点ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  serial_number = 6;  // 编号
+  string  name = 7;  // 监测点名称
+  string  register_address = 8;  // 寄存器地址
+  int64  point_collector_instruction = 9; // 采集器指令 1: 02  2:03  3:04
+  int64  point_analysis_rule = 10;  // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+  int64   point_type = 11;  // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+  int64   point_category = 12;  // 类别：1:遥信/2:遥测/3:遥脉
+  int64   point_group = 13;  // 分组
+  int64   circuit_type = 14; // 回路类型
+  string  yx_decode = 15;  // 遥信解译
+  int64   data_bits = 16;  // 数据位
+  double  coefficient = 17;  // 系数
+  int64   retain_decimals = 18;  // 保留小数位
+  string  unit = 19;  // 单位
+  int64   alarm_duration = 20;  // 持续时间
+  double  alarm_up_value = 21;  // 告警上限
+  double  alarm_down_value = 22;  // 告警下限
+  double  warning_up_value = 23;  // 预警上限
+  double  warning_down_value = 24;  // 预警下限
+  int64   is_displacement_warning = 25;  // 变位预警 0 不启用 1:启用
+  string  tpmt_gateway_id = 26;  // 网关ID
+  string  asset_id = 27;  // 资产ID
+  int64   sort = 28;  // 排序
+  string  result_value = 32;  // 监测值
+  int64   update_time = 33;  // 值更新时间
+  AlarmRuleInfo alarm_rule_info = 34; // 数值状态
+  TpmtAssetFindOneResp asset = 35;  // 资产信息
+}
+
+
+// TpmtMonitorPoint 单个查询
+message TpmtMonitorPointRealTimeFindOneReq{
+  int64   id = 1;  // 监测点ID
+}
+
+// TpmtMonitorPoint 单个查询返回
+message TpmtMonitorPointRealTimeFindOneResp{
+  int64   id = 1;  // 监测点ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  serial_number = 6;  // 编号
+  string  name = 7;  // 监测点名称
+  string  register_address = 8;  // 寄存器地址
+  int64  point_collector_instruction = 9; // 采集器指令 1: 02  2:03  3:04
+  int64  point_analysis_rule = 10;  // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+  int64   point_type = 11;  // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+  int64   point_category = 12;  // 类别：1:遥信/2:遥测/3:遥脉
+  int64   point_group = 13;  // 分组
+  int64   circuit_type = 14; // 回路类型
+  string  yx_decode = 15;  // 遥信解译
+  int64   data_bits = 16;  // 数据位
+  double   coefficient = 17;  // 系数
+  int64   retain_decimals = 18;  // 保留小数位
+  string  unit = 19;  // 单位
+  int64   alarm_duration = 20;  // 持续时间
+  double   alarm_up_value = 21;  // 告警上限
+  double   alarm_down_value = 22;  // 告警下限
+  double   warning_up_value = 23;  // 预警上限
+  double   warning_down_value = 24;  // 预警下限
+  int64   is_displacement_warning = 25;  // 变位预警 0 不启用 1:启用
+  string  tpmt_gateway_id = 26;  // 网关ID
+  string  asset_id = 27;  // 资产Id
+  int64  sort = 28;  // 排序
+  string  result_value = 32;  // 监测值
+  int64  update_time = 33;  // 更新时间
+  AlarmRuleInfo alarm_rule_info = 34; // 数值状态
+  TpmtAssetFindOneResp asset = 35;  // 资产信息
+}
+
+
+
+// 获取单个监测点历史数据
+message TpmtMonitorPointHistoricalReq{
+  int64  id = 1; //监测点ID
+  int64 timeRangeStartDayTime = 2; // 开始天数
+  int64 timeRangeEndDayTime = 3; // 结束天数
+  int64 is_prediction = 4; // 是否预测
+  int64 prediction_number = 5; // 预测数值个数
+}
+
+message TpmtMonitorPointHistoricalResp{
+  int64   id = 1;  // 监测点ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  serial_number = 6;  // 编号
+  string  name = 7;  // 监测点名称
+  string  register_address = 8;  // 寄存器地址
+  int64  point_collector_instruction = 9; // 采集器指令 1: 02  2:03  3:04
+  int64  point_analysis_rule = 10;  // 采集器解析规则 1: 16位无符号/2:单精度浮点数
+  int64   point_type = 11;  // 类型：1:综保/2:局放/3:测温/4:微水/5:油色谱/6:机器人/7:其他
+  int64   point_category = 12;  // 类别：1:遥信/2:遥测/3:遥脉
+  int64   point_group = 13;  // 分组
+  int64   circuit_type = 14; // 回路类型
+  string  yx_decode = 15;  // 遥信解译
+  int64   data_bits = 16;  // 数据位
+  double   coefficient = 17;  // 系数
+  int64   retain_decimals = 18;  // 保留小数位
+  string  unit = 19;  // 单位
+  int64   alarm_duration = 20;  // 持续时间
+  double   alarm_up_value = 21;  // 告警上限
+  double   alarm_down_value = 22;  // 告警下限
+  double   warning_up_value = 23;  // 预警上限
+  double   warning_down_value = 24;  // 预警下限
+  int64   is_displacement_warning = 25;  // 变位预警 0 不启用 1:启用
+  string  tpmt_gateway_id = 26;  // 网关ID
+  string  asset_id = 27;  // 资产柜号
+  string  asset_name = 28;  // 资产名称
+  int64   sort = 29;  // 排序
+  repeated TpmtMonitorPointHistoricalListData list = 33;
+}
+
+message TpmtMonitorPointHistoricalListData {
+  string monitor_value = 1; // 监测值
+  int64 create_time = 2; // 监测点创建时间
+}
+
+
 //TpmtMonitorPoint end---------------------
+
+
 
 
 service Tpmt {
@@ -1122,5 +1272,15 @@ service Tpmt {
   rpc TpmtMonitorPointUpdate(TpmtMonitorPointUpdateReq) returns(CommonResp);
   rpc TpmtMonitorPointFindOne(TpmtMonitorPointFindOneReq) returns(TpmtMonitorPointFindOneResp);
   rpc TpmtMonitorPointList(TpmtMonitorPointListReq) returns(TpmtMonitorPointListResp);
+
+
+  // 分页获取监测点实时数据
+  rpc TpmtMonitorPointRealTimeList(TpmtMonitorPointRealTimeListReq) returns(TpmtMonitorPointRealTimeListResp);
+
+  // 获取单个监测点数据
+  rpc TpmtMonitorPointRealTimeFindOne(TpmtMonitorPointRealTimeFindOneReq) returns(TpmtMonitorPointRealTimeFindOneResp);
+
+  // 获取监测点历史数据接口
+  rpc TpmtMonitorPointHistorical(TpmtMonitorPointHistoricalReq) returns (TpmtMonitorPointHistoricalResp);
 
 }

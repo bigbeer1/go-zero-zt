@@ -312,3 +312,21 @@ func (s *TpmtServer) TpmtMonitorPointList(ctx context.Context, in *tpmtclient.Tp
 	l := logic.NewTpmtMonitorPointListLogic(ctx, s.svcCtx)
 	return l.TpmtMonitorPointList(in)
 }
+
+// 分页获取传感器实时数据
+func (s *TpmtServer) TpmtMonitorPointRealTimeList(ctx context.Context, in *tpmtclient.TpmtMonitorPointRealTimeListReq) (*tpmtclient.TpmtMonitorPointRealTimeListResp, error) {
+	l := logic.NewTpmtMonitorPointRealTimeListLogic(ctx, s.svcCtx)
+	return l.TpmtMonitorPointRealTimeList(in)
+}
+
+// 获取单个传感器数据
+func (s *TpmtServer) TpmtMonitorPointRealTimeFindOne(ctx context.Context, in *tpmtclient.TpmtMonitorPointRealTimeFindOneReq) (*tpmtclient.TpmtMonitorPointRealTimeFindOneResp, error) {
+	l := logic.NewTpmtMonitorPointRealTimeFindOneLogic(ctx, s.svcCtx)
+	return l.TpmtMonitorPointRealTimeFindOne(in)
+}
+
+// 获取历史数据接口
+func (s *TpmtServer) TpmtMonitorPointHistorical(ctx context.Context, in *tpmtclient.TpmtMonitorPointHistoricalReq) (*tpmtclient.TpmtMonitorPointHistoricalResp, error) {
+	l := logic.NewTpmtMonitorPointHistoricalLogic(ctx, s.svcCtx)
+	return l.TpmtMonitorPointHistorical(in)
+}
