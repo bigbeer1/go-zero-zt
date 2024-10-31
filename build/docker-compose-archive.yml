@@ -3,7 +3,7 @@ version: '3'
 ######## app下api+rpc ,  启动本项目之前，要先启动本项目依赖的环境docker-compose-env.yml #######
 # 自动创建网络，并手动指定IP网段
 networks:
-  ptm_net:
+  dabenxiong_net:
     ipam:
       config:
         - subnet: 172.20.56.0/16
@@ -12,26 +12,26 @@ networks:
 services:
   archiveRpc1:
     image: alpine:3.16
-    container_name: archiveRpc1
-    working_dir: /go
+    container_name: archiveRpc1 # 容器的名称
+    working_dir: /go # 指定工作目录
     volumes:
       - ../deploy/golang/archive/rpc/etc:/go/etc
       - ../deploy/golang/out/archive/rpc/archive-rpc:/go/archive-rpc
       - ../deploy/time/Shanghai:/etc/localtime
       - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
-    privileged: true
+    privileged: true # 允许容器访问宿主机
     deploy:
       resources:
         limits:
           memory: 1024M # 限制最大使用内存1024MB
-    restart: always
+    restart: always # 你的程序如果挂了，自动重启
     networks:
-      - ptm_net
+      - dabenxiong_net
     command: "./archive-rpc -f ./etc/archive.yaml"
 
   archiveRpc2:
     image: alpine:3.16
-    container_name: archiveRpc1
+    container_name: archiveRpc2
     working_dir: /go
     volumes:
       - ../deploy/golang/archive/rpc/etc:/go/etc
@@ -45,7 +45,7 @@ services:
           memory: 1024M # 限制最大使用内存1024MB
     restart: always
     networks:
-      - ptm_net
+      - dabenxiong_net
     command: "./archive-rpc -f ./etc/archive.yaml"
 
 
@@ -65,13 +65,13 @@ services:
           memory: 1024M # 限制最大使用内存1024MB
     restart: always
     networks:
-      ptm_net:
+      dabenxiong_net:
          ipv4_address: 172.20.56.11
     command: "./archive-api -f ./etc/archive-api.yaml"
 
   archiveApi2:
     image: alpine:3.16
-    container_name: archiveApi1
+    container_name: archiveApi2
     working_dir: /go
     volumes:
       - ../deploy/golang/archive/api/etc:/go/etc
@@ -85,6 +85,26 @@ services:
           memory: 1024M # 限制最大使用内存1024MB
     restart: always
     networks:
-      ptm_net:
+      dabenxiong_net:
         ipv4_address: 172.20.56.12
     command: "./archive-api -f ./etc/archive-api.yaml"
+
+
+  mqttSend:
+    image: alpine:3.16
+    container_name: mqttSend
+    working_dir: /go
+    volumes:
+      - ../deploy/golang/mqttSend/etc:/go/etc
+      - ../deploy/golang/out/mqttSend/mqtt-send:/go/mqtt-send
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 1048M # 限制最大使用内存2048MB
+    restart: always
+    networks:
+      - dabenxiong_net
+    command: "./mqtt-send -f ./etc/mqtt-send.yaml"

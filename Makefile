@@ -10,6 +10,8 @@ linux_env:
 	go env -w GOOS=linux
 
 
+
+
 # 日志微服务
 archive:
 	go build -o deploy/golang/out/archive/rpc/archive-rpc service/archive/rpc/archive.go

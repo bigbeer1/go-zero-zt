@@ -3,7 +3,7 @@ version: '3'
 ######## app下api+rpc ,  启动本项目之前，要先启动本项目依赖的环境docker-compose-env.yml #######
 # 自动创建网络，并手动指定IP网段
 networks:
-  ptm_net:
+  dabenxiong_net:
     ipam:
       config:
         - subnet: 172.20.1.0/16
@@ -21,24 +21,23 @@ services:
           memory: 4096M # 限制最大使用内存1024MB
     ports:
       - 9005:9005
-      - 80:80
     volumes:
       - ../deploy/nginx/app:/etc/nginx/conf.d
+      - ../deploy/nginx/hosts:/etc/hosts
       - ../data/nginx/app/log:/var/log/nginx
       - ../deploy/time/Shanghai:/etc/localtime
       - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
     networks:
-      - ptm_net
+      - dabenxiong_net
     depends_on: # 等待下面的容器部署成功后再启动
       - asynqScheduler
       - tpmtApi
       - tpmtRpc
       - tpmtCom
       - tpmtWebSocket
-      - mqttSend
 
 
-  asynqScheduler:
+  asynqScheduler: # 定时器
     image: alpine:3.16
     container_name: asynqScheduler
     volumes:
@@ -54,7 +53,7 @@ services:
     working_dir: /go
     restart: always
     networks:
-      - ptm_net
+      - dabenxiong_net
     command: "./scheduler -f ./etc/scheduler.yaml"
 
   tpmtApi:
@@ -73,7 +72,7 @@ services:
           memory: 2048M # 限制最大使用内存2048MB
     restart: always
     networks:
-      ptm_net:
+      dabenxiong_net:
          ipv4_address: 172.20.1.77
     command: "./tpmt-api -f ./etc/tpmt-api.yaml"
 
@@ -93,7 +92,7 @@ services:
           memory: 4096M # 限制最大使用内存4096MB
     restart: always
     networks:
-      - ptm_net
+      - dabenxiong_net
     command: "./tpmt-rpc -f ./etc/tpmt.yaml"
 
   tpmtCom:
@@ -114,7 +113,7 @@ services:
       - 3199:3199
     restart: always
     networks:
-      - ptm_net
+      - dabenxiong_net
     command: "./tpmt-com -f ./etc/tpmt-com.yaml"
 
   tpmtWebSocket:
@@ -135,24 +134,5 @@ services:
       - 3102:3102
     restart: always
     networks:
-      - ptm_net
+      - dabenxiong_net
     command: "./websocket -f ./etc/websocket.yaml"
-
-  mqttSend:
-    image: alpine:3.16
-    container_name: mqttSend
-    working_dir: /go
-    volumes:
-      - ../deploy/golang/mqttSend/etc:/go/etc
-      - ../deploy/golang/out/mqttSend/mqtt-send:/go/mqtt-send
-      - ../deploy/time/Shanghai:/etc/localtime
-      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
-    privileged: true
-    deploy:
-      resources:
-        limits:
-          memory: 1048M # 限制最大使用内存2048MB
-    restart: always
-    networks:
-      - ptm_net
-    command: "./mqtt-send -f ./etc/mqtt-send.yaml"

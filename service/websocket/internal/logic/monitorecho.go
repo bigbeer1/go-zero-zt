@@ -120,6 +120,15 @@ func (l *Websocket) EchoView(ctx *fasthttp.RequestCtx) {
 						logx.Errorf(err.Error())
 					}
 				}
+			case "chat":
+				if len(data) > 1 {
+					go l.Chat(ctx, ws, data[1], tokenData)
+				} else {
+					err = util.MonitorSendSocket(ws, fmt.Sprintf("error|发送格式错误请以`功能|内容`格式发送|"))
+					if err != nil {
+						logx.Errorf(err.Error())
+					}
+				}
 			default:
 				err = util.MonitorSendSocket(ws, fmt.Sprintf("error|不支持指令|"))
 				if err != nil {

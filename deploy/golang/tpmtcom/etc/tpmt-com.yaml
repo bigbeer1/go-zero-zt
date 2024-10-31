@@ -6,7 +6,7 @@ Timeout: 30000
 
 Log:
   ServiceName: tpmt-com
-  Level: error
+  Level: info
 
 Mysql:
   DataSource: root:PXDNA999999@tcp(mysql:3306)/tpmt?charset=utf8mb4&parseTime=true&loc=Local

@@ -5,7 +5,7 @@ Timeout: 30000
 
 Log:
   ServiceName: archive-api
-  Level: error
+  Level: info
 
 Auth:
   AccessSecret: uOvKLmVfztaX9999999

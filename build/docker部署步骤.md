@@ -55,8 +55,14 @@ $ docker-compose -f docker-compose-tdengine.yml up -d
 #### 步骤5: 部署asynqmon
 $ docker-compose -f docker-compose-asynqmon.yml up -d
 
-#### 步骤6: 部署asynqmon
-$ docker-compose -f docker-compose-asynqmon.yml up -d
+#### 步骤6: 部署日志服务
+$ docker-compose -f docker-compose-archive.yml up -d
+
+#### 步骤7: 部署asynqmonServer  10个 worker
+$ docker-compose -f docker-compose-asynq-scheduler-10.yml up -d
+
+#### 步骤8: 部署tpmt程序
+$ docker-compose up -d
 
 
 

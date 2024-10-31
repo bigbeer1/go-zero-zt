@@ -4,7 +4,7 @@ Timeout: 30000
 
 Log:
   ServiceName: archive.rpc
-  Level: error
+  Level: info
 
 
 Etcd:
