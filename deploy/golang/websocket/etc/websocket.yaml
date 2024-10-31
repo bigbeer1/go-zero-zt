@@ -2,7 +2,6 @@ Name: websocket.rpc
 ListenOn: 0.0.0.0:3103
 Timeout: 30000
 
-
 WebsocketHost: 0.0.0.0
 WebsocketPort: "3102"
 
@@ -15,20 +14,14 @@ Etcd:
     - etcd:2379
   Key: websocket.rpc
 
-AuthC:
-  AccessSecret: uOvKLmVfztaXGpNYd4Z0I1SiT7Mwetpmt
+CAuth:
+  AccessSecret: uOvKLmVfztaX9999999
   AccessExpire: 86400
 
 CacheRedis:
   - Host: redis-1:6381
     Type: cluster
-    Pass: "G62m530oigInC30sf"
-
-AuthenticationRpc:
-  Etcd:
-    Hosts:
-      - etcd:2379
-    Key: authentication.rpc
+    Pass: "G6200000000"
 
 
 
@@ -36,7 +29,7 @@ OnlineTime: 10 #用户离线保持在线时间  分析
 
 
 Mysql:
-  DataSource: root:PXDNA93V@RKUm8TeE7@tcp(mysql:3306)/tpmt_db?charset=utf8mb4&parseTime=true&loc=Local
+  DataSource: root:PXDNA999999@tcp(mysql:3306)/tpmt?charset=utf8mb4&parseTime=true&loc=Local
 
 
 RealTimeLimit: 100  # 实时数据并发查询协程数
@@ -45,5 +38,6 @@ TaskMaxLimit: 1000 # 最大任务数  限流器
 
 
 TimeLimit: 10 #限流器任务速率
+
 
 

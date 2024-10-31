@@ -1,5 +1,5 @@
 Name: scheduler
-Host: golang
+Host: 0.0.0.0
 Port: 3102
 Mode: dev
 

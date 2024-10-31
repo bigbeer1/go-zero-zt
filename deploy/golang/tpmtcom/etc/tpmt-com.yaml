@@ -9,23 +9,24 @@ Log:
   Level: error
 
 Mysql:
-  DataSource: root:PXDNA93V@RKUm8TeE7@tcp(mysql:3306)/tpmt_db?charset=utf8mb4&parseTime=true&loc=Local
+  DataSource: root:PXDNA999999@tcp(mysql:3306)/tpmt?charset=utf8mb4&parseTime=true&loc=Local
 
 
 CacheRedis:
-  - Host: redis-1:6381
-    Type: cluster
-    Pass: "G62m530oigInC30sf"
+  - Host: "redis-1:6381"
+    Type: "cluster"
+    Pass: "G6200000000"
+
 
 
 TaskMaxLimit: 1000 # 最大任务数  限流器
 
 TimeLimit: 10 #限流器任务速率
 
-RtuTimeout: 500 #RTU超时时间 毫秒
+Mock: true #是否开启模拟
 
-Mock: false # 是否开启模拟
+RtuTimeout: 800 #RTU超时时间 毫秒
 
 CAuth:
-  AccessSecret: uOvKLmVfztaXGpNYd4Z0I1SiT7Mwetpmt
+  AccessSecret: uOvKLmVfztaX9999999
   AccessExpire: 86400

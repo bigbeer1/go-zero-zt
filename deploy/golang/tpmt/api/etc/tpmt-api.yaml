@@ -1,7 +1,7 @@
 Name: tpmt-api
 Host: 0.0.0.0
 Port: 1001
-MaxBytes: 1048576000
+MaxBytes: 1048576000 # 1GB
 Mode: dev
 Timeout: 30000
 
@@ -10,7 +10,7 @@ Log:
   Level: error
 
 Auth:
-  AccessSecret: uOvKLmVfztaXGpNYd4Z0I1SiT7Mwetpmt
+  AccessSecret: uOvKLmVfztaX9999999
   AccessExpire: 86400
 
 ArchiveRpc:
@@ -24,15 +24,3 @@ TpmtRpc:
     Hosts:
       - etcd:2379
     Key: tpmt.rpc
-
-ScriptRpc:
-  Etcd:
-    Hosts:
-      - etcd:2379
-    Key: script.rpc
-
-AuthenticationRpc:
-  Etcd:
-    Hosts:
-      - etcd:2379
-    Key: authentication.rpc
