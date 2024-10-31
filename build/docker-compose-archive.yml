@@ -1,0 +1,90 @@
+version: '3'
+
+######## app下api+rpc ,  启动本项目之前，要先启动本项目依赖的环境docker-compose-env.yml #######
+# 自动创建网络，并手动指定IP网段
+networks:
+  ptm_net:
+    ipam:
+      config:
+        - subnet: 172.20.56.0/16
+
+
+services:
+  archiveRpc1:
+    image: alpine:3.16
+    container_name: archiveRpc1
+    working_dir: /go
+    volumes:
+      - ../deploy/golang/archive/rpc/etc:/go/etc
+      - ../deploy/golang/out/archive/rpc/archive-rpc:/go/archive-rpc
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 1024M # 限制最大使用内存1024MB
+    restart: always
+    networks:
+      - ptm_net
+    command: "./archive-rpc -f ./etc/archive.yaml"
+
+  archiveRpc2:
+    image: alpine:3.16
+    container_name: archiveRpc1
+    working_dir: /go
+    volumes:
+      - ../deploy/golang/archive/rpc/etc:/go/etc
+      - ../deploy/golang/out/archive/rpc/archive-rpc:/go/archive-rpc
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 1024M # 限制最大使用内存1024MB
+    restart: always
+    networks:
+      - ptm_net
+    command: "./archive-rpc -f ./etc/archive.yaml"
+
+
+  archiveApi1:
+    image: alpine:3.16
+    container_name: archiveApi1
+    working_dir: /go
+    volumes:
+      - ../deploy/golang/archive/api/etc:/go/etc
+      - ../deploy/golang/out/archive/api/archive-api:/go/archive-api
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 1024M # 限制最大使用内存1024MB
+    restart: always
+    networks:
+      ptm_net:
+         ipv4_address: 172.20.56.11
+    command: "./archive-api -f ./etc/archive-api.yaml"
+
+  archiveApi2:
+    image: alpine:3.16
+    container_name: archiveApi1
+    working_dir: /go
+    volumes:
+      - ../deploy/golang/archive/api/etc:/go/etc
+      - ../deploy/golang/out/archive/api/archive-api:/go/archive-api
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 1024M # 限制最大使用内存1024MB
+    restart: always
+    networks:
+      ptm_net:
+        ipv4_address: 172.20.56.12
+    command: "./archive-api -f ./etc/archive-api.yaml"

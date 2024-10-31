@@ -55,6 +55,9 @@ $ docker-compose -f docker-compose-tdengine.yml up -d
 #### 步骤5: 部署asynqmon
 $ docker-compose -f docker-compose-asynqmon.yml up -d
 
+#### 步骤6: 部署asynqmon
+$ docker-compose -f docker-compose-asynqmon.yml up -d
+
 
 
 

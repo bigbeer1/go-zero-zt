@@ -1,0 +1,37 @@
+Name: tpmt.rpc
+ListenOn: 0.0.0.0:1101
+MaxBytes: 1048576000
+Mode: dev
+Timeout: 30000
+
+Log:
+  ServiceName: tpmt.rpc
+  Level: error
+
+
+Etcd:
+  Hosts:
+    - 127.0.0.1:30000
+  Key: tpmt.rpc
+
+Mysql:
+  DataSource: root:PXDNA999999@tcp(mysql:3306)/tpmt?charset=utf8mb4&parseTime=true&loc=Local
+
+
+CacheRedis:
+  - Host: "redis-1:6381"
+    Type: "cluster"
+    Pass: "G6200000000"
+
+Salt: "dabenxiong999"
+
+
+CAuth:
+  AccessSecret: uOvKLmVfztaX9999999
+  AccessExpire: 86400
+
+Tdengine:
+  Host: taosnode1
+  Port: 6041
+  UserName: root
+  Pass: POOTACA93V

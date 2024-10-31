@@ -1,19 +1,21 @@
 Name: scheduler
-Host: 127.0.0.1
+Host: golang
 Port: 3102
+Mode: dev
 
 Log:
-  ServiceName: asynqScheduler
-  Level: info
+  ServiceName: scheduler
+  Level: error
+
 
 Mysql:
-  DataSource: root:PXDNA999999@tcp(127.0.0.1:33069)/tpmt?charset=utf8mb4&parseTime=true&loc=Local
-
+  DataSource: root:PXDNA999999@tcp(mysql:3306)/tpmt?charset=utf8mb4&parseTime=true&loc=Local
 
 CacheRedis:
-  - Host: "redis-1:6381"
-    Type: "cluster"
+  - Host: redis-1:6381
+    Type: cluster
     Pass: "G6200000000"
+
 
 
 SchedulerAlarmTasksTime : 10 #秒  网关告警检测时间

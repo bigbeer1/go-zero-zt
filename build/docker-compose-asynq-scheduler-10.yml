@@ -1,0 +1,192 @@
+version: '3'
+
+######## app下api+rpc ,  启动本项目之前，要先启动本项目依赖的环境docker-compose-env.yml #######
+# 自动创建网络，并手动指定IP网段
+networks:
+  ptm_net:
+    ipam:
+      config:
+        - subnet: 172.20.1.0/16
+
+
+services:
+  asynqmonServer1:
+    image: alpine:3.16
+    container_name: asynqmonServer1
+    volumes:
+      - ../deploy/golang/asynqServer/etc:/go/etc
+      - ../deploy/golang/out/other/asynq-server:/go/asynq-server
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制最大使用内存512MB
+    working_dir: /go
+    restart: always
+    networks:
+      - ptm_net
+    command: "./asynq-server -f ./etc/asynq-server.yaml"
+  asynqmonServer2:
+    image: alpine:3.16
+    container_name: asynqmonServer2
+    volumes:
+      - ../deploy/golang/asynqServer/etc:/go/etc
+      - ../deploy/golang/out/other/asynq-server:/go/asynq-server
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    working_dir: /go
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制最大使用内存512MB
+    networks:
+      - ptm_net
+    command: "./asynq-server -f ./etc/asynq-server.yaml"
+  asynqmonServer3:
+    image: alpine:3.16
+    container_name: asynqmonServer3
+    volumes:
+      - ../deploy/golang/asynqServer/etc:/go/etc
+      - ../deploy/golang/out/other/asynq-server:/go/asynq-server
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    working_dir: /go
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制最大使用内存512MB
+    networks:
+      - ptm_net
+    command: "./asynq-server -f ./etc/asynq-server.yaml"
+  asynqmonServer4:
+    image: alpine:3.16
+    container_name: asynqmonServer4
+    volumes:
+      - ../deploy/golang/asynqServer/etc:/go/etc
+      - ../deploy/golang/out/other/asynq-server:/go/asynq-server
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制最大使用内存512MB
+    working_dir: /go
+    restart: always
+    networks:
+      - ptm_net
+    command: "./asynq-server -f ./etc/asynq-server.yaml"
+  asynqmonServer5:
+    image: alpine:3.16
+    container_name: asynqmonServer5
+    volumes:
+      - ../deploy/golang/asynqServer/etc:/go/etc
+      - ../deploy/golang/out/other/asynq-server:/go/asynq-server
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制最大使用内存512MB
+    working_dir: /go
+    restart: always
+    networks:
+      - ptm_net
+    command: "./asynq-server -f ./etc/asynq-server.yaml"
+  asynqmonServer6:
+    image: alpine:3.16
+    container_name: asynqmonServer6
+    volumes:
+      - ../deploy/golang/asynqServer/etc:/go/etc
+      - ../deploy/golang/out/other/asynq-server:/go/asynq-server
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制最大使用内存512MB
+    working_dir: /go
+    restart: always
+    networks:
+      - ptm_net
+    command: "./asynq-server -f ./etc/asynq-server.yaml"
+  asynqmonServer7:
+    image: alpine:3.16
+    container_name: asynqmonServer7
+    volumes:
+      - ../deploy/golang/asynqServer/etc:/go/etc
+      - ../deploy/golang/out/other/asynq-server:/go/asynq-server
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制最大使用内存512MB
+    working_dir: /go
+    restart: always
+    networks:
+      - ptm_net
+    command: "./asynq-server -f ./etc/asynq-server.yaml"
+  asynqmonServer8:
+    image: alpine:3.16
+    container_name: asynqmonServer8
+    volumes:
+      - ../deploy/golang/asynqServer/etc:/go/etc
+      - ../deploy/golang/out/other/asynq-server:/go/asynq-server
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制最大使用内存512MB
+    working_dir: /go
+    restart: always
+    networks:
+      - ptm_net
+    command: "./asynq-server -f ./etc/asynq-server.yaml"
+  asynqmonServer9:
+    image: alpine:3.16
+    container_name: asynqmonServer9
+    volumes:
+      - ../deploy/golang/asynqServer/etc:/go/etc
+      - ../deploy/golang/out/other/asynq-server:/go/asynq-server
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制最大使用内存512MB
+    working_dir: /go
+    restart: always
+    networks:
+      - ptm_net
+    command: "./asynq-server -f ./etc/asynq-server.yaml"
+  asynqmonServer10:
+    image: alpine:3.16
+    container_name: asynqmonServer10
+    volumes:
+      - ../deploy/golang/asynqServer/etc:/go/etc
+      - ../deploy/golang/out/other/asynq-server:/go/asynq-server
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+    privileged: true
+    deploy:
+      resources:
+        limits:
+          memory: 512M # 限制最大使用内存512MB
+    working_dir: /go
+    restart: always
+    networks:
+      - ptm_net
+    command: "./asynq-server -f ./etc/asynq-server.yaml"

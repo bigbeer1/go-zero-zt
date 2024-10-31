@@ -1,0 +1,19 @@
+Name: archive-api
+Host: 0.0.0.0
+Port: 1002
+Timeout: 30000
+
+Log:
+  ServiceName: archive-api
+  Level: error
+
+Auth:
+  AccessSecret: uOvKLmVfztaX9999999
+  AccessExpire: 86400
+
+ArchiveRpc:
+  Etcd:
+    Hosts:
+      - etcd:2379
+    Key: archive.rpc
+    Timeout: 30000
