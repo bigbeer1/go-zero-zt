@@ -44,6 +44,7 @@ type (
 	SysInterfaceAddReq                         = authenticationclient.SysInterfaceAddReq
 	SysInterfaceByRoleIdReq                    = authenticationclient.SysInterfaceByRoleIdReq
 	SysInterfaceByRoleIdResp                   = authenticationclient.SysInterfaceByRoleIdResp
+	SysInterfaceByRoleIdRespIDsResp            = authenticationclient.SysInterfaceByRoleIdRespIDsResp
 	SysInterfaceDeleteReq                      = authenticationclient.SysInterfaceDeleteReq
 	SysInterfaceFindOneReq                     = authenticationclient.SysInterfaceFindOneReq
 	SysInterfaceFindOneResp                    = authenticationclient.SysInterfaceFindOneResp
@@ -125,6 +126,8 @@ type (
 		FindOneInterfaceByPathAndInterfaceType(ctx context.Context, in *FindOneInterfaceByPathAndInterfaceTypeReq, opts ...grpc.CallOption) (*FindOneInterfaceByPathAndInterfaceTypeResp, error)
 		// 通过角色ID获取接口信息
 		SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdResp, error)
+		// 通过角色ID获取接口IDS
+		SysInterfaceByRoleIdRespIDs(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdRespIDsResp, error)
 		// 字典类型
 		SysDictTypeAdd(ctx context.Context, in *SysDictTypeAddReq, opts ...grpc.CallOption) (*CommonResp, error)
 		SysDictTypeDelete(ctx context.Context, in *SysDictTypeDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
@@ -314,6 +317,12 @@ func (m *defaultAuthentication) FindOneInterfaceByPathAndInterfaceType(ctx conte
 func (m *defaultAuthentication) SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdResp, error) {
 	client := authenticationclient.NewAuthenticationClient(m.cli.Conn())
 	return client.SysInterfaceByRoleId(ctx, in, opts...)
+}
+
+// 通过角色ID获取接口IDS
+func (m *defaultAuthentication) SysInterfaceByRoleIdRespIDs(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdRespIDsResp, error) {
+	client := authenticationclient.NewAuthenticationClient(m.cli.Conn())
+	return client.SysInterfaceByRoleIdRespIDs(ctx, in, opts...)
 }
 
 // 字典类型

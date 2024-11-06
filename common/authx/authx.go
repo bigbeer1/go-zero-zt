@@ -3,7 +3,7 @@ package authx
 import (
 	"errors"
 	"fmt"
-	"github.com/golang-jwt/jwt"
+	"github.com/golang-jwt/jwt/v4"
 	"net/http"
 	"strings"
 	"tpmt-zt/common"
@@ -37,17 +37,46 @@ func Auth(r *http.Request, authenticationRpc authentication.Authentication, acce
 	})
 
 	if err != nil {
-		return err
+		return errors.New("没有该接口")
 	}
-	fmt.Println(reqRes)
+
+	var roleId int64
 
 	switch tokenData.TokenType {
 	case common.UserTokenType:
 		// 判断是否存在用户
-
+		user, err := authenticationRpc.SysUserFindOne(r.Context(), &authenticationclient.SysUserFindOneReq{
+			Id: tokenData.Uid, // 用户ID
+		})
+		if err != nil {
+			return err
+		}
 		// 判断用户状态
+		switch user.State {
+		case 2:
+			return fmt.Errorf("此令牌已停用,请联系管理员:%s", tokenData.NickName)
+		case 3:
+			return fmt.Errorf("此令牌已封禁,请联系管理员:%s", tokenData.NickName)
+		}
 
+		roleId = user.RoleId // 用户角色ID
 		// 取用户角色ID
+		if roleId == 0 {
+			return fmt.Errorf("该用户没有角色")
+		}
+
+		// 角色信息
+		role, err := authenticationRpc.SysRoleFindOne(r.Context(), &authenticationclient.SysRoleFindOneReq{
+			Id: roleId, // 角色ID
+		})
+		if err != nil {
+			return err
+		}
+
+		// 判断角色状态
+		if role.RoleType != 1 && role.RoleType != 2 {
+			return fmt.Errorf("该用户角色分配存在问题")
+		}
 
 	case common.AuthTokenType:
 		// 查询第三方token 状态 和判断是否存在
@@ -59,6 +88,13 @@ func Auth(r *http.Request, authenticationRpc authentication.Authentication, acce
 			return err
 		}
 
+		roleId = auth.RoleId // 用户第三方角色ID
+
+		// 取第三方角色ID
+		if roleId == 0 {
+			return fmt.Errorf("该第三方没有角色")
+		}
+
 		// 判断第三方用户状态
 		switch auth.State {
 		case 2:
@@ -66,14 +102,29 @@ func Auth(r *http.Request, authenticationRpc authentication.Authentication, acce
 		case 3:
 			return fmt.Errorf("此令牌已封禁,请联系管理员:%s", tokenData.NickName)
 		}
-
 		// 取第三方用户角色ID
-
+		role, err := authenticationRpc.SysRoleFindOne(r.Context(), &authenticationclient.SysRoleFindOneReq{
+			Id: roleId, // 角色ID
+		})
+		if err != nil {
+			return err
+		}
+		// 判断角色状态
+		if role.RoleType != 3 {
+			return fmt.Errorf("该第三方角色分配存在问题")
+		}
 	}
 
 	// 获取角色权限
+	interfaceIds, err := authenticationRpc.SysInterfaceByRoleIdRespIDs(r.Context(), &authenticationclient.SysInterfaceByRoleIdReq{
+		RoleId: roleId,
+	})
 
 	// 判断是否有权限
+	is := common.IsAvailableInt64(reqRes.Id, interfaceIds.Ids)
+	if !is {
+		return errors.New("该用户没有该权限")
+	}
 
 	return nil
 

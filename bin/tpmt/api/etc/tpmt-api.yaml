@@ -21,14 +21,14 @@ ArchiveRpc:
     Hosts:
       - 127.0.0.1:30000
     Key: archive.rpc
-    Timeout: 3000000
+  Timeout: 3000000
 
 AuthenticationRpc:
   Etcd:
     Hosts:
       - 127.0.0.1:30000
     Key: authentication.rpc
-    Timeout: 3000000
+  Timeout: 3000000
 
 Auth:
   AccessSecret: uOvKLmVfztaX9999999

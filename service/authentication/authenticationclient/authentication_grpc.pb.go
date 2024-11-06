@@ -60,6 +60,8 @@ type AuthenticationClient interface {
 	FindOneInterfaceByPathAndInterfaceType(ctx context.Context, in *FindOneInterfaceByPathAndInterfaceTypeReq, opts ...grpc.CallOption) (*FindOneInterfaceByPathAndInterfaceTypeResp, error)
 	// 通过角色ID获取接口信息
 	SysInterfaceByRoleId(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdResp, error)
+	// 通过角色ID获取接口IDS
+	SysInterfaceByRoleIdRespIDs(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdRespIDsResp, error)
 	// 字典类型
 	SysDictTypeAdd(ctx context.Context, in *SysDictTypeAddReq, opts ...grpc.CallOption) (*CommonResp, error)
 	SysDictTypeDelete(ctx context.Context, in *SysDictTypeDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
@@ -361,6 +363,15 @@ func (c *authenticationClient) SysInterfaceByRoleId(ctx context.Context, in *Sys
 	return out, nil
 }
 
+func (c *authenticationClient) SysInterfaceByRoleIdRespIDs(ctx context.Context, in *SysInterfaceByRoleIdReq, opts ...grpc.CallOption) (*SysInterfaceByRoleIdRespIDsResp, error) {
+	out := new(SysInterfaceByRoleIdRespIDsResp)
+	err := c.cc.Invoke(ctx, "/authentication.Authentication/SysInterfaceByRoleIdRespIDs", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *authenticationClient) SysDictTypeAdd(ctx context.Context, in *SysDictTypeAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
 	out := new(CommonResp)
 	err := c.cc.Invoke(ctx, "/authentication.Authentication/SysDictTypeAdd", in, out, opts...)
@@ -497,6 +508,8 @@ type AuthenticationServer interface {
 	FindOneInterfaceByPathAndInterfaceType(context.Context, *FindOneInterfaceByPathAndInterfaceTypeReq) (*FindOneInterfaceByPathAndInterfaceTypeResp, error)
 	// 通过角色ID获取接口信息
 	SysInterfaceByRoleId(context.Context, *SysInterfaceByRoleIdReq) (*SysInterfaceByRoleIdResp, error)
+	// 通过角色ID获取接口IDS
+	SysInterfaceByRoleIdRespIDs(context.Context, *SysInterfaceByRoleIdReq) (*SysInterfaceByRoleIdRespIDsResp, error)
 	// 字典类型
 	SysDictTypeAdd(context.Context, *SysDictTypeAddReq) (*CommonResp, error)
 	SysDictTypeDelete(context.Context, *SysDictTypeDeleteReq) (*CommonResp, error)
@@ -608,6 +621,9 @@ func (UnimplementedAuthenticationServer) FindOneInterfaceByPathAndInterfaceType(
 }
 func (UnimplementedAuthenticationServer) SysInterfaceByRoleId(context.Context, *SysInterfaceByRoleIdReq) (*SysInterfaceByRoleIdResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceByRoleId not implemented")
+}
+func (UnimplementedAuthenticationServer) SysInterfaceByRoleIdRespIDs(context.Context, *SysInterfaceByRoleIdReq) (*SysInterfaceByRoleIdRespIDsResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method SysInterfaceByRoleIdRespIDs not implemented")
 }
 func (UnimplementedAuthenticationServer) SysDictTypeAdd(context.Context, *SysDictTypeAddReq) (*CommonResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method SysDictTypeAdd not implemented")
@@ -1210,6 +1226,24 @@ func _Authentication_SysInterfaceByRoleId_Handler(srv interface{}, ctx context.C
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Authentication_SysInterfaceByRoleIdRespIDs_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(SysInterfaceByRoleIdReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(AuthenticationServer).SysInterfaceByRoleIdRespIDs(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/authentication.Authentication/SysInterfaceByRoleIdRespIDs",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(AuthenticationServer).SysInterfaceByRoleIdRespIDs(ctx, req.(*SysInterfaceByRoleIdReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Authentication_SysDictTypeAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(SysDictTypeAddReq)
 	if err := dec(in); err != nil {
@@ -1520,6 +1554,10 @@ var Authentication_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "SysInterfaceByRoleId",
 			Handler:    _Authentication_SysInterfaceByRoleId_Handler,
+		},
+		{
+			MethodName: "SysInterfaceByRoleIdRespIDs",
+			Handler:    _Authentication_SysInterfaceByRoleIdRespIDs_Handler,
 		},
 		{
 			MethodName: "SysDictTypeAdd",

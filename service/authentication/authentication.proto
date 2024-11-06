@@ -155,6 +155,9 @@ message SysAuthFindOneResp{
   string  nick_name = 6;  // 机构名
   string  auth_token = 7;  // 令牌
   int64   state = 8;  // 状态 1:正常 2:停用 3:封禁
+  int64   role_id = 10;  // 角色ID
+  string   role_name = 11;  // 角色名称
+  int64   role_type = 12;  // 角色类型
 }
 
 
@@ -491,6 +494,10 @@ message SysInterfaceByRoleIdResp{
   repeated  SysInterfaceListData list = 1;  // 内容
 }
 
+message SysInterfaceByRoleIdRespIDsResp{
+  repeated  int64 ids = 1;  // 内容
+}
+
 
 //SysInterface end---------------------
 
@@ -743,6 +750,9 @@ service Authentication {
 
   // 通过角色ID获取接口信息
   rpc SysInterfaceByRoleId(SysInterfaceByRoleIdReq) returns(SysInterfaceByRoleIdResp);
+
+  // 通过角色ID获取接口IDS
+  rpc SysInterfaceByRoleIdRespIDs(SysInterfaceByRoleIdReq) returns(SysInterfaceByRoleIdRespIDsResp);
 
   // 字典类型
   rpc SysDictTypeAdd(SysDictTypeAddReq) returns(CommonResp);

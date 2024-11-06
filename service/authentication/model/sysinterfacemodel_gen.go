@@ -34,7 +34,7 @@ type (
 		Insert(ctx context.Context, data *SysInterface) (sql.Result, error)
 		FindOne(ctx context.Context, id int64) (*SysInterface, error)
 		Update(ctx context.Context, data *SysInterface) error
-		Delete(ctx context.Context, id int64) error
+		Delete(ctx context.Context, data *SysInterface) error
 		FindCount(ctx context.Context, countBuilder squirrel.SelectBuilder) (int64, error)
 		FindList(ctx context.Context, rowBuilder squirrel.SelectBuilder, current, pageSize int64) ([]*SysInterface, error)
 		RowBuilder() squirrel.SelectBuilder
@@ -42,7 +42,7 @@ type (
 		SumBuilder(field string) squirrel.SelectBuilder
 		TransCtx(ctx context.Context, fn func(ctx context.Context, sqlx sqlx.Session) error) error
 
-		FindOneByPathAndInterfaceType(ctx context.Context, path string, InterfaceType string) (*SysInterface, error)
+		FindOneByPathAndInterfaceType(ctx context.Context, path string, interfaceType string) (*SysInterface, error)
 	}
 
 	defaultSysInterfaceModel struct {

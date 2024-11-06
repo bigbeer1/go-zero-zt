@@ -55,4 +55,7 @@ type SysAuthFindOneResp struct {
 	NickName    string `json:"nick_name"`    // 机构名,
 	AuthToken   string `json:"auth_token"`   // 令牌,
 	State       int64  `json:"state"`        // 状态 1:正常 2:停用 3:封禁
+	RoleId      int64  `json:"role_id"`      // 角色ID
+	RoleName    string `json:"role_name"`    // 角色名称
+	RoleType    int64  `json:"role_type"`    // 角色类型
 }

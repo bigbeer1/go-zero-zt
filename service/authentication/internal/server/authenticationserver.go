@@ -189,6 +189,12 @@ func (s *AuthenticationServer) SysInterfaceByRoleId(ctx context.Context, in *aut
 	return l.SysInterfaceByRoleId(in)
 }
 
+// 通过角色ID获取接口IDS
+func (s *AuthenticationServer) SysInterfaceByRoleIdRespIDs(ctx context.Context, in *authenticationclient.SysInterfaceByRoleIdReq) (*authenticationclient.SysInterfaceByRoleIdRespIDsResp, error) {
+	l := logic.NewSysInterfaceByRoleIdRespIDsLogic(ctx, s.svcCtx)
+	return l.SysInterfaceByRoleIdRespIDs(in)
+}
+
 // 字典类型
 func (s *AuthenticationServer) SysDictTypeAdd(ctx context.Context, in *authenticationclient.SysDictTypeAddReq) (*authenticationclient.CommonResp, error) {
 	l := logic.NewSysDictTypeAddLogic(ctx, s.svcCtx)

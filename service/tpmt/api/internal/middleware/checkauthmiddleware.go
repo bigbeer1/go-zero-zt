@@ -4,7 +4,9 @@ import (
 	"context"
 	"net/http"
 	"time"
+	"tpmt-zt/common"
 	"tpmt-zt/common/authx"
+	"tpmt-zt/common/responsex"
 	"tpmt-zt/service/archive/rpc/archive"
 	"tpmt-zt/service/authentication/authentication"
 )
@@ -34,8 +36,13 @@ func (m *CheckAuthMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 		// 更新上下文
 		r = r.WithContext(ctx)
 
-		authx.Auth(r, m.authenticationRpc, m.accessSecret)
-
+		if r.URL.Path != "/login" {
+			err := authx.Auth(r, m.authenticationRpc, m.accessSecret)
+			if err != nil {
+				responsex.HttpResult(r, w, "", "", common.NewCodeError(common.AuthErrorCode, err.Error(), ""), m.archiveRpc)
+				return
+			}
+		}
 		next(w, r)
 	}
 }
