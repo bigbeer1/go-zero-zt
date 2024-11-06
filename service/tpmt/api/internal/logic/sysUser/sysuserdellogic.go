@@ -5,7 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -35,7 +35,7 @@ func (l *SysUserDelLogic) SysUserDel(req *types.SysUserDelRequest) (resp *types.
 		return nil, common.NewDefaultError("该接口不能删除自身")
 	}
 
-	_, err = l.svcCtx.TpmtRpc.SysUserDelete(l.ctx, &tpmtclient.SysUserDeleteReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysUserDelete(l.ctx, &authenticationclient.SysUserDeleteReq{
 		Id:          req.Id,             // 用户ID
 		DeletedName: tokenData.NickName, // 删除人
 	})

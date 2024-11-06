@@ -6,7 +6,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -30,7 +30,7 @@ func NewLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *LoginLogic 
 
 func (l *LoginLogic) Login(req *types.SysLoginRequest) (resp *types.Response, err error) {
 
-	user, err := l.svcCtx.TpmtRpc.SysLogin(l.ctx, &tpmtclient.SysLoginReq{
+	user, err := l.svcCtx.AuthenticationRpc.SysLogin(l.ctx, &authenticationclient.SysLoginReq{
 		Account:  req.Account,
 		Password: req.Password,
 	})

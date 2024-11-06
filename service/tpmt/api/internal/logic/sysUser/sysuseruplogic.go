@@ -5,7 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -36,7 +36,7 @@ func (l *SysUserUpLogic) SysUserUp(req *types.SysUserUpRequest) (resp *types.Res
 		return nil, common.NewDefaultError("该接口不能修改自身")
 	}
 
-	_, err = l.svcCtx.TpmtRpc.SysUserUpdate(l.ctx, &tpmtclient.SysUserUpdateReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysUserUpdate(l.ctx, &authenticationclient.SysUserUpdateReq{
 		Id:          req.Id,             // 用户ID
 		NickName:    req.NickName,       // 姓名
 		State:       req.State,          // 状态 1:正常 2:停用 3:封禁

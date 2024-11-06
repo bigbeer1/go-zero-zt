@@ -3,11 +3,11 @@ package main
 import (
 	"flag"
 	"fmt"
+	"tpmt-zt/service/tpmt/rpc/tpmtclient"
 
 	"tpmt-zt/service/tpmt/rpc/internal/config"
 	"tpmt-zt/service/tpmt/rpc/internal/server"
 	"tpmt-zt/service/tpmt/rpc/internal/svc"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/core/service"

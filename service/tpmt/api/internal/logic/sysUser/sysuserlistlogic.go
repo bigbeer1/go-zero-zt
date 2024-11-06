@@ -4,7 +4,7 @@ import (
 	"context"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"github.com/jinzhu/copier"
 
@@ -30,7 +30,7 @@ func NewSysUserListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysUs
 
 func (l *SysUserListLogic) SysUserList(req *types.SysUserListRequest) (resp *types.Response, err error) {
 
-	all, err := l.svcCtx.TpmtRpc.SysUserList(l.ctx, &tpmtclient.SysUserListReq{
+	all, err := l.svcCtx.AuthenticationRpc.SysUserList(l.ctx, &authenticationclient.SysUserListReq{
 		Current:  req.Current,  // 页码
 		PageSize: req.PageSize, // 页数
 		NickName: req.NickName, // 姓名

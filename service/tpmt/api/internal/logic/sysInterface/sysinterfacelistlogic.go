@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -29,7 +29,7 @@ func NewSysInterfaceListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *
 
 func (l *SysInterfaceListLogic) SysInterfaceList(req *types.SysInterfaceListRequest) (resp *types.Response, err error) {
 
-	all, err := l.svcCtx.TpmtRpc.SysInterfaceList(l.ctx, &tpmtclient.SysInterfaceListReq{
+	all, err := l.svcCtx.AuthenticationRpc.SysInterfaceList(l.ctx, &authenticationclient.SysInterfaceListReq{
 		Current:            req.Current,            // 页码
 		PageSize:           req.PageSize,           // 页数
 		Name:               req.Name,               // 接口名称

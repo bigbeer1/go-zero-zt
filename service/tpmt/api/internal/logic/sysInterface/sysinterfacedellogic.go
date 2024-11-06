@@ -5,7 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -31,7 +31,7 @@ func (l *SysInterfaceDelLogic) SysInterfaceDel(req *types.SysInterfaceDelRequest
 	// 用户登录信息
 	tokenData := jwtx.ParseToken(l.ctx)
 
-	_, err = l.svcCtx.TpmtRpc.SysInterfaceDelete(l.ctx, &tpmtclient.SysInterfaceDeleteReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysInterfaceDelete(l.ctx, &authenticationclient.SysInterfaceDeleteReq{
 		Id:          req.Id,             // 接口ID
 		DeletedName: tokenData.NickName, // 删除人
 	})

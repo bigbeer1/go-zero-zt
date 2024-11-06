@@ -12,6 +12,8 @@ type Config struct {
 
 	ArchiveRpc zrpc.RpcClientConf // 日志RPC
 
+	AuthenticationRpc zrpc.RpcClientConf // authentication鉴权RPC
+
 	Auth struct {
 		AccessSecret string
 		AccessExpire int64

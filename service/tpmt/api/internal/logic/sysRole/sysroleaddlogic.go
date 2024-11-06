@@ -5,7 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -31,7 +31,7 @@ func (l *SysRoleAddLogic) SysRoleAdd(req *types.SysRoleAddRequest) (resp *types.
 	// 用户登录信息
 	tokenData := jwtx.ParseToken(l.ctx)
 
-	_, err = l.svcCtx.TpmtRpc.SysRoleAdd(l.ctx, &tpmtclient.SysRoleAddReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysRoleAdd(l.ctx, &authenticationclient.SysRoleAddReq{
 		Name:         req.Name,            // 角色名称
 		Remark:       req.Remark,          // 备注
 		RoleType:     req.RoleType,        // 角色类型 1:管理员角色  2:普通角色  3:第三方角色

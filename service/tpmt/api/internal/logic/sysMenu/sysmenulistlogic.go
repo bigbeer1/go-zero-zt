@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -29,7 +29,7 @@ func NewSysMenuListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysMe
 
 func (l *SysMenuListLogic) SysMenuList(req *types.SysMenuListRequest) (resp *types.Response, err error) {
 
-	all, err := l.svcCtx.TpmtRpc.SysMenuList(l.ctx, &tpmtclient.SysMenuListReq{
+	all, err := l.svcCtx.AuthenticationRpc.SysMenuList(l.ctx, &authenticationclient.SysMenuListReq{
 		Current:     req.Current,     // 页码
 		PageSize:    req.PageSize,    // 页数
 		MenuType:    req.MenuType,    // 菜单类型(层级关系)

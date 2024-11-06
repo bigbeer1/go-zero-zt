@@ -6,10 +6,10 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
+	"tpmt-zt/service/authentication/authenticationclient"
 	"tpmt-zt/service/tpmt/api/internal/logic/sysInterface"
 	"tpmt-zt/service/tpmt/api/internal/logic/sysMenu"
 	"tpmt-zt/service/tpmt/api/internal/logic/sysRole"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -36,7 +36,7 @@ func (l *SysUserLoginInfoLogic) SysUserLoginInfo() (resp *types.Response, err er
 	tokenData := jwtx.ParseToken(l.ctx)
 
 	// 用户信息
-	user, err := l.svcCtx.TpmtRpc.SysUserFindOne(l.ctx, &tpmtclient.SysUserFindOneReq{
+	user, err := l.svcCtx.AuthenticationRpc.SysUserFindOne(l.ctx, &authenticationclient.SysUserFindOneReq{
 		Id: tokenData.Uid, // 用户ID
 	})
 	if err != nil {
@@ -49,7 +49,7 @@ func (l *SysUserLoginInfoLogic) SysUserLoginInfo() (resp *types.Response, err er
 
 	if user.RoleId != 0 {
 		// 角色信息
-		role, err := l.svcCtx.TpmtRpc.SysRoleFindOne(l.ctx, &tpmtclient.SysRoleFindOneReq{
+		role, err := l.svcCtx.AuthenticationRpc.SysRoleFindOne(l.ctx, &authenticationclient.SysRoleFindOneReq{
 			Id: user.RoleId, // 角色ID
 		})
 		if err == nil {
@@ -66,7 +66,7 @@ func (l *SysUserLoginInfoLogic) SysUserLoginInfo() (resp *types.Response, err er
 		}
 
 		// 角色的菜单
-		menuResp, err := l.svcCtx.TpmtRpc.SysMenuByRoleId(l.ctx, &tpmtclient.SysMenuByRoleIdReq{
+		menuResp, err := l.svcCtx.AuthenticationRpc.SysMenuByRoleId(l.ctx, &authenticationclient.SysMenuByRoleIdReq{
 			RoleId: user.RoleId,
 		})
 
@@ -75,7 +75,7 @@ func (l *SysUserLoginInfoLogic) SysUserLoginInfo() (resp *types.Response, err er
 		}
 
 		// 角色的接口
-		interfaceRep, err := l.svcCtx.TpmtRpc.SysInterfaceByRoleId(l.ctx, &tpmtclient.SysInterfaceByRoleIdReq{
+		interfaceRep, err := l.svcCtx.AuthenticationRpc.SysInterfaceByRoleId(l.ctx, &authenticationclient.SysInterfaceByRoleIdReq{
 			RoleId: user.RoleId,
 		})
 

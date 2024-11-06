@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -29,7 +29,7 @@ func NewSysAuthInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysAu
 
 func (l *SysAuthInfoLogic) SysAuthInfo(req *types.SysAuthInfoRequest) (resp *types.Response, err error) {
 
-	res, err := l.svcCtx.TpmtRpc.SysAuthFindOne(l.ctx, &tpmtclient.SysAuthFindOneReq{
+	res, err := l.svcCtx.AuthenticationRpc.SysAuthFindOne(l.ctx, &authenticationclient.SysAuthFindOneReq{
 		Id: req.Id, // 第三方用户ID
 	})
 	if err != nil {

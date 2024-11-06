@@ -5,7 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -31,7 +31,7 @@ func (l *SysRoleDelLogic) SysRoleDel(req *types.SysRoleDelRequest) (resp *types.
 	// 用户登录信息
 	tokenData := jwtx.ParseToken(l.ctx)
 
-	_, err = l.svcCtx.TpmtRpc.SysRoleDelete(l.ctx, &tpmtclient.SysRoleDeleteReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysRoleDelete(l.ctx, &authenticationclient.SysRoleDeleteReq{
 		Id:          req.Id,             // 角色ID
 		DeletedName: tokenData.NickName, // 删除人
 	})

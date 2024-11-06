@@ -13,7 +13,7 @@ import (
 	"tpmt-zt/common/jsonx"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/service/tpmt/model"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/tpmt/rpc/authenticationclient"
 	"tpmt-zt/service/websocket/internal/util"
 )
 
@@ -67,7 +67,7 @@ func (l *Websocket) monitorRealData(ctx context.Context, conn *websocket.Conn, d
 
 			// 告警等级  0正常 1预警 2告警
 			// 初始化告警状态为 无  0正常  1越上线  2越下线
-			var alarmRuleInfo = &tpmtclient.AlarmRuleInfo{
+			var alarmRuleInfo = &authenticationclient.AlarmRuleInfo{
 				Level:    0,
 				RuleType: 0,
 			}
@@ -77,7 +77,7 @@ func (l *Websocket) monitorRealData(ctx context.Context, conn *websocket.Conn, d
 			if err == nil {
 				info := alarm.CheckAlarmRuleYc(monitorPoint, resultValueFloat64)
 				if info != nil {
-					alarmRuleInfo = &tpmtclient.AlarmRuleInfo{
+					alarmRuleInfo = &authenticationclient.AlarmRuleInfo{
 						Level:    info.Level,
 						RuleType: info.RuleType,
 						RuleData: info.RuleData,

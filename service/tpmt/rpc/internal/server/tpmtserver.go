@@ -23,218 +23,6 @@ func NewTpmtServer(svcCtx *svc.ServiceContext) *TpmtServer {
 	}
 }
 
-// 用户登录
-func (s *TpmtServer) SysLogin(ctx context.Context, in *tpmtclient.SysLoginReq) (*tpmtclient.SysUserFindOneResp, error) {
-	l := logic.NewSysLoginLogic(ctx, s.svcCtx)
-	return l.SysLogin(in)
-}
-
-// 用户
-func (s *TpmtServer) SysUserAdd(ctx context.Context, in *tpmtclient.SysUserAddReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysUserAddLogic(ctx, s.svcCtx)
-	return l.SysUserAdd(in)
-}
-
-func (s *TpmtServer) SysUserDelete(ctx context.Context, in *tpmtclient.SysUserDeleteReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysUserDeleteLogic(ctx, s.svcCtx)
-	return l.SysUserDelete(in)
-}
-
-func (s *TpmtServer) SysUserUpdate(ctx context.Context, in *tpmtclient.SysUserUpdateReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysUserUpdateLogic(ctx, s.svcCtx)
-	return l.SysUserUpdate(in)
-}
-
-func (s *TpmtServer) SysUserFindOne(ctx context.Context, in *tpmtclient.SysUserFindOneReq) (*tpmtclient.SysUserFindOneResp, error) {
-	l := logic.NewSysUserFindOneLogic(ctx, s.svcCtx)
-	return l.SysUserFindOne(in)
-}
-
-func (s *TpmtServer) SysUserList(ctx context.Context, in *tpmtclient.SysUserListReq) (*tpmtclient.SysUserListResp, error) {
-	l := logic.NewSysUserListLogic(ctx, s.svcCtx)
-	return l.SysUserList(in)
-}
-
-// 重置用户密码
-func (s *TpmtServer) SysUserResetPwd(ctx context.Context, in *tpmtclient.SysUserResetPwdReq) (*tpmtclient.SysUserResetPwdResp, error) {
-	l := logic.NewSysUserResetPwdLogic(ctx, s.svcCtx)
-	return l.SysUserResetPwd(in)
-}
-
-// 用户修改自己的密码
-func (s *TpmtServer) SysUserUpMyPwd(ctx context.Context, in *tpmtclient.SysUserUpMyPwdReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysUserUpMyPwdLogic(ctx, s.svcCtx)
-	return l.SysUserUpMyPwd(in)
-}
-
-// 第三方用户
-func (s *TpmtServer) SysAuthAdd(ctx context.Context, in *tpmtclient.SysAuthAddReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysAuthAddLogic(ctx, s.svcCtx)
-	return l.SysAuthAdd(in)
-}
-
-func (s *TpmtServer) SysAuthDelete(ctx context.Context, in *tpmtclient.SysAuthDeleteReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysAuthDeleteLogic(ctx, s.svcCtx)
-	return l.SysAuthDelete(in)
-}
-
-func (s *TpmtServer) SysAuthUpdate(ctx context.Context, in *tpmtclient.SysAuthUpdateReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysAuthUpdateLogic(ctx, s.svcCtx)
-	return l.SysAuthUpdate(in)
-}
-
-func (s *TpmtServer) SysAuthFindOne(ctx context.Context, in *tpmtclient.SysAuthFindOneReq) (*tpmtclient.SysAuthFindOneResp, error) {
-	l := logic.NewSysAuthFindOneLogic(ctx, s.svcCtx)
-	return l.SysAuthFindOne(in)
-}
-
-func (s *TpmtServer) SysAuthList(ctx context.Context, in *tpmtclient.SysAuthListReq) (*tpmtclient.SysAuthListResp, error) {
-	l := logic.NewSysAuthListLogic(ctx, s.svcCtx)
-	return l.SysAuthList(in)
-}
-
-// 角色
-func (s *TpmtServer) SysRoleAdd(ctx context.Context, in *tpmtclient.SysRoleAddReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysRoleAddLogic(ctx, s.svcCtx)
-	return l.SysRoleAdd(in)
-}
-
-func (s *TpmtServer) SysRoleDelete(ctx context.Context, in *tpmtclient.SysRoleDeleteReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysRoleDeleteLogic(ctx, s.svcCtx)
-	return l.SysRoleDelete(in)
-}
-
-func (s *TpmtServer) SysRoleUpdate(ctx context.Context, in *tpmtclient.SysRoleUpdateReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysRoleUpdateLogic(ctx, s.svcCtx)
-	return l.SysRoleUpdate(in)
-}
-
-func (s *TpmtServer) SysRoleFindOne(ctx context.Context, in *tpmtclient.SysRoleFindOneReq) (*tpmtclient.SysRoleFindOneResp, error) {
-	l := logic.NewSysRoleFindOneLogic(ctx, s.svcCtx)
-	return l.SysRoleFindOne(in)
-}
-
-func (s *TpmtServer) SysRoleList(ctx context.Context, in *tpmtclient.SysRoleListReq) (*tpmtclient.SysRoleListResp, error) {
-	l := logic.NewSysRoleListLogic(ctx, s.svcCtx)
-	return l.SysRoleList(in)
-}
-
-// 菜单
-func (s *TpmtServer) SysMenuAdd(ctx context.Context, in *tpmtclient.SysMenuAddReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysMenuAddLogic(ctx, s.svcCtx)
-	return l.SysMenuAdd(in)
-}
-
-func (s *TpmtServer) SysMenuDelete(ctx context.Context, in *tpmtclient.SysMenuDeleteReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysMenuDeleteLogic(ctx, s.svcCtx)
-	return l.SysMenuDelete(in)
-}
-
-func (s *TpmtServer) SysMenuUpdate(ctx context.Context, in *tpmtclient.SysMenuUpdateReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysMenuUpdateLogic(ctx, s.svcCtx)
-	return l.SysMenuUpdate(in)
-}
-
-func (s *TpmtServer) SysMenuFindOne(ctx context.Context, in *tpmtclient.SysMenuFindOneReq) (*tpmtclient.SysMenuFindOneResp, error) {
-	l := logic.NewSysMenuFindOneLogic(ctx, s.svcCtx)
-	return l.SysMenuFindOne(in)
-}
-
-func (s *TpmtServer) SysMenuList(ctx context.Context, in *tpmtclient.SysMenuListReq) (*tpmtclient.SysMenuListResp, error) {
-	l := logic.NewSysMenuListLogic(ctx, s.svcCtx)
-	return l.SysMenuList(in)
-}
-
-// 通过角色ID获取菜单信息
-func (s *TpmtServer) SysMenuByRoleId(ctx context.Context, in *tpmtclient.SysMenuByRoleIdReq) (*tpmtclient.SysMenuByRoleIdResp, error) {
-	l := logic.NewSysMenuByRoleIdLogic(ctx, s.svcCtx)
-	return l.SysMenuByRoleId(in)
-}
-
-// 接口
-func (s *TpmtServer) SysInterfaceAdd(ctx context.Context, in *tpmtclient.SysInterfaceAddReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysInterfaceAddLogic(ctx, s.svcCtx)
-	return l.SysInterfaceAdd(in)
-}
-
-func (s *TpmtServer) SysInterfaceDelete(ctx context.Context, in *tpmtclient.SysInterfaceDeleteReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysInterfaceDeleteLogic(ctx, s.svcCtx)
-	return l.SysInterfaceDelete(in)
-}
-
-func (s *TpmtServer) SysInterfaceUpdate(ctx context.Context, in *tpmtclient.SysInterfaceUpdateReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysInterfaceUpdateLogic(ctx, s.svcCtx)
-	return l.SysInterfaceUpdate(in)
-}
-
-func (s *TpmtServer) SysInterfaceFindOne(ctx context.Context, in *tpmtclient.SysInterfaceFindOneReq) (*tpmtclient.SysInterfaceFindOneResp, error) {
-	l := logic.NewSysInterfaceFindOneLogic(ctx, s.svcCtx)
-	return l.SysInterfaceFindOne(in)
-}
-
-func (s *TpmtServer) SysInterfaceList(ctx context.Context, in *tpmtclient.SysInterfaceListReq) (*tpmtclient.SysInterfaceListResp, error) {
-	l := logic.NewSysInterfaceListLogic(ctx, s.svcCtx)
-	return l.SysInterfaceList(in)
-}
-
-// 通过角色ID获取接口信息
-func (s *TpmtServer) SysInterfaceByRoleId(ctx context.Context, in *tpmtclient.SysInterfaceByRoleIdReq) (*tpmtclient.SysInterfaceByRoleIdResp, error) {
-	l := logic.NewSysInterfaceByRoleIdLogic(ctx, s.svcCtx)
-	return l.SysInterfaceByRoleId(in)
-}
-
-// 字典类型
-func (s *TpmtServer) SysDictTypeAdd(ctx context.Context, in *tpmtclient.SysDictTypeAddReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysDictTypeAddLogic(ctx, s.svcCtx)
-	return l.SysDictTypeAdd(in)
-}
-
-func (s *TpmtServer) SysDictTypeDelete(ctx context.Context, in *tpmtclient.SysDictTypeDeleteReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysDictTypeDeleteLogic(ctx, s.svcCtx)
-	return l.SysDictTypeDelete(in)
-}
-
-func (s *TpmtServer) SysDictTypeUpdate(ctx context.Context, in *tpmtclient.SysDictTypeUpdateReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysDictTypeUpdateLogic(ctx, s.svcCtx)
-	return l.SysDictTypeUpdate(in)
-}
-
-func (s *TpmtServer) SysDictTypeFindOne(ctx context.Context, in *tpmtclient.SysDictTypeFindOneReq) (*tpmtclient.SysDictTypeFindOneResp, error) {
-	l := logic.NewSysDictTypeFindOneLogic(ctx, s.svcCtx)
-	return l.SysDictTypeFindOne(in)
-}
-
-func (s *TpmtServer) SysDictTypeList(ctx context.Context, in *tpmtclient.SysDictTypeListReq) (*tpmtclient.SysDictTypeListResp, error) {
-	l := logic.NewSysDictTypeListLogic(ctx, s.svcCtx)
-	return l.SysDictTypeList(in)
-}
-
-// 字典
-func (s *TpmtServer) SysDictAdd(ctx context.Context, in *tpmtclient.SysDictAddReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysDictAddLogic(ctx, s.svcCtx)
-	return l.SysDictAdd(in)
-}
-
-func (s *TpmtServer) SysDictDelete(ctx context.Context, in *tpmtclient.SysDictDeleteReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysDictDeleteLogic(ctx, s.svcCtx)
-	return l.SysDictDelete(in)
-}
-
-func (s *TpmtServer) SysDictUpdate(ctx context.Context, in *tpmtclient.SysDictUpdateReq) (*tpmtclient.CommonResp, error) {
-	l := logic.NewSysDictUpdateLogic(ctx, s.svcCtx)
-	return l.SysDictUpdate(in)
-}
-
-func (s *TpmtServer) SysDictFindOne(ctx context.Context, in *tpmtclient.SysDictFindOneReq) (*tpmtclient.SysDictFindOneResp, error) {
-	l := logic.NewSysDictFindOneLogic(ctx, s.svcCtx)
-	return l.SysDictFindOne(in)
-}
-
-func (s *TpmtServer) SysDictList(ctx context.Context, in *tpmtclient.SysDictListReq) (*tpmtclient.SysDictListResp, error) {
-	l := logic.NewSysDictListLogic(ctx, s.svcCtx)
-	return l.SysDictList(in)
-}
-
 // 资产
 func (s *TpmtServer) TpmtAssetAdd(ctx context.Context, in *tpmtclient.TpmtAssetAddReq) (*tpmtclient.CommonResp, error) {
 	l := logic.NewTpmtAssetAddLogic(ctx, s.svcCtx)
@@ -313,19 +101,19 @@ func (s *TpmtServer) TpmtMonitorPointList(ctx context.Context, in *tpmtclient.Tp
 	return l.TpmtMonitorPointList(in)
 }
 
-// 分页获取传感器实时数据
+// 分页获取监测点实时数据
 func (s *TpmtServer) TpmtMonitorPointRealTimeList(ctx context.Context, in *tpmtclient.TpmtMonitorPointRealTimeListReq) (*tpmtclient.TpmtMonitorPointRealTimeListResp, error) {
 	l := logic.NewTpmtMonitorPointRealTimeListLogic(ctx, s.svcCtx)
 	return l.TpmtMonitorPointRealTimeList(in)
 }
 
-// 获取单个传感器数据
+// 获取单个监测点数据
 func (s *TpmtServer) TpmtMonitorPointRealTimeFindOne(ctx context.Context, in *tpmtclient.TpmtMonitorPointRealTimeFindOneReq) (*tpmtclient.TpmtMonitorPointRealTimeFindOneResp, error) {
 	l := logic.NewTpmtMonitorPointRealTimeFindOneLogic(ctx, s.svcCtx)
 	return l.TpmtMonitorPointRealTimeFindOne(in)
 }
 
-// 获取历史数据接口
+// 获取监测点历史数据接口
 func (s *TpmtServer) TpmtMonitorPointHistorical(ctx context.Context, in *tpmtclient.TpmtMonitorPointHistoricalReq) (*tpmtclient.TpmtMonitorPointHistoricalResp, error) {
 	l := logic.NewTpmtMonitorPointHistoricalLogic(ctx, s.svcCtx)
 	return l.TpmtMonitorPointHistorical(in)

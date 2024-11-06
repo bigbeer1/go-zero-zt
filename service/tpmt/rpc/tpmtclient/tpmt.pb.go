@@ -122,5396 +122,6 @@ func (x *AlarmRuleInfo) GetRuleData() string {
 	return ""
 }
 
-// SysUser 添加
-type SysUserAddReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Account     string `protobuf:"bytes,1,opt,name=account,proto3" json:"account,omitempty"`                            // 用户名
-	NickName    string `protobuf:"bytes,2,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`          // 姓名
-	Password    string `protobuf:"bytes,3,opt,name=password,proto3" json:"password,omitempty"`                          // 密码
-	State       int64  `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`                               // 状态 1:正常 2:停用 3:封禁
-	CreatedName string `protobuf:"bytes,5,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	RoleId      int64  `protobuf:"varint,6,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`               // 角色Id
-}
-
-func (x *SysUserAddReq) Reset() {
-	*x = SysUserAddReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[2]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserAddReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserAddReq) ProtoMessage() {}
-
-func (x *SysUserAddReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[2]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserAddReq.ProtoReflect.Descriptor instead.
-func (*SysUserAddReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{2}
-}
-
-func (x *SysUserAddReq) GetAccount() string {
-	if x != nil {
-		return x.Account
-	}
-	return ""
-}
-
-func (x *SysUserAddReq) GetNickName() string {
-	if x != nil {
-		return x.NickName
-	}
-	return ""
-}
-
-func (x *SysUserAddReq) GetPassword() string {
-	if x != nil {
-		return x.Password
-	}
-	return ""
-}
-
-func (x *SysUserAddReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysUserAddReq) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysUserAddReq) GetRoleId() int64 {
-	if x != nil {
-		return x.RoleId
-	}
-	return 0
-}
-
-// SysUser 删除
-type SysUserDeleteReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                      // 用户ID
-	DeletedName string `protobuf:"bytes,2,opt,name=deleted_name,json=deletedName,proto3" json:"deleted_name,omitempty"` // 删除人
-}
-
-func (x *SysUserDeleteReq) Reset() {
-	*x = SysUserDeleteReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[3]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserDeleteReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserDeleteReq) ProtoMessage() {}
-
-func (x *SysUserDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[3]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserDeleteReq.ProtoReflect.Descriptor instead.
-func (*SysUserDeleteReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{3}
-}
-
-func (x *SysUserDeleteReq) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *SysUserDeleteReq) GetDeletedName() string {
-	if x != nil {
-		return x.DeletedName
-	}
-	return ""
-}
-
-// SysUser 更新
-type SysUserUpdateReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                      // 用户ID
-	NickName    string `protobuf:"bytes,3,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`          // 姓名
-	State       int64  `protobuf:"varint,5,opt,name=state,proto3" json:"state,omitempty"`                               // 状态 1:正常 2:停用 3:封禁
-	UpdatedName string `protobuf:"bytes,6,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	RoleId      int64  `protobuf:"varint,7,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`               // 角色ID
-}
-
-func (x *SysUserUpdateReq) Reset() {
-	*x = SysUserUpdateReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[4]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserUpdateReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserUpdateReq) ProtoMessage() {}
-
-func (x *SysUserUpdateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[4]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserUpdateReq.ProtoReflect.Descriptor instead.
-func (*SysUserUpdateReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{4}
-}
-
-func (x *SysUserUpdateReq) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *SysUserUpdateReq) GetNickName() string {
-	if x != nil {
-		return x.NickName
-	}
-	return ""
-}
-
-func (x *SysUserUpdateReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysUserUpdateReq) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysUserUpdateReq) GetRoleId() int64 {
-	if x != nil {
-		return x.RoleId
-	}
-	return 0
-}
-
-// SysUser 单个查询
-type SysUserFindOneReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // 用户ID
-}
-
-func (x *SysUserFindOneReq) Reset() {
-	*x = SysUserFindOneReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[5]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserFindOneReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserFindOneReq) ProtoMessage() {}
-
-func (x *SysUserFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[5]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserFindOneReq.ProtoReflect.Descriptor instead.
-func (*SysUserFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{5}
-}
-
-func (x *SysUserFindOneReq) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-// SysUser 单个查询返回
-type SysUserFindOneResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                      // 用户ID
-	Account     string `protobuf:"bytes,2,opt,name=account,proto3" json:"account,omitempty"`                            // 用户名
-	NickName    string `protobuf:"bytes,3,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`          // 姓名
-	State       int64  `protobuf:"varint,5,opt,name=state,proto3" json:"state,omitempty"`                               // 状态 1:正常 2:停用 3:封禁
-	CreatedName string `protobuf:"bytes,6,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	CreatedAt   int64  `protobuf:"varint,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`      // 创建时间
-	UpdatedName string `protobuf:"bytes,8,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	UpdatedAt   int64  `protobuf:"varint,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`      // 更新时间
-	RoleId      int64  `protobuf:"varint,10,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`              // 角色ID
-	RoleName    string `protobuf:"bytes,11,opt,name=role_name,json=roleName,proto3" json:"role_name,omitempty"`         // 角色名称
-	RoleType    int64  `protobuf:"varint,12,opt,name=role_type,json=roleType,proto3" json:"role_type,omitempty"`        // 角色类型
-}
-
-func (x *SysUserFindOneResp) Reset() {
-	*x = SysUserFindOneResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[6]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserFindOneResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserFindOneResp) ProtoMessage() {}
-
-func (x *SysUserFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[6]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserFindOneResp.ProtoReflect.Descriptor instead.
-func (*SysUserFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{6}
-}
-
-func (x *SysUserFindOneResp) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *SysUserFindOneResp) GetAccount() string {
-	if x != nil {
-		return x.Account
-	}
-	return ""
-}
-
-func (x *SysUserFindOneResp) GetNickName() string {
-	if x != nil {
-		return x.NickName
-	}
-	return ""
-}
-
-func (x *SysUserFindOneResp) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysUserFindOneResp) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysUserFindOneResp) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysUserFindOneResp) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysUserFindOneResp) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *SysUserFindOneResp) GetRoleId() int64 {
-	if x != nil {
-		return x.RoleId
-	}
-	return 0
-}
-
-func (x *SysUserFindOneResp) GetRoleName() string {
-	if x != nil {
-		return x.RoleName
-	}
-	return ""
-}
-
-func (x *SysUserFindOneResp) GetRoleType() int64 {
-	if x != nil {
-		return x.RoleType
-	}
-	return 0
-}
-
-// SysUser 分页查询
-type SysUserListReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Current  int64  `protobuf:"varint,1,opt,name=current,proto3" json:"current,omitempty"`                   // 页码
-	PageSize int64  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"` // 页数
-	NickName string `protobuf:"bytes,4,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`  // 姓名
-	State    int64  `protobuf:"varint,6,opt,name=state,proto3" json:"state,omitempty"`                       // 状态 1:正常 2:停用 3:封禁
-}
-
-func (x *SysUserListReq) Reset() {
-	*x = SysUserListReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[7]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserListReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserListReq) ProtoMessage() {}
-
-func (x *SysUserListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[7]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserListReq.ProtoReflect.Descriptor instead.
-func (*SysUserListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{7}
-}
-
-func (x *SysUserListReq) GetCurrent() int64 {
-	if x != nil {
-		return x.Current
-	}
-	return 0
-}
-
-func (x *SysUserListReq) GetPageSize() int64 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
-}
-
-func (x *SysUserListReq) GetNickName() string {
-	if x != nil {
-		return x.NickName
-	}
-	return ""
-}
-
-func (x *SysUserListReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-// SysUser 分页查询返回
-type SysUserListResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Total int64              `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"` // 总数
-	List  []*SysUserListData `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"`    // 内容
-}
-
-func (x *SysUserListResp) Reset() {
-	*x = SysUserListResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[8]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserListResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserListResp) ProtoMessage() {}
-
-func (x *SysUserListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[8]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserListResp.ProtoReflect.Descriptor instead.
-func (*SysUserListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{8}
-}
-
-func (x *SysUserListResp) GetTotal() int64 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
-}
-
-func (x *SysUserListResp) GetList() []*SysUserListData {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
-// SysUser 列表信息
-type SysUserListData struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                      // 用户ID
-	Account     string `protobuf:"bytes,2,opt,name=account,proto3" json:"account,omitempty"`                            // 用户名
-	NickName    string `protobuf:"bytes,3,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`          // 姓名
-	State       int64  `protobuf:"varint,5,opt,name=state,proto3" json:"state,omitempty"`                               // 状态 1:正常 2:停用 3:封禁
-	CreatedName string `protobuf:"bytes,6,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	CreatedAt   int64  `protobuf:"varint,7,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`      // 创建时间
-	UpdatedName string `protobuf:"bytes,8,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	UpdatedAt   int64  `protobuf:"varint,9,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`      // 更新时间
-	RoleId      int64  `protobuf:"varint,10,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`              // 角色ID
-	RoleName    string `protobuf:"bytes,11,opt,name=role_name,json=roleName,proto3" json:"role_name,omitempty"`         // 角色名称
-	RoleType    int64  `protobuf:"varint,12,opt,name=role_type,json=roleType,proto3" json:"role_type,omitempty"`        // 角色类型
-}
-
-func (x *SysUserListData) Reset() {
-	*x = SysUserListData{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[9]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserListData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserListData) ProtoMessage() {}
-
-func (x *SysUserListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[9]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserListData.ProtoReflect.Descriptor instead.
-func (*SysUserListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{9}
-}
-
-func (x *SysUserListData) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *SysUserListData) GetAccount() string {
-	if x != nil {
-		return x.Account
-	}
-	return ""
-}
-
-func (x *SysUserListData) GetNickName() string {
-	if x != nil {
-		return x.NickName
-	}
-	return ""
-}
-
-func (x *SysUserListData) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysUserListData) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysUserListData) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysUserListData) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysUserListData) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *SysUserListData) GetRoleId() int64 {
-	if x != nil {
-		return x.RoleId
-	}
-	return 0
-}
-
-func (x *SysUserListData) GetRoleName() string {
-	if x != nil {
-		return x.RoleName
-	}
-	return ""
-}
-
-func (x *SysUserListData) GetRoleType() int64 {
-	if x != nil {
-		return x.RoleType
-	}
-	return 0
-}
-
-// SysUser 列表信息
-type SysLoginReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Account  string `protobuf:"bytes,1,opt,name=account,proto3" json:"account,omitempty"`   // 用户名
-	Password string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"` // 姓名
-}
-
-func (x *SysLoginReq) Reset() {
-	*x = SysLoginReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[10]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysLoginReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysLoginReq) ProtoMessage() {}
-
-func (x *SysLoginReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[10]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysLoginReq.ProtoReflect.Descriptor instead.
-func (*SysLoginReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{10}
-}
-
-func (x *SysLoginReq) GetAccount() string {
-	if x != nil {
-		return x.Account
-	}
-	return ""
-}
-
-func (x *SysLoginReq) GetPassword() string {
-	if x != nil {
-		return x.Password
-	}
-	return ""
-}
-
-// SysUser重置密码
-type SysUserResetPwdReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                      // 用户id
-	Password    string `protobuf:"bytes,2,opt,name=password,proto3" json:"password,omitempty"`                          // 密码
-	UpdatedName string `protobuf:"bytes,3,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-}
-
-func (x *SysUserResetPwdReq) Reset() {
-	*x = SysUserResetPwdReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[11]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserResetPwdReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserResetPwdReq) ProtoMessage() {}
-
-func (x *SysUserResetPwdReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[11]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserResetPwdReq.ProtoReflect.Descriptor instead.
-func (*SysUserResetPwdReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{11}
-}
-
-func (x *SysUserResetPwdReq) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *SysUserResetPwdReq) GetPassword() string {
-	if x != nil {
-		return x.Password
-	}
-	return ""
-}
-
-func (x *SysUserResetPwdReq) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-// SysUser重置密码返回
-type SysUserResetPwdResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Password string `protobuf:"bytes,1,opt,name=password,proto3" json:"password,omitempty"` // 密码
-}
-
-func (x *SysUserResetPwdResp) Reset() {
-	*x = SysUserResetPwdResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[12]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserResetPwdResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserResetPwdResp) ProtoMessage() {}
-
-func (x *SysUserResetPwdResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[12]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserResetPwdResp.ProtoReflect.Descriptor instead.
-func (*SysUserResetPwdResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{12}
-}
-
-func (x *SysUserResetPwdResp) GetPassword() string {
-	if x != nil {
-		return x.Password
-	}
-	return ""
-}
-
-// 用户修改自己的密码Req
-type SysUserUpMyPwdReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                      // 用户id
-	OldPassword string `protobuf:"bytes,2,opt,name=old_password,json=oldPassword,proto3" json:"old_password,omitempty"` // 旧密码
-	NewPassword string `protobuf:"bytes,3,opt,name=new_password,json=newPassword,proto3" json:"new_password,omitempty"` // 新密码
-}
-
-func (x *SysUserUpMyPwdReq) Reset() {
-	*x = SysUserUpMyPwdReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[13]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysUserUpMyPwdReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysUserUpMyPwdReq) ProtoMessage() {}
-
-func (x *SysUserUpMyPwdReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[13]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysUserUpMyPwdReq.ProtoReflect.Descriptor instead.
-func (*SysUserUpMyPwdReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{13}
-}
-
-func (x *SysUserUpMyPwdReq) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *SysUserUpMyPwdReq) GetOldPassword() string {
-	if x != nil {
-		return x.OldPassword
-	}
-	return ""
-}
-
-func (x *SysUserUpMyPwdReq) GetNewPassword() string {
-	if x != nil {
-		return x.NewPassword
-	}
-	return ""
-}
-
-// SysAuth 添加
-type SysAuthAddReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	CreatedName string `protobuf:"bytes,1,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	NickName    string `protobuf:"bytes,2,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`          // 机构名
-	State       int64  `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`                               // 状态 1:正常 2:停用 3:封禁
-	RoleId      int64  `protobuf:"varint,5,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`               // 角色id
-}
-
-func (x *SysAuthAddReq) Reset() {
-	*x = SysAuthAddReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[14]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysAuthAddReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysAuthAddReq) ProtoMessage() {}
-
-func (x *SysAuthAddReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[14]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysAuthAddReq.ProtoReflect.Descriptor instead.
-func (*SysAuthAddReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{14}
-}
-
-func (x *SysAuthAddReq) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysAuthAddReq) GetNickName() string {
-	if x != nil {
-		return x.NickName
-	}
-	return ""
-}
-
-func (x *SysAuthAddReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysAuthAddReq) GetRoleId() int64 {
-	if x != nil {
-		return x.RoleId
-	}
-	return 0
-}
-
-// SysAuth 删除
-type SysAuthDeleteReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                      // 第三方用户ID
-	DeletedName string `protobuf:"bytes,2,opt,name=deleted_name,json=deletedName,proto3" json:"deleted_name,omitempty"` // 删除人
-}
-
-func (x *SysAuthDeleteReq) Reset() {
-	*x = SysAuthDeleteReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[15]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysAuthDeleteReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysAuthDeleteReq) ProtoMessage() {}
-
-func (x *SysAuthDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[15]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysAuthDeleteReq.ProtoReflect.Descriptor instead.
-func (*SysAuthDeleteReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{15}
-}
-
-func (x *SysAuthDeleteReq) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *SysAuthDeleteReq) GetDeletedName() string {
-	if x != nil {
-		return x.DeletedName
-	}
-	return ""
-}
-
-// SysAuth 更新
-type SysAuthUpdateReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                      // 第三方用户ID
-	UpdatedName string `protobuf:"bytes,2,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	State       int64  `protobuf:"varint,5,opt,name=state,proto3" json:"state,omitempty"`                               // 状态 1:正常 2:停用 3:封禁
-	RoleId      int64  `protobuf:"varint,6,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"`               // 角色id
-}
-
-func (x *SysAuthUpdateReq) Reset() {
-	*x = SysAuthUpdateReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[16]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysAuthUpdateReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysAuthUpdateReq) ProtoMessage() {}
-
-func (x *SysAuthUpdateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[16]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysAuthUpdateReq.ProtoReflect.Descriptor instead.
-func (*SysAuthUpdateReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{16}
-}
-
-func (x *SysAuthUpdateReq) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *SysAuthUpdateReq) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysAuthUpdateReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysAuthUpdateReq) GetRoleId() int64 {
-	if x != nil {
-		return x.RoleId
-	}
-	return 0
-}
-
-// SysAuth 单个查询
-type SysAuthFindOneReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"` // 第三方用户ID
-}
-
-func (x *SysAuthFindOneReq) Reset() {
-	*x = SysAuthFindOneReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[17]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysAuthFindOneReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysAuthFindOneReq) ProtoMessage() {}
-
-func (x *SysAuthFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[17]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysAuthFindOneReq.ProtoReflect.Descriptor instead.
-func (*SysAuthFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{17}
-}
-
-func (x *SysAuthFindOneReq) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-// SysAuth 单个查询返回
-type SysAuthFindOneResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                      // 第三方用户ID
-	CreatedAt   int64  `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`      // 创建时间
-	UpdatedAt   int64  `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`      // 更新时间
-	CreatedName string `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	UpdatedName string `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	NickName    string `protobuf:"bytes,6,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`          // 机构名
-	AuthToken   string `protobuf:"bytes,7,opt,name=auth_token,json=authToken,proto3" json:"auth_token,omitempty"`       // 令牌
-	State       int64  `protobuf:"varint,8,opt,name=state,proto3" json:"state,omitempty"`                               // 状态 1:正常 2:停用 3:封禁
-}
-
-func (x *SysAuthFindOneResp) Reset() {
-	*x = SysAuthFindOneResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[18]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysAuthFindOneResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysAuthFindOneResp) ProtoMessage() {}
-
-func (x *SysAuthFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[18]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysAuthFindOneResp.ProtoReflect.Descriptor instead.
-func (*SysAuthFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{18}
-}
-
-func (x *SysAuthFindOneResp) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *SysAuthFindOneResp) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysAuthFindOneResp) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *SysAuthFindOneResp) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysAuthFindOneResp) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysAuthFindOneResp) GetNickName() string {
-	if x != nil {
-		return x.NickName
-	}
-	return ""
-}
-
-func (x *SysAuthFindOneResp) GetAuthToken() string {
-	if x != nil {
-		return x.AuthToken
-	}
-	return ""
-}
-
-func (x *SysAuthFindOneResp) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-// SysAuth 分页查询
-type SysAuthListReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Current   int64  `protobuf:"varint,1,opt,name=current,proto3" json:"current,omitempty"`                     // 页码
-	PageSize  int64  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`   // 页数
-	NickName  string `protobuf:"bytes,3,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`    // 机构名
-	AuthToken string `protobuf:"bytes,4,opt,name=auth_token,json=authToken,proto3" json:"auth_token,omitempty"` // 令牌
-	State     int64  `protobuf:"varint,5,opt,name=state,proto3" json:"state,omitempty"`                         // 状态 1:正常 2:停用 3:封禁
-}
-
-func (x *SysAuthListReq) Reset() {
-	*x = SysAuthListReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[19]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysAuthListReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysAuthListReq) ProtoMessage() {}
-
-func (x *SysAuthListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[19]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysAuthListReq.ProtoReflect.Descriptor instead.
-func (*SysAuthListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{19}
-}
-
-func (x *SysAuthListReq) GetCurrent() int64 {
-	if x != nil {
-		return x.Current
-	}
-	return 0
-}
-
-func (x *SysAuthListReq) GetPageSize() int64 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
-}
-
-func (x *SysAuthListReq) GetNickName() string {
-	if x != nil {
-		return x.NickName
-	}
-	return ""
-}
-
-func (x *SysAuthListReq) GetAuthToken() string {
-	if x != nil {
-		return x.AuthToken
-	}
-	return ""
-}
-
-func (x *SysAuthListReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-// SysAuth 分页查询返回
-type SysAuthListResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Total int64              `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"` // 总数
-	List  []*SysAuthListData `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"`    // 内容
-}
-
-func (x *SysAuthListResp) Reset() {
-	*x = SysAuthListResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[20]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysAuthListResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysAuthListResp) ProtoMessage() {}
-
-func (x *SysAuthListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[20]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysAuthListResp.ProtoReflect.Descriptor instead.
-func (*SysAuthListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{20}
-}
-
-func (x *SysAuthListResp) GetTotal() int64 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
-}
-
-func (x *SysAuthListResp) GetList() []*SysAuthListData {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
-// SysAuth 列表信息
-type SysAuthListData struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          string `protobuf:"bytes,1,opt,name=id,proto3" json:"id,omitempty"`                                      // 第三方用户ID
-	CreatedAt   int64  `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`      // 创建时间
-	UpdatedAt   int64  `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`      // 更新时间
-	CreatedName string `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	UpdatedName string `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	NickName    string `protobuf:"bytes,6,opt,name=nick_name,json=nickName,proto3" json:"nick_name,omitempty"`          // 机构名
-	AuthToken   string `protobuf:"bytes,7,opt,name=auth_token,json=authToken,proto3" json:"auth_token,omitempty"`       // 令牌
-	State       int64  `protobuf:"varint,8,opt,name=state,proto3" json:"state,omitempty"`                               // 状态 1:正常 2:停用 3:封禁
-}
-
-func (x *SysAuthListData) Reset() {
-	*x = SysAuthListData{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[21]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysAuthListData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysAuthListData) ProtoMessage() {}
-
-func (x *SysAuthListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[21]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysAuthListData.ProtoReflect.Descriptor instead.
-func (*SysAuthListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{21}
-}
-
-func (x *SysAuthListData) GetId() string {
-	if x != nil {
-		return x.Id
-	}
-	return ""
-}
-
-func (x *SysAuthListData) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysAuthListData) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *SysAuthListData) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysAuthListData) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysAuthListData) GetNickName() string {
-	if x != nil {
-		return x.NickName
-	}
-	return ""
-}
-
-func (x *SysAuthListData) GetAuthToken() string {
-	if x != nil {
-		return x.AuthToken
-	}
-	return ""
-}
-
-func (x *SysAuthListData) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-// SysRole 添加
-type SysRoleAddReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Name         string  `protobuf:"bytes,1,opt,name=name,proto3" json:"name,omitempty"`                                             // 角色名称
-	Remark       string  `protobuf:"bytes,2,opt,name=remark,proto3" json:"remark,omitempty"`                                         // 备注
-	RoleType     int64   `protobuf:"varint,3,opt,name=role_type,json=roleType,proto3" json:"role_type,omitempty"`                    // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
-	CreatedName  string  `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"`            // 创建人
-	MenuIds      []int64 `protobuf:"varint,5,rep,packed,name=menu_ids,json=menuIds,proto3" json:"menu_ids,omitempty"`                // 菜单ids
-	InterfaceIds []int64 `protobuf:"varint,6,rep,packed,name=interface_ids,json=interfaceIds,proto3" json:"interface_ids,omitempty"` // 接口ids
-}
-
-func (x *SysRoleAddReq) Reset() {
-	*x = SysRoleAddReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[22]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysRoleAddReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysRoleAddReq) ProtoMessage() {}
-
-func (x *SysRoleAddReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[22]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysRoleAddReq.ProtoReflect.Descriptor instead.
-func (*SysRoleAddReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{22}
-}
-
-func (x *SysRoleAddReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysRoleAddReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysRoleAddReq) GetRoleType() int64 {
-	if x != nil {
-		return x.RoleType
-	}
-	return 0
-}
-
-func (x *SysRoleAddReq) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysRoleAddReq) GetMenuIds() []int64 {
-	if x != nil {
-		return x.MenuIds
-	}
-	return nil
-}
-
-func (x *SysRoleAddReq) GetInterfaceIds() []int64 {
-	if x != nil {
-		return x.InterfaceIds
-	}
-	return nil
-}
-
-// SysRole 删除
-type SysRoleDeleteReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 角色ID
-	DeletedName string `protobuf:"bytes,2,opt,name=deleted_name,json=deletedName,proto3" json:"deleted_name,omitempty"` // 删除人
-}
-
-func (x *SysRoleDeleteReq) Reset() {
-	*x = SysRoleDeleteReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[23]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysRoleDeleteReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysRoleDeleteReq) ProtoMessage() {}
-
-func (x *SysRoleDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[23]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysRoleDeleteReq.ProtoReflect.Descriptor instead.
-func (*SysRoleDeleteReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{23}
-}
-
-func (x *SysRoleDeleteReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysRoleDeleteReq) GetDeletedName() string {
-	if x != nil {
-		return x.DeletedName
-	}
-	return ""
-}
-
-// SysRole 更新
-type SysRoleUpdateReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id           int64   `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                // 角色ID
-	Name         string  `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                             // 角色名称
-	Remark       string  `protobuf:"bytes,3,opt,name=remark,proto3" json:"remark,omitempty"`                                         // 备注
-	RoleType     int64   `protobuf:"varint,4,opt,name=role_type,json=roleType,proto3" json:"role_type,omitempty"`                    // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
-	UpdatedName  string  `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"`            // 更新人
-	MenuIds      []int64 `protobuf:"varint,6,rep,packed,name=menu_ids,json=menuIds,proto3" json:"menu_ids,omitempty"`                // 菜单ids
-	InterfaceIds []int64 `protobuf:"varint,7,rep,packed,name=interface_ids,json=interfaceIds,proto3" json:"interface_ids,omitempty"` // 接口ids
-}
-
-func (x *SysRoleUpdateReq) Reset() {
-	*x = SysRoleUpdateReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[24]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysRoleUpdateReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysRoleUpdateReq) ProtoMessage() {}
-
-func (x *SysRoleUpdateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[24]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysRoleUpdateReq.ProtoReflect.Descriptor instead.
-func (*SysRoleUpdateReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{24}
-}
-
-func (x *SysRoleUpdateReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysRoleUpdateReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysRoleUpdateReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysRoleUpdateReq) GetRoleType() int64 {
-	if x != nil {
-		return x.RoleType
-	}
-	return 0
-}
-
-func (x *SysRoleUpdateReq) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysRoleUpdateReq) GetMenuIds() []int64 {
-	if x != nil {
-		return x.MenuIds
-	}
-	return nil
-}
-
-func (x *SysRoleUpdateReq) GetInterfaceIds() []int64 {
-	if x != nil {
-		return x.InterfaceIds
-	}
-	return nil
-}
-
-// SysRole 单个查询
-type SysRoleFindOneReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // 角色ID
-}
-
-func (x *SysRoleFindOneReq) Reset() {
-	*x = SysRoleFindOneReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[25]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysRoleFindOneReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysRoleFindOneReq) ProtoMessage() {}
-
-func (x *SysRoleFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[25]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysRoleFindOneReq.ProtoReflect.Descriptor instead.
-func (*SysRoleFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{25}
-}
-
-func (x *SysRoleFindOneReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-// SysRole 单个查询返回
-type SysRoleFindOneResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 角色ID
-	Name        string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                  // 角色名称
-	Remark      string `protobuf:"bytes,3,opt,name=remark,proto3" json:"remark,omitempty"`                              // 备注
-	RoleType    int64  `protobuf:"varint,4,opt,name=role_type,json=roleType,proto3" json:"role_type,omitempty"`         // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
-	CreatedName string `protobuf:"bytes,5,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	CreatedAt   int64  `protobuf:"varint,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`      // 创建时间
-	UpdatedName string `protobuf:"bytes,7,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	UpdatedAt   int64  `protobuf:"varint,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`      // 更新时间
-}
-
-func (x *SysRoleFindOneResp) Reset() {
-	*x = SysRoleFindOneResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[26]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysRoleFindOneResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysRoleFindOneResp) ProtoMessage() {}
-
-func (x *SysRoleFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[26]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysRoleFindOneResp.ProtoReflect.Descriptor instead.
-func (*SysRoleFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{26}
-}
-
-func (x *SysRoleFindOneResp) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysRoleFindOneResp) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysRoleFindOneResp) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysRoleFindOneResp) GetRoleType() int64 {
-	if x != nil {
-		return x.RoleType
-	}
-	return 0
-}
-
-func (x *SysRoleFindOneResp) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysRoleFindOneResp) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysRoleFindOneResp) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysRoleFindOneResp) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-// SysRole 分页查询
-type SysRoleListReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Current  int64  `protobuf:"varint,1,opt,name=current,proto3" json:"current,omitempty"`                   // 页码
-	PageSize int64  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"` // 页数
-	Name     string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`                          // 角色名称
-	Remark   string `protobuf:"bytes,4,opt,name=remark,proto3" json:"remark,omitempty"`                      // 备注
-	RoleType int64  `protobuf:"varint,5,opt,name=role_type,json=roleType,proto3" json:"role_type,omitempty"` // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
-}
-
-func (x *SysRoleListReq) Reset() {
-	*x = SysRoleListReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[27]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysRoleListReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysRoleListReq) ProtoMessage() {}
-
-func (x *SysRoleListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[27]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysRoleListReq.ProtoReflect.Descriptor instead.
-func (*SysRoleListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{27}
-}
-
-func (x *SysRoleListReq) GetCurrent() int64 {
-	if x != nil {
-		return x.Current
-	}
-	return 0
-}
-
-func (x *SysRoleListReq) GetPageSize() int64 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
-}
-
-func (x *SysRoleListReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysRoleListReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysRoleListReq) GetRoleType() int64 {
-	if x != nil {
-		return x.RoleType
-	}
-	return 0
-}
-
-// SysRole 分页查询返回
-type SysRoleListResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Total int64              `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"` // 总数
-	List  []*SysRoleListData `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"`    // 内容
-}
-
-func (x *SysRoleListResp) Reset() {
-	*x = SysRoleListResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[28]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysRoleListResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysRoleListResp) ProtoMessage() {}
-
-func (x *SysRoleListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[28]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysRoleListResp.ProtoReflect.Descriptor instead.
-func (*SysRoleListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{28}
-}
-
-func (x *SysRoleListResp) GetTotal() int64 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
-}
-
-func (x *SysRoleListResp) GetList() []*SysRoleListData {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
-// SysRole 列表信息
-type SysRoleListData struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 角色ID
-	Name        string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                  // 角色名称
-	Remark      string `protobuf:"bytes,3,opt,name=remark,proto3" json:"remark,omitempty"`                              // 备注
-	RoleType    int64  `protobuf:"varint,4,opt,name=role_type,json=roleType,proto3" json:"role_type,omitempty"`         // 角色类型 1:管理员角色  2:普通角色  3:第三方角色
-	CreatedName string `protobuf:"bytes,5,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	CreatedAt   int64  `protobuf:"varint,6,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`      // 创建时间
-	UpdatedName string `protobuf:"bytes,7,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	UpdatedAt   int64  `protobuf:"varint,8,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`      // 更新时间
-}
-
-func (x *SysRoleListData) Reset() {
-	*x = SysRoleListData{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[29]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysRoleListData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysRoleListData) ProtoMessage() {}
-
-func (x *SysRoleListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[29]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysRoleListData.ProtoReflect.Descriptor instead.
-func (*SysRoleListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{29}
-}
-
-func (x *SysRoleListData) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysRoleListData) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysRoleListData) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysRoleListData) GetRoleType() int64 {
-	if x != nil {
-		return x.RoleType
-	}
-	return 0
-}
-
-func (x *SysRoleListData) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysRoleListData) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysRoleListData) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysRoleListData) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-// SysMenu 添加
-type SysMenuAddReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	MenuType    int64  `protobuf:"varint,1,opt,name=menu_type,json=menuType,proto3" json:"menu_type,omitempty"`             // 菜单类型(层级关系)
-	Name        string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                      // 菜单名称
-	Title       string `protobuf:"bytes,3,opt,name=title,proto3" json:"title,omitempty"`                                    // 标题
-	Path        string `protobuf:"bytes,4,opt,name=path,proto3" json:"path,omitempty"`                                      // 路径
-	Component   string `protobuf:"bytes,5,opt,name=component,proto3" json:"component,omitempty"`                            // 本地路径
-	Redirect    string `protobuf:"bytes,6,opt,name=redirect,proto3" json:"redirect,omitempty"`                              // 跳转
-	Sort        int64  `protobuf:"varint,7,opt,name=sort,proto3" json:"sort,omitempty"`                                     // sort
-	Icon        string `protobuf:"bytes,8,opt,name=icon,proto3" json:"icon,omitempty"`                                      // 图标
-	IsHide      int64  `protobuf:"varint,9,opt,name=is_hide,json=isHide,proto3" json:"is_hide,omitempty"`                   // 是否隐藏
-	IsKeepAlive int64  `protobuf:"varint,10,opt,name=is_keep_alive,json=isKeepAlive,proto3" json:"is_keep_alive,omitempty"` // 是否缓存
-	ParentId    int64  `protobuf:"varint,11,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`            // 父ID
-	IsHome      int64  `protobuf:"varint,12,opt,name=is_home,json=isHome,proto3" json:"is_home,omitempty"`                  // 是否首页
-	IsMain      int64  `protobuf:"varint,13,opt,name=is_main,json=isMain,proto3" json:"is_main,omitempty"`                  // 是否主菜单
-	CreatedName string `protobuf:"bytes,14,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"`    // 创建人
-}
-
-func (x *SysMenuAddReq) Reset() {
-	*x = SysMenuAddReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[30]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysMenuAddReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysMenuAddReq) ProtoMessage() {}
-
-func (x *SysMenuAddReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[30]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysMenuAddReq.ProtoReflect.Descriptor instead.
-func (*SysMenuAddReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{30}
-}
-
-func (x *SysMenuAddReq) GetMenuType() int64 {
-	if x != nil {
-		return x.MenuType
-	}
-	return 0
-}
-
-func (x *SysMenuAddReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysMenuAddReq) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *SysMenuAddReq) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
-func (x *SysMenuAddReq) GetComponent() string {
-	if x != nil {
-		return x.Component
-	}
-	return ""
-}
-
-func (x *SysMenuAddReq) GetRedirect() string {
-	if x != nil {
-		return x.Redirect
-	}
-	return ""
-}
-
-func (x *SysMenuAddReq) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-func (x *SysMenuAddReq) GetIcon() string {
-	if x != nil {
-		return x.Icon
-	}
-	return ""
-}
-
-func (x *SysMenuAddReq) GetIsHide() int64 {
-	if x != nil {
-		return x.IsHide
-	}
-	return 0
-}
-
-func (x *SysMenuAddReq) GetIsKeepAlive() int64 {
-	if x != nil {
-		return x.IsKeepAlive
-	}
-	return 0
-}
-
-func (x *SysMenuAddReq) GetParentId() int64 {
-	if x != nil {
-		return x.ParentId
-	}
-	return 0
-}
-
-func (x *SysMenuAddReq) GetIsHome() int64 {
-	if x != nil {
-		return x.IsHome
-	}
-	return 0
-}
-
-func (x *SysMenuAddReq) GetIsMain() int64 {
-	if x != nil {
-		return x.IsMain
-	}
-	return 0
-}
-
-func (x *SysMenuAddReq) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-// SysMenu 删除
-type SysMenuDeleteReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 菜单ID
-	DeletedName string `protobuf:"bytes,2,opt,name=deleted_name,json=deletedName,proto3" json:"deleted_name,omitempty"` // 删除人
-}
-
-func (x *SysMenuDeleteReq) Reset() {
-	*x = SysMenuDeleteReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[31]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysMenuDeleteReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysMenuDeleteReq) ProtoMessage() {}
-
-func (x *SysMenuDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[31]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysMenuDeleteReq.ProtoReflect.Descriptor instead.
-func (*SysMenuDeleteReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{31}
-}
-
-func (x *SysMenuDeleteReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysMenuDeleteReq) GetDeletedName() string {
-	if x != nil {
-		return x.DeletedName
-	}
-	return ""
-}
-
-// SysMenu 更新
-type SysMenuUpdateReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                         // 菜单ID
-	MenuType    int64  `protobuf:"varint,2,opt,name=menu_type,json=menuType,proto3" json:"menu_type,omitempty"`             // 菜单类型(层级关系)
-	Name        string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`                                      // 菜单名称
-	Title       string `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`                                    // 标题
-	Path        string `protobuf:"bytes,5,opt,name=path,proto3" json:"path,omitempty"`                                      // 路径
-	Component   string `protobuf:"bytes,6,opt,name=component,proto3" json:"component,omitempty"`                            // 本地路径
-	Redirect    string `protobuf:"bytes,7,opt,name=redirect,proto3" json:"redirect,omitempty"`                              // 跳转
-	Sort        int64  `protobuf:"varint,8,opt,name=sort,proto3" json:"sort,omitempty"`                                     // sort
-	Icon        string `protobuf:"bytes,9,opt,name=icon,proto3" json:"icon,omitempty"`                                      // 图标
-	IsHide      int64  `protobuf:"varint,10,opt,name=is_hide,json=isHide,proto3" json:"is_hide,omitempty"`                  // 是否隐藏
-	IsKeepAlive int64  `protobuf:"varint,11,opt,name=is_keep_alive,json=isKeepAlive,proto3" json:"is_keep_alive,omitempty"` // 是否缓存
-	ParentId    int64  `protobuf:"varint,12,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`            // 父ID
-	IsHome      int64  `protobuf:"varint,13,opt,name=is_home,json=isHome,proto3" json:"is_home,omitempty"`                  // 是否首页
-	IsMain      int64  `protobuf:"varint,14,opt,name=is_main,json=isMain,proto3" json:"is_main,omitempty"`                  // 是否主菜单
-	UpdatedName string `protobuf:"bytes,15,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"`    // 更新人
-}
-
-func (x *SysMenuUpdateReq) Reset() {
-	*x = SysMenuUpdateReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[32]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysMenuUpdateReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysMenuUpdateReq) ProtoMessage() {}
-
-func (x *SysMenuUpdateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[32]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysMenuUpdateReq.ProtoReflect.Descriptor instead.
-func (*SysMenuUpdateReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{32}
-}
-
-func (x *SysMenuUpdateReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysMenuUpdateReq) GetMenuType() int64 {
-	if x != nil {
-		return x.MenuType
-	}
-	return 0
-}
-
-func (x *SysMenuUpdateReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysMenuUpdateReq) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *SysMenuUpdateReq) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
-func (x *SysMenuUpdateReq) GetComponent() string {
-	if x != nil {
-		return x.Component
-	}
-	return ""
-}
-
-func (x *SysMenuUpdateReq) GetRedirect() string {
-	if x != nil {
-		return x.Redirect
-	}
-	return ""
-}
-
-func (x *SysMenuUpdateReq) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-func (x *SysMenuUpdateReq) GetIcon() string {
-	if x != nil {
-		return x.Icon
-	}
-	return ""
-}
-
-func (x *SysMenuUpdateReq) GetIsHide() int64 {
-	if x != nil {
-		return x.IsHide
-	}
-	return 0
-}
-
-func (x *SysMenuUpdateReq) GetIsKeepAlive() int64 {
-	if x != nil {
-		return x.IsKeepAlive
-	}
-	return 0
-}
-
-func (x *SysMenuUpdateReq) GetParentId() int64 {
-	if x != nil {
-		return x.ParentId
-	}
-	return 0
-}
-
-func (x *SysMenuUpdateReq) GetIsHome() int64 {
-	if x != nil {
-		return x.IsHome
-	}
-	return 0
-}
-
-func (x *SysMenuUpdateReq) GetIsMain() int64 {
-	if x != nil {
-		return x.IsMain
-	}
-	return 0
-}
-
-func (x *SysMenuUpdateReq) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-// SysMenu 单个查询
-type SysMenuFindOneReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // 菜单ID
-}
-
-func (x *SysMenuFindOneReq) Reset() {
-	*x = SysMenuFindOneReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[33]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysMenuFindOneReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysMenuFindOneReq) ProtoMessage() {}
-
-func (x *SysMenuFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[33]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysMenuFindOneReq.ProtoReflect.Descriptor instead.
-func (*SysMenuFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{33}
-}
-
-func (x *SysMenuFindOneReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-// SysMenu 单个查询返回
-type SysMenuFindOneResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                         // 菜单ID
-	MenuType    int64  `protobuf:"varint,2,opt,name=menu_type,json=menuType,proto3" json:"menu_type,omitempty"`             // 菜单类型(层级关系)
-	Name        string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`                                      // 菜单名称
-	Title       string `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`                                    // 标题
-	Path        string `protobuf:"bytes,5,opt,name=path,proto3" json:"path,omitempty"`                                      // 路径
-	Component   string `protobuf:"bytes,6,opt,name=component,proto3" json:"component,omitempty"`                            // 本地路径
-	Redirect    string `protobuf:"bytes,7,opt,name=redirect,proto3" json:"redirect,omitempty"`                              // 跳转
-	Sort        int64  `protobuf:"varint,8,opt,name=sort,proto3" json:"sort,omitempty"`                                     // sort
-	Icon        string `protobuf:"bytes,9,opt,name=icon,proto3" json:"icon,omitempty"`                                      // 图标
-	IsHide      int64  `protobuf:"varint,10,opt,name=is_hide,json=isHide,proto3" json:"is_hide,omitempty"`                  // 是否隐藏
-	IsKeepAlive int64  `protobuf:"varint,11,opt,name=is_keep_alive,json=isKeepAlive,proto3" json:"is_keep_alive,omitempty"` // 是否缓存
-	ParentId    int64  `protobuf:"varint,12,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`            // 父ID
-	IsHome      int64  `protobuf:"varint,13,opt,name=is_home,json=isHome,proto3" json:"is_home,omitempty"`                  // 是否首页
-	IsMain      int64  `protobuf:"varint,14,opt,name=is_main,json=isMain,proto3" json:"is_main,omitempty"`                  // 是否主菜单
-	CreatedName string `protobuf:"bytes,15,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"`    // 创建人
-	CreatedAt   int64  `protobuf:"varint,16,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`         // 创建时间
-	UpdatedName string `protobuf:"bytes,17,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"`    // 更新人
-	UpdatedAt   int64  `protobuf:"varint,18,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`         // 更新时间
-}
-
-func (x *SysMenuFindOneResp) Reset() {
-	*x = SysMenuFindOneResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[34]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysMenuFindOneResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysMenuFindOneResp) ProtoMessage() {}
-
-func (x *SysMenuFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[34]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysMenuFindOneResp.ProtoReflect.Descriptor instead.
-func (*SysMenuFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{34}
-}
-
-func (x *SysMenuFindOneResp) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysMenuFindOneResp) GetMenuType() int64 {
-	if x != nil {
-		return x.MenuType
-	}
-	return 0
-}
-
-func (x *SysMenuFindOneResp) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysMenuFindOneResp) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *SysMenuFindOneResp) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
-func (x *SysMenuFindOneResp) GetComponent() string {
-	if x != nil {
-		return x.Component
-	}
-	return ""
-}
-
-func (x *SysMenuFindOneResp) GetRedirect() string {
-	if x != nil {
-		return x.Redirect
-	}
-	return ""
-}
-
-func (x *SysMenuFindOneResp) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-func (x *SysMenuFindOneResp) GetIcon() string {
-	if x != nil {
-		return x.Icon
-	}
-	return ""
-}
-
-func (x *SysMenuFindOneResp) GetIsHide() int64 {
-	if x != nil {
-		return x.IsHide
-	}
-	return 0
-}
-
-func (x *SysMenuFindOneResp) GetIsKeepAlive() int64 {
-	if x != nil {
-		return x.IsKeepAlive
-	}
-	return 0
-}
-
-func (x *SysMenuFindOneResp) GetParentId() int64 {
-	if x != nil {
-		return x.ParentId
-	}
-	return 0
-}
-
-func (x *SysMenuFindOneResp) GetIsHome() int64 {
-	if x != nil {
-		return x.IsHome
-	}
-	return 0
-}
-
-func (x *SysMenuFindOneResp) GetIsMain() int64 {
-	if x != nil {
-		return x.IsMain
-	}
-	return 0
-}
-
-func (x *SysMenuFindOneResp) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysMenuFindOneResp) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysMenuFindOneResp) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysMenuFindOneResp) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-// SysMenu 分页查询
-type SysMenuListReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Current     int64  `protobuf:"varint,1,opt,name=current,proto3" json:"current,omitempty"`                               // 页码
-	PageSize    int64  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`             // 页数
-	MenuType    int64  `protobuf:"varint,3,opt,name=menu_type,json=menuType,proto3" json:"menu_type,omitempty"`             // 菜单类型(层级关系)
-	Name        string `protobuf:"bytes,4,opt,name=name,proto3" json:"name,omitempty"`                                      // 菜单名称
-	Title       string `protobuf:"bytes,5,opt,name=title,proto3" json:"title,omitempty"`                                    // 标题
-	Path        string `protobuf:"bytes,6,opt,name=path,proto3" json:"path,omitempty"`                                      // 路径
-	Component   string `protobuf:"bytes,7,opt,name=component,proto3" json:"component,omitempty"`                            // 本地路径
-	Redirect    string `protobuf:"bytes,8,opt,name=redirect,proto3" json:"redirect,omitempty"`                              // 跳转
-	Icon        string `protobuf:"bytes,9,opt,name=icon,proto3" json:"icon,omitempty"`                                      // 图标
-	IsHide      int64  `protobuf:"varint,10,opt,name=is_hide,json=isHide,proto3" json:"is_hide,omitempty"`                  // 是否隐藏
-	IsKeepAlive int64  `protobuf:"varint,11,opt,name=is_keep_alive,json=isKeepAlive,proto3" json:"is_keep_alive,omitempty"` // 是否缓存
-	ParentId    int64  `protobuf:"varint,12,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`            // 父ID
-	IsHome      int64  `protobuf:"varint,13,opt,name=is_home,json=isHome,proto3" json:"is_home,omitempty"`                  // 是否首页
-	IsMain      int64  `protobuf:"varint,14,opt,name=is_main,json=isMain,proto3" json:"is_main,omitempty"`                  // 是否主菜单
-}
-
-func (x *SysMenuListReq) Reset() {
-	*x = SysMenuListReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[35]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysMenuListReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysMenuListReq) ProtoMessage() {}
-
-func (x *SysMenuListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[35]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysMenuListReq.ProtoReflect.Descriptor instead.
-func (*SysMenuListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{35}
-}
-
-func (x *SysMenuListReq) GetCurrent() int64 {
-	if x != nil {
-		return x.Current
-	}
-	return 0
-}
-
-func (x *SysMenuListReq) GetPageSize() int64 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
-}
-
-func (x *SysMenuListReq) GetMenuType() int64 {
-	if x != nil {
-		return x.MenuType
-	}
-	return 0
-}
-
-func (x *SysMenuListReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysMenuListReq) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *SysMenuListReq) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
-func (x *SysMenuListReq) GetComponent() string {
-	if x != nil {
-		return x.Component
-	}
-	return ""
-}
-
-func (x *SysMenuListReq) GetRedirect() string {
-	if x != nil {
-		return x.Redirect
-	}
-	return ""
-}
-
-func (x *SysMenuListReq) GetIcon() string {
-	if x != nil {
-		return x.Icon
-	}
-	return ""
-}
-
-func (x *SysMenuListReq) GetIsHide() int64 {
-	if x != nil {
-		return x.IsHide
-	}
-	return 0
-}
-
-func (x *SysMenuListReq) GetIsKeepAlive() int64 {
-	if x != nil {
-		return x.IsKeepAlive
-	}
-	return 0
-}
-
-func (x *SysMenuListReq) GetParentId() int64 {
-	if x != nil {
-		return x.ParentId
-	}
-	return 0
-}
-
-func (x *SysMenuListReq) GetIsHome() int64 {
-	if x != nil {
-		return x.IsHome
-	}
-	return 0
-}
-
-func (x *SysMenuListReq) GetIsMain() int64 {
-	if x != nil {
-		return x.IsMain
-	}
-	return 0
-}
-
-// SysMenu 分页查询返回
-type SysMenuListResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Total int64              `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"` // 总数
-	List  []*SysMenuListData `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"`    // 内容
-}
-
-func (x *SysMenuListResp) Reset() {
-	*x = SysMenuListResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[36]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysMenuListResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysMenuListResp) ProtoMessage() {}
-
-func (x *SysMenuListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[36]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysMenuListResp.ProtoReflect.Descriptor instead.
-func (*SysMenuListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{36}
-}
-
-func (x *SysMenuListResp) GetTotal() int64 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
-}
-
-func (x *SysMenuListResp) GetList() []*SysMenuListData {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
-// SysMenu 列表信息
-type SysMenuListData struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                         // 菜单ID
-	MenuType    int64  `protobuf:"varint,2,opt,name=menu_type,json=menuType,proto3" json:"menu_type,omitempty"`             // 菜单类型(层级关系)
-	Name        string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`                                      // 菜单名称
-	Title       string `protobuf:"bytes,4,opt,name=title,proto3" json:"title,omitempty"`                                    // 标题
-	Path        string `protobuf:"bytes,5,opt,name=path,proto3" json:"path,omitempty"`                                      // 路径
-	Component   string `protobuf:"bytes,6,opt,name=component,proto3" json:"component,omitempty"`                            // 本地路径
-	Redirect    string `protobuf:"bytes,7,opt,name=redirect,proto3" json:"redirect,omitempty"`                              // 跳转
-	Sort        int64  `protobuf:"varint,8,opt,name=sort,proto3" json:"sort,omitempty"`                                     // sort
-	Icon        string `protobuf:"bytes,9,opt,name=icon,proto3" json:"icon,omitempty"`                                      // 图标
-	IsHide      int64  `protobuf:"varint,10,opt,name=is_hide,json=isHide,proto3" json:"is_hide,omitempty"`                  // 是否隐藏
-	IsKeepAlive int64  `protobuf:"varint,11,opt,name=is_keep_alive,json=isKeepAlive,proto3" json:"is_keep_alive,omitempty"` // 是否缓存
-	ParentId    int64  `protobuf:"varint,12,opt,name=parent_id,json=parentId,proto3" json:"parent_id,omitempty"`            // 父ID
-	IsHome      int64  `protobuf:"varint,13,opt,name=is_home,json=isHome,proto3" json:"is_home,omitempty"`                  // 是否首页
-	IsMain      int64  `protobuf:"varint,14,opt,name=is_main,json=isMain,proto3" json:"is_main,omitempty"`                  // 是否主菜单
-	CreatedName string `protobuf:"bytes,15,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"`    // 创建人
-	CreatedAt   int64  `protobuf:"varint,16,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`         // 创建时间
-	UpdatedName string `protobuf:"bytes,17,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"`    // 更新人
-	UpdatedAt   int64  `protobuf:"varint,18,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`         // 更新时间
-}
-
-func (x *SysMenuListData) Reset() {
-	*x = SysMenuListData{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[37]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysMenuListData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysMenuListData) ProtoMessage() {}
-
-func (x *SysMenuListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[37]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysMenuListData.ProtoReflect.Descriptor instead.
-func (*SysMenuListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{37}
-}
-
-func (x *SysMenuListData) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysMenuListData) GetMenuType() int64 {
-	if x != nil {
-		return x.MenuType
-	}
-	return 0
-}
-
-func (x *SysMenuListData) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysMenuListData) GetTitle() string {
-	if x != nil {
-		return x.Title
-	}
-	return ""
-}
-
-func (x *SysMenuListData) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
-func (x *SysMenuListData) GetComponent() string {
-	if x != nil {
-		return x.Component
-	}
-	return ""
-}
-
-func (x *SysMenuListData) GetRedirect() string {
-	if x != nil {
-		return x.Redirect
-	}
-	return ""
-}
-
-func (x *SysMenuListData) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-func (x *SysMenuListData) GetIcon() string {
-	if x != nil {
-		return x.Icon
-	}
-	return ""
-}
-
-func (x *SysMenuListData) GetIsHide() int64 {
-	if x != nil {
-		return x.IsHide
-	}
-	return 0
-}
-
-func (x *SysMenuListData) GetIsKeepAlive() int64 {
-	if x != nil {
-		return x.IsKeepAlive
-	}
-	return 0
-}
-
-func (x *SysMenuListData) GetParentId() int64 {
-	if x != nil {
-		return x.ParentId
-	}
-	return 0
-}
-
-func (x *SysMenuListData) GetIsHome() int64 {
-	if x != nil {
-		return x.IsHome
-	}
-	return 0
-}
-
-func (x *SysMenuListData) GetIsMain() int64 {
-	if x != nil {
-		return x.IsMain
-	}
-	return 0
-}
-
-func (x *SysMenuListData) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysMenuListData) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysMenuListData) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysMenuListData) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-type SysMenuByRoleIdReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	RoleId int64 `protobuf:"varint,1,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"` // 角色ID
-}
-
-func (x *SysMenuByRoleIdReq) Reset() {
-	*x = SysMenuByRoleIdReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[38]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysMenuByRoleIdReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysMenuByRoleIdReq) ProtoMessage() {}
-
-func (x *SysMenuByRoleIdReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[38]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysMenuByRoleIdReq.ProtoReflect.Descriptor instead.
-func (*SysMenuByRoleIdReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{38}
-}
-
-func (x *SysMenuByRoleIdReq) GetRoleId() int64 {
-	if x != nil {
-		return x.RoleId
-	}
-	return 0
-}
-
-// SysMenu 分页查询返回
-type SysMenuByRoleIdResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	List []*SysMenuListData `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"` // 内容
-}
-
-func (x *SysMenuByRoleIdResp) Reset() {
-	*x = SysMenuByRoleIdResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[39]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysMenuByRoleIdResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysMenuByRoleIdResp) ProtoMessage() {}
-
-func (x *SysMenuByRoleIdResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[39]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysMenuByRoleIdResp.ProtoReflect.Descriptor instead.
-func (*SysMenuByRoleIdResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{39}
-}
-
-func (x *SysMenuByRoleIdResp) GetList() []*SysMenuListData {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
-// SysInterface 添加
-type SysInterfaceAddReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	CreatedName        string `protobuf:"bytes,1,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"`                        // 创建人
-	Name               string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                                         // 接口名称
-	Path               string `protobuf:"bytes,3,opt,name=path,proto3" json:"path,omitempty"`                                                         // 接口地址
-	InterfaceType      string `protobuf:"bytes,4,opt,name=interface_type,json=interfaceType,proto3" json:"interface_type,omitempty"`                  // 接口类型
-	InterfaceGroupName string `protobuf:"bytes,5,opt,name=interface_group_name,json=interfaceGroupName,proto3" json:"interface_group_name,omitempty"` // 接口分组名称
-	Remark             string `protobuf:"bytes,6,opt,name=remark,proto3" json:"remark,omitempty"`                                                     // 备注
-	Sort               int64  `protobuf:"varint,7,opt,name=sort,proto3" json:"sort,omitempty"`                                                        // sort
-}
-
-func (x *SysInterfaceAddReq) Reset() {
-	*x = SysInterfaceAddReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[40]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysInterfaceAddReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysInterfaceAddReq) ProtoMessage() {}
-
-func (x *SysInterfaceAddReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[40]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysInterfaceAddReq.ProtoReflect.Descriptor instead.
-func (*SysInterfaceAddReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{40}
-}
-
-func (x *SysInterfaceAddReq) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysInterfaceAddReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysInterfaceAddReq) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
-func (x *SysInterfaceAddReq) GetInterfaceType() string {
-	if x != nil {
-		return x.InterfaceType
-	}
-	return ""
-}
-
-func (x *SysInterfaceAddReq) GetInterfaceGroupName() string {
-	if x != nil {
-		return x.InterfaceGroupName
-	}
-	return ""
-}
-
-func (x *SysInterfaceAddReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysInterfaceAddReq) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-// SysInterface 删除
-type SysInterfaceDeleteReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 接口ID
-	DeletedName string `protobuf:"bytes,2,opt,name=deleted_name,json=deletedName,proto3" json:"deleted_name,omitempty"` // 删除人
-}
-
-func (x *SysInterfaceDeleteReq) Reset() {
-	*x = SysInterfaceDeleteReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[41]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysInterfaceDeleteReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysInterfaceDeleteReq) ProtoMessage() {}
-
-func (x *SysInterfaceDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[41]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysInterfaceDeleteReq.ProtoReflect.Descriptor instead.
-func (*SysInterfaceDeleteReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{41}
-}
-
-func (x *SysInterfaceDeleteReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysInterfaceDeleteReq) GetDeletedName() string {
-	if x != nil {
-		return x.DeletedName
-	}
-	return ""
-}
-
-// SysInterface 更新
-type SysInterfaceUpdateReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id                 int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                            // 接口ID
-	UpdatedName        string `protobuf:"bytes,2,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"`                        // 更新人
-	Name               string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`                                                         // 接口名称
-	Path               string `protobuf:"bytes,4,opt,name=path,proto3" json:"path,omitempty"`                                                         // 接口地址
-	InterfaceType      string `protobuf:"bytes,5,opt,name=interface_type,json=interfaceType,proto3" json:"interface_type,omitempty"`                  // 接口类型
-	InterfaceGroupName string `protobuf:"bytes,6,opt,name=interface_group_name,json=interfaceGroupName,proto3" json:"interface_group_name,omitempty"` // 接口分组名称
-	Remark             string `protobuf:"bytes,7,opt,name=remark,proto3" json:"remark,omitempty"`                                                     // 备注
-	Sort               int64  `protobuf:"varint,8,opt,name=sort,proto3" json:"sort,omitempty"`                                                        // sort
-}
-
-func (x *SysInterfaceUpdateReq) Reset() {
-	*x = SysInterfaceUpdateReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[42]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysInterfaceUpdateReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysInterfaceUpdateReq) ProtoMessage() {}
-
-func (x *SysInterfaceUpdateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[42]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysInterfaceUpdateReq.ProtoReflect.Descriptor instead.
-func (*SysInterfaceUpdateReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{42}
-}
-
-func (x *SysInterfaceUpdateReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysInterfaceUpdateReq) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysInterfaceUpdateReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysInterfaceUpdateReq) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
-func (x *SysInterfaceUpdateReq) GetInterfaceType() string {
-	if x != nil {
-		return x.InterfaceType
-	}
-	return ""
-}
-
-func (x *SysInterfaceUpdateReq) GetInterfaceGroupName() string {
-	if x != nil {
-		return x.InterfaceGroupName
-	}
-	return ""
-}
-
-func (x *SysInterfaceUpdateReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysInterfaceUpdateReq) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-// SysInterface 单个查询
-type SysInterfaceFindOneReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // 接口ID
-}
-
-func (x *SysInterfaceFindOneReq) Reset() {
-	*x = SysInterfaceFindOneReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[43]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysInterfaceFindOneReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysInterfaceFindOneReq) ProtoMessage() {}
-
-func (x *SysInterfaceFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[43]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysInterfaceFindOneReq.ProtoReflect.Descriptor instead.
-func (*SysInterfaceFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{43}
-}
-
-func (x *SysInterfaceFindOneReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-// SysInterface 单个查询返回
-type SysInterfaceFindOneResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id                 int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                            // 接口ID
-	CreatedAt          int64  `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`                             // 创建时间
-	UpdatedAt          int64  `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`                             // 更新时间
-	CreatedName        string `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"`                        // 创建人
-	UpdatedName        string `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"`                        // 更新人
-	Name               string `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`                                                         // 接口名称
-	Path               string `protobuf:"bytes,7,opt,name=path,proto3" json:"path,omitempty"`                                                         // 接口地址
-	InterfaceType      string `protobuf:"bytes,8,opt,name=interface_type,json=interfaceType,proto3" json:"interface_type,omitempty"`                  // 接口类型
-	InterfaceGroupName string `protobuf:"bytes,9,opt,name=interface_group_name,json=interfaceGroupName,proto3" json:"interface_group_name,omitempty"` // 接口分组名称
-	Remark             string `protobuf:"bytes,10,opt,name=remark,proto3" json:"remark,omitempty"`                                                    // 备注
-	Sort               int64  `protobuf:"varint,11,opt,name=sort,proto3" json:"sort,omitempty"`                                                       // sort
-}
-
-func (x *SysInterfaceFindOneResp) Reset() {
-	*x = SysInterfaceFindOneResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[44]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysInterfaceFindOneResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysInterfaceFindOneResp) ProtoMessage() {}
-
-func (x *SysInterfaceFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[44]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysInterfaceFindOneResp.ProtoReflect.Descriptor instead.
-func (*SysInterfaceFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{44}
-}
-
-func (x *SysInterfaceFindOneResp) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysInterfaceFindOneResp) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysInterfaceFindOneResp) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *SysInterfaceFindOneResp) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysInterfaceFindOneResp) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysInterfaceFindOneResp) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysInterfaceFindOneResp) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
-func (x *SysInterfaceFindOneResp) GetInterfaceType() string {
-	if x != nil {
-		return x.InterfaceType
-	}
-	return ""
-}
-
-func (x *SysInterfaceFindOneResp) GetInterfaceGroupName() string {
-	if x != nil {
-		return x.InterfaceGroupName
-	}
-	return ""
-}
-
-func (x *SysInterfaceFindOneResp) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysInterfaceFindOneResp) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-// SysInterface 分页查询
-type SysInterfaceListReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Current            int64  `protobuf:"varint,1,opt,name=current,proto3" json:"current,omitempty"`                                                  // 页码
-	PageSize           int64  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`                                // 页数
-	Name               string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`                                                         // 接口名称
-	Path               string `protobuf:"bytes,4,opt,name=path,proto3" json:"path,omitempty"`                                                         // 接口地址
-	InterfaceType      string `protobuf:"bytes,5,opt,name=interface_type,json=interfaceType,proto3" json:"interface_type,omitempty"`                  // 接口类型
-	InterfaceGroupName string `protobuf:"bytes,6,opt,name=interface_group_name,json=interfaceGroupName,proto3" json:"interface_group_name,omitempty"` // 接口分组名称
-	Remark             string `protobuf:"bytes,7,opt,name=remark,proto3" json:"remark,omitempty"`                                                     // 备注
-}
-
-func (x *SysInterfaceListReq) Reset() {
-	*x = SysInterfaceListReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[45]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysInterfaceListReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysInterfaceListReq) ProtoMessage() {}
-
-func (x *SysInterfaceListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[45]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysInterfaceListReq.ProtoReflect.Descriptor instead.
-func (*SysInterfaceListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{45}
-}
-
-func (x *SysInterfaceListReq) GetCurrent() int64 {
-	if x != nil {
-		return x.Current
-	}
-	return 0
-}
-
-func (x *SysInterfaceListReq) GetPageSize() int64 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
-}
-
-func (x *SysInterfaceListReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysInterfaceListReq) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
-func (x *SysInterfaceListReq) GetInterfaceType() string {
-	if x != nil {
-		return x.InterfaceType
-	}
-	return ""
-}
-
-func (x *SysInterfaceListReq) GetInterfaceGroupName() string {
-	if x != nil {
-		return x.InterfaceGroupName
-	}
-	return ""
-}
-
-func (x *SysInterfaceListReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-// SysInterface 分页查询返回
-type SysInterfaceListResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Total int64                   `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"` // 总数
-	List  []*SysInterfaceListData `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"`    // 内容
-}
-
-func (x *SysInterfaceListResp) Reset() {
-	*x = SysInterfaceListResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[46]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysInterfaceListResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysInterfaceListResp) ProtoMessage() {}
-
-func (x *SysInterfaceListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[46]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysInterfaceListResp.ProtoReflect.Descriptor instead.
-func (*SysInterfaceListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{46}
-}
-
-func (x *SysInterfaceListResp) GetTotal() int64 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
-}
-
-func (x *SysInterfaceListResp) GetList() []*SysInterfaceListData {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
-// SysInterface 列表信息
-type SysInterfaceListData struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id                 int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                                            // 接口ID
-	CreatedAt          int64  `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`                             // 创建时间
-	UpdatedAt          int64  `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`                             // 更新时间
-	CreatedName        string `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"`                        // 创建人
-	UpdatedName        string `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"`                        // 更新人
-	Name               string `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`                                                         // 接口名称
-	Path               string `protobuf:"bytes,7,opt,name=path,proto3" json:"path,omitempty"`                                                         // 接口地址
-	InterfaceType      string `protobuf:"bytes,8,opt,name=interface_type,json=interfaceType,proto3" json:"interface_type,omitempty"`                  // 接口类型
-	InterfaceGroupName string `protobuf:"bytes,9,opt,name=interface_group_name,json=interfaceGroupName,proto3" json:"interface_group_name,omitempty"` // 接口分组名称
-	Remark             string `protobuf:"bytes,10,opt,name=remark,proto3" json:"remark,omitempty"`                                                    // 备注
-	Sort               int64  `protobuf:"varint,11,opt,name=sort,proto3" json:"sort,omitempty"`                                                       // sort
-}
-
-func (x *SysInterfaceListData) Reset() {
-	*x = SysInterfaceListData{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[47]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysInterfaceListData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysInterfaceListData) ProtoMessage() {}
-
-func (x *SysInterfaceListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[47]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysInterfaceListData.ProtoReflect.Descriptor instead.
-func (*SysInterfaceListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{47}
-}
-
-func (x *SysInterfaceListData) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysInterfaceListData) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysInterfaceListData) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *SysInterfaceListData) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysInterfaceListData) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysInterfaceListData) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysInterfaceListData) GetPath() string {
-	if x != nil {
-		return x.Path
-	}
-	return ""
-}
-
-func (x *SysInterfaceListData) GetInterfaceType() string {
-	if x != nil {
-		return x.InterfaceType
-	}
-	return ""
-}
-
-func (x *SysInterfaceListData) GetInterfaceGroupName() string {
-	if x != nil {
-		return x.InterfaceGroupName
-	}
-	return ""
-}
-
-func (x *SysInterfaceListData) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysInterfaceListData) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-type SysInterfaceByRoleIdReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	RoleId int64 `protobuf:"varint,1,opt,name=role_id,json=roleId,proto3" json:"role_id,omitempty"` // 角色ID
-}
-
-func (x *SysInterfaceByRoleIdReq) Reset() {
-	*x = SysInterfaceByRoleIdReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[48]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysInterfaceByRoleIdReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysInterfaceByRoleIdReq) ProtoMessage() {}
-
-func (x *SysInterfaceByRoleIdReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[48]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysInterfaceByRoleIdReq.ProtoReflect.Descriptor instead.
-func (*SysInterfaceByRoleIdReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{48}
-}
-
-func (x *SysInterfaceByRoleIdReq) GetRoleId() int64 {
-	if x != nil {
-		return x.RoleId
-	}
-	return 0
-}
-
-// SysInterface 分页查询返回
-type SysInterfaceByRoleIdResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	List []*SysInterfaceListData `protobuf:"bytes,1,rep,name=list,proto3" json:"list,omitempty"` // 内容
-}
-
-func (x *SysInterfaceByRoleIdResp) Reset() {
-	*x = SysInterfaceByRoleIdResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[49]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysInterfaceByRoleIdResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysInterfaceByRoleIdResp) ProtoMessage() {}
-
-func (x *SysInterfaceByRoleIdResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[49]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysInterfaceByRoleIdResp.ProtoReflect.Descriptor instead.
-func (*SysInterfaceByRoleIdResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{49}
-}
-
-func (x *SysInterfaceByRoleIdResp) GetList() []*SysInterfaceListData {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
-// SysDictType 添加
-type SysDictTypeAddReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	CreatedName string `protobuf:"bytes,1,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	Name        string `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`                                  // 字典名称
-	DictType    string `protobuf:"bytes,3,opt,name=dict_type,json=dictType,proto3" json:"dict_type,omitempty"`          // 字典类型
-	State       int64  `protobuf:"varint,4,opt,name=state,proto3" json:"state,omitempty"`                               // 状态
-	Remark      string `protobuf:"bytes,5,opt,name=remark,proto3" json:"remark,omitempty"`                              // 描述
-	Sort        int64  `protobuf:"varint,6,opt,name=sort,proto3" json:"sort,omitempty"`                                 // 排序
-}
-
-func (x *SysDictTypeAddReq) Reset() {
-	*x = SysDictTypeAddReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[50]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictTypeAddReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictTypeAddReq) ProtoMessage() {}
-
-func (x *SysDictTypeAddReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[50]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictTypeAddReq.ProtoReflect.Descriptor instead.
-func (*SysDictTypeAddReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{50}
-}
-
-func (x *SysDictTypeAddReq) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysDictTypeAddReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysDictTypeAddReq) GetDictType() string {
-	if x != nil {
-		return x.DictType
-	}
-	return ""
-}
-
-func (x *SysDictTypeAddReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysDictTypeAddReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysDictTypeAddReq) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-// SysDictType 删除
-type SysDictTypeDeleteReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 字典类型ID
-	DeletedName string `protobuf:"bytes,2,opt,name=deleted_name,json=deletedName,proto3" json:"deleted_name,omitempty"` // 删除人
-}
-
-func (x *SysDictTypeDeleteReq) Reset() {
-	*x = SysDictTypeDeleteReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[51]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictTypeDeleteReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictTypeDeleteReq) ProtoMessage() {}
-
-func (x *SysDictTypeDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[51]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictTypeDeleteReq.ProtoReflect.Descriptor instead.
-func (*SysDictTypeDeleteReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{51}
-}
-
-func (x *SysDictTypeDeleteReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysDictTypeDeleteReq) GetDeletedName() string {
-	if x != nil {
-		return x.DeletedName
-	}
-	return ""
-}
-
-// SysDictType 更新
-type SysDictTypeUpdateReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 字典类型ID
-	UpdatedName string `protobuf:"bytes,2,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	Name        string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`                                  // 字典名称
-	DictType    string `protobuf:"bytes,4,opt,name=dict_type,json=dictType,proto3" json:"dict_type,omitempty"`          // 字典类型
-	State       int64  `protobuf:"varint,5,opt,name=state,proto3" json:"state,omitempty"`                               // 状态
-	Remark      string `protobuf:"bytes,6,opt,name=remark,proto3" json:"remark,omitempty"`                              // 描述
-	Sort        int64  `protobuf:"varint,7,opt,name=sort,proto3" json:"sort,omitempty"`                                 // 排序
-}
-
-func (x *SysDictTypeUpdateReq) Reset() {
-	*x = SysDictTypeUpdateReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[52]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictTypeUpdateReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictTypeUpdateReq) ProtoMessage() {}
-
-func (x *SysDictTypeUpdateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[52]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictTypeUpdateReq.ProtoReflect.Descriptor instead.
-func (*SysDictTypeUpdateReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{52}
-}
-
-func (x *SysDictTypeUpdateReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysDictTypeUpdateReq) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysDictTypeUpdateReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysDictTypeUpdateReq) GetDictType() string {
-	if x != nil {
-		return x.DictType
-	}
-	return ""
-}
-
-func (x *SysDictTypeUpdateReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysDictTypeUpdateReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysDictTypeUpdateReq) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-// SysDictType 单个查询
-type SysDictTypeFindOneReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // 字典类型ID
-}
-
-func (x *SysDictTypeFindOneReq) Reset() {
-	*x = SysDictTypeFindOneReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[53]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictTypeFindOneReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictTypeFindOneReq) ProtoMessage() {}
-
-func (x *SysDictTypeFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[53]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictTypeFindOneReq.ProtoReflect.Descriptor instead.
-func (*SysDictTypeFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{53}
-}
-
-func (x *SysDictTypeFindOneReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-// SysDictType 单个查询返回
-type SysDictTypeFindOneResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 字典类型ID
-	CreatedAt   int64  `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`      // 创建时间
-	UpdatedAt   int64  `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`      // 更新时间
-	CreatedName string `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	UpdatedName string `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	Name        string `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`                                  // 字典名称
-	DictType    string `protobuf:"bytes,7,opt,name=dict_type,json=dictType,proto3" json:"dict_type,omitempty"`          // 字典类型
-	State       int64  `protobuf:"varint,8,opt,name=state,proto3" json:"state,omitempty"`                               // 状态
-	Remark      string `protobuf:"bytes,9,opt,name=remark,proto3" json:"remark,omitempty"`                              // 描述
-	Sort        int64  `protobuf:"varint,10,opt,name=sort,proto3" json:"sort,omitempty"`                                // 排序
-}
-
-func (x *SysDictTypeFindOneResp) Reset() {
-	*x = SysDictTypeFindOneResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[54]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictTypeFindOneResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictTypeFindOneResp) ProtoMessage() {}
-
-func (x *SysDictTypeFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[54]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictTypeFindOneResp.ProtoReflect.Descriptor instead.
-func (*SysDictTypeFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{54}
-}
-
-func (x *SysDictTypeFindOneResp) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysDictTypeFindOneResp) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysDictTypeFindOneResp) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *SysDictTypeFindOneResp) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysDictTypeFindOneResp) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysDictTypeFindOneResp) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysDictTypeFindOneResp) GetDictType() string {
-	if x != nil {
-		return x.DictType
-	}
-	return ""
-}
-
-func (x *SysDictTypeFindOneResp) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysDictTypeFindOneResp) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysDictTypeFindOneResp) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-// SysDictType 分页查询
-type SysDictTypeListReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Current  int64  `protobuf:"varint,1,opt,name=current,proto3" json:"current,omitempty"`                   // 页码
-	PageSize int64  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"` // 页数
-	Name     string `protobuf:"bytes,3,opt,name=name,proto3" json:"name,omitempty"`                          // 字典名称
-	DictType string `protobuf:"bytes,4,opt,name=dict_type,json=dictType,proto3" json:"dict_type,omitempty"`  // 字典类型
-	State    int64  `protobuf:"varint,5,opt,name=state,proto3" json:"state,omitempty"`                       // 状态
-	Remark   string `protobuf:"bytes,6,opt,name=remark,proto3" json:"remark,omitempty"`                      // 描述
-}
-
-func (x *SysDictTypeListReq) Reset() {
-	*x = SysDictTypeListReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[55]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictTypeListReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictTypeListReq) ProtoMessage() {}
-
-func (x *SysDictTypeListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[55]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictTypeListReq.ProtoReflect.Descriptor instead.
-func (*SysDictTypeListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{55}
-}
-
-func (x *SysDictTypeListReq) GetCurrent() int64 {
-	if x != nil {
-		return x.Current
-	}
-	return 0
-}
-
-func (x *SysDictTypeListReq) GetPageSize() int64 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
-}
-
-func (x *SysDictTypeListReq) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysDictTypeListReq) GetDictType() string {
-	if x != nil {
-		return x.DictType
-	}
-	return ""
-}
-
-func (x *SysDictTypeListReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysDictTypeListReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-// SysDictType 分页查询返回
-type SysDictTypeListResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Total int64                  `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"` // 总数
-	List  []*SysDictTypeListData `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"`    // 内容
-}
-
-func (x *SysDictTypeListResp) Reset() {
-	*x = SysDictTypeListResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[56]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictTypeListResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictTypeListResp) ProtoMessage() {}
-
-func (x *SysDictTypeListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[56]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictTypeListResp.ProtoReflect.Descriptor instead.
-func (*SysDictTypeListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{56}
-}
-
-func (x *SysDictTypeListResp) GetTotal() int64 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
-}
-
-func (x *SysDictTypeListResp) GetList() []*SysDictTypeListData {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
-// SysDictType 列表信息
-type SysDictTypeListData struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 字典类型ID
-	CreatedAt   int64  `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`      // 创建时间
-	UpdatedAt   int64  `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`      // 更新时间
-	CreatedName string `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	UpdatedName string `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	Name        string `protobuf:"bytes,6,opt,name=name,proto3" json:"name,omitempty"`                                  // 字典名称
-	DictType    string `protobuf:"bytes,7,opt,name=dict_type,json=dictType,proto3" json:"dict_type,omitempty"`          // 字典类型
-	State       int64  `protobuf:"varint,8,opt,name=state,proto3" json:"state,omitempty"`                               // 状态
-	Remark      string `protobuf:"bytes,9,opt,name=remark,proto3" json:"remark,omitempty"`                              // 描述
-	Sort        int64  `protobuf:"varint,10,opt,name=sort,proto3" json:"sort,omitempty"`                                // 排序
-}
-
-func (x *SysDictTypeListData) Reset() {
-	*x = SysDictTypeListData{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[57]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictTypeListData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictTypeListData) ProtoMessage() {}
-
-func (x *SysDictTypeListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[57]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictTypeListData.ProtoReflect.Descriptor instead.
-func (*SysDictTypeListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{57}
-}
-
-func (x *SysDictTypeListData) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysDictTypeListData) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysDictTypeListData) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *SysDictTypeListData) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysDictTypeListData) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysDictTypeListData) GetName() string {
-	if x != nil {
-		return x.Name
-	}
-	return ""
-}
-
-func (x *SysDictTypeListData) GetDictType() string {
-	if x != nil {
-		return x.DictType
-	}
-	return ""
-}
-
-func (x *SysDictTypeListData) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-func (x *SysDictTypeListData) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysDictTypeListData) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-// SysDict 添加
-type SysDictAddReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	CreatedName string `protobuf:"bytes,1,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	DictType    string `protobuf:"bytes,2,opt,name=dict_type,json=dictType,proto3" json:"dict_type,omitempty"`          // 字典类型
-	DictLabel   string `protobuf:"bytes,3,opt,name=dict_label,json=dictLabel,proto3" json:"dict_label,omitempty"`       // 字典标签
-	DictValue   string `protobuf:"bytes,4,opt,name=dict_value,json=dictValue,proto3" json:"dict_value,omitempty"`       // 字典键值
-	Sort        int64  `protobuf:"varint,5,opt,name=sort,proto3" json:"sort,omitempty"`                                 // 排序
-	Remark      string `protobuf:"bytes,6,opt,name=remark,proto3" json:"remark,omitempty"`                              // 备注
-	State       int64  `protobuf:"varint,7,opt,name=state,proto3" json:"state,omitempty"`                               // 状态
-}
-
-func (x *SysDictAddReq) Reset() {
-	*x = SysDictAddReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[58]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictAddReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictAddReq) ProtoMessage() {}
-
-func (x *SysDictAddReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[58]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictAddReq.ProtoReflect.Descriptor instead.
-func (*SysDictAddReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{58}
-}
-
-func (x *SysDictAddReq) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysDictAddReq) GetDictType() string {
-	if x != nil {
-		return x.DictType
-	}
-	return ""
-}
-
-func (x *SysDictAddReq) GetDictLabel() string {
-	if x != nil {
-		return x.DictLabel
-	}
-	return ""
-}
-
-func (x *SysDictAddReq) GetDictValue() string {
-	if x != nil {
-		return x.DictValue
-	}
-	return ""
-}
-
-func (x *SysDictAddReq) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-func (x *SysDictAddReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysDictAddReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-// SysDict 删除
-type SysDictDeleteReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 字典类型ID
-	DeletedName string `protobuf:"bytes,2,opt,name=deleted_name,json=deletedName,proto3" json:"deleted_name,omitempty"` // 删除人
-}
-
-func (x *SysDictDeleteReq) Reset() {
-	*x = SysDictDeleteReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[59]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictDeleteReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictDeleteReq) ProtoMessage() {}
-
-func (x *SysDictDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[59]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictDeleteReq.ProtoReflect.Descriptor instead.
-func (*SysDictDeleteReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{59}
-}
-
-func (x *SysDictDeleteReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysDictDeleteReq) GetDeletedName() string {
-	if x != nil {
-		return x.DeletedName
-	}
-	return ""
-}
-
-// SysDict 更新
-type SysDictUpdateReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 字典类型ID
-	UpdatedName string `protobuf:"bytes,2,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	DictType    string `protobuf:"bytes,3,opt,name=dict_type,json=dictType,proto3" json:"dict_type,omitempty"`          // 字典类型
-	DictLabel   string `protobuf:"bytes,4,opt,name=dict_label,json=dictLabel,proto3" json:"dict_label,omitempty"`       // 字典标签
-	DictValue   string `protobuf:"bytes,5,opt,name=dict_value,json=dictValue,proto3" json:"dict_value,omitempty"`       // 字典键值
-	Sort        int64  `protobuf:"varint,6,opt,name=sort,proto3" json:"sort,omitempty"`                                 // 排序
-	Remark      string `protobuf:"bytes,7,opt,name=remark,proto3" json:"remark,omitempty"`                              // 备注
-	State       int64  `protobuf:"varint,8,opt,name=state,proto3" json:"state,omitempty"`                               // 状态
-}
-
-func (x *SysDictUpdateReq) Reset() {
-	*x = SysDictUpdateReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[60]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictUpdateReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictUpdateReq) ProtoMessage() {}
-
-func (x *SysDictUpdateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[60]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictUpdateReq.ProtoReflect.Descriptor instead.
-func (*SysDictUpdateReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{60}
-}
-
-func (x *SysDictUpdateReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysDictUpdateReq) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysDictUpdateReq) GetDictType() string {
-	if x != nil {
-		return x.DictType
-	}
-	return ""
-}
-
-func (x *SysDictUpdateReq) GetDictLabel() string {
-	if x != nil {
-		return x.DictLabel
-	}
-	return ""
-}
-
-func (x *SysDictUpdateReq) GetDictValue() string {
-	if x != nil {
-		return x.DictValue
-	}
-	return ""
-}
-
-func (x *SysDictUpdateReq) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-func (x *SysDictUpdateReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysDictUpdateReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-// SysDict 单个查询
-type SysDictFindOneReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id int64 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"` // 字典类型ID
-}
-
-func (x *SysDictFindOneReq) Reset() {
-	*x = SysDictFindOneReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[61]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictFindOneReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictFindOneReq) ProtoMessage() {}
-
-func (x *SysDictFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[61]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictFindOneReq.ProtoReflect.Descriptor instead.
-func (*SysDictFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{61}
-}
-
-func (x *SysDictFindOneReq) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-// SysDict 单个查询返回
-type SysDictFindOneResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 字典类型ID
-	CreatedAt   int64  `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`      // 创建时间
-	UpdatedAt   int64  `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`      // 更新时间
-	CreatedName string `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	UpdatedName string `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	DictType    string `protobuf:"bytes,6,opt,name=dict_type,json=dictType,proto3" json:"dict_type,omitempty"`          // 字典类型
-	DictLabel   string `protobuf:"bytes,7,opt,name=dict_label,json=dictLabel,proto3" json:"dict_label,omitempty"`       // 字典标签
-	DictValue   string `protobuf:"bytes,8,opt,name=dict_value,json=dictValue,proto3" json:"dict_value,omitempty"`       // 字典键值
-	Sort        int64  `protobuf:"varint,9,opt,name=sort,proto3" json:"sort,omitempty"`                                 // 排序
-	Remark      string `protobuf:"bytes,10,opt,name=remark,proto3" json:"remark,omitempty"`                             // 备注
-	State       int64  `protobuf:"varint,11,opt,name=state,proto3" json:"state,omitempty"`                              // 状态
-}
-
-func (x *SysDictFindOneResp) Reset() {
-	*x = SysDictFindOneResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[62]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictFindOneResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictFindOneResp) ProtoMessage() {}
-
-func (x *SysDictFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[62]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictFindOneResp.ProtoReflect.Descriptor instead.
-func (*SysDictFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{62}
-}
-
-func (x *SysDictFindOneResp) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysDictFindOneResp) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysDictFindOneResp) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *SysDictFindOneResp) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysDictFindOneResp) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysDictFindOneResp) GetDictType() string {
-	if x != nil {
-		return x.DictType
-	}
-	return ""
-}
-
-func (x *SysDictFindOneResp) GetDictLabel() string {
-	if x != nil {
-		return x.DictLabel
-	}
-	return ""
-}
-
-func (x *SysDictFindOneResp) GetDictValue() string {
-	if x != nil {
-		return x.DictValue
-	}
-	return ""
-}
-
-func (x *SysDictFindOneResp) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-func (x *SysDictFindOneResp) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysDictFindOneResp) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-// SysDict 分页查询
-type SysDictListReq struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Current   int64  `protobuf:"varint,1,opt,name=current,proto3" json:"current,omitempty"`                     // 页码
-	PageSize  int64  `protobuf:"varint,2,opt,name=page_size,json=pageSize,proto3" json:"page_size,omitempty"`   // 页数
-	DictType  string `protobuf:"bytes,3,opt,name=dict_type,json=dictType,proto3" json:"dict_type,omitempty"`    // 字典类型
-	DictLabel string `protobuf:"bytes,4,opt,name=dict_label,json=dictLabel,proto3" json:"dict_label,omitempty"` // 字典标签
-	DictValue string `protobuf:"bytes,5,opt,name=dict_value,json=dictValue,proto3" json:"dict_value,omitempty"` // 字典键值
-	Remark    string `protobuf:"bytes,6,opt,name=remark,proto3" json:"remark,omitempty"`                        // 备注
-	State     int64  `protobuf:"varint,7,opt,name=state,proto3" json:"state,omitempty"`                         // 状态
-}
-
-func (x *SysDictListReq) Reset() {
-	*x = SysDictListReq{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[63]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictListReq) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictListReq) ProtoMessage() {}
-
-func (x *SysDictListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[63]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictListReq.ProtoReflect.Descriptor instead.
-func (*SysDictListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{63}
-}
-
-func (x *SysDictListReq) GetCurrent() int64 {
-	if x != nil {
-		return x.Current
-	}
-	return 0
-}
-
-func (x *SysDictListReq) GetPageSize() int64 {
-	if x != nil {
-		return x.PageSize
-	}
-	return 0
-}
-
-func (x *SysDictListReq) GetDictType() string {
-	if x != nil {
-		return x.DictType
-	}
-	return ""
-}
-
-func (x *SysDictListReq) GetDictLabel() string {
-	if x != nil {
-		return x.DictLabel
-	}
-	return ""
-}
-
-func (x *SysDictListReq) GetDictValue() string {
-	if x != nil {
-		return x.DictValue
-	}
-	return ""
-}
-
-func (x *SysDictListReq) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysDictListReq) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
-// SysDict 分页查询返回
-type SysDictListResp struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Total int64              `protobuf:"varint,1,opt,name=total,proto3" json:"total,omitempty"` // 总数
-	List  []*SysDictListData `protobuf:"bytes,2,rep,name=list,proto3" json:"list,omitempty"`    // 内容
-}
-
-func (x *SysDictListResp) Reset() {
-	*x = SysDictListResp{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[64]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictListResp) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictListResp) ProtoMessage() {}
-
-func (x *SysDictListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[64]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictListResp.ProtoReflect.Descriptor instead.
-func (*SysDictListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{64}
-}
-
-func (x *SysDictListResp) GetTotal() int64 {
-	if x != nil {
-		return x.Total
-	}
-	return 0
-}
-
-func (x *SysDictListResp) GetList() []*SysDictListData {
-	if x != nil {
-		return x.List
-	}
-	return nil
-}
-
-// SysDict 列表信息
-type SysDictListData struct {
-	state         protoimpl.MessageState
-	sizeCache     protoimpl.SizeCache
-	unknownFields protoimpl.UnknownFields
-
-	Id          int64  `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`                                     // 字典类型ID
-	CreatedAt   int64  `protobuf:"varint,2,opt,name=created_at,json=createdAt,proto3" json:"created_at,omitempty"`      // 创建时间
-	UpdatedAt   int64  `protobuf:"varint,3,opt,name=updated_at,json=updatedAt,proto3" json:"updated_at,omitempty"`      // 更新时间
-	CreatedName string `protobuf:"bytes,4,opt,name=created_name,json=createdName,proto3" json:"created_name,omitempty"` // 创建人
-	UpdatedName string `protobuf:"bytes,5,opt,name=updated_name,json=updatedName,proto3" json:"updated_name,omitempty"` // 更新人
-	DictType    string `protobuf:"bytes,6,opt,name=dict_type,json=dictType,proto3" json:"dict_type,omitempty"`          // 字典类型
-	DictLabel   string `protobuf:"bytes,7,opt,name=dict_label,json=dictLabel,proto3" json:"dict_label,omitempty"`       // 字典标签
-	DictValue   string `protobuf:"bytes,8,opt,name=dict_value,json=dictValue,proto3" json:"dict_value,omitempty"`       // 字典键值
-	Sort        int64  `protobuf:"varint,9,opt,name=sort,proto3" json:"sort,omitempty"`                                 // 排序
-	Remark      string `protobuf:"bytes,10,opt,name=remark,proto3" json:"remark,omitempty"`                             // 备注
-	State       int64  `protobuf:"varint,11,opt,name=state,proto3" json:"state,omitempty"`                              // 状态
-}
-
-func (x *SysDictListData) Reset() {
-	*x = SysDictListData{}
-	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[65]
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		ms.StoreMessageInfo(mi)
-	}
-}
-
-func (x *SysDictListData) String() string {
-	return protoimpl.X.MessageStringOf(x)
-}
-
-func (*SysDictListData) ProtoMessage() {}
-
-func (x *SysDictListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[65]
-	if protoimpl.UnsafeEnabled && x != nil {
-		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
-		if ms.LoadMessageInfo() == nil {
-			ms.StoreMessageInfo(mi)
-		}
-		return ms
-	}
-	return mi.MessageOf(x)
-}
-
-// Deprecated: Use SysDictListData.ProtoReflect.Descriptor instead.
-func (*SysDictListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{65}
-}
-
-func (x *SysDictListData) GetId() int64 {
-	if x != nil {
-		return x.Id
-	}
-	return 0
-}
-
-func (x *SysDictListData) GetCreatedAt() int64 {
-	if x != nil {
-		return x.CreatedAt
-	}
-	return 0
-}
-
-func (x *SysDictListData) GetUpdatedAt() int64 {
-	if x != nil {
-		return x.UpdatedAt
-	}
-	return 0
-}
-
-func (x *SysDictListData) GetCreatedName() string {
-	if x != nil {
-		return x.CreatedName
-	}
-	return ""
-}
-
-func (x *SysDictListData) GetUpdatedName() string {
-	if x != nil {
-		return x.UpdatedName
-	}
-	return ""
-}
-
-func (x *SysDictListData) GetDictType() string {
-	if x != nil {
-		return x.DictType
-	}
-	return ""
-}
-
-func (x *SysDictListData) GetDictLabel() string {
-	if x != nil {
-		return x.DictLabel
-	}
-	return ""
-}
-
-func (x *SysDictListData) GetDictValue() string {
-	if x != nil {
-		return x.DictValue
-	}
-	return ""
-}
-
-func (x *SysDictListData) GetSort() int64 {
-	if x != nil {
-		return x.Sort
-	}
-	return 0
-}
-
-func (x *SysDictListData) GetRemark() string {
-	if x != nil {
-		return x.Remark
-	}
-	return ""
-}
-
-func (x *SysDictListData) GetState() int64 {
-	if x != nil {
-		return x.State
-	}
-	return 0
-}
-
 // TpmtAsset 添加
 type TpmtAssetAddReq struct {
 	state         protoimpl.MessageState
@@ -5531,7 +141,7 @@ type TpmtAssetAddReq struct {
 func (x *TpmtAssetAddReq) Reset() {
 	*x = TpmtAssetAddReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[66]
+		mi := &file_tpmt_proto_msgTypes[2]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5544,7 +154,7 @@ func (x *TpmtAssetAddReq) String() string {
 func (*TpmtAssetAddReq) ProtoMessage() {}
 
 func (x *TpmtAssetAddReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[66]
+	mi := &file_tpmt_proto_msgTypes[2]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5557,7 +167,7 @@ func (x *TpmtAssetAddReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtAssetAddReq.ProtoReflect.Descriptor instead.
 func (*TpmtAssetAddReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{66}
+	return file_tpmt_proto_rawDescGZIP(), []int{2}
 }
 
 func (x *TpmtAssetAddReq) GetAssetType() int64 {
@@ -5628,7 +238,7 @@ type TpmtAssetDeleteReq struct {
 func (x *TpmtAssetDeleteReq) Reset() {
 	*x = TpmtAssetDeleteReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[67]
+		mi := &file_tpmt_proto_msgTypes[3]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5641,7 +251,7 @@ func (x *TpmtAssetDeleteReq) String() string {
 func (*TpmtAssetDeleteReq) ProtoMessage() {}
 
 func (x *TpmtAssetDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[67]
+	mi := &file_tpmt_proto_msgTypes[3]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5654,7 +264,7 @@ func (x *TpmtAssetDeleteReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtAssetDeleteReq.ProtoReflect.Descriptor instead.
 func (*TpmtAssetDeleteReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{67}
+	return file_tpmt_proto_rawDescGZIP(), []int{3}
 }
 
 func (x *TpmtAssetDeleteReq) GetId() string {
@@ -5684,7 +294,7 @@ type TpmtAssetUpdateReq struct {
 func (x *TpmtAssetUpdateReq) Reset() {
 	*x = TpmtAssetUpdateReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[68]
+		mi := &file_tpmt_proto_msgTypes[4]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5697,7 +307,7 @@ func (x *TpmtAssetUpdateReq) String() string {
 func (*TpmtAssetUpdateReq) ProtoMessage() {}
 
 func (x *TpmtAssetUpdateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[68]
+	mi := &file_tpmt_proto_msgTypes[4]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5710,7 +320,7 @@ func (x *TpmtAssetUpdateReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtAssetUpdateReq.ProtoReflect.Descriptor instead.
 func (*TpmtAssetUpdateReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{68}
+	return file_tpmt_proto_rawDescGZIP(), []int{4}
 }
 
 func (x *TpmtAssetUpdateReq) GetId() string {
@@ -5788,7 +398,7 @@ type TpmtAssetFindOneReq struct {
 func (x *TpmtAssetFindOneReq) Reset() {
 	*x = TpmtAssetFindOneReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[69]
+		mi := &file_tpmt_proto_msgTypes[5]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5801,7 +411,7 @@ func (x *TpmtAssetFindOneReq) String() string {
 func (*TpmtAssetFindOneReq) ProtoMessage() {}
 
 func (x *TpmtAssetFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[69]
+	mi := &file_tpmt_proto_msgTypes[5]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5814,7 +424,7 @@ func (x *TpmtAssetFindOneReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtAssetFindOneReq.ProtoReflect.Descriptor instead.
 func (*TpmtAssetFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{69}
+	return file_tpmt_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *TpmtAssetFindOneReq) GetId() string {
@@ -5847,7 +457,7 @@ type TpmtAssetFindOneResp struct {
 func (x *TpmtAssetFindOneResp) Reset() {
 	*x = TpmtAssetFindOneResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[70]
+		mi := &file_tpmt_proto_msgTypes[6]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5860,7 +470,7 @@ func (x *TpmtAssetFindOneResp) String() string {
 func (*TpmtAssetFindOneResp) ProtoMessage() {}
 
 func (x *TpmtAssetFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[70]
+	mi := &file_tpmt_proto_msgTypes[6]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -5873,7 +483,7 @@ func (x *TpmtAssetFindOneResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtAssetFindOneResp.ProtoReflect.Descriptor instead.
 func (*TpmtAssetFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{70}
+	return file_tpmt_proto_rawDescGZIP(), []int{6}
 }
 
 func (x *TpmtAssetFindOneResp) GetId() string {
@@ -5980,7 +590,7 @@ type TpmtAssetListReq struct {
 func (x *TpmtAssetListReq) Reset() {
 	*x = TpmtAssetListReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[71]
+		mi := &file_tpmt_proto_msgTypes[7]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -5993,7 +603,7 @@ func (x *TpmtAssetListReq) String() string {
 func (*TpmtAssetListReq) ProtoMessage() {}
 
 func (x *TpmtAssetListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[71]
+	mi := &file_tpmt_proto_msgTypes[7]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6006,7 +616,7 @@ func (x *TpmtAssetListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtAssetListReq.ProtoReflect.Descriptor instead.
 func (*TpmtAssetListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{71}
+	return file_tpmt_proto_rawDescGZIP(), []int{7}
 }
 
 func (x *TpmtAssetListReq) GetCurrent() int64 {
@@ -6085,7 +695,7 @@ type TpmtAssetListResp struct {
 func (x *TpmtAssetListResp) Reset() {
 	*x = TpmtAssetListResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[72]
+		mi := &file_tpmt_proto_msgTypes[8]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6098,7 +708,7 @@ func (x *TpmtAssetListResp) String() string {
 func (*TpmtAssetListResp) ProtoMessage() {}
 
 func (x *TpmtAssetListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[72]
+	mi := &file_tpmt_proto_msgTypes[8]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6111,7 +721,7 @@ func (x *TpmtAssetListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtAssetListResp.ProtoReflect.Descriptor instead.
 func (*TpmtAssetListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{72}
+	return file_tpmt_proto_rawDescGZIP(), []int{8}
 }
 
 func (x *TpmtAssetListResp) GetTotal() int64 {
@@ -6151,7 +761,7 @@ type TpmtAssetListData struct {
 func (x *TpmtAssetListData) Reset() {
 	*x = TpmtAssetListData{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[73]
+		mi := &file_tpmt_proto_msgTypes[9]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6164,7 +774,7 @@ func (x *TpmtAssetListData) String() string {
 func (*TpmtAssetListData) ProtoMessage() {}
 
 func (x *TpmtAssetListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[73]
+	mi := &file_tpmt_proto_msgTypes[9]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6177,7 +787,7 @@ func (x *TpmtAssetListData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtAssetListData.ProtoReflect.Descriptor instead.
 func (*TpmtAssetListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{73}
+	return file_tpmt_proto_rawDescGZIP(), []int{9}
 }
 
 func (x *TpmtAssetListData) GetId() string {
@@ -6286,7 +896,7 @@ type TpmtGatewayAddReq struct {
 func (x *TpmtGatewayAddReq) Reset() {
 	*x = TpmtGatewayAddReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[74]
+		mi := &file_tpmt_proto_msgTypes[10]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6299,7 +909,7 @@ func (x *TpmtGatewayAddReq) String() string {
 func (*TpmtGatewayAddReq) ProtoMessage() {}
 
 func (x *TpmtGatewayAddReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[74]
+	mi := &file_tpmt_proto_msgTypes[10]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6312,7 +922,7 @@ func (x *TpmtGatewayAddReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtGatewayAddReq.ProtoReflect.Descriptor instead.
 func (*TpmtGatewayAddReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{74}
+	return file_tpmt_proto_rawDescGZIP(), []int{10}
 }
 
 func (x *TpmtGatewayAddReq) GetCreatedName() string {
@@ -6404,7 +1014,7 @@ type TpmtGatewayDeleteReq struct {
 func (x *TpmtGatewayDeleteReq) Reset() {
 	*x = TpmtGatewayDeleteReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[75]
+		mi := &file_tpmt_proto_msgTypes[11]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6417,7 +1027,7 @@ func (x *TpmtGatewayDeleteReq) String() string {
 func (*TpmtGatewayDeleteReq) ProtoMessage() {}
 
 func (x *TpmtGatewayDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[75]
+	mi := &file_tpmt_proto_msgTypes[11]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6430,7 +1040,7 @@ func (x *TpmtGatewayDeleteReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtGatewayDeleteReq.ProtoReflect.Descriptor instead.
 func (*TpmtGatewayDeleteReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{75}
+	return file_tpmt_proto_rawDescGZIP(), []int{11}
 }
 
 func (x *TpmtGatewayDeleteReq) GetId() string {
@@ -6463,7 +1073,7 @@ type TpmtGatewayUpdateReq struct {
 func (x *TpmtGatewayUpdateReq) Reset() {
 	*x = TpmtGatewayUpdateReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[76]
+		mi := &file_tpmt_proto_msgTypes[12]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6476,7 +1086,7 @@ func (x *TpmtGatewayUpdateReq) String() string {
 func (*TpmtGatewayUpdateReq) ProtoMessage() {}
 
 func (x *TpmtGatewayUpdateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[76]
+	mi := &file_tpmt_proto_msgTypes[12]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6489,7 +1099,7 @@ func (x *TpmtGatewayUpdateReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtGatewayUpdateReq.ProtoReflect.Descriptor instead.
 func (*TpmtGatewayUpdateReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{76}
+	return file_tpmt_proto_rawDescGZIP(), []int{12}
 }
 
 func (x *TpmtGatewayUpdateReq) GetId() string {
@@ -6588,7 +1198,7 @@ type TpmtGatewayFindOneReq struct {
 func (x *TpmtGatewayFindOneReq) Reset() {
 	*x = TpmtGatewayFindOneReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[77]
+		mi := &file_tpmt_proto_msgTypes[13]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6601,7 +1211,7 @@ func (x *TpmtGatewayFindOneReq) String() string {
 func (*TpmtGatewayFindOneReq) ProtoMessage() {}
 
 func (x *TpmtGatewayFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[77]
+	mi := &file_tpmt_proto_msgTypes[13]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6614,7 +1224,7 @@ func (x *TpmtGatewayFindOneReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtGatewayFindOneReq.ProtoReflect.Descriptor instead.
 func (*TpmtGatewayFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{77}
+	return file_tpmt_proto_rawDescGZIP(), []int{13}
 }
 
 func (x *TpmtGatewayFindOneReq) GetId() string {
@@ -6650,7 +1260,7 @@ type TpmtGatewayFindOneResp struct {
 func (x *TpmtGatewayFindOneResp) Reset() {
 	*x = TpmtGatewayFindOneResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[78]
+		mi := &file_tpmt_proto_msgTypes[14]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6663,7 +1273,7 @@ func (x *TpmtGatewayFindOneResp) String() string {
 func (*TpmtGatewayFindOneResp) ProtoMessage() {}
 
 func (x *TpmtGatewayFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[78]
+	mi := &file_tpmt_proto_msgTypes[14]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6676,7 +1286,7 @@ func (x *TpmtGatewayFindOneResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtGatewayFindOneResp.ProtoReflect.Descriptor instead.
 func (*TpmtGatewayFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{78}
+	return file_tpmt_proto_rawDescGZIP(), []int{14}
 }
 
 func (x *TpmtGatewayFindOneResp) GetId() string {
@@ -6807,7 +1417,7 @@ type TpmtGatewayListReq struct {
 func (x *TpmtGatewayListReq) Reset() {
 	*x = TpmtGatewayListReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[79]
+		mi := &file_tpmt_proto_msgTypes[15]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6820,7 +1430,7 @@ func (x *TpmtGatewayListReq) String() string {
 func (*TpmtGatewayListReq) ProtoMessage() {}
 
 func (x *TpmtGatewayListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[79]
+	mi := &file_tpmt_proto_msgTypes[15]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6833,7 +1443,7 @@ func (x *TpmtGatewayListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtGatewayListReq.ProtoReflect.Descriptor instead.
 func (*TpmtGatewayListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{79}
+	return file_tpmt_proto_rawDescGZIP(), []int{15}
 }
 
 func (x *TpmtGatewayListReq) GetCurrent() int64 {
@@ -6933,7 +1543,7 @@ type TpmtGatewayListResp struct {
 func (x *TpmtGatewayListResp) Reset() {
 	*x = TpmtGatewayListResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[80]
+		mi := &file_tpmt_proto_msgTypes[16]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -6946,7 +1556,7 @@ func (x *TpmtGatewayListResp) String() string {
 func (*TpmtGatewayListResp) ProtoMessage() {}
 
 func (x *TpmtGatewayListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[80]
+	mi := &file_tpmt_proto_msgTypes[16]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -6959,7 +1569,7 @@ func (x *TpmtGatewayListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtGatewayListResp.ProtoReflect.Descriptor instead.
 func (*TpmtGatewayListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{80}
+	return file_tpmt_proto_rawDescGZIP(), []int{16}
 }
 
 func (x *TpmtGatewayListResp) GetTotal() int64 {
@@ -7002,7 +1612,7 @@ type TpmtGatewayListData struct {
 func (x *TpmtGatewayListData) Reset() {
 	*x = TpmtGatewayListData{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[81]
+		mi := &file_tpmt_proto_msgTypes[17]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7015,7 +1625,7 @@ func (x *TpmtGatewayListData) String() string {
 func (*TpmtGatewayListData) ProtoMessage() {}
 
 func (x *TpmtGatewayListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[81]
+	mi := &file_tpmt_proto_msgTypes[17]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7028,7 +1638,7 @@ func (x *TpmtGatewayListData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtGatewayListData.ProtoReflect.Descriptor instead.
 func (*TpmtGatewayListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{81}
+	return file_tpmt_proto_rawDescGZIP(), []int{17}
 }
 
 func (x *TpmtGatewayListData) GetId() string {
@@ -7171,7 +1781,7 @@ type TpmtMonitorPointAddReq struct {
 func (x *TpmtMonitorPointAddReq) Reset() {
 	*x = TpmtMonitorPointAddReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[82]
+		mi := &file_tpmt_proto_msgTypes[18]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7184,7 +1794,7 @@ func (x *TpmtMonitorPointAddReq) String() string {
 func (*TpmtMonitorPointAddReq) ProtoMessage() {}
 
 func (x *TpmtMonitorPointAddReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[82]
+	mi := &file_tpmt_proto_msgTypes[18]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7197,7 +1807,7 @@ func (x *TpmtMonitorPointAddReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointAddReq.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointAddReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{82}
+	return file_tpmt_proto_rawDescGZIP(), []int{18}
 }
 
 func (x *TpmtMonitorPointAddReq) GetCreatedName() string {
@@ -7380,7 +1990,7 @@ type TpmtMonitorPointDeleteReq struct {
 func (x *TpmtMonitorPointDeleteReq) Reset() {
 	*x = TpmtMonitorPointDeleteReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[83]
+		mi := &file_tpmt_proto_msgTypes[19]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7393,7 +2003,7 @@ func (x *TpmtMonitorPointDeleteReq) String() string {
 func (*TpmtMonitorPointDeleteReq) ProtoMessage() {}
 
 func (x *TpmtMonitorPointDeleteReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[83]
+	mi := &file_tpmt_proto_msgTypes[19]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7406,7 +2016,7 @@ func (x *TpmtMonitorPointDeleteReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointDeleteReq.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointDeleteReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{83}
+	return file_tpmt_proto_rawDescGZIP(), []int{19}
 }
 
 func (x *TpmtMonitorPointDeleteReq) GetId() int64 {
@@ -7451,7 +2061,7 @@ type TpmtMonitorPointUpdateReq struct {
 func (x *TpmtMonitorPointUpdateReq) Reset() {
 	*x = TpmtMonitorPointUpdateReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[84]
+		mi := &file_tpmt_proto_msgTypes[20]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7464,7 +2074,7 @@ func (x *TpmtMonitorPointUpdateReq) String() string {
 func (*TpmtMonitorPointUpdateReq) ProtoMessage() {}
 
 func (x *TpmtMonitorPointUpdateReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[84]
+	mi := &file_tpmt_proto_msgTypes[20]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7477,7 +2087,7 @@ func (x *TpmtMonitorPointUpdateReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointUpdateReq.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointUpdateReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{84}
+	return file_tpmt_proto_rawDescGZIP(), []int{20}
 }
 
 func (x *TpmtMonitorPointUpdateReq) GetId() int64 {
@@ -7660,7 +2270,7 @@ type TpmtMonitorPointFindOneReq struct {
 func (x *TpmtMonitorPointFindOneReq) Reset() {
 	*x = TpmtMonitorPointFindOneReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[85]
+		mi := &file_tpmt_proto_msgTypes[21]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7673,7 +2283,7 @@ func (x *TpmtMonitorPointFindOneReq) String() string {
 func (*TpmtMonitorPointFindOneReq) ProtoMessage() {}
 
 func (x *TpmtMonitorPointFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[85]
+	mi := &file_tpmt_proto_msgTypes[21]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7686,7 +2296,7 @@ func (x *TpmtMonitorPointFindOneReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointFindOneReq.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{85}
+	return file_tpmt_proto_rawDescGZIP(), []int{21}
 }
 
 func (x *TpmtMonitorPointFindOneReq) GetId() int64 {
@@ -7735,7 +2345,7 @@ type TpmtMonitorPointFindOneResp struct {
 func (x *TpmtMonitorPointFindOneResp) Reset() {
 	*x = TpmtMonitorPointFindOneResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[86]
+		mi := &file_tpmt_proto_msgTypes[22]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7748,7 +2358,7 @@ func (x *TpmtMonitorPointFindOneResp) String() string {
 func (*TpmtMonitorPointFindOneResp) ProtoMessage() {}
 
 func (x *TpmtMonitorPointFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[86]
+	mi := &file_tpmt_proto_msgTypes[22]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -7761,7 +2371,7 @@ func (x *TpmtMonitorPointFindOneResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointFindOneResp.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{86}
+	return file_tpmt_proto_rawDescGZIP(), []int{22}
 }
 
 func (x *TpmtMonitorPointFindOneResp) GetId() int64 {
@@ -7986,7 +2596,7 @@ type TpmtMonitorPointListReq struct {
 func (x *TpmtMonitorPointListReq) Reset() {
 	*x = TpmtMonitorPointListReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[87]
+		mi := &file_tpmt_proto_msgTypes[23]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -7999,7 +2609,7 @@ func (x *TpmtMonitorPointListReq) String() string {
 func (*TpmtMonitorPointListReq) ProtoMessage() {}
 
 func (x *TpmtMonitorPointListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[87]
+	mi := &file_tpmt_proto_msgTypes[23]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8012,7 +2622,7 @@ func (x *TpmtMonitorPointListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointListReq.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{87}
+	return file_tpmt_proto_rawDescGZIP(), []int{23}
 }
 
 func (x *TpmtMonitorPointListReq) GetCurrent() int64 {
@@ -8133,7 +2743,7 @@ type TpmtMonitorPointListResp struct {
 func (x *TpmtMonitorPointListResp) Reset() {
 	*x = TpmtMonitorPointListResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[88]
+		mi := &file_tpmt_proto_msgTypes[24]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8146,7 +2756,7 @@ func (x *TpmtMonitorPointListResp) String() string {
 func (*TpmtMonitorPointListResp) ProtoMessage() {}
 
 func (x *TpmtMonitorPointListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[88]
+	mi := &file_tpmt_proto_msgTypes[24]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8159,7 +2769,7 @@ func (x *TpmtMonitorPointListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointListResp.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{88}
+	return file_tpmt_proto_rawDescGZIP(), []int{24}
 }
 
 func (x *TpmtMonitorPointListResp) GetTotal() int64 {
@@ -8215,7 +2825,7 @@ type TpmtMonitorPointListData struct {
 func (x *TpmtMonitorPointListData) Reset() {
 	*x = TpmtMonitorPointListData{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[89]
+		mi := &file_tpmt_proto_msgTypes[25]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8228,7 +2838,7 @@ func (x *TpmtMonitorPointListData) String() string {
 func (*TpmtMonitorPointListData) ProtoMessage() {}
 
 func (x *TpmtMonitorPointListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[89]
+	mi := &file_tpmt_proto_msgTypes[25]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8241,7 +2851,7 @@ func (x *TpmtMonitorPointListData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointListData.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{89}
+	return file_tpmt_proto_rawDescGZIP(), []int{25}
 }
 
 func (x *TpmtMonitorPointListData) GetId() int64 {
@@ -8460,7 +3070,7 @@ type TpmtMonitorPointRealTimeListReq struct {
 func (x *TpmtMonitorPointRealTimeListReq) Reset() {
 	*x = TpmtMonitorPointRealTimeListReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[90]
+		mi := &file_tpmt_proto_msgTypes[26]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8473,7 +3083,7 @@ func (x *TpmtMonitorPointRealTimeListReq) String() string {
 func (*TpmtMonitorPointRealTimeListReq) ProtoMessage() {}
 
 func (x *TpmtMonitorPointRealTimeListReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[90]
+	mi := &file_tpmt_proto_msgTypes[26]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8486,7 +3096,7 @@ func (x *TpmtMonitorPointRealTimeListReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointRealTimeListReq.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointRealTimeListReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{90}
+	return file_tpmt_proto_rawDescGZIP(), []int{26}
 }
 
 func (x *TpmtMonitorPointRealTimeListReq) GetCurrent() int64 {
@@ -8572,7 +3182,7 @@ type TpmtMonitorPointRealTimeListResp struct {
 func (x *TpmtMonitorPointRealTimeListResp) Reset() {
 	*x = TpmtMonitorPointRealTimeListResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[91]
+		mi := &file_tpmt_proto_msgTypes[27]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8585,7 +3195,7 @@ func (x *TpmtMonitorPointRealTimeListResp) String() string {
 func (*TpmtMonitorPointRealTimeListResp) ProtoMessage() {}
 
 func (x *TpmtMonitorPointRealTimeListResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[91]
+	mi := &file_tpmt_proto_msgTypes[27]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8598,7 +3208,7 @@ func (x *TpmtMonitorPointRealTimeListResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointRealTimeListResp.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointRealTimeListResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{91}
+	return file_tpmt_proto_rawDescGZIP(), []int{27}
 }
 
 func (x *TpmtMonitorPointRealTimeListResp) GetTotal() int64 {
@@ -8658,7 +3268,7 @@ type TpmtMonitorPointRealTimeData struct {
 func (x *TpmtMonitorPointRealTimeData) Reset() {
 	*x = TpmtMonitorPointRealTimeData{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[92]
+		mi := &file_tpmt_proto_msgTypes[28]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8671,7 +3281,7 @@ func (x *TpmtMonitorPointRealTimeData) String() string {
 func (*TpmtMonitorPointRealTimeData) ProtoMessage() {}
 
 func (x *TpmtMonitorPointRealTimeData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[92]
+	mi := &file_tpmt_proto_msgTypes[28]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8684,7 +3294,7 @@ func (x *TpmtMonitorPointRealTimeData) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointRealTimeData.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointRealTimeData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{92}
+	return file_tpmt_proto_rawDescGZIP(), []int{28}
 }
 
 func (x *TpmtMonitorPointRealTimeData) GetId() int64 {
@@ -8923,7 +3533,7 @@ type TpmtMonitorPointRealTimeFindOneReq struct {
 func (x *TpmtMonitorPointRealTimeFindOneReq) Reset() {
 	*x = TpmtMonitorPointRealTimeFindOneReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[93]
+		mi := &file_tpmt_proto_msgTypes[29]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -8936,7 +3546,7 @@ func (x *TpmtMonitorPointRealTimeFindOneReq) String() string {
 func (*TpmtMonitorPointRealTimeFindOneReq) ProtoMessage() {}
 
 func (x *TpmtMonitorPointRealTimeFindOneReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[93]
+	mi := &file_tpmt_proto_msgTypes[29]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -8949,7 +3559,7 @@ func (x *TpmtMonitorPointRealTimeFindOneReq) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use TpmtMonitorPointRealTimeFindOneReq.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointRealTimeFindOneReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{93}
+	return file_tpmt_proto_rawDescGZIP(), []int{29}
 }
 
 func (x *TpmtMonitorPointRealTimeFindOneReq) GetId() int64 {
@@ -8994,7 +3604,7 @@ type TpmtMonitorPointRealTimeFindOneResp struct {
 	AssetId                   string                `protobuf:"bytes,27,opt,name=asset_id,json=assetId,proto3" json:"asset_id,omitempty"`                                                         // 资产Id
 	Sort                      int64                 `protobuf:"varint,28,opt,name=sort,proto3" json:"sort,omitempty"`                                                                             // 排序
 	ResultValue               string                `protobuf:"bytes,32,opt,name=result_value,json=resultValue,proto3" json:"result_value,omitempty"`                                             // 监测值
-	UpdateTime                int64                 `protobuf:"varint,33,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`                                               // 值更新时间
+	UpdateTime                int64                 `protobuf:"varint,33,opt,name=update_time,json=updateTime,proto3" json:"update_time,omitempty"`                                               // 更新时间
 	AlarmRuleInfo             *AlarmRuleInfo        `protobuf:"bytes,34,opt,name=alarm_rule_info,json=alarmRuleInfo,proto3" json:"alarm_rule_info,omitempty"`                                     // 数值状态
 	Asset                     *TpmtAssetFindOneResp `protobuf:"bytes,35,opt,name=asset,proto3" json:"asset,omitempty"`                                                                            // 资产信息
 }
@@ -9002,7 +3612,7 @@ type TpmtMonitorPointRealTimeFindOneResp struct {
 func (x *TpmtMonitorPointRealTimeFindOneResp) Reset() {
 	*x = TpmtMonitorPointRealTimeFindOneResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[94]
+		mi := &file_tpmt_proto_msgTypes[30]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9015,7 +3625,7 @@ func (x *TpmtMonitorPointRealTimeFindOneResp) String() string {
 func (*TpmtMonitorPointRealTimeFindOneResp) ProtoMessage() {}
 
 func (x *TpmtMonitorPointRealTimeFindOneResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[94]
+	mi := &file_tpmt_proto_msgTypes[30]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9028,7 +3638,7 @@ func (x *TpmtMonitorPointRealTimeFindOneResp) ProtoReflect() protoreflect.Messag
 
 // Deprecated: Use TpmtMonitorPointRealTimeFindOneResp.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointRealTimeFindOneResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{94}
+	return file_tpmt_proto_rawDescGZIP(), []int{30}
 }
 
 func (x *TpmtMonitorPointRealTimeFindOneResp) GetId() int64 {
@@ -9271,7 +3881,7 @@ type TpmtMonitorPointHistoricalReq struct {
 func (x *TpmtMonitorPointHistoricalReq) Reset() {
 	*x = TpmtMonitorPointHistoricalReq{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[95]
+		mi := &file_tpmt_proto_msgTypes[31]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9284,7 +3894,7 @@ func (x *TpmtMonitorPointHistoricalReq) String() string {
 func (*TpmtMonitorPointHistoricalReq) ProtoMessage() {}
 
 func (x *TpmtMonitorPointHistoricalReq) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[95]
+	mi := &file_tpmt_proto_msgTypes[31]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9297,7 +3907,7 @@ func (x *TpmtMonitorPointHistoricalReq) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointHistoricalReq.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointHistoricalReq) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{95}
+	return file_tpmt_proto_rawDescGZIP(), []int{31}
 }
 
 func (x *TpmtMonitorPointHistoricalReq) GetId() int64 {
@@ -9375,7 +3985,7 @@ type TpmtMonitorPointHistoricalResp struct {
 func (x *TpmtMonitorPointHistoricalResp) Reset() {
 	*x = TpmtMonitorPointHistoricalResp{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[96]
+		mi := &file_tpmt_proto_msgTypes[32]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9388,7 +3998,7 @@ func (x *TpmtMonitorPointHistoricalResp) String() string {
 func (*TpmtMonitorPointHistoricalResp) ProtoMessage() {}
 
 func (x *TpmtMonitorPointHistoricalResp) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[96]
+	mi := &file_tpmt_proto_msgTypes[32]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9401,7 +4011,7 @@ func (x *TpmtMonitorPointHistoricalResp) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use TpmtMonitorPointHistoricalResp.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointHistoricalResp) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{96}
+	return file_tpmt_proto_rawDescGZIP(), []int{32}
 }
 
 func (x *TpmtMonitorPointHistoricalResp) GetId() int64 {
@@ -9626,7 +4236,7 @@ type TpmtMonitorPointHistoricalListData struct {
 func (x *TpmtMonitorPointHistoricalListData) Reset() {
 	*x = TpmtMonitorPointHistoricalListData{}
 	if protoimpl.UnsafeEnabled {
-		mi := &file_tpmt_proto_msgTypes[97]
+		mi := &file_tpmt_proto_msgTypes[33]
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		ms.StoreMessageInfo(mi)
 	}
@@ -9639,7 +4249,7 @@ func (x *TpmtMonitorPointHistoricalListData) String() string {
 func (*TpmtMonitorPointHistoricalListData) ProtoMessage() {}
 
 func (x *TpmtMonitorPointHistoricalListData) ProtoReflect() protoreflect.Message {
-	mi := &file_tpmt_proto_msgTypes[97]
+	mi := &file_tpmt_proto_msgTypes[33]
 	if protoimpl.UnsafeEnabled && x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -9652,7 +4262,7 @@ func (x *TpmtMonitorPointHistoricalListData) ProtoReflect() protoreflect.Message
 
 // Deprecated: Use TpmtMonitorPointHistoricalListData.ProtoReflect.Descriptor instead.
 func (*TpmtMonitorPointHistoricalListData) Descriptor() ([]byte, []int) {
-	return file_tpmt_proto_rawDescGZIP(), []int{97}
+	return file_tpmt_proto_rawDescGZIP(), []int{33}
 }
 
 func (x *TpmtMonitorPointHistoricalListData) GetMonitorValue() string {
@@ -9680,697 +4290,7 @@ var file_tpmt_proto_rawDesc = []byte{
 	0x09, 0x72, 0x75, 0x6c, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
 	0x52, 0x08, 0x72, 0x75, 0x6c, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x72, 0x75,
 	0x6c, 0x65, 0x5f, 0x64, 0x61, 0x74, 0x61, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x72,
-	0x75, 0x6c, 0x65, 0x44, 0x61, 0x74, 0x61, 0x22, 0xb4, 0x01, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x55,
-	0x73, 0x65, 0x72, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x12, 0x18, 0x0a, 0x07, 0x61, 0x63, 0x63,
-	0x6f, 0x75, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x63, 0x63, 0x6f,
-	0x75, 0x6e, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x6e, 0x69, 0x63, 0x6b, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e, 0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d, 0x65,
-	0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x03, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x14, 0x0a, 0x05,
-	0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61,
-	0x74, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x64,
-	0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x22, 0x45,
-	0x0a, 0x10, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52,
-	0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02,
-	0x69, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x64, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x91, 0x01, 0x0a, 0x10, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65,
-	0x72, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x6e, 0x69,
-	0x63, 0x6b, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e,
-	0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65,
-	0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x21, 0x0a,
-	0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x06, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65,
-	0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x07, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x22, 0x23, 0x0a, 0x11, 0x53, 0x79, 0x73,
-	0x55, 0x73, 0x65, 0x72, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e,
-	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0xc8,
-	0x02, 0x0a, 0x12, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e,
-	0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12,
-	0x1b, 0x0a, 0x09, 0x6e, 0x69, 0x63, 0x6b, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x08, 0x6e, 0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05,
-	0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61,
-	0x74, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64,
-	0x5f, 0x61, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x64, 0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f,
-	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x09, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69,
-	0x64, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x12,
-	0x1b, 0x0a, 0x09, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x0b, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x08, 0x72, 0x6f, 0x6c, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09,
-	0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x08, 0x72, 0x6f, 0x6c, 0x65, 0x54, 0x79, 0x70, 0x65, 0x22, 0x7a, 0x0a, 0x0e, 0x53, 0x79, 0x73,
-	0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x12, 0x18, 0x0a, 0x07, 0x63,
-	0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x63, 0x75,
-	0x72, 0x72, 0x65, 0x6e, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x69,
-	0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69,
-	0x7a, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x6e, 0x69, 0x63, 0x6b, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e, 0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d, 0x65, 0x12,
-	0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05,
-	0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x58, 0x0a, 0x0f, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72,
-	0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61,
-	0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x2f,
-	0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x74,
-	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65,
-	0x72, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x22,
-	0xc5, 0x02, 0x0a, 0x0f, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x44,
-	0x61, 0x74, 0x61, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x02, 0x69, 0x64, 0x12, 0x18, 0x0a, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74, 0x12, 0x1b, 0x0a,
-	0x09, 0x6e, 0x69, 0x63, 0x6b, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x08, 0x6e, 0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74,
-	0x61, 0x74, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65,
-	0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x4e,
-	0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61,
-	0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64,
-	0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
-	0x5f, 0x61, 0x74, 0x18, 0x09, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x64, 0x41, 0x74, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x64, 0x18,
-	0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x12, 0x1b, 0x0a,
-	0x09, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x08, 0x72, 0x6f, 0x6c, 0x65, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x72, 0x6f,
-	0x6c, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x72,
-	0x6f, 0x6c, 0x65, 0x54, 0x79, 0x70, 0x65, 0x22, 0x43, 0x0a, 0x0b, 0x53, 0x79, 0x73, 0x4c, 0x6f,
-	0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x12, 0x18, 0x0a, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e,
-	0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x61, 0x63, 0x63, 0x6f, 0x75, 0x6e, 0x74,
-	0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x22, 0x63, 0x0a, 0x12,
-	0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x65, 0x74, 0x50, 0x77, 0x64, 0x52,
-	0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02,
-	0x69, 0x64, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x21,
-	0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d,
-	0x65, 0x22, 0x31, 0x0a, 0x13, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x65,
-	0x74, 0x50, 0x77, 0x64, 0x52, 0x65, 0x73, 0x70, 0x12, 0x1a, 0x0a, 0x08, 0x70, 0x61, 0x73, 0x73,
-	0x77, 0x6f, 0x72, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x70, 0x61, 0x73, 0x73,
-	0x77, 0x6f, 0x72, 0x64, 0x22, 0x69, 0x0a, 0x11, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x55,
-	0x70, 0x4d, 0x79, 0x50, 0x77, 0x64, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x6f, 0x6c, 0x64,
-	0x5f, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0b, 0x6f, 0x6c, 0x64, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x12, 0x21, 0x0a, 0x0c,
-	0x6e, 0x65, 0x77, 0x5f, 0x70, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x18, 0x03, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x0b, 0x6e, 0x65, 0x77, 0x50, 0x61, 0x73, 0x73, 0x77, 0x6f, 0x72, 0x64, 0x22,
-	0x7e, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71,
-	0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x4e,
-	0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x6e, 0x69, 0x63, 0x6b, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e, 0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d, 0x65,
-	0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69,
-	0x64, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x22,
-	0x45, 0x0a, 0x10, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x02, 0x69, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x5f, 0x6e,
-	0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x6c, 0x65, 0x74,
-	0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x74, 0x0a, 0x10, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74,
-	0x68, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a,
-	0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74,
-	0x61, 0x74, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x06,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x22, 0x23, 0x0a, 0x11,
-	0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65,
-	0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69,
-	0x64, 0x22, 0xfa, 0x01, 0x0a, 0x12, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x46, 0x69, 0x6e,
-	0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09,
-	0x6e, 0x69, 0x63, 0x6b, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x08, 0x6e, 0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x75, 0x74,
-	0x68, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x61,
-	0x75, 0x74, 0x68, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74,
-	0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x99,
-	0x01, 0x0a, 0x0e, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
-	0x71, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x07, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70,
-	0x61, 0x67, 0x65, 0x5f, 0x73, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08,
-	0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x6e, 0x69, 0x63, 0x6b,
-	0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x6e, 0x69, 0x63,
-	0x6b, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x75, 0x74, 0x68, 0x5f, 0x74, 0x6f,
-	0x6b, 0x65, 0x6e, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x61, 0x75, 0x74, 0x68, 0x54,
-	0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x05, 0x20,
-	0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x58, 0x0a, 0x0f, 0x53, 0x79,
-	0x73, 0x41, 0x75, 0x74, 0x68, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x14, 0x0a,
-	0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x74, 0x6f,
-	0x74, 0x61, 0x6c, 0x12, 0x2f, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28,
-	0x0b, 0x32, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53,
-	0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04,
-	0x6c, 0x69, 0x73, 0x74, 0x22, 0xf7, 0x01, 0x0a, 0x0f, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68,
-	0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09,
-	0x6e, 0x69, 0x63, 0x6b, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x08, 0x6e, 0x69, 0x63, 0x6b, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x75, 0x74,
-	0x68, 0x5f, 0x74, 0x6f, 0x6b, 0x65, 0x6e, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x61,
-	0x75, 0x74, 0x68, 0x54, 0x6f, 0x6b, 0x65, 0x6e, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74,
-	0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0xbb,
-	0x01, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71,
-	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x1b, 0x0a, 0x09,
-	0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x08, 0x72, 0x6f, 0x6c, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65,
-	0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08,
-	0x6d, 0x65, 0x6e, 0x75, 0x5f, 0x69, 0x64, 0x73, 0x18, 0x05, 0x20, 0x03, 0x28, 0x03, 0x52, 0x07,
-	0x6d, 0x65, 0x6e, 0x75, 0x49, 0x64, 0x73, 0x12, 0x23, 0x0a, 0x0d, 0x69, 0x6e, 0x74, 0x65, 0x72,
-	0x66, 0x61, 0x63, 0x65, 0x5f, 0x69, 0x64, 0x73, 0x18, 0x06, 0x20, 0x03, 0x28, 0x03, 0x52, 0x0c,
-	0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x49, 0x64, 0x73, 0x22, 0x45, 0x0a, 0x10,
-	0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71,
-	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64,
-	0x12, 0x21, 0x0a, 0x0c, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x4e,
-	0x61, 0x6d, 0x65, 0x22, 0xce, 0x01, 0x0a, 0x10, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06,
-	0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65,
-	0x6d, 0x61, 0x72, 0x6b, 0x12, 0x1b, 0x0a, 0x09, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x74, 0x79, 0x70,
-	0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x72, 0x6f, 0x6c, 0x65, 0x54, 0x79, 0x70,
-	0x65, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d,
-	0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
-	0x4e, 0x61, 0x6d, 0x65, 0x12, 0x19, 0x0a, 0x08, 0x6d, 0x65, 0x6e, 0x75, 0x5f, 0x69, 0x64, 0x73,
-	0x18, 0x06, 0x20, 0x03, 0x28, 0x03, 0x52, 0x07, 0x6d, 0x65, 0x6e, 0x75, 0x49, 0x64, 0x73, 0x12,
-	0x23, 0x0a, 0x0d, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x5f, 0x69, 0x64, 0x73,
-	0x18, 0x07, 0x20, 0x03, 0x28, 0x03, 0x52, 0x0c, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63,
-	0x65, 0x49, 0x64, 0x73, 0x22, 0x23, 0x0a, 0x11, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x46,
-	0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18,
-	0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x22, 0xf1, 0x01, 0x0a, 0x12, 0x53, 0x79,
-	0x73, 0x52, 0x6f, 0x6c, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64,
-	0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x03,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x1b, 0x0a, 0x09,
-	0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x08, 0x72, 0x6f, 0x6c, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65,
-	0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a,
-	0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x75,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d,
-	0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x08, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0x90, 0x01,
-	0x0a, 0x0e, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71,
-	0x12, 0x18, 0x0a, 0x07, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x07, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61,
-	0x67, 0x65, 0x5f, 0x73, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70,
-	0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72,
-	0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d,
-	0x61, 0x72, 0x6b, 0x12, 0x1b, 0x0a, 0x09, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65,
-	0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x72, 0x6f, 0x6c, 0x65, 0x54, 0x79, 0x70, 0x65,
-	0x22, 0x58, 0x0a, 0x0f, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52,
-	0x65, 0x73, 0x70, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x2f, 0x0a, 0x04, 0x6c, 0x69, 0x73,
-	0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
-	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x69, 0x73, 0x74,
-	0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0xee, 0x01, 0x0a, 0x0f, 0x53,
-	0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x12, 0x0e,
-	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x12,
-	0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x03, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x1b, 0x0a, 0x09, 0x72, 0x6f,
-	0x6c, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x72,
-	0x6f, 0x6c, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09,
-	0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a,
-	0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0xfb, 0x02, 0x0a, 0x0d,
-	0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x12, 0x1b, 0x0a,
-	0x09, 0x6d, 0x65, 0x6e, 0x75, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x08, 0x6d, 0x65, 0x6e, 0x75, 0x54, 0x79, 0x70, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14,
-	0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74,
-	0x69, 0x74, 0x6c, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x74, 0x68, 0x18, 0x04, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68, 0x12, 0x1c, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70,
-	0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x63, 0x6f, 0x6d,
-	0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65,
-	0x63, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65,
-	0x63, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x18, 0x08,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73,
-	0x5f, 0x68, 0x69, 0x64, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x69, 0x73, 0x48,
-	0x69, 0x64, 0x65, 0x12, 0x22, 0x0a, 0x0d, 0x69, 0x73, 0x5f, 0x6b, 0x65, 0x65, 0x70, 0x5f, 0x61,
-	0x6c, 0x69, 0x76, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x69, 0x73, 0x4b, 0x65,
-	0x65, 0x70, 0x41, 0x6c, 0x69, 0x76, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x72, 0x65, 0x6e,
-	0x74, 0x5f, 0x69, 0x64, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x72, 0x65,
-	0x6e, 0x74, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73, 0x5f, 0x68, 0x6f, 0x6d, 0x65, 0x18,
-	0x0c, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x69, 0x73, 0x48, 0x6f, 0x6d, 0x65, 0x12, 0x17, 0x0a,
-	0x07, 0x69, 0x73, 0x5f, 0x6d, 0x61, 0x69, 0x6e, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06,
-	0x69, 0x73, 0x4d, 0x61, 0x69, 0x6e, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0x45, 0x0a, 0x10, 0x53, 0x79, 0x73,
-	0x4d, 0x65, 0x6e, 0x75, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a,
-	0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x21, 0x0a,
-	0x0c, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65,
-	0x22, 0x8e, 0x03, 0x0a, 0x10, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x6d, 0x65, 0x6e, 0x75, 0x5f, 0x74, 0x79,
-	0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x6d, 0x65, 0x6e, 0x75, 0x54, 0x79,
-	0x70, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18,
-	0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x12, 0x0a, 0x04,
-	0x70, 0x61, 0x74, 0x68, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68,
-	0x12, 0x1c, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x18, 0x06, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x12, 0x1a,
-	0x0a, 0x08, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x08, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f,
-	0x72, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x12, 0x12,
-	0x0a, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x69, 0x63,
-	0x6f, 0x6e, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73, 0x5f, 0x68, 0x69, 0x64, 0x65, 0x18, 0x0a, 0x20,
-	0x01, 0x28, 0x03, 0x52, 0x06, 0x69, 0x73, 0x48, 0x69, 0x64, 0x65, 0x12, 0x22, 0x0a, 0x0d, 0x69,
-	0x73, 0x5f, 0x6b, 0x65, 0x65, 0x70, 0x5f, 0x61, 0x6c, 0x69, 0x76, 0x65, 0x18, 0x0b, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x0b, 0x69, 0x73, 0x4b, 0x65, 0x65, 0x70, 0x41, 0x6c, 0x69, 0x76, 0x65, 0x12,
-	0x1b, 0x0a, 0x09, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x0c, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07,
-	0x69, 0x73, 0x5f, 0x68, 0x6f, 0x6d, 0x65, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x69,
-	0x73, 0x48, 0x6f, 0x6d, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73, 0x5f, 0x6d, 0x61, 0x69, 0x6e,
-	0x18, 0x0e, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x69, 0x73, 0x4d, 0x61, 0x69, 0x6e, 0x12, 0x21,
-	0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x0f,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d,
-	0x65, 0x22, 0x23, 0x0a, 0x11, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x46, 0x69, 0x6e, 0x64,
-	0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x22, 0xf1, 0x03, 0x0a, 0x12, 0x53, 0x79, 0x73, 0x4d, 0x65,
-	0x6e, 0x75, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x0e, 0x0a,
-	0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1b, 0x0a,
-	0x09, 0x6d, 0x65, 0x6e, 0x75, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x08, 0x6d, 0x65, 0x6e, 0x75, 0x54, 0x79, 0x70, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14,
-	0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74,
-	0x69, 0x74, 0x6c, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x74, 0x68, 0x18, 0x05, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68, 0x12, 0x1c, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70,
-	0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x63, 0x6f, 0x6d,
-	0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x12, 0x1a, 0x0a, 0x08, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65,
-	0x63, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65,
-	0x63, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x18, 0x09,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73,
-	0x5f, 0x68, 0x69, 0x64, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x69, 0x73, 0x48,
-	0x69, 0x64, 0x65, 0x12, 0x22, 0x0a, 0x0d, 0x69, 0x73, 0x5f, 0x6b, 0x65, 0x65, 0x70, 0x5f, 0x61,
-	0x6c, 0x69, 0x76, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x69, 0x73, 0x4b, 0x65,
-	0x65, 0x70, 0x41, 0x6c, 0x69, 0x76, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x72, 0x65, 0x6e,
-	0x74, 0x5f, 0x69, 0x64, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x72, 0x65,
-	0x6e, 0x74, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73, 0x5f, 0x68, 0x6f, 0x6d, 0x65, 0x18,
-	0x0d, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x69, 0x73, 0x48, 0x6f, 0x6d, 0x65, 0x12, 0x17, 0x0a,
-	0x07, 0x69, 0x73, 0x5f, 0x6d, 0x61, 0x69, 0x6e, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06,
-	0x69, 0x73, 0x4d, 0x61, 0x69, 0x6e, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x0f, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72,
-	0x65, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65,
-	0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x10, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63,
-	0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x11, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
-	0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x75,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x12, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x22, 0xfc, 0x02, 0x0a, 0x0e, 0x53,
-	0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x12, 0x18, 0x0a,
-	0x07, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07,
-	0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x67, 0x65, 0x5f,
-	0x73, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65,
-	0x53, 0x69, 0x7a, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x6d, 0x65, 0x6e, 0x75, 0x5f, 0x74, 0x79, 0x70,
-	0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x6d, 0x65, 0x6e, 0x75, 0x54, 0x79, 0x70,
-	0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x18, 0x05,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x70,
-	0x61, 0x74, 0x68, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68, 0x12,
-	0x1c, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x18, 0x07, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x12, 0x1a, 0x0a,
-	0x08, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x08, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x69, 0x63, 0x6f,
-	0x6e, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x12, 0x17, 0x0a,
-	0x07, 0x69, 0x73, 0x5f, 0x68, 0x69, 0x64, 0x65, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06,
-	0x69, 0x73, 0x48, 0x69, 0x64, 0x65, 0x12, 0x22, 0x0a, 0x0d, 0x69, 0x73, 0x5f, 0x6b, 0x65, 0x65,
-	0x70, 0x5f, 0x61, 0x6c, 0x69, 0x76, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x69,
-	0x73, 0x4b, 0x65, 0x65, 0x70, 0x41, 0x6c, 0x69, 0x76, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61,
-	0x72, 0x65, 0x6e, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x0c, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70,
-	0x61, 0x72, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73, 0x5f, 0x68, 0x6f,
-	0x6d, 0x65, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x69, 0x73, 0x48, 0x6f, 0x6d, 0x65,
-	0x12, 0x17, 0x0a, 0x07, 0x69, 0x73, 0x5f, 0x6d, 0x61, 0x69, 0x6e, 0x18, 0x0e, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x06, 0x69, 0x73, 0x4d, 0x61, 0x69, 0x6e, 0x22, 0x58, 0x0a, 0x0f, 0x53, 0x79, 0x73,
-	0x4d, 0x65, 0x6e, 0x75, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x14, 0x0a, 0x05,
-	0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x74, 0x6f, 0x74,
-	0x61, 0x6c, 0x12, 0x2f, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b,
-	0x32, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79,
-	0x73, 0x4d, 0x65, 0x6e, 0x75, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x6c,
-	0x69, 0x73, 0x74, 0x22, 0xee, 0x03, 0x0a, 0x0f, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x4c,
-	0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20,
-	0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1b, 0x0a, 0x09, 0x6d, 0x65, 0x6e, 0x75, 0x5f,
-	0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x6d, 0x65, 0x6e, 0x75,
-	0x54, 0x79, 0x70, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x74, 0x69, 0x74, 0x6c,
-	0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x05, 0x74, 0x69, 0x74, 0x6c, 0x65, 0x12, 0x12,
-	0x0a, 0x04, 0x70, 0x61, 0x74, 0x68, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61,
-	0x74, 0x68, 0x12, 0x1c, 0x0a, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74, 0x18,
-	0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x63, 0x6f, 0x6d, 0x70, 0x6f, 0x6e, 0x65, 0x6e, 0x74,
-	0x12, 0x1a, 0x0a, 0x08, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x18, 0x07, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x08, 0x72, 0x65, 0x64, 0x69, 0x72, 0x65, 0x63, 0x74, 0x12, 0x12, 0x0a, 0x04,
-	0x73, 0x6f, 0x72, 0x74, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74,
-	0x12, 0x12, 0x0a, 0x04, 0x69, 0x63, 0x6f, 0x6e, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04,
-	0x69, 0x63, 0x6f, 0x6e, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73, 0x5f, 0x68, 0x69, 0x64, 0x65, 0x18,
-	0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x69, 0x73, 0x48, 0x69, 0x64, 0x65, 0x12, 0x22, 0x0a,
-	0x0d, 0x69, 0x73, 0x5f, 0x6b, 0x65, 0x65, 0x70, 0x5f, 0x61, 0x6c, 0x69, 0x76, 0x65, 0x18, 0x0b,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x0b, 0x69, 0x73, 0x4b, 0x65, 0x65, 0x70, 0x41, 0x6c, 0x69, 0x76,
-	0x65, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x5f, 0x69, 0x64, 0x18, 0x0c,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x72, 0x65, 0x6e, 0x74, 0x49, 0x64, 0x12, 0x17,
-	0x0a, 0x07, 0x69, 0x73, 0x5f, 0x68, 0x6f, 0x6d, 0x65, 0x18, 0x0d, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x06, 0x69, 0x73, 0x48, 0x6f, 0x6d, 0x65, 0x12, 0x17, 0x0a, 0x07, 0x69, 0x73, 0x5f, 0x6d, 0x61,
-	0x69, 0x6e, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x69, 0x73, 0x4d, 0x61, 0x69, 0x6e,
-	0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x0f, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x4e,
-	0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61,
-	0x74, 0x18, 0x10, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64,
-	0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x11, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
-	0x5f, 0x61, 0x74, 0x18, 0x12, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x64, 0x41, 0x74, 0x22, 0x2d, 0x0a, 0x12, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x42,
-	0x79, 0x52, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x52, 0x65, 0x71, 0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f,
-	0x6c, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x06, 0x72, 0x6f, 0x6c,
-	0x65, 0x49, 0x64, 0x22, 0x46, 0x0a, 0x13, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x42, 0x79,
-	0x52, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x12, 0x2f, 0x0a, 0x04, 0x6c, 0x69,
-	0x73, 0x74, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63,
-	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x4c, 0x69, 0x73,
-	0x74, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0xe4, 0x01, 0x0a, 0x12,
-	0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x41, 0x64, 0x64, 0x52,
-	0x65, 0x71, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x74,
-	0x68, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68, 0x12, 0x25, 0x0a,
-	0x0e, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18,
-	0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65,
-	0x54, 0x79, 0x70, 0x65, 0x12, 0x30, 0x0a, 0x14, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63,
-	0x65, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x12, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x47, 0x72, 0x6f,
-	0x75, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b,
-	0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x12,
-	0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f,
-	0x72, 0x74, 0x22, 0x4a, 0x0a, 0x15, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61,
-	0x63, 0x65, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x64,
-	0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0b, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x22, 0xf7,
-	0x01, 0x0a, 0x15, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
-	0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e,
-	0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12,
-	0x12, 0x0a, 0x04, 0x70, 0x61, 0x74, 0x68, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70,
-	0x61, 0x74, 0x68, 0x12, 0x25, 0x0a, 0x0e, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65,
-	0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x69, 0x6e, 0x74,
-	0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x30, 0x0a, 0x14, 0x69, 0x6e,
-	0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66,
-	0x61, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06,
-	0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65,
-	0x6d, 0x61, 0x72, 0x6b, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x08, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x22, 0x28, 0x0a, 0x16, 0x53, 0x79, 0x73, 0x49,
-	0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52,
-	0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02,
-	0x69, 0x64, 0x22, 0xda, 0x02, 0x0a, 0x17, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66,
-	0x61, 0x63, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x0e,
-	0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1d,
-	0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x1d, 0x0a,
-	0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c,
-	0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12,
-	0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61,
-	0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x74, 0x68, 0x18, 0x07,
-	0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68, 0x12, 0x25, 0x0a, 0x0e, 0x69, 0x6e,
-	0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x08, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x0d, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x54, 0x79, 0x70,
-	0x65, 0x12, 0x30, 0x0a, 0x14, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x5f, 0x67,
-	0x72, 0x6f, 0x75, 0x70, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x12, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e,
-	0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x0a, 0x20,
-	0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x12, 0x0a, 0x04, 0x73,
-	0x6f, 0x72, 0x74, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x22,
-	0xe5, 0x01, 0x0a, 0x13, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65,
-	0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x75, 0x72, 0x72, 0x65,
-	0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e,
-	0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x69, 0x7a, 0x65, 0x18, 0x02,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x12,
-	0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x70, 0x61, 0x74, 0x68, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x04, 0x70, 0x61, 0x74, 0x68, 0x12, 0x25, 0x0a, 0x0e, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66,
-	0x61, 0x63, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d,
-	0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x30, 0x0a,
-	0x14, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70,
-	0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x69, 0x6e, 0x74,
-	0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x12,
-	0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x22, 0x62, 0x0a, 0x14, 0x53, 0x79, 0x73, 0x49, 0x6e,
-	0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12,
-	0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05,
-	0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x34, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
-	0x2e, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x4c, 0x69, 0x73,
-	0x74, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0xd7, 0x02, 0x0a, 0x14,
-	0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x4c, 0x69, 0x73, 0x74,
-	0x44, 0x61, 0x74, 0x61, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x02, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f,
-	0x61, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x41, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61,
-	0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
-	0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
-	0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04,
-	0x70, 0x61, 0x74, 0x68, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x70, 0x61, 0x74, 0x68,
-	0x12, 0x25, 0x0a, 0x0e, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x5f, 0x74, 0x79,
-	0x70, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0d, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66,
-	0x61, 0x63, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x30, 0x0a, 0x14, 0x69, 0x6e, 0x74, 0x65, 0x72,
-	0x66, 0x61, 0x63, 0x65, 0x5f, 0x67, 0x72, 0x6f, 0x75, 0x70, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x12, 0x69, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65,
-	0x47, 0x72, 0x6f, 0x75, 0x70, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d,
-	0x61, 0x72, 0x6b, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72,
-	0x6b, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x04, 0x73, 0x6f, 0x72, 0x74, 0x22, 0x32, 0x0a, 0x17, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65,
-	0x72, 0x66, 0x61, 0x63, 0x65, 0x42, 0x79, 0x52, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x52, 0x65, 0x71,
-	0x12, 0x17, 0x0a, 0x07, 0x72, 0x6f, 0x6c, 0x65, 0x5f, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x06, 0x72, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x22, 0x50, 0x0a, 0x18, 0x53, 0x79, 0x73,
-	0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x42, 0x79, 0x52, 0x6f, 0x6c, 0x65, 0x49,
-	0x64, 0x52, 0x65, 0x73, 0x70, 0x12, 0x34, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x01, 0x20,
-	0x03, 0x28, 0x0b, 0x32, 0x20, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
-	0x2e, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x4c, 0x69, 0x73,
-	0x74, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0xa9, 0x01, 0x0a, 0x11,
-	0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x41, 0x64, 0x64, 0x52, 0x65,
-	0x71, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d,
-	0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64,
-	0x4e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x69, 0x63, 0x74,
-	0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x64, 0x69, 0x63,
-	0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x04,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72,
-	0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d,
-	0x61, 0x72, 0x6b, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x06, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x22, 0x49, 0x0a, 0x14, 0x53, 0x79, 0x73, 0x44, 0x69,
-	0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12,
-	0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12,
-	0x21, 0x0a, 0x0c, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x4e, 0x61,
-	0x6d, 0x65, 0x22, 0xbc, 0x01, 0x0a, 0x14, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79,
-	0x70, 0x65, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69,
-	0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x75,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x12,
-	0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x69, 0x63, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18,
-	0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x64, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12,
-	0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05,
-	0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18,
-	0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x12, 0x0a,
-	0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x07, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72,
-	0x74, 0x22, 0x27, 0x0a, 0x15, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65,
-	0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64,
-	0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x22, 0x9f, 0x02, 0x0a, 0x16, 0x53,
-	0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e,
-	0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64,
-	0x5f, 0x61, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x64, 0x41, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f,
-	0x61, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x64, 0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e,
-	0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74,
-	0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65,
-	0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d,
-	0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a,
-	0x09, 0x64, 0x69, 0x63, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x08, 0x64, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74,
-	0x61, 0x74, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65,
-	0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74,
-	0x18, 0x0a, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x22, 0xaa, 0x01, 0x0a,
-	0x12, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x4c, 0x69, 0x73, 0x74,
-	0x52, 0x65, 0x71, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x63, 0x75, 0x72, 0x72, 0x65, 0x6e, 0x74, 0x12, 0x1b, 0x0a,
-	0x09, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x69, 0x7a, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1b,
-	0x0a, 0x09, 0x64, 0x69, 0x63, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x08, 0x64, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x73,
-	0x74, 0x61, 0x74, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74,
-	0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x06, 0x20, 0x01, 0x28,
-	0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x22, 0x60, 0x0a, 0x13, 0x53, 0x79, 0x73,
-	0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70,
-	0x12, 0x14, 0x0a, 0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x05, 0x74, 0x6f, 0x74, 0x61, 0x6c, 0x12, 0x33, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02,
-	0x20, 0x03, 0x28, 0x0b, 0x32, 0x1f, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
-	0x74, 0x2e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x4c, 0x69, 0x73,
-	0x74, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x22, 0x9c, 0x02, 0x0a, 0x13,
-	0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x44,
-	0x61, 0x74, 0x61, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x02, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61,
-	0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64,
-	0x41, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61, 0x74,
-	0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x41,
-	0x74, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d,
-	0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64,
-	0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f,
-	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18,
-	0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64,
-	0x69, 0x63, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08,
-	0x64, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74,
-	0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x12, 0x16,
-	0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
-	0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x0a,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x22, 0xcf, 0x01, 0x0a, 0x0d, 0x53,
-	0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x12, 0x21, 0x0a, 0x0c,
-	0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12,
-	0x1b, 0x0a, 0x09, 0x64, 0x69, 0x63, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x08, 0x64, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1d, 0x0a, 0x0a,
-	0x64, 0x69, 0x63, 0x74, 0x5f, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x09, 0x64, 0x69, 0x63, 0x74, 0x4c, 0x61, 0x62, 0x65, 0x6c, 0x12, 0x1d, 0x0a, 0x0a, 0x64,
-	0x69, 0x63, 0x74, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x09, 0x64, 0x69, 0x63, 0x74, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f,
-	0x72, 0x74, 0x18, 0x05, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x12, 0x16,
-	0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06,
-	0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18,
-	0x07, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x45, 0x0a, 0x10,
-	0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71,
-	0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64,
-	0x12, 0x21, 0x0a, 0x0c, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65,
-	0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x64, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x64, 0x4e,
-	0x61, 0x6d, 0x65, 0x22, 0xe2, 0x01, 0x0a, 0x10, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x55,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,
-	0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64,
-	0x69, 0x63, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08,
-	0x64, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x64, 0x69, 0x63, 0x74,
-	0x5f, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x64, 0x69,
-	0x63, 0x74, 0x4c, 0x61, 0x62, 0x65, 0x6c, 0x12, 0x1d, 0x0a, 0x0a, 0x64, 0x69, 0x63, 0x74, 0x5f,
-	0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x64, 0x69, 0x63,
-	0x74, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x06,
-	0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65,
-	0x6d, 0x61, 0x72, 0x6b, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61,
-	0x72, 0x6b, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x23, 0x0a, 0x11, 0x53, 0x79, 0x73, 0x44,
-	0x69, 0x63, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x12, 0x0e, 0x0a,
-	0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x22, 0xc5, 0x02,
-	0x0a, 0x12, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65,
-	0x52, 0x65, 0x73, 0x70, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x02, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f,
-	0x61, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x41, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x61,
-	0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
-	0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f, 0x6e, 0x61,
-	0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
-	0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x69, 0x63, 0x74,
-	0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x64, 0x69, 0x63,
-	0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x64, 0x69, 0x63, 0x74, 0x5f, 0x6c, 0x61,
-	0x62, 0x65, 0x6c, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x64, 0x69, 0x63, 0x74, 0x4c,
-	0x61, 0x62, 0x65, 0x6c, 0x12, 0x1d, 0x0a, 0x0a, 0x64, 0x69, 0x63, 0x74, 0x5f, 0x76, 0x61, 0x6c,
-	0x75, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x64, 0x69, 0x63, 0x74, 0x56, 0x61,
-	0x6c, 0x75, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x09, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72,
-	0x6b, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72, 0x6b, 0x12,
-	0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05,
-	0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0xd0, 0x01, 0x0a, 0x0e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63,
-	0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x12, 0x18, 0x0a, 0x07, 0x63, 0x75, 0x72, 0x72,
-	0x65, 0x6e, 0x74, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x07, 0x63, 0x75, 0x72, 0x72, 0x65,
-	0x6e, 0x74, 0x12, 0x1b, 0x0a, 0x09, 0x70, 0x61, 0x67, 0x65, 0x5f, 0x73, 0x69, 0x7a, 0x65, 0x18,
-	0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x08, 0x70, 0x61, 0x67, 0x65, 0x53, 0x69, 0x7a, 0x65, 0x12,
-	0x1b, 0x0a, 0x09, 0x64, 0x69, 0x63, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x03, 0x20, 0x01,
-	0x28, 0x09, 0x52, 0x08, 0x64, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1d, 0x0a, 0x0a,
-	0x64, 0x69, 0x63, 0x74, 0x5f, 0x6c, 0x61, 0x62, 0x65, 0x6c, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09,
-	0x52, 0x09, 0x64, 0x69, 0x63, 0x74, 0x4c, 0x61, 0x62, 0x65, 0x6c, 0x12, 0x1d, 0x0a, 0x0a, 0x64,
-	0x69, 0x63, 0x74, 0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52,
-	0x09, 0x64, 0x69, 0x63, 0x74, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65,
-	0x6d, 0x61, 0x72, 0x6b, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61,
-	0x72, 0x6b, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28,
-	0x03, 0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x58, 0x0a, 0x0f, 0x53, 0x79, 0x73, 0x44,
-	0x69, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x14, 0x0a, 0x05, 0x74,
-	0x6f, 0x74, 0x61, 0x6c, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x74, 0x6f, 0x74, 0x61,
-	0x6c, 0x12, 0x2f, 0x0a, 0x04, 0x6c, 0x69, 0x73, 0x74, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32,
-	0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73,
-	0x44, 0x69, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x52, 0x04, 0x6c, 0x69,
-	0x73, 0x74, 0x22, 0xc2, 0x02, 0x0a, 0x0f, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x4c, 0x69,
-	0x73, 0x74, 0x44, 0x61, 0x74, 0x61, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01,
-	0x28, 0x03, 0x52, 0x02, 0x69, 0x64, 0x12, 0x1d, 0x0a, 0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65,
-	0x64, 0x5f, 0x61, 0x74, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x63, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x64, 0x41, 0x74, 0x12, 0x1d, 0x0a, 0x0a, 0x75, 0x70, 0x64, 0x61, 0x74, 0x65, 0x64,
-	0x5f, 0x61, 0x74, 0x18, 0x03, 0x20, 0x01, 0x28, 0x03, 0x52, 0x09, 0x75, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x64, 0x41, 0x74, 0x12, 0x21, 0x0a, 0x0c, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x64, 0x5f,
-	0x6e, 0x61, 0x6d, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x63, 0x72, 0x65, 0x61,
-	0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x21, 0x0a, 0x0c, 0x75, 0x70, 0x64, 0x61, 0x74,
-	0x65, 0x64, 0x5f, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x05, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b, 0x75,
-	0x70, 0x64, 0x61, 0x74, 0x65, 0x64, 0x4e, 0x61, 0x6d, 0x65, 0x12, 0x1b, 0x0a, 0x09, 0x64, 0x69,
-	0x63, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x08, 0x64,
-	0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x64, 0x69, 0x63, 0x74, 0x5f,
-	0x6c, 0x61, 0x62, 0x65, 0x6c, 0x18, 0x07, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x64, 0x69, 0x63,
-	0x74, 0x4c, 0x61, 0x62, 0x65, 0x6c, 0x12, 0x1d, 0x0a, 0x0a, 0x64, 0x69, 0x63, 0x74, 0x5f, 0x76,
-	0x61, 0x6c, 0x75, 0x65, 0x18, 0x08, 0x20, 0x01, 0x28, 0x09, 0x52, 0x09, 0x64, 0x69, 0x63, 0x74,
-	0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x18, 0x09, 0x20,
-	0x01, 0x28, 0x03, 0x52, 0x04, 0x73, 0x6f, 0x72, 0x74, 0x12, 0x16, 0x0a, 0x06, 0x72, 0x65, 0x6d,
-	0x61, 0x72, 0x6b, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09, 0x52, 0x06, 0x72, 0x65, 0x6d, 0x61, 0x72,
-	0x6b, 0x12, 0x14, 0x0a, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x03,
-	0x52, 0x05, 0x73, 0x74, 0x61, 0x74, 0x65, 0x22, 0x8d, 0x02, 0x0a, 0x0f, 0x54, 0x70, 0x6d, 0x74,
+	0x75, 0x6c, 0x65, 0x44, 0x61, 0x74, 0x61, 0x22, 0x8d, 0x02, 0x0a, 0x0f, 0x54, 0x70, 0x6d, 0x74,
 	0x41, 0x73, 0x73, 0x65, 0x74, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x12, 0x1d, 0x0a, 0x0a, 0x61,
 	0x73, 0x73, 0x65, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52,
 	0x09, 0x61, 0x73, 0x73, 0x65, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1d, 0x0a, 0x0a, 0x61, 0x73,
@@ -11196,301 +5116,111 @@ var file_tpmt_proto_rawDesc = []byte{
 	0x5f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0c, 0x6d, 0x6f,
 	0x6e, 0x69, 0x74, 0x6f, 0x72, 0x56, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x1f, 0x0a, 0x0b, 0x63, 0x72,
 	0x65, 0x61, 0x74, 0x65, 0x5f, 0x74, 0x69, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52,
-	0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x32, 0xc4, 0x24, 0x0a, 0x04,
-	0x54, 0x70, 0x6d, 0x74, 0x12, 0x43, 0x0a, 0x08, 0x53, 0x79, 0x73, 0x4c, 0x6f, 0x67, 0x69, 0x6e,
-	0x12, 0x17, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79,
-	0x73, 0x4c, 0x6f, 0x67, 0x69, 0x6e, 0x52, 0x65, 0x71, 0x1a, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x46, 0x69,
-	0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3f, 0x0a, 0x0a, 0x53, 0x79, 0x73,
-	0x55, 0x73, 0x65, 0x72, 0x41, 0x64, 0x64, 0x12, 0x19, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
-	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x41, 0x64, 0x64, 0x52,
-	0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
-	0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x45, 0x0a, 0x0d, 0x53, 0x79,
-	0x73, 0x55, 0x73, 0x65, 0x72, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x1c, 0x2e, 0x74, 0x70,
-	0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72,
-	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x45, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x12, 0x1c, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
-	0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71,
-	0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f,
-	0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4f, 0x0a, 0x0e, 0x53, 0x79, 0x73, 0x55,
-	0x73, 0x65, 0x72, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12, 0x1d, 0x2e, 0x74, 0x70, 0x6d,
-	0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x46,
-	0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x46, 0x69,
-	0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x46, 0x0a, 0x0b, 0x53, 0x79, 0x73,
-	0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1a, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63,
-	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73,
-	0x74, 0x52, 0x65, 0x71, 0x1a, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
-	0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x52, 0x0a, 0x0f, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x65,
-	0x74, 0x50, 0x77, 0x64, 0x12, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
-	0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x65, 0x74, 0x50, 0x77,
-	0x64, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
-	0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x52, 0x65, 0x73, 0x65, 0x74, 0x50, 0x77,
-	0x64, 0x52, 0x65, 0x73, 0x70, 0x12, 0x47, 0x0a, 0x0e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72,
-	0x55, 0x70, 0x4d, 0x79, 0x50, 0x77, 0x64, 0x12, 0x1d, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
-	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x55, 0x73, 0x65, 0x72, 0x55, 0x70, 0x4d, 0x79,
-	0x50, 0x77, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69,
-	0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3f,
-	0x0a, 0x0a, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x41, 0x64, 0x64, 0x12, 0x19, 0x2e, 0x74,
-	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74,
-	0x68, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
-	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12,
-	0x45, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x12, 0x1c, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79,
-	0x73, 0x41, 0x75, 0x74, 0x68, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x45, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74,
-	0x68, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12, 0x1c, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
-	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65,
-	0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4f, 0x0a,
-	0x0e, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12,
-	0x1d, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73,
-	0x41, 0x75, 0x74, 0x68, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1e,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x41,
-	0x75, 0x74, 0x68, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x46,
-	0x0a, 0x0b, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1a, 0x2e,
-	0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x41, 0x75,
-	0x74, 0x68, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x41, 0x75, 0x74, 0x68, 0x4c, 0x69,
-	0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3f, 0x0a, 0x0a, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c,
-	0x65, 0x41, 0x64, 0x64, 0x12, 0x19, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
-	0x74, 0x2e, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x1a,
-	0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d,
-	0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x45, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x52, 0x6f,
-	0x6c, 0x65, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x1c, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63,
-	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x44, 0x65, 0x6c,
-	0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69,
-	0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x45,
-	0x0a, 0x0d, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12,
-	0x1c, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73,
-	0x52, 0x6f, 0x6c, 0x65, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e,
-	0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4f, 0x0a, 0x0e, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65,
-	0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12, 0x1d, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
-	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x46, 0x69, 0x6e, 0x64,
-	0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69,
-	0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f,
-	0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x46, 0x0a, 0x0b, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c,
-	0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1a, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65,
-	0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65,
-	0x71, 0x1a, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53,
-	0x79, 0x73, 0x52, 0x6f, 0x6c, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3f,
-	0x0a, 0x0a, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x41, 0x64, 0x64, 0x12, 0x19, 0x2e, 0x74,
-	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e,
-	0x75, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
-	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12,
-	0x45, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65,
-	0x12, 0x1c, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79,
-	0x73, 0x4d, 0x65, 0x6e, 0x75, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x45, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e,
-	0x75, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12, 0x1c, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
-	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65,
-	0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4f, 0x0a,
-	0x0e, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12,
-	0x1d, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73,
-	0x4d, 0x65, 0x6e, 0x75, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1e,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x4d,
-	0x65, 0x6e, 0x75, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x46,
-	0x0a, 0x0b, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1a, 0x2e,
-	0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x4d, 0x65,
-	0x6e, 0x75, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x4c, 0x69,
-	0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x52, 0x0a, 0x0f, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e,
-	0x75, 0x42, 0x79, 0x52, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x12, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x42, 0x79,
-	0x52, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x4d, 0x65, 0x6e, 0x75, 0x42, 0x79,
-	0x52, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x52, 0x65, 0x73, 0x70, 0x12, 0x49, 0x0a, 0x0f, 0x53, 0x79,
-	0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x41, 0x64, 0x64, 0x12, 0x1e, 0x2e,
-	0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x49, 0x6e,
-	0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e,
-	0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4f, 0x0a, 0x12, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65,
-	0x72, 0x66, 0x61, 0x63, 0x65, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x21, 0x2e, 0x74, 0x70,
-	0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65,
-	0x72, 0x66, 0x61, 0x63, 0x65, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4f, 0x0a, 0x12, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74,
-	0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12, 0x21, 0x2e, 0x74,
-	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74,
-	0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a,
-	0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d,
-	0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5e, 0x0a, 0x13, 0x53, 0x79, 0x73, 0x49, 0x6e,
-	0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12, 0x22,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x49,
-	0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52,
-	0x65, 0x71, 0x1a, 0x23, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
-	0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x46, 0x69, 0x6e, 0x64,
-	0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x55, 0x0a, 0x10, 0x53, 0x79, 0x73, 0x49, 0x6e,
-	0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1f, 0x2e, 0x74, 0x70,
-	0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65,
-	0x72, 0x66, 0x61, 0x63, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x20, 0x2e, 0x74,
-	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74,
-	0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x61,
-	0x0a, 0x14, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65, 0x42, 0x79,
-	0x52, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x12, 0x23, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69,
-	0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65, 0x72, 0x66, 0x61, 0x63, 0x65,
-	0x42, 0x79, 0x52, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x74, 0x70,
-	0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x49, 0x6e, 0x74, 0x65,
-	0x72, 0x66, 0x61, 0x63, 0x65, 0x42, 0x79, 0x52, 0x6f, 0x6c, 0x65, 0x49, 0x64, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x47, 0x0a, 0x0e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65,
-	0x41, 0x64, 0x64, 0x12, 0x1d, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
-	0x2e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x41, 0x64, 0x64, 0x52,
-	0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
-	0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4d, 0x0a, 0x11, 0x53, 0x79,
-	0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12,
-	0x20, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73,
-	0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65,
+	0x0a, 0x63, 0x72, 0x65, 0x61, 0x74, 0x65, 0x54, 0x69, 0x6d, 0x65, 0x32, 0xe7, 0x0c, 0x0a, 0x04,
+	0x54, 0x70, 0x6d, 0x74, 0x12, 0x43, 0x0a, 0x0c, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65,
+	0x74, 0x41, 0x64, 0x64, 0x12, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
+	0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x41, 0x64, 0x64, 0x52, 0x65,
 	0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4d, 0x0a, 0x11, 0x53, 0x79, 0x73,
-	0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12, 0x20,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x44,
-	0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71,
-	0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f,
-	0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5b, 0x0a, 0x12, 0x53, 0x79, 0x73, 0x44,
-	0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12, 0x21,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x44,
-	0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65,
-	0x71, 0x1a, 0x22, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53,
-	0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e,
-	0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x52, 0x0a, 0x0f, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74,
-	0x54, 0x79, 0x70, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63,
-	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70,
-	0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63,
-	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x54, 0x79, 0x70,
-	0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x3f, 0x0a, 0x0a, 0x53, 0x79, 0x73,
-	0x44, 0x69, 0x63, 0x74, 0x41, 0x64, 0x64, 0x12, 0x19, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
-	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x41, 0x64, 0x64, 0x52,
-	0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
-	0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x45, 0x0a, 0x0d, 0x53, 0x79,
-	0x73, 0x44, 0x69, 0x63, 0x74, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x1c, 0x2e, 0x74, 0x70,
-	0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74,
-	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x45, 0x0a, 0x0d, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x55, 0x70, 0x64, 0x61,
-	0x74, 0x65, 0x12, 0x1c, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
-	0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71,
-	0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f,
-	0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4f, 0x0a, 0x0e, 0x53, 0x79, 0x73, 0x44,
-	0x69, 0x63, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12, 0x1d, 0x2e, 0x74, 0x70, 0x6d,
-	0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x46,
-	0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x46, 0x69,
-	0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x46, 0x0a, 0x0b, 0x53, 0x79, 0x73,
-	0x44, 0x69, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1a, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63,
-	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x4c, 0x69, 0x73,
-	0x74, 0x52, 0x65, 0x71, 0x1a, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
-	0x74, 0x2e, 0x53, 0x79, 0x73, 0x44, 0x69, 0x63, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x43, 0x0a, 0x0c, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x41, 0x64,
-	0x64, 0x12, 0x1b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54,
-	0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x16,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d,
-	0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x49, 0x0a, 0x0f, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73,
-	0x73, 0x65, 0x74, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74,
-	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74,
-	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x49, 0x0a, 0x0f, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x55, 0x70,
-	0x64, 0x61, 0x74, 0x65, 0x12, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
-	0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x49, 0x0a, 0x0f, 0x54, 0x70, 0x6d,
+	0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x1e, 0x2e, 0x74,
+	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73,
+	0x73, 0x65, 0x74, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74,
+	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x49, 0x0a, 0x0f, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65,
+	0x74, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
+	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x55, 0x70,
+	0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
+	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x55, 0x0a, 0x10, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x46, 0x69, 0x6e, 0x64,
+	0x4f, 0x6e, 0x65, 0x12, 0x1f, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
+	0x2e, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e,
+	0x65, 0x52, 0x65, 0x71, 0x1a, 0x20, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
+	0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f,
+	0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4c, 0x0a, 0x0d, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73,
+	0x73, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1c, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
+	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x4c, 0x69,
+	0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1d, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65,
+	0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74,
+	0x52, 0x65, 0x73, 0x70, 0x12, 0x47, 0x0a, 0x0e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65,
+	0x77, 0x61, 0x79, 0x41, 0x64, 0x64, 0x12, 0x1d, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69,
+	0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x41,
+	0x64, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65,
+	0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4d, 0x0a,
+	0x11, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x44, 0x65, 0x6c, 0x65,
+	0x74, 0x65, 0x12, 0x20, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
+	0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x44, 0x65, 0x6c, 0x65, 0x74,
 	0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
-	0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x55, 0x0a, 0x10,
-	0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65,
-	0x12, 0x1f, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70,
-	0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65,
-	0x71, 0x1a, 0x20, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54,
-	0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52,
-	0x65, 0x73, 0x70, 0x12, 0x4c, 0x0a, 0x0d, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74,
-	0x4c, 0x69, 0x73, 0x74, 0x12, 0x1c, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
-	0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52,
-	0x65, 0x71, 0x1a, 0x1d, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
-	0x54, 0x70, 0x6d, 0x74, 0x41, 0x73, 0x73, 0x65, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73,
-	0x70, 0x12, 0x47, 0x0a, 0x0e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79,
-	0x41, 0x64, 0x64, 0x12, 0x1d, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
-	0x2e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x41, 0x64, 0x64, 0x52,
-	0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
-	0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4d, 0x0a, 0x11, 0x54, 0x70,
-	0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12,
-	0x20, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d,
-	0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65,
-	0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43,
-	0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4d, 0x0a, 0x11, 0x54, 0x70, 0x6d,
-	0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12, 0x20,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74,
-	0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71,
-	0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f,
-	0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5b, 0x0a, 0x12, 0x54, 0x70, 0x6d, 0x74,
-	0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12, 0x21,
-	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74,
-	0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65,
-	0x71, 0x1a, 0x22, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54,
+	0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x4d, 0x0a, 0x11,
+	0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x55, 0x70, 0x64, 0x61, 0x74,
+	0x65, 0x12, 0x20, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54,
+	0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65,
+	0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
+	0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x5b, 0x0a, 0x12, 0x54,
 	0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e,
-	0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x52, 0x0a, 0x0f, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74,
-	0x65, 0x77, 0x61, 0x79, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1e, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63,
-	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61,
-	0x79, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63,
-	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61,
-	0x79, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x13, 0x54, 0x70, 0x6d,
-	0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x41, 0x64, 0x64,
-	0x12, 0x22, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70,
-	0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x41, 0x64,
-	0x64, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
-	0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x16,
+	0x65, 0x12, 0x21, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54,
+	0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e,
+	0x65, 0x52, 0x65, 0x71, 0x1a, 0x22, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
+	0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x46, 0x69, 0x6e,
+	0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x52, 0x0a, 0x0f, 0x54, 0x70, 0x6d, 0x74,
+	0x47, 0x61, 0x74, 0x65, 0x77, 0x61, 0x79, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x1e, 0x2e, 0x74, 0x70,
+	0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74,
+	0x65, 0x77, 0x61, 0x79, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x1f, 0x2e, 0x74, 0x70,
+	0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x47, 0x61, 0x74,
+	0x65, 0x77, 0x61, 0x79, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x51, 0x0a, 0x13,
 	0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74,
-	0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x25, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69,
-	0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50,
-	0x6f, 0x69, 0x6e, 0x74, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e,
-	0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f,
-	0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x16, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e,
-	0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x12,
-	0x25, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d,
-	0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x55, 0x70, 0x64,
-	0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69,
-	0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x6a,
-	0x0a, 0x17, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69,
-	0x6e, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12, 0x26, 0x2e, 0x74, 0x70, 0x6d, 0x74,
+	0x41, 0x64, 0x64, 0x12, 0x22, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74,
+	0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e,
+	0x74, 0x41, 0x64, 0x64, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
+	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12,
+	0x57, 0x0a, 0x16, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f,
+	0x69, 0x6e, 0x74, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x12, 0x25, 0x2e, 0x74, 0x70, 0x6d, 0x74,
 	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74,
-	0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65,
-	0x71, 0x1a, 0x27, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54,
-	0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x46,
-	0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x61, 0x0a, 0x14, 0x54, 0x70,
-	0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x4c, 0x69,
-	0x73, 0x74, 0x12, 0x23, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
+	0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x44, 0x65, 0x6c, 0x65, 0x74, 0x65, 0x52, 0x65, 0x71,
+	0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f,
+	0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73, 0x70, 0x12, 0x57, 0x0a, 0x16, 0x54, 0x70, 0x6d, 0x74,
+	0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x55, 0x70, 0x64, 0x61,
+	0x74, 0x65, 0x12, 0x25, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e,
 	0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74,
-	0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c,
-	0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72,
-	0x50, 0x6f, 0x69, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x79, 0x0a,
-	0x1c, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e,
-	0x74, 0x52, 0x65, 0x61, 0x6c, 0x54, 0x69, 0x6d, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x2b, 0x2e,
+	0x55, 0x70, 0x64, 0x61, 0x74, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x16, 0x2e, 0x74, 0x70, 0x6d, 0x74,
+	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x43, 0x6f, 0x6d, 0x6d, 0x6f, 0x6e, 0x52, 0x65, 0x73,
+	0x70, 0x12, 0x6a, 0x0a, 0x17, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72,
+	0x50, 0x6f, 0x69, 0x6e, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12, 0x26, 0x2e, 0x74,
+	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f,
+	0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e,
+	0x65, 0x52, 0x65, 0x71, 0x1a, 0x27, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e,
+	0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69,
+	0x6e, 0x74, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x61, 0x0a,
+	0x14, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e,
+	0x74, 0x4c, 0x69, 0x73, 0x74, 0x12, 0x23, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65,
+	0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f,
+	0x69, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x24, 0x2e, 0x74, 0x70, 0x6d,
+	0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69,
+	0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x79, 0x0a, 0x1c, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50,
+	0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65, 0x61, 0x6c, 0x54, 0x69, 0x6d, 0x65, 0x4c, 0x69, 0x73, 0x74,
+	0x12, 0x2b, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70,
+	0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65,
+	0x61, 0x6c, 0x54, 0x69, 0x6d, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x2c, 0x2e,
 	0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d,
 	0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65, 0x61, 0x6c, 0x54,
-	0x69, 0x6d, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x71, 0x1a, 0x2c, 0x2e, 0x74, 0x70, 0x6d,
-	0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69,
-	0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65, 0x61, 0x6c, 0x54, 0x69, 0x6d, 0x65,
-	0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x82, 0x01, 0x0a, 0x1f, 0x54, 0x70, 0x6d,
+	0x69, 0x6d, 0x65, 0x4c, 0x69, 0x73, 0x74, 0x52, 0x65, 0x73, 0x70, 0x12, 0x82, 0x01, 0x0a, 0x1f,
+	0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74,
+	0x52, 0x65, 0x61, 0x6c, 0x54, 0x69, 0x6d, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12,
+	0x2e, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d,
 	0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65, 0x61,
-	0x6c, 0x54, 0x69, 0x6d, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x12, 0x2e, 0x2e, 0x74,
-	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f,
-	0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65, 0x61, 0x6c, 0x54, 0x69,
-	0x6d, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a, 0x2f, 0x2e, 0x74,
-	0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f,
-	0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65, 0x61, 0x6c, 0x54, 0x69,
-	0x6d, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70, 0x12, 0x73, 0x0a,
-	0x1a, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e,
-	0x74, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x69, 0x63, 0x61, 0x6c, 0x12, 0x29, 0x2e, 0x74, 0x70,
-	0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e,
-	0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x69,
-	0x63, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x1a, 0x2a, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69,
-	0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50,
-	0x6f, 0x69, 0x6e, 0x74, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x69, 0x63, 0x61, 0x6c, 0x52, 0x65,
-	0x73, 0x70, 0x42, 0x0e, 0x5a, 0x0c, 0x2e, 0x2f, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65,
-	0x6e, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
+	0x6c, 0x54, 0x69, 0x6d, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x71, 0x1a,
+	0x2f, 0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d,
+	0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x52, 0x65, 0x61,
+	0x6c, 0x54, 0x69, 0x6d, 0x65, 0x46, 0x69, 0x6e, 0x64, 0x4f, 0x6e, 0x65, 0x52, 0x65, 0x73, 0x70,
+	0x12, 0x73, 0x0a, 0x1a, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50,
+	0x6f, 0x69, 0x6e, 0x74, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x69, 0x63, 0x61, 0x6c, 0x12, 0x29,
+	0x2e, 0x74, 0x70, 0x6d, 0x74, 0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74,
+	0x4d, 0x6f, 0x6e, 0x69, 0x74, 0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x48, 0x69, 0x73, 0x74,
+	0x6f, 0x72, 0x69, 0x63, 0x61, 0x6c, 0x52, 0x65, 0x71, 0x1a, 0x2a, 0x2e, 0x74, 0x70, 0x6d, 0x74,
+	0x63, 0x6c, 0x69, 0x65, 0x6e, 0x74, 0x2e, 0x54, 0x70, 0x6d, 0x74, 0x4d, 0x6f, 0x6e, 0x69, 0x74,
+	0x6f, 0x72, 0x50, 0x6f, 0x69, 0x6e, 0x74, 0x48, 0x69, 0x73, 0x74, 0x6f, 0x72, 0x69, 0x63, 0x61,
+	0x6c, 0x52, 0x65, 0x73, 0x70, 0x42, 0x0e, 0x5a, 0x0c, 0x2e, 0x2f, 0x74, 0x70, 0x6d, 0x74, 0x63,
+	0x6c, 0x69, 0x65, 0x6e, 0x74, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x33,
 }
 
 var (
@@ -11505,247 +5235,94 @@ func file_tpmt_proto_rawDescGZIP() []byte {
 	return file_tpmt_proto_rawDescData
 }
 
-var file_tpmt_proto_msgTypes = make([]protoimpl.MessageInfo, 98)
+var file_tpmt_proto_msgTypes = make([]protoimpl.MessageInfo, 34)
 var file_tpmt_proto_goTypes = []interface{}{
 	(*CommonResp)(nil),                          // 0: tpmtclient.CommonResp
 	(*AlarmRuleInfo)(nil),                       // 1: tpmtclient.AlarmRuleInfo
-	(*SysUserAddReq)(nil),                       // 2: tpmtclient.SysUserAddReq
-	(*SysUserDeleteReq)(nil),                    // 3: tpmtclient.SysUserDeleteReq
-	(*SysUserUpdateReq)(nil),                    // 4: tpmtclient.SysUserUpdateReq
-	(*SysUserFindOneReq)(nil),                   // 5: tpmtclient.SysUserFindOneReq
-	(*SysUserFindOneResp)(nil),                  // 6: tpmtclient.SysUserFindOneResp
-	(*SysUserListReq)(nil),                      // 7: tpmtclient.SysUserListReq
-	(*SysUserListResp)(nil),                     // 8: tpmtclient.SysUserListResp
-	(*SysUserListData)(nil),                     // 9: tpmtclient.SysUserListData
-	(*SysLoginReq)(nil),                         // 10: tpmtclient.SysLoginReq
-	(*SysUserResetPwdReq)(nil),                  // 11: tpmtclient.SysUserResetPwdReq
-	(*SysUserResetPwdResp)(nil),                 // 12: tpmtclient.SysUserResetPwdResp
-	(*SysUserUpMyPwdReq)(nil),                   // 13: tpmtclient.SysUserUpMyPwdReq
-	(*SysAuthAddReq)(nil),                       // 14: tpmtclient.SysAuthAddReq
-	(*SysAuthDeleteReq)(nil),                    // 15: tpmtclient.SysAuthDeleteReq
-	(*SysAuthUpdateReq)(nil),                    // 16: tpmtclient.SysAuthUpdateReq
-	(*SysAuthFindOneReq)(nil),                   // 17: tpmtclient.SysAuthFindOneReq
-	(*SysAuthFindOneResp)(nil),                  // 18: tpmtclient.SysAuthFindOneResp
-	(*SysAuthListReq)(nil),                      // 19: tpmtclient.SysAuthListReq
-	(*SysAuthListResp)(nil),                     // 20: tpmtclient.SysAuthListResp
-	(*SysAuthListData)(nil),                     // 21: tpmtclient.SysAuthListData
-	(*SysRoleAddReq)(nil),                       // 22: tpmtclient.SysRoleAddReq
-	(*SysRoleDeleteReq)(nil),                    // 23: tpmtclient.SysRoleDeleteReq
-	(*SysRoleUpdateReq)(nil),                    // 24: tpmtclient.SysRoleUpdateReq
-	(*SysRoleFindOneReq)(nil),                   // 25: tpmtclient.SysRoleFindOneReq
-	(*SysRoleFindOneResp)(nil),                  // 26: tpmtclient.SysRoleFindOneResp
-	(*SysRoleListReq)(nil),                      // 27: tpmtclient.SysRoleListReq
-	(*SysRoleListResp)(nil),                     // 28: tpmtclient.SysRoleListResp
-	(*SysRoleListData)(nil),                     // 29: tpmtclient.SysRoleListData
-	(*SysMenuAddReq)(nil),                       // 30: tpmtclient.SysMenuAddReq
-	(*SysMenuDeleteReq)(nil),                    // 31: tpmtclient.SysMenuDeleteReq
-	(*SysMenuUpdateReq)(nil),                    // 32: tpmtclient.SysMenuUpdateReq
-	(*SysMenuFindOneReq)(nil),                   // 33: tpmtclient.SysMenuFindOneReq
-	(*SysMenuFindOneResp)(nil),                  // 34: tpmtclient.SysMenuFindOneResp
-	(*SysMenuListReq)(nil),                      // 35: tpmtclient.SysMenuListReq
-	(*SysMenuListResp)(nil),                     // 36: tpmtclient.SysMenuListResp
-	(*SysMenuListData)(nil),                     // 37: tpmtclient.SysMenuListData
-	(*SysMenuByRoleIdReq)(nil),                  // 38: tpmtclient.SysMenuByRoleIdReq
-	(*SysMenuByRoleIdResp)(nil),                 // 39: tpmtclient.SysMenuByRoleIdResp
-	(*SysInterfaceAddReq)(nil),                  // 40: tpmtclient.SysInterfaceAddReq
-	(*SysInterfaceDeleteReq)(nil),               // 41: tpmtclient.SysInterfaceDeleteReq
-	(*SysInterfaceUpdateReq)(nil),               // 42: tpmtclient.SysInterfaceUpdateReq
-	(*SysInterfaceFindOneReq)(nil),              // 43: tpmtclient.SysInterfaceFindOneReq
-	(*SysInterfaceFindOneResp)(nil),             // 44: tpmtclient.SysInterfaceFindOneResp
-	(*SysInterfaceListReq)(nil),                 // 45: tpmtclient.SysInterfaceListReq
-	(*SysInterfaceListResp)(nil),                // 46: tpmtclient.SysInterfaceListResp
-	(*SysInterfaceListData)(nil),                // 47: tpmtclient.SysInterfaceListData
-	(*SysInterfaceByRoleIdReq)(nil),             // 48: tpmtclient.SysInterfaceByRoleIdReq
-	(*SysInterfaceByRoleIdResp)(nil),            // 49: tpmtclient.SysInterfaceByRoleIdResp
-	(*SysDictTypeAddReq)(nil),                   // 50: tpmtclient.SysDictTypeAddReq
-	(*SysDictTypeDeleteReq)(nil),                // 51: tpmtclient.SysDictTypeDeleteReq
-	(*SysDictTypeUpdateReq)(nil),                // 52: tpmtclient.SysDictTypeUpdateReq
-	(*SysDictTypeFindOneReq)(nil),               // 53: tpmtclient.SysDictTypeFindOneReq
-	(*SysDictTypeFindOneResp)(nil),              // 54: tpmtclient.SysDictTypeFindOneResp
-	(*SysDictTypeListReq)(nil),                  // 55: tpmtclient.SysDictTypeListReq
-	(*SysDictTypeListResp)(nil),                 // 56: tpmtclient.SysDictTypeListResp
-	(*SysDictTypeListData)(nil),                 // 57: tpmtclient.SysDictTypeListData
-	(*SysDictAddReq)(nil),                       // 58: tpmtclient.SysDictAddReq
-	(*SysDictDeleteReq)(nil),                    // 59: tpmtclient.SysDictDeleteReq
-	(*SysDictUpdateReq)(nil),                    // 60: tpmtclient.SysDictUpdateReq
-	(*SysDictFindOneReq)(nil),                   // 61: tpmtclient.SysDictFindOneReq
-	(*SysDictFindOneResp)(nil),                  // 62: tpmtclient.SysDictFindOneResp
-	(*SysDictListReq)(nil),                      // 63: tpmtclient.SysDictListReq
-	(*SysDictListResp)(nil),                     // 64: tpmtclient.SysDictListResp
-	(*SysDictListData)(nil),                     // 65: tpmtclient.SysDictListData
-	(*TpmtAssetAddReq)(nil),                     // 66: tpmtclient.TpmtAssetAddReq
-	(*TpmtAssetDeleteReq)(nil),                  // 67: tpmtclient.TpmtAssetDeleteReq
-	(*TpmtAssetUpdateReq)(nil),                  // 68: tpmtclient.TpmtAssetUpdateReq
-	(*TpmtAssetFindOneReq)(nil),                 // 69: tpmtclient.TpmtAssetFindOneReq
-	(*TpmtAssetFindOneResp)(nil),                // 70: tpmtclient.TpmtAssetFindOneResp
-	(*TpmtAssetListReq)(nil),                    // 71: tpmtclient.TpmtAssetListReq
-	(*TpmtAssetListResp)(nil),                   // 72: tpmtclient.TpmtAssetListResp
-	(*TpmtAssetListData)(nil),                   // 73: tpmtclient.TpmtAssetListData
-	(*TpmtGatewayAddReq)(nil),                   // 74: tpmtclient.TpmtGatewayAddReq
-	(*TpmtGatewayDeleteReq)(nil),                // 75: tpmtclient.TpmtGatewayDeleteReq
-	(*TpmtGatewayUpdateReq)(nil),                // 76: tpmtclient.TpmtGatewayUpdateReq
-	(*TpmtGatewayFindOneReq)(nil),               // 77: tpmtclient.TpmtGatewayFindOneReq
-	(*TpmtGatewayFindOneResp)(nil),              // 78: tpmtclient.TpmtGatewayFindOneResp
-	(*TpmtGatewayListReq)(nil),                  // 79: tpmtclient.TpmtGatewayListReq
-	(*TpmtGatewayListResp)(nil),                 // 80: tpmtclient.TpmtGatewayListResp
-	(*TpmtGatewayListData)(nil),                 // 81: tpmtclient.TpmtGatewayListData
-	(*TpmtMonitorPointAddReq)(nil),              // 82: tpmtclient.TpmtMonitorPointAddReq
-	(*TpmtMonitorPointDeleteReq)(nil),           // 83: tpmtclient.TpmtMonitorPointDeleteReq
-	(*TpmtMonitorPointUpdateReq)(nil),           // 84: tpmtclient.TpmtMonitorPointUpdateReq
-	(*TpmtMonitorPointFindOneReq)(nil),          // 85: tpmtclient.TpmtMonitorPointFindOneReq
-	(*TpmtMonitorPointFindOneResp)(nil),         // 86: tpmtclient.TpmtMonitorPointFindOneResp
-	(*TpmtMonitorPointListReq)(nil),             // 87: tpmtclient.TpmtMonitorPointListReq
-	(*TpmtMonitorPointListResp)(nil),            // 88: tpmtclient.TpmtMonitorPointListResp
-	(*TpmtMonitorPointListData)(nil),            // 89: tpmtclient.TpmtMonitorPointListData
-	(*TpmtMonitorPointRealTimeListReq)(nil),     // 90: tpmtclient.TpmtMonitorPointRealTimeListReq
-	(*TpmtMonitorPointRealTimeListResp)(nil),    // 91: tpmtclient.TpmtMonitorPointRealTimeListResp
-	(*TpmtMonitorPointRealTimeData)(nil),        // 92: tpmtclient.TpmtMonitorPointRealTimeData
-	(*TpmtMonitorPointRealTimeFindOneReq)(nil),  // 93: tpmtclient.TpmtMonitorPointRealTimeFindOneReq
-	(*TpmtMonitorPointRealTimeFindOneResp)(nil), // 94: tpmtclient.TpmtMonitorPointRealTimeFindOneResp
-	(*TpmtMonitorPointHistoricalReq)(nil),       // 95: tpmtclient.TpmtMonitorPointHistoricalReq
-	(*TpmtMonitorPointHistoricalResp)(nil),      // 96: tpmtclient.TpmtMonitorPointHistoricalResp
-	(*TpmtMonitorPointHistoricalListData)(nil),  // 97: tpmtclient.TpmtMonitorPointHistoricalListData
+	(*TpmtAssetAddReq)(nil),                     // 2: tpmtclient.TpmtAssetAddReq
+	(*TpmtAssetDeleteReq)(nil),                  // 3: tpmtclient.TpmtAssetDeleteReq
+	(*TpmtAssetUpdateReq)(nil),                  // 4: tpmtclient.TpmtAssetUpdateReq
+	(*TpmtAssetFindOneReq)(nil),                 // 5: tpmtclient.TpmtAssetFindOneReq
+	(*TpmtAssetFindOneResp)(nil),                // 6: tpmtclient.TpmtAssetFindOneResp
+	(*TpmtAssetListReq)(nil),                    // 7: tpmtclient.TpmtAssetListReq
+	(*TpmtAssetListResp)(nil),                   // 8: tpmtclient.TpmtAssetListResp
+	(*TpmtAssetListData)(nil),                   // 9: tpmtclient.TpmtAssetListData
+	(*TpmtGatewayAddReq)(nil),                   // 10: tpmtclient.TpmtGatewayAddReq
+	(*TpmtGatewayDeleteReq)(nil),                // 11: tpmtclient.TpmtGatewayDeleteReq
+	(*TpmtGatewayUpdateReq)(nil),                // 12: tpmtclient.TpmtGatewayUpdateReq
+	(*TpmtGatewayFindOneReq)(nil),               // 13: tpmtclient.TpmtGatewayFindOneReq
+	(*TpmtGatewayFindOneResp)(nil),              // 14: tpmtclient.TpmtGatewayFindOneResp
+	(*TpmtGatewayListReq)(nil),                  // 15: tpmtclient.TpmtGatewayListReq
+	(*TpmtGatewayListResp)(nil),                 // 16: tpmtclient.TpmtGatewayListResp
+	(*TpmtGatewayListData)(nil),                 // 17: tpmtclient.TpmtGatewayListData
+	(*TpmtMonitorPointAddReq)(nil),              // 18: tpmtclient.TpmtMonitorPointAddReq
+	(*TpmtMonitorPointDeleteReq)(nil),           // 19: tpmtclient.TpmtMonitorPointDeleteReq
+	(*TpmtMonitorPointUpdateReq)(nil),           // 20: tpmtclient.TpmtMonitorPointUpdateReq
+	(*TpmtMonitorPointFindOneReq)(nil),          // 21: tpmtclient.TpmtMonitorPointFindOneReq
+	(*TpmtMonitorPointFindOneResp)(nil),         // 22: tpmtclient.TpmtMonitorPointFindOneResp
+	(*TpmtMonitorPointListReq)(nil),             // 23: tpmtclient.TpmtMonitorPointListReq
+	(*TpmtMonitorPointListResp)(nil),            // 24: tpmtclient.TpmtMonitorPointListResp
+	(*TpmtMonitorPointListData)(nil),            // 25: tpmtclient.TpmtMonitorPointListData
+	(*TpmtMonitorPointRealTimeListReq)(nil),     // 26: tpmtclient.TpmtMonitorPointRealTimeListReq
+	(*TpmtMonitorPointRealTimeListResp)(nil),    // 27: tpmtclient.TpmtMonitorPointRealTimeListResp
+	(*TpmtMonitorPointRealTimeData)(nil),        // 28: tpmtclient.TpmtMonitorPointRealTimeData
+	(*TpmtMonitorPointRealTimeFindOneReq)(nil),  // 29: tpmtclient.TpmtMonitorPointRealTimeFindOneReq
+	(*TpmtMonitorPointRealTimeFindOneResp)(nil), // 30: tpmtclient.TpmtMonitorPointRealTimeFindOneResp
+	(*TpmtMonitorPointHistoricalReq)(nil),       // 31: tpmtclient.TpmtMonitorPointHistoricalReq
+	(*TpmtMonitorPointHistoricalResp)(nil),      // 32: tpmtclient.TpmtMonitorPointHistoricalResp
+	(*TpmtMonitorPointHistoricalListData)(nil),  // 33: tpmtclient.TpmtMonitorPointHistoricalListData
 }
 var file_tpmt_proto_depIdxs = []int32{
-	9,  // 0: tpmtclient.SysUserListResp.list:type_name -> tpmtclient.SysUserListData
-	21, // 1: tpmtclient.SysAuthListResp.list:type_name -> tpmtclient.SysAuthListData
-	29, // 2: tpmtclient.SysRoleListResp.list:type_name -> tpmtclient.SysRoleListData
-	37, // 3: tpmtclient.SysMenuListResp.list:type_name -> tpmtclient.SysMenuListData
-	37, // 4: tpmtclient.SysMenuByRoleIdResp.list:type_name -> tpmtclient.SysMenuListData
-	47, // 5: tpmtclient.SysInterfaceListResp.list:type_name -> tpmtclient.SysInterfaceListData
-	47, // 6: tpmtclient.SysInterfaceByRoleIdResp.list:type_name -> tpmtclient.SysInterfaceListData
-	57, // 7: tpmtclient.SysDictTypeListResp.list:type_name -> tpmtclient.SysDictTypeListData
-	65, // 8: tpmtclient.SysDictListResp.list:type_name -> tpmtclient.SysDictListData
-	73, // 9: tpmtclient.TpmtAssetListResp.list:type_name -> tpmtclient.TpmtAssetListData
-	81, // 10: tpmtclient.TpmtGatewayListResp.list:type_name -> tpmtclient.TpmtGatewayListData
-	89, // 11: tpmtclient.TpmtMonitorPointListResp.list:type_name -> tpmtclient.TpmtMonitorPointListData
-	92, // 12: tpmtclient.TpmtMonitorPointRealTimeListResp.list:type_name -> tpmtclient.TpmtMonitorPointRealTimeData
-	1,  // 13: tpmtclient.TpmtMonitorPointRealTimeData.alarm_rule_info:type_name -> tpmtclient.AlarmRuleInfo
-	70, // 14: tpmtclient.TpmtMonitorPointRealTimeData.asset:type_name -> tpmtclient.TpmtAssetFindOneResp
-	1,  // 15: tpmtclient.TpmtMonitorPointRealTimeFindOneResp.alarm_rule_info:type_name -> tpmtclient.AlarmRuleInfo
-	70, // 16: tpmtclient.TpmtMonitorPointRealTimeFindOneResp.asset:type_name -> tpmtclient.TpmtAssetFindOneResp
-	97, // 17: tpmtclient.TpmtMonitorPointHistoricalResp.list:type_name -> tpmtclient.TpmtMonitorPointHistoricalListData
-	10, // 18: tpmtclient.Tpmt.SysLogin:input_type -> tpmtclient.SysLoginReq
-	2,  // 19: tpmtclient.Tpmt.SysUserAdd:input_type -> tpmtclient.SysUserAddReq
-	3,  // 20: tpmtclient.Tpmt.SysUserDelete:input_type -> tpmtclient.SysUserDeleteReq
-	4,  // 21: tpmtclient.Tpmt.SysUserUpdate:input_type -> tpmtclient.SysUserUpdateReq
-	5,  // 22: tpmtclient.Tpmt.SysUserFindOne:input_type -> tpmtclient.SysUserFindOneReq
-	7,  // 23: tpmtclient.Tpmt.SysUserList:input_type -> tpmtclient.SysUserListReq
-	11, // 24: tpmtclient.Tpmt.SysUserResetPwd:input_type -> tpmtclient.SysUserResetPwdReq
-	13, // 25: tpmtclient.Tpmt.SysUserUpMyPwd:input_type -> tpmtclient.SysUserUpMyPwdReq
-	14, // 26: tpmtclient.Tpmt.SysAuthAdd:input_type -> tpmtclient.SysAuthAddReq
-	15, // 27: tpmtclient.Tpmt.SysAuthDelete:input_type -> tpmtclient.SysAuthDeleteReq
-	16, // 28: tpmtclient.Tpmt.SysAuthUpdate:input_type -> tpmtclient.SysAuthUpdateReq
-	17, // 29: tpmtclient.Tpmt.SysAuthFindOne:input_type -> tpmtclient.SysAuthFindOneReq
-	19, // 30: tpmtclient.Tpmt.SysAuthList:input_type -> tpmtclient.SysAuthListReq
-	22, // 31: tpmtclient.Tpmt.SysRoleAdd:input_type -> tpmtclient.SysRoleAddReq
-	23, // 32: tpmtclient.Tpmt.SysRoleDelete:input_type -> tpmtclient.SysRoleDeleteReq
-	24, // 33: tpmtclient.Tpmt.SysRoleUpdate:input_type -> tpmtclient.SysRoleUpdateReq
-	25, // 34: tpmtclient.Tpmt.SysRoleFindOne:input_type -> tpmtclient.SysRoleFindOneReq
-	27, // 35: tpmtclient.Tpmt.SysRoleList:input_type -> tpmtclient.SysRoleListReq
-	30, // 36: tpmtclient.Tpmt.SysMenuAdd:input_type -> tpmtclient.SysMenuAddReq
-	31, // 37: tpmtclient.Tpmt.SysMenuDelete:input_type -> tpmtclient.SysMenuDeleteReq
-	32, // 38: tpmtclient.Tpmt.SysMenuUpdate:input_type -> tpmtclient.SysMenuUpdateReq
-	33, // 39: tpmtclient.Tpmt.SysMenuFindOne:input_type -> tpmtclient.SysMenuFindOneReq
-	35, // 40: tpmtclient.Tpmt.SysMenuList:input_type -> tpmtclient.SysMenuListReq
-	38, // 41: tpmtclient.Tpmt.SysMenuByRoleId:input_type -> tpmtclient.SysMenuByRoleIdReq
-	40, // 42: tpmtclient.Tpmt.SysInterfaceAdd:input_type -> tpmtclient.SysInterfaceAddReq
-	41, // 43: tpmtclient.Tpmt.SysInterfaceDelete:input_type -> tpmtclient.SysInterfaceDeleteReq
-	42, // 44: tpmtclient.Tpmt.SysInterfaceUpdate:input_type -> tpmtclient.SysInterfaceUpdateReq
-	43, // 45: tpmtclient.Tpmt.SysInterfaceFindOne:input_type -> tpmtclient.SysInterfaceFindOneReq
-	45, // 46: tpmtclient.Tpmt.SysInterfaceList:input_type -> tpmtclient.SysInterfaceListReq
-	48, // 47: tpmtclient.Tpmt.SysInterfaceByRoleId:input_type -> tpmtclient.SysInterfaceByRoleIdReq
-	50, // 48: tpmtclient.Tpmt.SysDictTypeAdd:input_type -> tpmtclient.SysDictTypeAddReq
-	51, // 49: tpmtclient.Tpmt.SysDictTypeDelete:input_type -> tpmtclient.SysDictTypeDeleteReq
-	52, // 50: tpmtclient.Tpmt.SysDictTypeUpdate:input_type -> tpmtclient.SysDictTypeUpdateReq
-	53, // 51: tpmtclient.Tpmt.SysDictTypeFindOne:input_type -> tpmtclient.SysDictTypeFindOneReq
-	55, // 52: tpmtclient.Tpmt.SysDictTypeList:input_type -> tpmtclient.SysDictTypeListReq
-	58, // 53: tpmtclient.Tpmt.SysDictAdd:input_type -> tpmtclient.SysDictAddReq
-	59, // 54: tpmtclient.Tpmt.SysDictDelete:input_type -> tpmtclient.SysDictDeleteReq
-	60, // 55: tpmtclient.Tpmt.SysDictUpdate:input_type -> tpmtclient.SysDictUpdateReq
-	61, // 56: tpmtclient.Tpmt.SysDictFindOne:input_type -> tpmtclient.SysDictFindOneReq
-	63, // 57: tpmtclient.Tpmt.SysDictList:input_type -> tpmtclient.SysDictListReq
-	66, // 58: tpmtclient.Tpmt.TpmtAssetAdd:input_type -> tpmtclient.TpmtAssetAddReq
-	67, // 59: tpmtclient.Tpmt.TpmtAssetDelete:input_type -> tpmtclient.TpmtAssetDeleteReq
-	68, // 60: tpmtclient.Tpmt.TpmtAssetUpdate:input_type -> tpmtclient.TpmtAssetUpdateReq
-	69, // 61: tpmtclient.Tpmt.TpmtAssetFindOne:input_type -> tpmtclient.TpmtAssetFindOneReq
-	71, // 62: tpmtclient.Tpmt.TpmtAssetList:input_type -> tpmtclient.TpmtAssetListReq
-	74, // 63: tpmtclient.Tpmt.TpmtGatewayAdd:input_type -> tpmtclient.TpmtGatewayAddReq
-	75, // 64: tpmtclient.Tpmt.TpmtGatewayDelete:input_type -> tpmtclient.TpmtGatewayDeleteReq
-	76, // 65: tpmtclient.Tpmt.TpmtGatewayUpdate:input_type -> tpmtclient.TpmtGatewayUpdateReq
-	77, // 66: tpmtclient.Tpmt.TpmtGatewayFindOne:input_type -> tpmtclient.TpmtGatewayFindOneReq
-	79, // 67: tpmtclient.Tpmt.TpmtGatewayList:input_type -> tpmtclient.TpmtGatewayListReq
-	82, // 68: tpmtclient.Tpmt.TpmtMonitorPointAdd:input_type -> tpmtclient.TpmtMonitorPointAddReq
-	83, // 69: tpmtclient.Tpmt.TpmtMonitorPointDelete:input_type -> tpmtclient.TpmtMonitorPointDeleteReq
-	84, // 70: tpmtclient.Tpmt.TpmtMonitorPointUpdate:input_type -> tpmtclient.TpmtMonitorPointUpdateReq
-	85, // 71: tpmtclient.Tpmt.TpmtMonitorPointFindOne:input_type -> tpmtclient.TpmtMonitorPointFindOneReq
-	87, // 72: tpmtclient.Tpmt.TpmtMonitorPointList:input_type -> tpmtclient.TpmtMonitorPointListReq
-	90, // 73: tpmtclient.Tpmt.TpmtMonitorPointRealTimeList:input_type -> tpmtclient.TpmtMonitorPointRealTimeListReq
-	93, // 74: tpmtclient.Tpmt.TpmtMonitorPointRealTimeFindOne:input_type -> tpmtclient.TpmtMonitorPointRealTimeFindOneReq
-	95, // 75: tpmtclient.Tpmt.TpmtMonitorPointHistorical:input_type -> tpmtclient.TpmtMonitorPointHistoricalReq
-	6,  // 76: tpmtclient.Tpmt.SysLogin:output_type -> tpmtclient.SysUserFindOneResp
-	0,  // 77: tpmtclient.Tpmt.SysUserAdd:output_type -> tpmtclient.CommonResp
-	0,  // 78: tpmtclient.Tpmt.SysUserDelete:output_type -> tpmtclient.CommonResp
-	0,  // 79: tpmtclient.Tpmt.SysUserUpdate:output_type -> tpmtclient.CommonResp
-	6,  // 80: tpmtclient.Tpmt.SysUserFindOne:output_type -> tpmtclient.SysUserFindOneResp
-	8,  // 81: tpmtclient.Tpmt.SysUserList:output_type -> tpmtclient.SysUserListResp
-	12, // 82: tpmtclient.Tpmt.SysUserResetPwd:output_type -> tpmtclient.SysUserResetPwdResp
-	0,  // 83: tpmtclient.Tpmt.SysUserUpMyPwd:output_type -> tpmtclient.CommonResp
-	0,  // 84: tpmtclient.Tpmt.SysAuthAdd:output_type -> tpmtclient.CommonResp
-	0,  // 85: tpmtclient.Tpmt.SysAuthDelete:output_type -> tpmtclient.CommonResp
-	0,  // 86: tpmtclient.Tpmt.SysAuthUpdate:output_type -> tpmtclient.CommonResp
-	18, // 87: tpmtclient.Tpmt.SysAuthFindOne:output_type -> tpmtclient.SysAuthFindOneResp
-	20, // 88: tpmtclient.Tpmt.SysAuthList:output_type -> tpmtclient.SysAuthListResp
-	0,  // 89: tpmtclient.Tpmt.SysRoleAdd:output_type -> tpmtclient.CommonResp
-	0,  // 90: tpmtclient.Tpmt.SysRoleDelete:output_type -> tpmtclient.CommonResp
-	0,  // 91: tpmtclient.Tpmt.SysRoleUpdate:output_type -> tpmtclient.CommonResp
-	26, // 92: tpmtclient.Tpmt.SysRoleFindOne:output_type -> tpmtclient.SysRoleFindOneResp
-	28, // 93: tpmtclient.Tpmt.SysRoleList:output_type -> tpmtclient.SysRoleListResp
-	0,  // 94: tpmtclient.Tpmt.SysMenuAdd:output_type -> tpmtclient.CommonResp
-	0,  // 95: tpmtclient.Tpmt.SysMenuDelete:output_type -> tpmtclient.CommonResp
-	0,  // 96: tpmtclient.Tpmt.SysMenuUpdate:output_type -> tpmtclient.CommonResp
-	34, // 97: tpmtclient.Tpmt.SysMenuFindOne:output_type -> tpmtclient.SysMenuFindOneResp
-	36, // 98: tpmtclient.Tpmt.SysMenuList:output_type -> tpmtclient.SysMenuListResp
-	39, // 99: tpmtclient.Tpmt.SysMenuByRoleId:output_type -> tpmtclient.SysMenuByRoleIdResp
-	0,  // 100: tpmtclient.Tpmt.SysInterfaceAdd:output_type -> tpmtclient.CommonResp
-	0,  // 101: tpmtclient.Tpmt.SysInterfaceDelete:output_type -> tpmtclient.CommonResp
-	0,  // 102: tpmtclient.Tpmt.SysInterfaceUpdate:output_type -> tpmtclient.CommonResp
-	44, // 103: tpmtclient.Tpmt.SysInterfaceFindOne:output_type -> tpmtclient.SysInterfaceFindOneResp
-	46, // 104: tpmtclient.Tpmt.SysInterfaceList:output_type -> tpmtclient.SysInterfaceListResp
-	49, // 105: tpmtclient.Tpmt.SysInterfaceByRoleId:output_type -> tpmtclient.SysInterfaceByRoleIdResp
-	0,  // 106: tpmtclient.Tpmt.SysDictTypeAdd:output_type -> tpmtclient.CommonResp
-	0,  // 107: tpmtclient.Tpmt.SysDictTypeDelete:output_type -> tpmtclient.CommonResp
-	0,  // 108: tpmtclient.Tpmt.SysDictTypeUpdate:output_type -> tpmtclient.CommonResp
-	54, // 109: tpmtclient.Tpmt.SysDictTypeFindOne:output_type -> tpmtclient.SysDictTypeFindOneResp
-	56, // 110: tpmtclient.Tpmt.SysDictTypeList:output_type -> tpmtclient.SysDictTypeListResp
-	0,  // 111: tpmtclient.Tpmt.SysDictAdd:output_type -> tpmtclient.CommonResp
-	0,  // 112: tpmtclient.Tpmt.SysDictDelete:output_type -> tpmtclient.CommonResp
-	0,  // 113: tpmtclient.Tpmt.SysDictUpdate:output_type -> tpmtclient.CommonResp
-	62, // 114: tpmtclient.Tpmt.SysDictFindOne:output_type -> tpmtclient.SysDictFindOneResp
-	64, // 115: tpmtclient.Tpmt.SysDictList:output_type -> tpmtclient.SysDictListResp
-	0,  // 116: tpmtclient.Tpmt.TpmtAssetAdd:output_type -> tpmtclient.CommonResp
-	0,  // 117: tpmtclient.Tpmt.TpmtAssetDelete:output_type -> tpmtclient.CommonResp
-	0,  // 118: tpmtclient.Tpmt.TpmtAssetUpdate:output_type -> tpmtclient.CommonResp
-	70, // 119: tpmtclient.Tpmt.TpmtAssetFindOne:output_type -> tpmtclient.TpmtAssetFindOneResp
-	72, // 120: tpmtclient.Tpmt.TpmtAssetList:output_type -> tpmtclient.TpmtAssetListResp
-	0,  // 121: tpmtclient.Tpmt.TpmtGatewayAdd:output_type -> tpmtclient.CommonResp
-	0,  // 122: tpmtclient.Tpmt.TpmtGatewayDelete:output_type -> tpmtclient.CommonResp
-	0,  // 123: tpmtclient.Tpmt.TpmtGatewayUpdate:output_type -> tpmtclient.CommonResp
-	78, // 124: tpmtclient.Tpmt.TpmtGatewayFindOne:output_type -> tpmtclient.TpmtGatewayFindOneResp
-	80, // 125: tpmtclient.Tpmt.TpmtGatewayList:output_type -> tpmtclient.TpmtGatewayListResp
-	0,  // 126: tpmtclient.Tpmt.TpmtMonitorPointAdd:output_type -> tpmtclient.CommonResp
-	0,  // 127: tpmtclient.Tpmt.TpmtMonitorPointDelete:output_type -> tpmtclient.CommonResp
-	0,  // 128: tpmtclient.Tpmt.TpmtMonitorPointUpdate:output_type -> tpmtclient.CommonResp
-	86, // 129: tpmtclient.Tpmt.TpmtMonitorPointFindOne:output_type -> tpmtclient.TpmtMonitorPointFindOneResp
-	88, // 130: tpmtclient.Tpmt.TpmtMonitorPointList:output_type -> tpmtclient.TpmtMonitorPointListResp
-	91, // 131: tpmtclient.Tpmt.TpmtMonitorPointRealTimeList:output_type -> tpmtclient.TpmtMonitorPointRealTimeListResp
-	94, // 132: tpmtclient.Tpmt.TpmtMonitorPointRealTimeFindOne:output_type -> tpmtclient.TpmtMonitorPointRealTimeFindOneResp
-	96, // 133: tpmtclient.Tpmt.TpmtMonitorPointHistorical:output_type -> tpmtclient.TpmtMonitorPointHistoricalResp
-	76, // [76:134] is the sub-list for method output_type
-	18, // [18:76] is the sub-list for method input_type
-	18, // [18:18] is the sub-list for extension type_name
-	18, // [18:18] is the sub-list for extension extendee
-	0,  // [0:18] is the sub-list for field type_name
+	9,  // 0: tpmtclient.TpmtAssetListResp.list:type_name -> tpmtclient.TpmtAssetListData
+	17, // 1: tpmtclient.TpmtGatewayListResp.list:type_name -> tpmtclient.TpmtGatewayListData
+	25, // 2: tpmtclient.TpmtMonitorPointListResp.list:type_name -> tpmtclient.TpmtMonitorPointListData
+	28, // 3: tpmtclient.TpmtMonitorPointRealTimeListResp.list:type_name -> tpmtclient.TpmtMonitorPointRealTimeData
+	1,  // 4: tpmtclient.TpmtMonitorPointRealTimeData.alarm_rule_info:type_name -> tpmtclient.AlarmRuleInfo
+	6,  // 5: tpmtclient.TpmtMonitorPointRealTimeData.asset:type_name -> tpmtclient.TpmtAssetFindOneResp
+	1,  // 6: tpmtclient.TpmtMonitorPointRealTimeFindOneResp.alarm_rule_info:type_name -> tpmtclient.AlarmRuleInfo
+	6,  // 7: tpmtclient.TpmtMonitorPointRealTimeFindOneResp.asset:type_name -> tpmtclient.TpmtAssetFindOneResp
+	33, // 8: tpmtclient.TpmtMonitorPointHistoricalResp.list:type_name -> tpmtclient.TpmtMonitorPointHistoricalListData
+	2,  // 9: tpmtclient.Tpmt.TpmtAssetAdd:input_type -> tpmtclient.TpmtAssetAddReq
+	3,  // 10: tpmtclient.Tpmt.TpmtAssetDelete:input_type -> tpmtclient.TpmtAssetDeleteReq
+	4,  // 11: tpmtclient.Tpmt.TpmtAssetUpdate:input_type -> tpmtclient.TpmtAssetUpdateReq
+	5,  // 12: tpmtclient.Tpmt.TpmtAssetFindOne:input_type -> tpmtclient.TpmtAssetFindOneReq
+	7,  // 13: tpmtclient.Tpmt.TpmtAssetList:input_type -> tpmtclient.TpmtAssetListReq
+	10, // 14: tpmtclient.Tpmt.TpmtGatewayAdd:input_type -> tpmtclient.TpmtGatewayAddReq
+	11, // 15: tpmtclient.Tpmt.TpmtGatewayDelete:input_type -> tpmtclient.TpmtGatewayDeleteReq
+	12, // 16: tpmtclient.Tpmt.TpmtGatewayUpdate:input_type -> tpmtclient.TpmtGatewayUpdateReq
+	13, // 17: tpmtclient.Tpmt.TpmtGatewayFindOne:input_type -> tpmtclient.TpmtGatewayFindOneReq
+	15, // 18: tpmtclient.Tpmt.TpmtGatewayList:input_type -> tpmtclient.TpmtGatewayListReq
+	18, // 19: tpmtclient.Tpmt.TpmtMonitorPointAdd:input_type -> tpmtclient.TpmtMonitorPointAddReq
+	19, // 20: tpmtclient.Tpmt.TpmtMonitorPointDelete:input_type -> tpmtclient.TpmtMonitorPointDeleteReq
+	20, // 21: tpmtclient.Tpmt.TpmtMonitorPointUpdate:input_type -> tpmtclient.TpmtMonitorPointUpdateReq
+	21, // 22: tpmtclient.Tpmt.TpmtMonitorPointFindOne:input_type -> tpmtclient.TpmtMonitorPointFindOneReq
+	23, // 23: tpmtclient.Tpmt.TpmtMonitorPointList:input_type -> tpmtclient.TpmtMonitorPointListReq
+	26, // 24: tpmtclient.Tpmt.TpmtMonitorPointRealTimeList:input_type -> tpmtclient.TpmtMonitorPointRealTimeListReq
+	29, // 25: tpmtclient.Tpmt.TpmtMonitorPointRealTimeFindOne:input_type -> tpmtclient.TpmtMonitorPointRealTimeFindOneReq
+	31, // 26: tpmtclient.Tpmt.TpmtMonitorPointHistorical:input_type -> tpmtclient.TpmtMonitorPointHistoricalReq
+	0,  // 27: tpmtclient.Tpmt.TpmtAssetAdd:output_type -> tpmtclient.CommonResp
+	0,  // 28: tpmtclient.Tpmt.TpmtAssetDelete:output_type -> tpmtclient.CommonResp
+	0,  // 29: tpmtclient.Tpmt.TpmtAssetUpdate:output_type -> tpmtclient.CommonResp
+	6,  // 30: tpmtclient.Tpmt.TpmtAssetFindOne:output_type -> tpmtclient.TpmtAssetFindOneResp
+	8,  // 31: tpmtclient.Tpmt.TpmtAssetList:output_type -> tpmtclient.TpmtAssetListResp
+	0,  // 32: tpmtclient.Tpmt.TpmtGatewayAdd:output_type -> tpmtclient.CommonResp
+	0,  // 33: tpmtclient.Tpmt.TpmtGatewayDelete:output_type -> tpmtclient.CommonResp
+	0,  // 34: tpmtclient.Tpmt.TpmtGatewayUpdate:output_type -> tpmtclient.CommonResp
+	14, // 35: tpmtclient.Tpmt.TpmtGatewayFindOne:output_type -> tpmtclient.TpmtGatewayFindOneResp
+	16, // 36: tpmtclient.Tpmt.TpmtGatewayList:output_type -> tpmtclient.TpmtGatewayListResp
+	0,  // 37: tpmtclient.Tpmt.TpmtMonitorPointAdd:output_type -> tpmtclient.CommonResp
+	0,  // 38: tpmtclient.Tpmt.TpmtMonitorPointDelete:output_type -> tpmtclient.CommonResp
+	0,  // 39: tpmtclient.Tpmt.TpmtMonitorPointUpdate:output_type -> tpmtclient.CommonResp
+	22, // 40: tpmtclient.Tpmt.TpmtMonitorPointFindOne:output_type -> tpmtclient.TpmtMonitorPointFindOneResp
+	24, // 41: tpmtclient.Tpmt.TpmtMonitorPointList:output_type -> tpmtclient.TpmtMonitorPointListResp
+	27, // 42: tpmtclient.Tpmt.TpmtMonitorPointRealTimeList:output_type -> tpmtclient.TpmtMonitorPointRealTimeListResp
+	30, // 43: tpmtclient.Tpmt.TpmtMonitorPointRealTimeFindOne:output_type -> tpmtclient.TpmtMonitorPointRealTimeFindOneResp
+	32, // 44: tpmtclient.Tpmt.TpmtMonitorPointHistorical:output_type -> tpmtclient.TpmtMonitorPointHistoricalResp
+	27, // [27:45] is the sub-list for method output_type
+	9,  // [9:27] is the sub-list for method input_type
+	9,  // [9:9] is the sub-list for extension type_name
+	9,  // [9:9] is the sub-list for extension extendee
+	0,  // [0:9] is the sub-list for field type_name
 }
 
 func init() { file_tpmt_proto_init() }
@@ -11779,774 +5356,6 @@ func file_tpmt_proto_init() {
 			}
 		}
 		file_tpmt_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserAddReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserDeleteReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserUpdateReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserFindOneReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserFindOneResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserListReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserListResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserListData); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysLoginReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserResetPwdReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserResetPwdResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysUserUpMyPwdReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysAuthAddReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysAuthDeleteReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysAuthUpdateReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysAuthFindOneReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysAuthFindOneResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysAuthListReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysAuthListResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysAuthListData); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysRoleAddReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysRoleDeleteReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysRoleUpdateReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysRoleFindOneReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysRoleFindOneResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysRoleListReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysRoleListResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysRoleListData); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysMenuAddReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysMenuDeleteReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysMenuUpdateReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysMenuFindOneReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[34].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysMenuFindOneResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[35].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysMenuListReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[36].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysMenuListResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[37].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysMenuListData); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[38].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysMenuByRoleIdReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[39].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysMenuByRoleIdResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[40].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysInterfaceAddReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[41].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysInterfaceDeleteReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[42].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysInterfaceUpdateReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[43].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysInterfaceFindOneReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[44].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysInterfaceFindOneResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[45].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysInterfaceListReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[46].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysInterfaceListResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[47].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysInterfaceListData); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[48].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysInterfaceByRoleIdReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[49].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysInterfaceByRoleIdResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[50].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictTypeAddReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[51].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictTypeDeleteReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[52].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictTypeUpdateReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[53].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictTypeFindOneReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[54].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictTypeFindOneResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[55].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictTypeListReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[56].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictTypeListResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[57].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictTypeListData); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[58].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictAddReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[59].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictDeleteReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[60].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictUpdateReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[61].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictFindOneReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[62].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictFindOneResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[63].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictListReq); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[64].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictListResp); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[65].Exporter = func(v interface{}, i int) interface{} {
-			switch v := v.(*SysDictListData); i {
-			case 0:
-				return &v.state
-			case 1:
-				return &v.sizeCache
-			case 2:
-				return &v.unknownFields
-			default:
-				return nil
-			}
-		}
-		file_tpmt_proto_msgTypes[66].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtAssetAddReq); i {
 			case 0:
 				return &v.state
@@ -12558,7 +5367,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[67].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtAssetDeleteReq); i {
 			case 0:
 				return &v.state
@@ -12570,7 +5379,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[68].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtAssetUpdateReq); i {
 			case 0:
 				return &v.state
@@ -12582,7 +5391,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[69].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[5].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtAssetFindOneReq); i {
 			case 0:
 				return &v.state
@@ -12594,7 +5403,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[70].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtAssetFindOneResp); i {
 			case 0:
 				return &v.state
@@ -12606,7 +5415,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[71].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtAssetListReq); i {
 			case 0:
 				return &v.state
@@ -12618,7 +5427,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[72].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtAssetListResp); i {
 			case 0:
 				return &v.state
@@ -12630,7 +5439,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[73].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtAssetListData); i {
 			case 0:
 				return &v.state
@@ -12642,7 +5451,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[74].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtGatewayAddReq); i {
 			case 0:
 				return &v.state
@@ -12654,7 +5463,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[75].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtGatewayDeleteReq); i {
 			case 0:
 				return &v.state
@@ -12666,7 +5475,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[76].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtGatewayUpdateReq); i {
 			case 0:
 				return &v.state
@@ -12678,7 +5487,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[77].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[13].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtGatewayFindOneReq); i {
 			case 0:
 				return &v.state
@@ -12690,7 +5499,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[78].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[14].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtGatewayFindOneResp); i {
 			case 0:
 				return &v.state
@@ -12702,7 +5511,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[79].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[15].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtGatewayListReq); i {
 			case 0:
 				return &v.state
@@ -12714,7 +5523,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[80].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[16].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtGatewayListResp); i {
 			case 0:
 				return &v.state
@@ -12726,7 +5535,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[81].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[17].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtGatewayListData); i {
 			case 0:
 				return &v.state
@@ -12738,7 +5547,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[82].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[18].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointAddReq); i {
 			case 0:
 				return &v.state
@@ -12750,7 +5559,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[83].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[19].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointDeleteReq); i {
 			case 0:
 				return &v.state
@@ -12762,7 +5571,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[84].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[20].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointUpdateReq); i {
 			case 0:
 				return &v.state
@@ -12774,7 +5583,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[85].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[21].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointFindOneReq); i {
 			case 0:
 				return &v.state
@@ -12786,7 +5595,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[86].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[22].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointFindOneResp); i {
 			case 0:
 				return &v.state
@@ -12798,7 +5607,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[87].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[23].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointListReq); i {
 			case 0:
 				return &v.state
@@ -12810,7 +5619,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[88].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[24].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointListResp); i {
 			case 0:
 				return &v.state
@@ -12822,7 +5631,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[89].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[25].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointListData); i {
 			case 0:
 				return &v.state
@@ -12834,7 +5643,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[90].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[26].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointRealTimeListReq); i {
 			case 0:
 				return &v.state
@@ -12846,7 +5655,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[91].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[27].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointRealTimeListResp); i {
 			case 0:
 				return &v.state
@@ -12858,7 +5667,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[92].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[28].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointRealTimeData); i {
 			case 0:
 				return &v.state
@@ -12870,7 +5679,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[93].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[29].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointRealTimeFindOneReq); i {
 			case 0:
 				return &v.state
@@ -12882,7 +5691,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[94].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[30].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointRealTimeFindOneResp); i {
 			case 0:
 				return &v.state
@@ -12894,7 +5703,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[95].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[31].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointHistoricalReq); i {
 			case 0:
 				return &v.state
@@ -12906,7 +5715,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[96].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[32].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointHistoricalResp); i {
 			case 0:
 				return &v.state
@@ -12918,7 +5727,7 @@ func file_tpmt_proto_init() {
 				return nil
 			}
 		}
-		file_tpmt_proto_msgTypes[97].Exporter = func(v interface{}, i int) interface{} {
+		file_tpmt_proto_msgTypes[33].Exporter = func(v interface{}, i int) interface{} {
 			switch v := v.(*TpmtMonitorPointHistoricalListData); i {
 			case 0:
 				return &v.state
@@ -12937,7 +5746,7 @@ func file_tpmt_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: file_tpmt_proto_rawDesc,
 			NumEnums:      0,
-			NumMessages:   98,
+			NumMessages:   34,
 			NumExtensions: 0,
 			NumServices:   1,
 		},

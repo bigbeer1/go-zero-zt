@@ -5,8 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmt"
-
+	"tpmt-zt/service/authentication/authenticationclient"
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
 
@@ -31,7 +30,7 @@ func (l *SysUserUpMyPwdLogic) SysUserUpMyPwd(req *types.SysUserUpMyPwdRequest) (
 
 	tokenData := jwtx.ParseToken(l.ctx)
 
-	_, err = l.svcCtx.TpmtRpc.SysUserUpMyPwd(l.ctx, &tpmt.SysUserUpMyPwdReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysUserUpMyPwd(l.ctx, &authenticationclient.SysUserUpMyPwdReq{
 		Id:          tokenData.Uid,
 		OldPassword: req.OldPassword,
 		NewPassword: req.NewPassword,

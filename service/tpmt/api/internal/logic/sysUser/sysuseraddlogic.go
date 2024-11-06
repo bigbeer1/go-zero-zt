@@ -5,7 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -31,7 +31,7 @@ func (l *SysUserAddLogic) SysUserAdd(req *types.SysUserAddRequest) (resp *types.
 
 	tokenData := jwtx.ParseToken(l.ctx)
 
-	_, err = l.svcCtx.TpmtRpc.SysUserAdd(l.ctx, &tpmtclient.SysUserAddReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysUserAdd(l.ctx, &authenticationclient.SysUserAddReq{
 		Account:     req.Account,        // 用户名
 		NickName:    req.NickName,       // 姓名
 		Password:    req.Password,       // 密码

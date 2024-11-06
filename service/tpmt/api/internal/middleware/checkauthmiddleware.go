@@ -4,13 +4,23 @@ import (
 	"context"
 	"net/http"
 	"time"
+	"tpmt-zt/common/authx"
+	"tpmt-zt/service/archive/rpc/archive"
+	"tpmt-zt/service/authentication/authentication"
 )
 
 type CheckAuthMiddleware struct {
+	authenticationRpc authentication.Authentication
+	archiveRpc        archive.Archive
+	accessSecret      string
 }
 
-func NewCheckAuthMiddleware() *CheckAuthMiddleware {
-	return &CheckAuthMiddleware{}
+func NewCheckAuthMiddleware(authenticationRpc authentication.Authentication, archiveRpc archive.Archive, accessSecret string) *CheckAuthMiddleware {
+	return &CheckAuthMiddleware{
+		authenticationRpc: authenticationRpc,
+		archiveRpc:        archiveRpc,
+		accessSecret:      accessSecret,
+	}
 }
 
 func (m *CheckAuthMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
@@ -23,6 +33,8 @@ func (m *CheckAuthMiddleware) Handle(next http.HandlerFunc) http.HandlerFunc {
 
 		// 更新上下文
 		r = r.WithContext(ctx)
+
+		authx.Auth(r, m.authenticationRpc, m.accessSecret)
 
 		next(w, r)
 	}

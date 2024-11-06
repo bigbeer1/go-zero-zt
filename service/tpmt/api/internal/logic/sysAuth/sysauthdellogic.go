@@ -5,8 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
-
+	"tpmt-zt/service/authentication/authenticationclient"
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
 
@@ -31,7 +30,7 @@ func (l *SysAuthDelLogic) SysAuthDel(req *types.SysAuthDelRequest) (resp *types.
 	// 用户登录信息
 	tokenData := jwtx.ParseToken(l.ctx)
 
-	_, err = l.svcCtx.TpmtRpc.SysAuthDelete(l.ctx, &tpmtclient.SysAuthDeleteReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysAuthDelete(l.ctx, &authenticationclient.SysAuthDeleteReq{
 		Id:          req.Id,             // 第三方用户ID
 		DeletedName: tokenData.NickName, // 删除人
 	})

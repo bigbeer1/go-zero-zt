@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -29,7 +29,7 @@ func NewSysRoleListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysRo
 
 func (l *SysRoleListLogic) SysRoleList(req *types.SysRoleListRequest) (resp *types.Response, err error) {
 
-	all, err := l.svcCtx.TpmtRpc.SysRoleList(l.ctx, &tpmtclient.SysRoleListReq{
+	all, err := l.svcCtx.AuthenticationRpc.SysRoleList(l.ctx, &authenticationclient.SysRoleListReq{
 		Current:  req.Current,  // 页码
 		PageSize: req.PageSize, // 页数
 		Name:     req.Name,     // 角色名称

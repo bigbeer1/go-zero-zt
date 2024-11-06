@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -29,7 +29,7 @@ func NewSysAuthListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysAu
 
 func (l *SysAuthListLogic) SysAuthList(req *types.SysAuthListRequest) (resp *types.Response, err error) {
 
-	all, err := l.svcCtx.TpmtRpc.SysAuthList(l.ctx, &tpmtclient.SysAuthListReq{
+	all, err := l.svcCtx.AuthenticationRpc.SysAuthList(l.ctx, &authenticationclient.SysAuthListReq{
 		Current:   req.Current,   // 页码
 		PageSize:  req.PageSize,  // 页数
 		NickName:  req.NickName,  // 机构名

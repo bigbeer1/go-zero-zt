@@ -16,11 +16,4 @@ type Config struct {
 	CacheRedis cache.CacheConf
 
 	Tdengine tdenginex.TDengineConfig
-
-	Salt string
-
-	CAuth struct {
-		AccessSecret string
-		AccessExpire int64
-	}
 }

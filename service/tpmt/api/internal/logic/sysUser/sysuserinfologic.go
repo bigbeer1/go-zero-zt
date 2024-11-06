@@ -4,7 +4,7 @@ import (
 	"context"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"github.com/jinzhu/copier"
 
@@ -30,7 +30,7 @@ func NewSysUserInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysUs
 
 func (l *SysUserInfoLogic) SysUserInfo(req *types.SysUserInfoRequest) (resp *types.Response, err error) {
 
-	res, err := l.svcCtx.TpmtRpc.SysUserFindOne(l.ctx, &tpmtclient.SysUserFindOneReq{
+	res, err := l.svcCtx.AuthenticationRpc.SysUserFindOne(l.ctx, &authenticationclient.SysUserFindOneReq{
 		Id: req.Id, // 用户ID
 	})
 	if err != nil {

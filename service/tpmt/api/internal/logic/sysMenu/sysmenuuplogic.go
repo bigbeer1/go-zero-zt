@@ -5,7 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -31,7 +31,7 @@ func (l *SysMenuUpLogic) SysMenuUp(req *types.SysMenuUpRequest) (resp *types.Res
 	// 用户登录信息
 	tokenData := jwtx.ParseToken(l.ctx)
 
-	_, err = l.svcCtx.TpmtRpc.SysMenuUpdate(l.ctx, &tpmtclient.SysMenuUpdateReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysMenuUpdate(l.ctx, &authenticationclient.SysMenuUpdateReq{
 		Id:          req.Id,             // 菜单ID
 		MenuType:    req.MenuType,       // 菜单类型(层级关系)
 		Name:        req.Name,           // 菜单名称

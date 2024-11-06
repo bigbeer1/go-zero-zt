@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -29,7 +29,7 @@ func NewSysInterfaceInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *
 
 func (l *SysInterfaceInfoLogic) SysInterfaceInfo(req *types.SysInterfaceInfoRequest) (resp *types.Response, err error) {
 
-	res, err := l.svcCtx.TpmtRpc.SysInterfaceFindOne(l.ctx, &tpmtclient.SysInterfaceFindOneReq{
+	res, err := l.svcCtx.AuthenticationRpc.SysInterfaceFindOne(l.ctx, &authenticationclient.SysInterfaceFindOneReq{
 		Id: req.Id, // 接口ID
 	})
 	if err != nil {

@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -29,7 +29,7 @@ func NewSysMenuInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysMe
 
 func (l *SysMenuInfoLogic) SysMenuInfo(req *types.SysMenuInfoRequest) (resp *types.Response, err error) {
 
-	res, err := l.svcCtx.TpmtRpc.SysMenuFindOne(l.ctx, &tpmtclient.SysMenuFindOneReq{
+	res, err := l.svcCtx.AuthenticationRpc.SysMenuFindOne(l.ctx, &authenticationclient.SysMenuFindOneReq{
 		Id: req.Id, // 菜单ID
 	})
 	if err != nil {

@@ -1,0 +1,30 @@
+Name: authentication.rpc
+ListenOn: 0.0.0.0:1110
+Mode: dev
+Timeout: 3000000
+
+Log:
+  ServiceName: authentication.rpc
+  Level: info
+
+
+Etcd:
+  Hosts:
+    - 127.0.0.1:30000
+  Key: authentication.rpc
+
+Mysql:
+  DataSource: root:PXDNA999999@tcp(127.0.0.1:33069)/tpmt?charset=utf8mb4&parseTime=true&loc=Local
+
+
+CacheRedis:
+  - Host: "redis-1:6381"
+    Type: "cluster"
+    Pass: "G6200000000"
+
+Salt: "dabenxiong999"
+
+
+CAuth:
+  AccessSecret: uOvKLmVfztaX9999999
+  AccessExpire: 86400

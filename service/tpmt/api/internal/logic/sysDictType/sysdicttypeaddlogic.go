@@ -5,7 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -31,7 +31,7 @@ func (l *SysDictTypeAddLogic) SysDictTypeAdd(req *types.SysDictTypeAddRequest) (
 	// 用户登录信息
 	tokenData := jwtx.ParseToken(l.ctx)
 
-	_, err = l.svcCtx.TpmtRpc.SysDictTypeAdd(l.ctx, &tpmtclient.SysDictTypeAddReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysDictTypeAdd(l.ctx, &authenticationclient.SysDictTypeAddReq{
 		CreatedName: tokenData.NickName, // 创建人
 		Name:        req.Name,           // 字典名称
 		DictType:    req.DictType,       // 字典类型

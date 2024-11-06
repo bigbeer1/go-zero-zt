@@ -5,7 +5,7 @@ import (
 	"github.com/jinzhu/copier"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -29,7 +29,7 @@ func NewSysDictListLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysDi
 
 func (l *SysDictListLogic) SysDictList(req *types.SysDictListRequest) (resp *types.Response, err error) {
 
-	all, err := l.svcCtx.TpmtRpc.SysDictList(l.ctx, &tpmtclient.SysDictListReq{
+	all, err := l.svcCtx.AuthenticationRpc.SysDictList(l.ctx, &authenticationclient.SysDictListReq{
 		Current:   req.Current,   // 页码
 		PageSize:  req.PageSize,  // 页数
 		DictType:  req.DictType,  // 字典类型

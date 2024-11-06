@@ -5,9 +5,9 @@ import (
 	"github.com/jinzhu/copier"
 	"tpmt-zt/common"
 	"tpmt-zt/common/msg"
+	"tpmt-zt/service/authentication/authenticationclient"
 	"tpmt-zt/service/tpmt/api/internal/logic/sysInterface"
 	"tpmt-zt/service/tpmt/api/internal/logic/sysMenu"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -30,7 +30,7 @@ func NewSysRoleInfoLogic(ctx context.Context, svcCtx *svc.ServiceContext) *SysRo
 }
 
 func (l *SysRoleInfoLogic) SysRoleInfo(req *types.SysRoleInfoRequest) (resp *types.Response, err error) {
-	res, err := l.svcCtx.TpmtRpc.SysRoleFindOne(l.ctx, &tpmtclient.SysRoleFindOneReq{
+	res, err := l.svcCtx.AuthenticationRpc.SysRoleFindOne(l.ctx, &authenticationclient.SysRoleFindOneReq{
 		Id: req.Id, // 角色ID
 	})
 
@@ -38,7 +38,7 @@ func (l *SysRoleInfoLogic) SysRoleInfo(req *types.SysRoleInfoRequest) (resp *typ
 		return nil, common.NewDefaultError(err.Error())
 	}
 
-	menuResp, err := l.svcCtx.TpmtRpc.SysMenuByRoleId(l.ctx, &tpmtclient.SysMenuByRoleIdReq{
+	menuResp, err := l.svcCtx.AuthenticationRpc.SysMenuByRoleId(l.ctx, &authenticationclient.SysMenuByRoleIdReq{
 		RoleId: req.Id,
 	})
 
@@ -46,7 +46,7 @@ func (l *SysRoleInfoLogic) SysRoleInfo(req *types.SysRoleInfoRequest) (resp *typ
 		return nil, common.NewDefaultError(err.Error())
 	}
 
-	interfaceRep, err := l.svcCtx.TpmtRpc.SysInterfaceByRoleId(l.ctx, &tpmtclient.SysInterfaceByRoleIdReq{
+	interfaceRep, err := l.svcCtx.AuthenticationRpc.SysInterfaceByRoleId(l.ctx, &authenticationclient.SysInterfaceByRoleIdReq{
 		RoleId: req.Id,
 	})
 

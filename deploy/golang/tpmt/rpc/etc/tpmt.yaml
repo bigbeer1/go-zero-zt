@@ -23,12 +23,6 @@ CacheRedis:
     Type: "cluster"
     Pass: "G6200000000"
 
-Salt: "dabenxiong999"
-
-
-CAuth:
-  AccessSecret: uOvKLmVfztaX9999999
-  AccessExpire: 86400
 
 Tdengine:
   Host: taosnode1

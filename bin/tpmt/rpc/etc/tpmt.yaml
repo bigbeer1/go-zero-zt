@@ -13,6 +13,7 @@ Etcd:
     - 127.0.0.1:30000
   Key: tpmt.rpc
 
+
 Mysql:
   DataSource: root:PXDNA999999@tcp(127.0.0.1:33069)/tpmt?charset=utf8mb4&parseTime=true&loc=Local
 
@@ -22,12 +23,6 @@ CacheRedis:
     Type: "cluster"
     Pass: "G6200000000"
 
-Salt: "dabenxiong999"
-
-
-CAuth:
-  AccessSecret: uOvKLmVfztaX9999999
-  AccessExpire: 86400
 
 Tdengine:
   Host: "127.0.0.1"

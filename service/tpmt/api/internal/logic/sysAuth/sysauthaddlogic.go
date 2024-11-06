@@ -5,8 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
-
+	"tpmt-zt/service/authentication/authenticationclient"
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
 
@@ -33,7 +32,7 @@ func (l *SysAuthAddLogic) SysAuthAdd(req *types.SysAuthAddRequest) (resp *types.
 
 	// 生成一个永久令牌 没有时间限制
 
-	_, err = l.svcCtx.TpmtRpc.SysAuthAdd(l.ctx, &tpmtclient.SysAuthAddReq{
+	_, err = l.svcCtx.AuthenticationRpc.SysAuthAdd(l.ctx, &authenticationclient.SysAuthAddReq{
 		CreatedName: tokenData.NickName, // 创建人
 		NickName:    req.NickName,       // 机构名
 		State:       req.State,          // 状态 1:正常 2:停用 3:封禁

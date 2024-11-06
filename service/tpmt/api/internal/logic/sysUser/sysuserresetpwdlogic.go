@@ -5,7 +5,7 @@ import (
 	"tpmt-zt/common"
 	"tpmt-zt/common/jwtx"
 	"tpmt-zt/common/msg"
-	"tpmt-zt/service/tpmt/rpc/tpmtclient"
+	"tpmt-zt/service/authentication/authenticationclient"
 
 	"tpmt-zt/service/tpmt/api/internal/svc"
 	"tpmt-zt/service/tpmt/api/internal/types"
@@ -35,7 +35,7 @@ func (l *SysUserResetPwdLogic) SysUserResetPwd(req *types.SysUserResetPwdRequest
 		return nil, common.NewDefaultError("该接口不能修改自身")
 	}
 
-	res, err := l.svcCtx.TpmtRpc.SysUserResetPwd(l.ctx, &tpmtclient.SysUserResetPwdReq{
+	res, err := l.svcCtx.AuthenticationRpc.SysUserResetPwd(l.ctx, &authenticationclient.SysUserResetPwdReq{
 		Id:          req.Id,
 		Password:    req.Password,
 		UpdatedName: tokenData.NickName,
