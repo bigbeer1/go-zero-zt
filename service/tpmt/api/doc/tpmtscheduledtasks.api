@@ -1,0 +1,83 @@
+syntax = "v1"
+
+
+type (
+    TpmtScheduledTasksAddRequest {
+		SchedulerName  string  `json:"scheduler_name"`  // 名称
+		SchedulerCategory  int64  `json:"scheduler_category"`  // 类别 1:已接入任务, 2:自定义任务
+		SchedulerTaskNumber  int64  `json:"scheduler_task_number,optional"`  // 已接入任务号
+		SchedulerType  int64  `json:"scheduler_type,optional"`  // 类型 1:Http任务,2:Webservices任务
+		IntervalTime  int64  `json:"interval_time,optional"`  // 间隔时间按秒
+		ErrorOrder  int64  `json:"error_order,optional"`  // 失败重新发送次数1-10次 不可超过10次
+		FailIntervalTime  int64  `json:"fail_interval_time,optional"`  // 失败间隔时间按秒
+		State  int64  `json:"state"`  // 状态 1:启动  2:暂停
+		SchedulerData  string  `json:"scheduler_data,optional"`  // 内容
+    }
+
+    TpmtScheduledTasksDelRequest {
+		Id  string  `path:"id"`  // 定时任务ID
+    }
+
+    TpmtScheduledTasksUpRequest {
+		Id  string  `json:"id"`  // 定时任务ID
+		SchedulerName  string  `json:"scheduler_name,optional"`  // 名称
+		SchedulerCategory  int64  `json:"scheduler_category,optional"`  // 类别 1:已接入任务, 2:自定义任务
+		SchedulerTaskNumber  int64  `json:"scheduler_task_number,optional"`  // 已接入任务号
+		SchedulerType  int64  `json:"scheduler_type,optional"`  // 类型 1:Http任务,2:Webservices任务
+		IntervalTime  int64  `json:"interval_time,optional"`  // 间隔时间按秒
+		ErrorOrder  int64  `json:"error_order,optional"`  // 失败重新发送次数1-10次 不可超过10次
+		FailIntervalTime  int64  `json:"fail_interval_time,optional"`  // 失败间隔时间按秒
+		State  int64  `json:"state,optional"`  // 状态 1:启动  2:暂停
+		SchedulerData  string  `json:"scheduler_data,optional"`  // 内容
+    }
+
+
+    TpmtScheduledTasksListRequest {
+		Current  int64  `form:"current,default=1,optional"`  // 页码
+		PageSize  int64  `form:"page_size,default=10,optional"`  // 页数
+		SchedulerName  string  `form:"scheduler_name,optional"`  // 名称
+		SchedulerCategory  int64  `form:"scheduler_category,default=99,optional"`  // 类别 1:已接入任务, 2:自定义任务
+		SchedulerTaskNumber  int64  `form:"scheduler_task_number,default=99,optional"`  // 已接入任务号
+		SchedulerType  int64  `form:"scheduler_type,default=99,optional"`  // 类型 1:Http任务,2:Webservices任务
+		IntervalTime  int64  `form:"interval_time,default=99,optional"`  // 间隔时间按秒
+		ErrorOrder  int64  `form:"error_order,default=99,optional"`  // 失败重新发送次数1-10次 不可超过10次
+		FailIntervalTime  int64  `form:"fail_interval_time,default=99,optional"`  // 失败间隔时间按秒
+		State  int64  `form:"state,default=99,optional"`  // 状态 1:启动  2:暂停
+		SchedulerData  string  `form:"scheduler_data,optional"`  // 内容
+    }
+
+    TpmtScheduledTasksInfoRequest {
+		Id  string  `form:"id"`  // 定时任务ID
+    }
+
+)
+
+@server(
+    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
+    jwt: Auth
+	middleware: CheckAuth // 路由中间件声明鉴权
+    group: tpmtScheduledTasks
+)
+
+service Tpmt {
+
+    // 添加
+    @handler TpmtScheduledTasksAdd
+    post /tpmt/tpmtScheduledTasks (TpmtScheduledTasksAddRequest) returns (Response)
+
+    // 删除
+    @handler TpmtScheduledTasksDel
+    delete /tpmt/tpmtScheduledTasks/:id (TpmtScheduledTasksDelRequest) returns (Response)
+
+    // 更新
+    @handler TpmtScheduledTasksUp
+    put /tpmt/tpmtScheduledTasks (TpmtScheduledTasksUpRequest) returns (Response)
+
+    // 分页查询
+    @handler TpmtScheduledTasksList
+    get /tpmt/tpmtScheduledTasks (TpmtScheduledTasksListRequest) returns (Response)
+
+    // 查询详细信息
+    @handler TpmtScheduledTasksInfo
+    get /tpmt/tpmtScheduledTasksInfo (TpmtScheduledTasksInfoRequest) returns (Response)
+}

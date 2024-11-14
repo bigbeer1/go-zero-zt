@@ -18,8 +18,8 @@ CacheRedis:
 
 SchedulerAlarmTasksTime : 10 #秒  网关告警检测时间
 
-ScheduledTasksTime : 30 #秒  自定义任务定时触发时间
+ScheduledTasksTime : 5 #秒  自定义任务定时触发时间
 
-ScheduledTasksFailureRecordTime : 65 #秒  重试任务自定义触发时间
+ScheduledTasksFailureRecordTime : 15 #秒  重试任务自定义触发时间
 
 

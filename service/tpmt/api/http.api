@@ -11,6 +11,8 @@ import "doc/tpmtasset.api"
 import "doc/tpmtgateway.api"
 import "doc/tpmtmonitorpoint.api"
 import "doc/tpmtmonitorpointgetdata.api"
+import "doc/tpmtscheduledtasks.api"
+import "doc/tpmtscheduledtasksfailurerecord.api"
 
 type (
 	Response {

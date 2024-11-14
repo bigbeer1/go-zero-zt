@@ -15,7 +15,7 @@ WebsocketRpc:
     Hosts:
       - etcd:2379
     Key: websocket.rpc
-    Timeout: 3000000
+  Timeout: 3000000
 
 Tdengine:
   Host: taosnode1
@@ -28,14 +28,14 @@ TpmtRpc:
     Hosts:
       - etcd:2379
     Key: tpmt.rpc
-    Timeout: 3000000
+  Timeout: 3000000
 
 MqttSendRpc:
   Etcd:
     Hosts:
       - etcd:2379
     Key: mqtt-send.rpc
-    Timeout: 3000000
+  Timeout: 3000000
 
 CacheRedis:
   - Host: redis-1:6381
@@ -52,7 +52,7 @@ AlarmLimit: 200 # 告警最高任务数
 DataSetLimit: 200 # 数据存储到时序数据库最高任务数
 
 # worker任务并发数
-Concurrency: 1000 #并发数
+Concurrency: 200 #并发数
 
 # 自定义定时任务数
 ScheduledTasksLimit: 100

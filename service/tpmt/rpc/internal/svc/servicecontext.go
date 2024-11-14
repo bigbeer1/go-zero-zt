@@ -17,6 +17,12 @@ type ServiceContext struct {
 
 	TpmtMonitorPointModel model.TpmtMonitorPointModel // 监测点
 
+	// 自定义定时任务
+	TpmtScheduledTasksModel model.TpmtScheduledTasksModel
+
+	// 失败任务
+	TpmtScheduledTasksFailureRecordModel model.TpmtScheduledTasksFailureRecordModel
+
 	// 时序数据库连接
 	Taos *sql.DB
 }
@@ -26,10 +32,12 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	conn := sqlx.NewMysql(c.Mysql.DataSource)
 
 	return &ServiceContext{
-		Config:                c,
-		Taos:                  tdenginex.NewTDengineManager(c.Tdengine),
-		TpmtAssetModel:        model.NewTpmtAssetModel(conn, c.CacheRedis),
-		TpmtGatewayModel:      model.NewTpmtGatewayModel(conn, c.CacheRedis),
-		TpmtMonitorPointModel: model.NewTpmtMonitorPointModel(conn, c.CacheRedis),
+		Config:                               c,
+		Taos:                                 tdenginex.NewTDengineManager(c.Tdengine),
+		TpmtAssetModel:                       model.NewTpmtAssetModel(conn, c.CacheRedis),
+		TpmtGatewayModel:                     model.NewTpmtGatewayModel(conn, c.CacheRedis),
+		TpmtMonitorPointModel:                model.NewTpmtMonitorPointModel(conn, c.CacheRedis),
+		TpmtScheduledTasksModel:              model.NewTpmtScheduledTasksModel(conn, c.CacheRedis),
+		TpmtScheduledTasksFailureRecordModel: model.NewTpmtScheduledTasksFailureRecordModel(conn, c.CacheRedis),
 	}
 }

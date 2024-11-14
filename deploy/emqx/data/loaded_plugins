@@ -1,0 +1,7 @@
+emqx_management.
+emqx_dashboard.
+emqx_retainer.
+emqx_recon.
+emqx_telemetry.
+emqx_rule_engine.
+{emqx_auth_mnesia,true}.

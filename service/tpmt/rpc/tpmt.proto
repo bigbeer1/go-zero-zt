@@ -529,6 +529,145 @@ message TpmtMonitorPointHistoricalListData {
 
 
 
+//TpmtScheduledTasks start-------------------
+
+// TpmtScheduledTasks 添加
+message TpmtScheduledTasksAddReq{
+  string  created_name = 1;  // 创建人
+  string  scheduler_name = 2;  // 名称
+  int64   scheduler_category = 3;  // 类别 1:已接入任务, 2:自定义任务
+  int64   scheduler_task_number = 4;  // 已接入任务号
+  int64   scheduler_type = 5;  // 类型 1:Http任务,2:Webservices任务
+  int64   interval_time = 6;  // 间隔时间按秒
+  int64   error_order = 7;  // 失败重新发送次数1-10次 不可超过10次
+  int64   fail_interval_time = 8;  // 失败间隔时间按秒
+  int64   state = 9;  // 状态 1:启动  2:暂停
+  string  scheduler_data = 10;  // 内容
+}
+
+// TpmtScheduledTasks 删除
+message TpmtScheduledTasksDeleteReq{
+  string  id = 1;  // 定时任务ID
+}
+
+// TpmtScheduledTasks 更新
+message TpmtScheduledTasksUpdateReq{
+  string  id = 1;  // 定时任务ID
+  string  updated_name = 2;  // 更新人
+  string  scheduler_name = 3;  // 名称
+  int64   scheduler_category = 4;  // 类别 1:已接入任务, 2:自定义任务
+  int64   scheduler_task_number = 5;  // 已接入任务号
+  int64   scheduler_type = 6;  // 类型 1:Http任务,2:Webservices任务
+  int64   interval_time = 7;  // 间隔时间按秒
+  int64   error_order = 8;  // 失败重新发送次数1-10次 不可超过10次
+  int64   fail_interval_time = 9;  // 失败间隔时间按秒
+  int64   state = 10;  // 状态 1:启动  2:暂停
+  string  scheduler_data = 11;  // 内容
+}
+
+// TpmtScheduledTasks 单个查询
+message TpmtScheduledTasksFindOneReq{
+  string  id = 1;  // 定时任务ID
+}
+
+// TpmtScheduledTasks 单个查询返回
+message TpmtScheduledTasksFindOneResp{
+  string  id = 1;  // 定时任务ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  scheduler_name = 6;  // 名称
+  int64   scheduler_category = 7;  // 类别 1:已接入任务, 2:自定义任务
+  int64   scheduler_task_number = 8;  // 已接入任务号
+  int64   scheduler_type = 9;  // 类型 1:Http任务,2:Webservices任务
+  int64   interval_time = 10;  // 间隔时间按秒
+  int64   error_order = 11;  // 失败重新发送次数1-10次 不可超过10次
+  int64   fail_interval_time = 12;  // 失败间隔时间按秒
+  int64   state = 13;  // 状态 1:启动  2:暂停
+  string  scheduler_data = 14;  // 内容
+}
+
+
+// TpmtScheduledTasks 分页查询
+message TpmtScheduledTasksListReq{
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  string  scheduler_name = 3;  // 名称
+  int64   scheduler_category = 4;  // 类别 1:已接入任务, 2:自定义任务
+  int64   scheduler_task_number = 5;  // 已接入任务号
+  int64   scheduler_type = 6;  // 类型 1:Http任务,2:Webservices任务
+  int64   interval_time = 7;  // 间隔时间按秒
+  int64   error_order = 8;  // 失败重新发送次数1-10次 不可超过10次
+  int64   fail_interval_time = 9;  // 失败间隔时间按秒
+  int64   state = 10;  // 状态 1:启动  2:暂停
+  string  scheduler_data = 11;  // 内容
+}
+
+// TpmtScheduledTasks 分页查询返回
+message TpmtScheduledTasksListResp{
+  int64  total = 1;  // 总数
+  repeated  TpmtScheduledTasksListData list = 2;  // 内容
+}
+
+// TpmtScheduledTasks 列表信息
+message TpmtScheduledTasksListData{
+  string  id = 1;  // 定时任务ID
+  int64   created_at = 2;  // 创建时间
+  int64   updated_at = 3;  // 更新时间
+  string  created_name = 4;  // 创建人
+  string  updated_name = 5;  // 更新人
+  string  scheduler_name = 6;  // 名称
+  int64   scheduler_category = 7;  // 类别 1:已接入任务, 2:自定义任务
+  int64   scheduler_task_number = 8;  // 已接入任务号
+  int64   scheduler_type = 9;  // 类型 1:Http任务,2:Webservices任务
+  int64   interval_time = 10;  // 间隔时间按秒
+  int64   error_order = 11;  // 失败重新发送次数1-10次 不可超过10次
+  int64   fail_interval_time = 12;  // 失败间隔时间按秒
+  int64   state = 13;  // 状态 1:启动  2:暂停
+  string  scheduler_data = 14;  // 内容
+}
+
+//TpmtScheduledTasks end---------------------
+
+//TpmtScheduledTasksFailureRecord start---------------------
+
+// TpmtScheduledTasksFailureRecord 分页查询
+message TpmtScheduledTasksFailureRecordListReq{
+  int64  current = 1;  // 页码
+  int64  page_size = 2;  // 页数
+  string  scheduled_tasks_id = 3;  // 任务ID
+}
+
+// TpmtScheduledTasksFailureRecord 分页查询返回
+message TpmtScheduledTasksFailureRecordListResp{
+  int64  total = 1;  // 总数
+  repeated  TpmtScheduledTasksFailureRecordListData list = 2;  // 内容
+}
+
+// TpmtScheduledTasksFailureRecord 列表信息
+message TpmtScheduledTasksFailureRecordListData{
+  string  id = 1;  // 失败记录ID
+  string  scheduled_tasks_id = 2;  // 任务ID
+  int64   created_at = 3;  // 创建时间
+  int64   updated_at = 4;  // 更新时间
+  string  created_name = 5;  // 创建人
+  string  updated_name = 6;  // 更新人
+  string  scheduler_name = 7;  // 名称
+  int64   scheduler_category = 8;  // 类别 1:已接入任务, 2:自定义任务
+  int64   scheduler_task_number = 9;  // 已接入任务号
+  int64   scheduler_type = 10;  // 类型 1:Http任务,2:Webservices任务
+  int64   error_order = 11;  // 失败重新发送次数1-10次 不可超过10次
+  int64   fail_interval_time = 12;  // 失败间隔时间按秒
+  int64   fail_order = 13;  // 失败次数
+  string  scheduler_data = 14;  // 内容
+  string  request_data = 15;  // 请求内容
+}
+
+//TpmtScheduledTasksFailureRecord end---------------------
+
+
+
 
 service Tpmt {
 
@@ -562,5 +701,16 @@ service Tpmt {
 
   // 获取监测点历史数据接口
   rpc TpmtMonitorPointHistorical(TpmtMonitorPointHistoricalReq) returns (TpmtMonitorPointHistoricalResp);
+
+  //自定义定时任务
+  rpc TpmtScheduledTasksAdd(TpmtScheduledTasksAddReq) returns(CommonResp);
+  rpc TpmtScheduledTasksDelete(TpmtScheduledTasksDeleteReq) returns(CommonResp);
+  rpc TpmtScheduledTasksUpdate(TpmtScheduledTasksUpdateReq) returns(CommonResp);
+  rpc TpmtScheduledTasksFindOne(TpmtScheduledTasksFindOneReq) returns(TpmtScheduledTasksFindOneResp);
+  rpc TpmtScheduledTasksList(TpmtScheduledTasksListReq) returns(TpmtScheduledTasksListResp);
+
+  //失败任务且还在重试的任务
+  rpc TpmtScheduledTasksFailureRecordList(TpmtScheduledTasksFailureRecordListReq) returns(TpmtScheduledTasksFailureRecordListResp);
+
 
 }

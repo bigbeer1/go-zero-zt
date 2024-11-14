@@ -14,6 +14,7 @@ WebsocketRpc:
     Hosts:
       - 127.0.0.1:30000
     Key: websocket.rpc
+  Timeout: 3000000
 
 
 MqttSendRpc:
@@ -21,6 +22,7 @@ MqttSendRpc:
     Hosts:
       - 127.0.0.1:30000
     Key: mqtt-send.rpc
+  Timeout: 3000000
 
 Tdengine:
   Host: "127.0.0.1"

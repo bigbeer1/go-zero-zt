@@ -29,6 +29,7 @@ AuthenticationRpc:
     Hosts:
       - 127.0.0.1:30000
     Key: authentication.rpc
+  Timeout: 3000000
 
 
 

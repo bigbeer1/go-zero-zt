@@ -4,17 +4,15 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"github.com/Masterminds/squirrel"
 	"strings"
 	"sync"
 	"time"
-	"tpmt/common/eval"
-	"tpmt/common/global"
-	"tpmt/common/jsonx"
-	archivemodel "tpmt/service/archive/model"
-	"tpmt/service/mqttsend/mqttsend"
-	"tpmt/service/mqttsend/mqttsendclient"
-	"tpmt/service/tpmt/model"
+	"tpmt-zt/common/eval"
+	"tpmt-zt/common/jsonx"
+	archivemodel "tpmt-zt/service/archive/model"
+	"tpmt-zt/service/mqttsend/mqttsend"
+	"tpmt-zt/service/mqttsend/mqttsendclient"
+	"tpmt-zt/service/tpmt/model"
 )
 
 type SchedulerTaskNumber2Data struct {
@@ -23,7 +21,7 @@ type SchedulerTaskNumber2Data struct {
 	MqttHost  string `json:"mqtt_host"`  // mqtt目标服务器加端口 例子 10.192.38.21:1883
 	MqttUser  string `json:"mqtt_user"`  // mqtt账号
 	MqttPass  string `json:"mqtt_pass"`  // mqtt密码
-	SendTopic string `json:"send_topic"` //  mqtt发送主题
+	SendTopic string `json:"send_topic"` // mqtt发送主题
 }
 
 //type SchedulerTaskNumber2Monitor struct {
@@ -42,14 +40,23 @@ type TwyData struct {
 	Data      map[string]string `json:"data"`
 }
 
-func (s SchedulerTaskNumber2Data) ConvertGetRealTimeValueAndSend(ctx context.Context, mqttSendRpc mqttsend.MqttSend, tpmtMonitorPointModel model.TpmtMonitorPointModel, taos *sql.DB, scheduledTasksId string, scheduledTasksLimit int64) {
+func (s SchedulerTaskNumber2Data) ConvertGetRealTimeValueAndSend(ctx context.Context, mqttSendRpc mqttsend.MqttSend, tpmtMonitorPointModel model.TpmtMonitorPointModel, taos *sql.DB, scheduledTasksId string, scheduledTasksLimit int64, isFail bool) (err error) {
 
 	// 讲uuid中- 全部替换为_  确保插入和查询成功
 	id := strings.Replace(scheduledTasksId, "-", "_", -10)
 
-	tddb := &archivemodel.TdDb{
-		DbName:    "scheduled_tasks_log.d1" + id,             // 普通表名称
-		TableName: "scheduled_tasks_log.ptm_scheduled_tasks", // 超级表名称
+	var tddb *archivemodel.TdDb
+
+	if isFail {
+		tddb = &archivemodel.TdDb{
+			DbName:    "scheduled_tasks_log.d2" + id,                            // 普通表名称
+			TableName: "scheduled_tasks_log.ptm_scheduled_tasks_failure_record", // 超级表名称
+		}
+	} else {
+		tddb = &archivemodel.TdDb{
+			DbName:    "scheduled_tasks_log.d1" + id,             // 普通表名称
+			TableName: "scheduled_tasks_log.ptm_scheduled_tasks", // 超级表名称
+		}
 	}
 
 	var twyData TwyData
@@ -63,10 +70,6 @@ func (s SchedulerTaskNumber2Data) ConvertGetRealTimeValueAndSend(ctx context.Con
 
 	whereBuilder = whereBuilder.OrderBy("created_at DESC, id DESC")
 
-	whereBuilder = whereBuilder.Where(squirrel.Eq{
-		"sys_programme_id ": global.SysProgrammeId,
-	})
-
 	//  查询全部 当前任务下所有点位信息
 	all, err := tpmtMonitorPointModel.FindAll(ctx, whereBuilder)
 	if err != nil {
@@ -79,7 +82,7 @@ func (s SchedulerTaskNumber2Data) ConvertGetRealTimeValueAndSend(ctx context.Con
 			ResponseData:     err.Error(),
 		}
 		scheduledTasksLog.Insert(ctx, taos, tddb)
-		return
+		return err
 	}
 
 	/*
@@ -135,11 +138,13 @@ func (s SchedulerTaskNumber2Data) ConvertGetRealTimeValueAndSend(ctx context.Con
 
 	twyData.Data = newMap
 
-	s.MqttSendDo(ctx, scheduledTasksId, mqttSendRpc, taos, tddb, twyData)
+	err = s.MqttSendDo(ctx, scheduledTasksId, mqttSendRpc, taos, tddb, twyData)
+
+	return err
 
 }
 
-func (s SchedulerTaskNumber2Data) MqttSendDo(ctx context.Context, scheduledTasksId string, mqttSendRpc mqttsend.MqttSend, taos *sql.DB, tddb *archivemodel.TdDb, twyData TwyData) {
+func (s SchedulerTaskNumber2Data) MqttSendDo(ctx context.Context, scheduledTasksId string, mqttSendRpc mqttsend.MqttSend, taos *sql.DB, tddb *archivemodel.TdDb, twyData TwyData) error {
 
 	twyDataBytes, err := jsonx.Marshal(twyData)
 
@@ -151,6 +156,7 @@ func (s SchedulerTaskNumber2Data) MqttSendDo(ctx context.Context, scheduledTasks
 		SendTopic:    s.SendTopic,
 		Data:         twyDataBytes,
 	})
+
 	if err != nil {
 		// 写入时序数据库日志
 		scheduledTasksLog := &archivemodel.ScheduledTasksLog{
@@ -161,7 +167,7 @@ func (s SchedulerTaskNumber2Data) MqttSendDo(ctx context.Context, scheduledTasks
 			ResponseData:     err.Error(),
 		}
 		scheduledTasksLog.Insert(ctx, taos, tddb)
-		return
+		return err
 	}
 
 	// 写入时序数据库日志
@@ -173,5 +179,5 @@ func (s SchedulerTaskNumber2Data) MqttSendDo(ctx context.Context, scheduledTasks
 		ResponseData:     "",
 	}
 	scheduledTasksLog.Insert(ctx, taos, tddb)
-	return
+	return nil
 }

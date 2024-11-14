@@ -24,9 +24,16 @@ tpmt:
 	go build -o deploy/golang/out/tpmt/rpc/tpmt-rpc service/tpmt/rpc/tpmt.go
 	go build -o deploy/golang/out/tpmt/api/tpmt-api service/tpmt/api/tpmt.go
 
+# 日志微服务
+archive:
+	go build -o deploy/golang/out/archive/rpc/archive-rpc service/archive/rpc/archive.go
+	go build -o deploy/golang/out/archive/api/archive-api service/archive/api/archive.go
+
+# 底层接入系统
 tpmt-com:
 	go build -o deploy/golang/out/tpmtcom/tpmt-com service/tpmtcom/tpmtcom.go
 
+# websocket
 tpmt-websocket:
 	go build -o deploy/golang/out/websocket/websocket service/websocket/websocket.go
 
@@ -37,6 +44,6 @@ asynq-server:
 	go build -o deploy/golang/out/other/scheduler service/asynq/scheduler/scheduler.go
 
 
-# script 底层重启RPC
+# emqx发送RPC
 mqtt-send:
 	go build -o deploy/golang/out/mqttSend/mqtt-send service/mqttsend/mqttsend.go

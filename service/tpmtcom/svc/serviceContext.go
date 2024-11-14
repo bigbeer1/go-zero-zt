@@ -6,6 +6,7 @@ import (
 	"github.com/zeromicro/go-zero/core/stores/sqlx"
 	"golang.org/x/time/rate"
 	asynqx "tpmt-zt/common/asynq"
+	authenticationmodel "tpmt-zt/service/authentication/model"
 	"tpmt-zt/service/tpmt/model"
 	"tpmt-zt/service/tpmtcom/config"
 )
@@ -13,7 +14,7 @@ import (
 type ServiceContext struct {
 	Config config.Config
 	//字典
-	SysDictModel model.SysDictModel
+	SysDictModel authenticationmodel.SysDictModel
 
 	//TPMT采集器
 	TpmtGatewayModel model.TpmtGatewayModel
@@ -42,7 +43,7 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	return &ServiceContext{
 		Config:                c,
 		AsynqClient:           asynqx.NewAsynqClient(c.CacheRedis),
-		SysDictModel:          model.NewSysDictModel(conn, c.CacheRedis),
+		SysDictModel:          authenticationmodel.NewSysDictModel(conn, c.CacheRedis),
 		TpmtGatewayModel:      model.NewTpmtGatewayModel(conn, c.CacheRedis),
 		TpmtMonitorPointModel: model.NewTpmtMonitorPointModel(conn, c.CacheRedis),
 	}

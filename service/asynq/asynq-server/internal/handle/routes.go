@@ -6,6 +6,7 @@ import (
 	"tpmt-zt/service/asynq/asynq-server/internal/logic/alarm"
 	"tpmt-zt/service/asynq/asynq-server/internal/logic/schedule"
 	"tpmt-zt/service/asynq/asynq-server/internal/logic/store"
+	"tpmt-zt/service/asynq/asynq-server/internal/logic/task"
 	"tpmt-zt/service/asynq/asynq-server/internal/svc"
 	"tpmt-zt/service/asynq/jobtype"
 )
@@ -27,12 +28,21 @@ func (l *CronJob) Register() *asynq.ServeMux {
 
 	mux := asynq.NewServeMux()
 
+	// 自定义定时任务
+	mux.Handle(jobtype.SchedulerScheduledTasks, schedule.NewSchedulerScheduledTasksHandler(l.svcCtx))
+
+	// 重试任务
+	mux.Handle(jobtype.SchedulerScheduledTasksFailureRecord, schedule.NewSchedulerScheduledTasksFailureRecordHandler(l.svcCtx))
+
+	// 自定义任务
+	mux.Handle(jobtype.ScheduledTasks, task.NewScheduledTasksHandler(l.svcCtx))
+
 	// 告警任务分发
 	mux.Handle(jobtype.SchedulerAlarm, schedule.NewSchedulerAlarmTasksHandler(l.svcCtx))
 
 	// 数据存储分发
 	mux.Handle(jobtype.SchedulerDateSet, schedule.NewSchedulerDateSetTasksHandler(l.svcCtx))
-	
+
 	// 数据流程任务存储任务  时序数据库
 	mux.Handle(jobtype.DataSet, store.NewDataSetHandler(l.svcCtx))
 

@@ -1,0 +1,30 @@
+syntax = "v1"
+
+
+type (
+
+
+    TpmtScheduledTasksFailureRecordListRequest {
+		Current  int64  `form:"current,default=1,optional"`  // 页码
+		PageSize  int64  `form:"page_size,default=10,optional"`  // 页数
+		ScheduledTasksId  string  `form:"scheduled_tasks_id"`  // 任务ID
+    }
+
+
+)
+
+@server(
+    //声明当前service下所有路由需要jwt鉴权，且会自动生成包含jwt逻辑的代码
+    jwt: Auth
+    middleware: CheckAuth // 路由中间件声明鉴权
+    group: tpmtScheduledTasksFailureRecord
+)
+
+service Tpmt {
+
+
+    // 分页查询
+    @handler TpmtScheduledTasksFailureRecordList
+    get /tpmt/tpmtScheduledTasksFailureRecord (TpmtScheduledTasksFailureRecordListRequest) returns (Response)
+
+}

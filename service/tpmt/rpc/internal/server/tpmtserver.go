@@ -118,3 +118,35 @@ func (s *TpmtServer) TpmtMonitorPointHistorical(ctx context.Context, in *tpmtcli
 	l := logic.NewTpmtMonitorPointHistoricalLogic(ctx, s.svcCtx)
 	return l.TpmtMonitorPointHistorical(in)
 }
+
+// 自定义定时任务
+func (s *TpmtServer) TpmtScheduledTasksAdd(ctx context.Context, in *tpmtclient.TpmtScheduledTasksAddReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtScheduledTasksAddLogic(ctx, s.svcCtx)
+	return l.TpmtScheduledTasksAdd(in)
+}
+
+func (s *TpmtServer) TpmtScheduledTasksDelete(ctx context.Context, in *tpmtclient.TpmtScheduledTasksDeleteReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtScheduledTasksDeleteLogic(ctx, s.svcCtx)
+	return l.TpmtScheduledTasksDelete(in)
+}
+
+func (s *TpmtServer) TpmtScheduledTasksUpdate(ctx context.Context, in *tpmtclient.TpmtScheduledTasksUpdateReq) (*tpmtclient.CommonResp, error) {
+	l := logic.NewTpmtScheduledTasksUpdateLogic(ctx, s.svcCtx)
+	return l.TpmtScheduledTasksUpdate(in)
+}
+
+func (s *TpmtServer) TpmtScheduledTasksFindOne(ctx context.Context, in *tpmtclient.TpmtScheduledTasksFindOneReq) (*tpmtclient.TpmtScheduledTasksFindOneResp, error) {
+	l := logic.NewTpmtScheduledTasksFindOneLogic(ctx, s.svcCtx)
+	return l.TpmtScheduledTasksFindOne(in)
+}
+
+func (s *TpmtServer) TpmtScheduledTasksList(ctx context.Context, in *tpmtclient.TpmtScheduledTasksListReq) (*tpmtclient.TpmtScheduledTasksListResp, error) {
+	l := logic.NewTpmtScheduledTasksListLogic(ctx, s.svcCtx)
+	return l.TpmtScheduledTasksList(in)
+}
+
+// 失败任务且还在重试的任务
+func (s *TpmtServer) TpmtScheduledTasksFailureRecordList(ctx context.Context, in *tpmtclient.TpmtScheduledTasksFailureRecordListReq) (*tpmtclient.TpmtScheduledTasksFailureRecordListResp, error) {
+	l := logic.NewTpmtScheduledTasksFailureRecordListLogic(ctx, s.svcCtx)
+	return l.TpmtScheduledTasksFailureRecordList(in)
+}

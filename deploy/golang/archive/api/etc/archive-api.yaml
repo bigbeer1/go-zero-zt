@@ -16,4 +16,4 @@ ArchiveRpc:
     Hosts:
       - etcd:2379
     Key: archive.rpc
-    Timeout: 30000
+  Timeout: 30000

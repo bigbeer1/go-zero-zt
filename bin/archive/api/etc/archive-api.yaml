@@ -16,4 +16,4 @@ ArchiveRpc:
     Hosts:
       - 127.0.0.1:30000
     Key: archive.rpc
-    Timeout: 3000000
+  Timeout: 3000000

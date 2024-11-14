@@ -1,0 +1,33 @@
+version: '3'
+
+######## 项目依赖的环境，启动项目之前要先启动此环境 #######
+
+# 自动创建网络，并手动指定IP网段
+networks:
+  dabenxiong_net:
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+
+
+services:
+  # 物联网MQTT接入
+  emqx: #mqtt 管理端网页访问localhost:18083  admin public
+    image: emqx:4.4.14
+    container_name: emqx
+    volumes:
+      - ../deploy/time/Shanghai:/etc/localtime
+      - ../deploy/time/Shanghai:/usr/share/zoneinfo/Asia/Shanghai
+      - ../deploy/emqx/data/loaded_plugins:/opt/emqx/data/loaded_plugins
+      - ../deploy/emqx/data/loaded_modules:/opt/emqx/data/loaded_modules
+      - ../deploy/emqx/etc:/opt/emqx/etc
+    ports:
+      - "1883:1883"
+      - "8081:8081"
+      - "8083:8083"
+      - "8883:8883"
+      - "8084:8084"
+      - "18083:18083"
+    networks:
+      - dabenxiong_net
+    restart: always

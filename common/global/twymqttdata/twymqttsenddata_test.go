@@ -3,8 +3,8 @@ package twymqttdata
 import (
 	"fmt"
 	"testing"
-	"tpmt/common/datax"
-	"tpmt/common/jsonx"
+	"tpmt-zt/common/datax"
+	"tpmt-zt/common/jsonx"
 )
 
 func TestSchedulerTaskNumber2Data(t *testing.T) {
@@ -12,7 +12,7 @@ func TestSchedulerTaskNumber2Data(t *testing.T) {
 	var data = &SchedulerTaskNumber2Data{
 		GwSn:      "88888",
 		MsgInfo:   "11111",
-		MqttHost:  "10.132.105.122:1883",
+		MqttHost:  "127.0.0.1:1883",
 		MqttUser:  "admin",
 		MqttPass:  "1qaz2wsx",
 		SendTopic: "dev_send/f39a72ec-f45d-45eb-bf12-790aecdfec81",

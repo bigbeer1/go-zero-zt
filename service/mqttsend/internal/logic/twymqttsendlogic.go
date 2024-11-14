@@ -33,11 +33,13 @@ func (l *TwyMqttSendLogic) TwyMqttSend(in *mqttsendclient.TwyMqttSendReq) (*mqtt
 		ClientId: in.MqttClientId,
 	}
 
+	// 创建mqtt客户端
 	mqttClient, err := mqtt.NewMqttManager()
 	if err != nil {
 		return nil, err
 	}
 
+	// 给对应的主体发送mqtt内容
 	err = mqttx.Producer(mqttClient, in.SendTopic, in.Data)
 
 	if err != nil {

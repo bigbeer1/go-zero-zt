@@ -42,6 +42,14 @@ type TpmtClient interface {
 	TpmtMonitorPointRealTimeFindOne(ctx context.Context, in *TpmtMonitorPointRealTimeFindOneReq, opts ...grpc.CallOption) (*TpmtMonitorPointRealTimeFindOneResp, error)
 	// 获取监测点历史数据接口
 	TpmtMonitorPointHistorical(ctx context.Context, in *TpmtMonitorPointHistoricalReq, opts ...grpc.CallOption) (*TpmtMonitorPointHistoricalResp, error)
+	//自定义定时任务
+	TpmtScheduledTasksAdd(ctx context.Context, in *TpmtScheduledTasksAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+	TpmtScheduledTasksDelete(ctx context.Context, in *TpmtScheduledTasksDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+	TpmtScheduledTasksUpdate(ctx context.Context, in *TpmtScheduledTasksUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+	TpmtScheduledTasksFindOne(ctx context.Context, in *TpmtScheduledTasksFindOneReq, opts ...grpc.CallOption) (*TpmtScheduledTasksFindOneResp, error)
+	TpmtScheduledTasksList(ctx context.Context, in *TpmtScheduledTasksListReq, opts ...grpc.CallOption) (*TpmtScheduledTasksListResp, error)
+	//失败任务且还在重试的任务
+	TpmtScheduledTasksFailureRecordList(ctx context.Context, in *TpmtScheduledTasksFailureRecordListReq, opts ...grpc.CallOption) (*TpmtScheduledTasksFailureRecordListResp, error)
 }
 
 type tpmtClient struct {
@@ -214,6 +222,60 @@ func (c *tpmtClient) TpmtMonitorPointHistorical(ctx context.Context, in *TpmtMon
 	return out, nil
 }
 
+func (c *tpmtClient) TpmtScheduledTasksAdd(ctx context.Context, in *TpmtScheduledTasksAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtScheduledTasksAdd", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtScheduledTasksDelete(ctx context.Context, in *TpmtScheduledTasksDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtScheduledTasksDelete", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtScheduledTasksUpdate(ctx context.Context, in *TpmtScheduledTasksUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	out := new(CommonResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtScheduledTasksUpdate", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtScheduledTasksFindOne(ctx context.Context, in *TpmtScheduledTasksFindOneReq, opts ...grpc.CallOption) (*TpmtScheduledTasksFindOneResp, error) {
+	out := new(TpmtScheduledTasksFindOneResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtScheduledTasksFindOne", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtScheduledTasksList(ctx context.Context, in *TpmtScheduledTasksListReq, opts ...grpc.CallOption) (*TpmtScheduledTasksListResp, error) {
+	out := new(TpmtScheduledTasksListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtScheduledTasksList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *tpmtClient) TpmtScheduledTasksFailureRecordList(ctx context.Context, in *TpmtScheduledTasksFailureRecordListReq, opts ...grpc.CallOption) (*TpmtScheduledTasksFailureRecordListResp, error) {
+	out := new(TpmtScheduledTasksFailureRecordListResp)
+	err := c.cc.Invoke(ctx, "/tpmtclient.Tpmt/TpmtScheduledTasksFailureRecordList", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 // TpmtServer is the server API for Tpmt service.
 // All implementations must embed UnimplementedTpmtServer
 // for forward compatibility
@@ -242,6 +304,14 @@ type TpmtServer interface {
 	TpmtMonitorPointRealTimeFindOne(context.Context, *TpmtMonitorPointRealTimeFindOneReq) (*TpmtMonitorPointRealTimeFindOneResp, error)
 	// 获取监测点历史数据接口
 	TpmtMonitorPointHistorical(context.Context, *TpmtMonitorPointHistoricalReq) (*TpmtMonitorPointHistoricalResp, error)
+	//自定义定时任务
+	TpmtScheduledTasksAdd(context.Context, *TpmtScheduledTasksAddReq) (*CommonResp, error)
+	TpmtScheduledTasksDelete(context.Context, *TpmtScheduledTasksDeleteReq) (*CommonResp, error)
+	TpmtScheduledTasksUpdate(context.Context, *TpmtScheduledTasksUpdateReq) (*CommonResp, error)
+	TpmtScheduledTasksFindOne(context.Context, *TpmtScheduledTasksFindOneReq) (*TpmtScheduledTasksFindOneResp, error)
+	TpmtScheduledTasksList(context.Context, *TpmtScheduledTasksListReq) (*TpmtScheduledTasksListResp, error)
+	//失败任务且还在重试的任务
+	TpmtScheduledTasksFailureRecordList(context.Context, *TpmtScheduledTasksFailureRecordListReq) (*TpmtScheduledTasksFailureRecordListResp, error)
 	mustEmbedUnimplementedTpmtServer()
 }
 
@@ -302,6 +372,24 @@ func (UnimplementedTpmtServer) TpmtMonitorPointRealTimeFindOne(context.Context, 
 }
 func (UnimplementedTpmtServer) TpmtMonitorPointHistorical(context.Context, *TpmtMonitorPointHistoricalReq) (*TpmtMonitorPointHistoricalResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method TpmtMonitorPointHistorical not implemented")
+}
+func (UnimplementedTpmtServer) TpmtScheduledTasksAdd(context.Context, *TpmtScheduledTasksAddReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtScheduledTasksAdd not implemented")
+}
+func (UnimplementedTpmtServer) TpmtScheduledTasksDelete(context.Context, *TpmtScheduledTasksDeleteReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtScheduledTasksDelete not implemented")
+}
+func (UnimplementedTpmtServer) TpmtScheduledTasksUpdate(context.Context, *TpmtScheduledTasksUpdateReq) (*CommonResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtScheduledTasksUpdate not implemented")
+}
+func (UnimplementedTpmtServer) TpmtScheduledTasksFindOne(context.Context, *TpmtScheduledTasksFindOneReq) (*TpmtScheduledTasksFindOneResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtScheduledTasksFindOne not implemented")
+}
+func (UnimplementedTpmtServer) TpmtScheduledTasksList(context.Context, *TpmtScheduledTasksListReq) (*TpmtScheduledTasksListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtScheduledTasksList not implemented")
+}
+func (UnimplementedTpmtServer) TpmtScheduledTasksFailureRecordList(context.Context, *TpmtScheduledTasksFailureRecordListReq) (*TpmtScheduledTasksFailureRecordListResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method TpmtScheduledTasksFailureRecordList not implemented")
 }
 func (UnimplementedTpmtServer) mustEmbedUnimplementedTpmtServer() {}
 
@@ -640,6 +728,114 @@ func _Tpmt_TpmtMonitorPointHistorical_Handler(srv interface{}, ctx context.Conte
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Tpmt_TpmtScheduledTasksAdd_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtScheduledTasksAddReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtScheduledTasksAdd(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtScheduledTasksAdd",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtScheduledTasksAdd(ctx, req.(*TpmtScheduledTasksAddReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtScheduledTasksDelete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtScheduledTasksDeleteReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtScheduledTasksDelete(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtScheduledTasksDelete",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtScheduledTasksDelete(ctx, req.(*TpmtScheduledTasksDeleteReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtScheduledTasksUpdate_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtScheduledTasksUpdateReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtScheduledTasksUpdate(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtScheduledTasksUpdate",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtScheduledTasksUpdate(ctx, req.(*TpmtScheduledTasksUpdateReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtScheduledTasksFindOne_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtScheduledTasksFindOneReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtScheduledTasksFindOne(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtScheduledTasksFindOne",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtScheduledTasksFindOne(ctx, req.(*TpmtScheduledTasksFindOneReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtScheduledTasksList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtScheduledTasksListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtScheduledTasksList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtScheduledTasksList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtScheduledTasksList(ctx, req.(*TpmtScheduledTasksListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
+func _Tpmt_TpmtScheduledTasksFailureRecordList_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(TpmtScheduledTasksFailureRecordListReq)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(TpmtServer).TpmtScheduledTasksFailureRecordList(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/tpmtclient.Tpmt/TpmtScheduledTasksFailureRecordList",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(TpmtServer).TpmtScheduledTasksFailureRecordList(ctx, req.(*TpmtScheduledTasksFailureRecordListReq))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // Tpmt_ServiceDesc is the grpc.ServiceDesc for Tpmt service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -718,6 +914,30 @@ var Tpmt_ServiceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "TpmtMonitorPointHistorical",
 			Handler:    _Tpmt_TpmtMonitorPointHistorical_Handler,
+		},
+		{
+			MethodName: "TpmtScheduledTasksAdd",
+			Handler:    _Tpmt_TpmtScheduledTasksAdd_Handler,
+		},
+		{
+			MethodName: "TpmtScheduledTasksDelete",
+			Handler:    _Tpmt_TpmtScheduledTasksDelete_Handler,
+		},
+		{
+			MethodName: "TpmtScheduledTasksUpdate",
+			Handler:    _Tpmt_TpmtScheduledTasksUpdate_Handler,
+		},
+		{
+			MethodName: "TpmtScheduledTasksFindOne",
+			Handler:    _Tpmt_TpmtScheduledTasksFindOne_Handler,
+		},
+		{
+			MethodName: "TpmtScheduledTasksList",
+			Handler:    _Tpmt_TpmtScheduledTasksList_Handler,
+		},
+		{
+			MethodName: "TpmtScheduledTasksFailureRecordList",
+			Handler:    _Tpmt_TpmtScheduledTasksFailureRecordList_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

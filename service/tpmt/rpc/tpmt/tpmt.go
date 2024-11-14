@@ -14,40 +14,51 @@ import (
 )
 
 type (
-	AlarmRuleInfo                       = tpmtclient.AlarmRuleInfo
-	CommonResp                          = tpmtclient.CommonResp
-	TpmtAssetAddReq                     = tpmtclient.TpmtAssetAddReq
-	TpmtAssetDeleteReq                  = tpmtclient.TpmtAssetDeleteReq
-	TpmtAssetFindOneReq                 = tpmtclient.TpmtAssetFindOneReq
-	TpmtAssetFindOneResp                = tpmtclient.TpmtAssetFindOneResp
-	TpmtAssetListData                   = tpmtclient.TpmtAssetListData
-	TpmtAssetListReq                    = tpmtclient.TpmtAssetListReq
-	TpmtAssetListResp                   = tpmtclient.TpmtAssetListResp
-	TpmtAssetUpdateReq                  = tpmtclient.TpmtAssetUpdateReq
-	TpmtGatewayAddReq                   = tpmtclient.TpmtGatewayAddReq
-	TpmtGatewayDeleteReq                = tpmtclient.TpmtGatewayDeleteReq
-	TpmtGatewayFindOneReq               = tpmtclient.TpmtGatewayFindOneReq
-	TpmtGatewayFindOneResp              = tpmtclient.TpmtGatewayFindOneResp
-	TpmtGatewayListData                 = tpmtclient.TpmtGatewayListData
-	TpmtGatewayListReq                  = tpmtclient.TpmtGatewayListReq
-	TpmtGatewayListResp                 = tpmtclient.TpmtGatewayListResp
-	TpmtGatewayUpdateReq                = tpmtclient.TpmtGatewayUpdateReq
-	TpmtMonitorPointAddReq              = tpmtclient.TpmtMonitorPointAddReq
-	TpmtMonitorPointDeleteReq           = tpmtclient.TpmtMonitorPointDeleteReq
-	TpmtMonitorPointFindOneReq          = tpmtclient.TpmtMonitorPointFindOneReq
-	TpmtMonitorPointFindOneResp         = tpmtclient.TpmtMonitorPointFindOneResp
-	TpmtMonitorPointHistoricalListData  = tpmtclient.TpmtMonitorPointHistoricalListData
-	TpmtMonitorPointHistoricalReq       = tpmtclient.TpmtMonitorPointHistoricalReq
-	TpmtMonitorPointHistoricalResp      = tpmtclient.TpmtMonitorPointHistoricalResp
-	TpmtMonitorPointListData            = tpmtclient.TpmtMonitorPointListData
-	TpmtMonitorPointListReq             = tpmtclient.TpmtMonitorPointListReq
-	TpmtMonitorPointListResp            = tpmtclient.TpmtMonitorPointListResp
-	TpmtMonitorPointRealTimeData        = tpmtclient.TpmtMonitorPointRealTimeData
-	TpmtMonitorPointRealTimeFindOneReq  = tpmtclient.TpmtMonitorPointRealTimeFindOneReq
-	TpmtMonitorPointRealTimeFindOneResp = tpmtclient.TpmtMonitorPointRealTimeFindOneResp
-	TpmtMonitorPointRealTimeListReq     = tpmtclient.TpmtMonitorPointRealTimeListReq
-	TpmtMonitorPointRealTimeListResp    = tpmtclient.TpmtMonitorPointRealTimeListResp
-	TpmtMonitorPointUpdateReq           = tpmtclient.TpmtMonitorPointUpdateReq
+	AlarmRuleInfo                           = tpmtclient.AlarmRuleInfo
+	CommonResp                              = tpmtclient.CommonResp
+	TpmtAssetAddReq                         = tpmtclient.TpmtAssetAddReq
+	TpmtAssetDeleteReq                      = tpmtclient.TpmtAssetDeleteReq
+	TpmtAssetFindOneReq                     = tpmtclient.TpmtAssetFindOneReq
+	TpmtAssetFindOneResp                    = tpmtclient.TpmtAssetFindOneResp
+	TpmtAssetListData                       = tpmtclient.TpmtAssetListData
+	TpmtAssetListReq                        = tpmtclient.TpmtAssetListReq
+	TpmtAssetListResp                       = tpmtclient.TpmtAssetListResp
+	TpmtAssetUpdateReq                      = tpmtclient.TpmtAssetUpdateReq
+	TpmtGatewayAddReq                       = tpmtclient.TpmtGatewayAddReq
+	TpmtGatewayDeleteReq                    = tpmtclient.TpmtGatewayDeleteReq
+	TpmtGatewayFindOneReq                   = tpmtclient.TpmtGatewayFindOneReq
+	TpmtGatewayFindOneResp                  = tpmtclient.TpmtGatewayFindOneResp
+	TpmtGatewayListData                     = tpmtclient.TpmtGatewayListData
+	TpmtGatewayListReq                      = tpmtclient.TpmtGatewayListReq
+	TpmtGatewayListResp                     = tpmtclient.TpmtGatewayListResp
+	TpmtGatewayUpdateReq                    = tpmtclient.TpmtGatewayUpdateReq
+	TpmtMonitorPointAddReq                  = tpmtclient.TpmtMonitorPointAddReq
+	TpmtMonitorPointDeleteReq               = tpmtclient.TpmtMonitorPointDeleteReq
+	TpmtMonitorPointFindOneReq              = tpmtclient.TpmtMonitorPointFindOneReq
+	TpmtMonitorPointFindOneResp             = tpmtclient.TpmtMonitorPointFindOneResp
+	TpmtMonitorPointHistoricalListData      = tpmtclient.TpmtMonitorPointHistoricalListData
+	TpmtMonitorPointHistoricalReq           = tpmtclient.TpmtMonitorPointHistoricalReq
+	TpmtMonitorPointHistoricalResp          = tpmtclient.TpmtMonitorPointHistoricalResp
+	TpmtMonitorPointListData                = tpmtclient.TpmtMonitorPointListData
+	TpmtMonitorPointListReq                 = tpmtclient.TpmtMonitorPointListReq
+	TpmtMonitorPointListResp                = tpmtclient.TpmtMonitorPointListResp
+	TpmtMonitorPointRealTimeData            = tpmtclient.TpmtMonitorPointRealTimeData
+	TpmtMonitorPointRealTimeFindOneReq      = tpmtclient.TpmtMonitorPointRealTimeFindOneReq
+	TpmtMonitorPointRealTimeFindOneResp     = tpmtclient.TpmtMonitorPointRealTimeFindOneResp
+	TpmtMonitorPointRealTimeListReq         = tpmtclient.TpmtMonitorPointRealTimeListReq
+	TpmtMonitorPointRealTimeListResp        = tpmtclient.TpmtMonitorPointRealTimeListResp
+	TpmtMonitorPointUpdateReq               = tpmtclient.TpmtMonitorPointUpdateReq
+	TpmtScheduledTasksAddReq                = tpmtclient.TpmtScheduledTasksAddReq
+	TpmtScheduledTasksDeleteReq             = tpmtclient.TpmtScheduledTasksDeleteReq
+	TpmtScheduledTasksFailureRecordListData = tpmtclient.TpmtScheduledTasksFailureRecordListData
+	TpmtScheduledTasksFailureRecordListReq  = tpmtclient.TpmtScheduledTasksFailureRecordListReq
+	TpmtScheduledTasksFailureRecordListResp = tpmtclient.TpmtScheduledTasksFailureRecordListResp
+	TpmtScheduledTasksFindOneReq            = tpmtclient.TpmtScheduledTasksFindOneReq
+	TpmtScheduledTasksFindOneResp           = tpmtclient.TpmtScheduledTasksFindOneResp
+	TpmtScheduledTasksListData              = tpmtclient.TpmtScheduledTasksListData
+	TpmtScheduledTasksListReq               = tpmtclient.TpmtScheduledTasksListReq
+	TpmtScheduledTasksListResp              = tpmtclient.TpmtScheduledTasksListResp
+	TpmtScheduledTasksUpdateReq             = tpmtclient.TpmtScheduledTasksUpdateReq
 
 	Tpmt interface {
 		// 资产
@@ -74,6 +85,14 @@ type (
 		TpmtMonitorPointRealTimeFindOne(ctx context.Context, in *TpmtMonitorPointRealTimeFindOneReq, opts ...grpc.CallOption) (*TpmtMonitorPointRealTimeFindOneResp, error)
 		// 获取监测点历史数据接口
 		TpmtMonitorPointHistorical(ctx context.Context, in *TpmtMonitorPointHistoricalReq, opts ...grpc.CallOption) (*TpmtMonitorPointHistoricalResp, error)
+		// 自定义定时任务
+		TpmtScheduledTasksAdd(ctx context.Context, in *TpmtScheduledTasksAddReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtScheduledTasksDelete(ctx context.Context, in *TpmtScheduledTasksDeleteReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtScheduledTasksUpdate(ctx context.Context, in *TpmtScheduledTasksUpdateReq, opts ...grpc.CallOption) (*CommonResp, error)
+		TpmtScheduledTasksFindOne(ctx context.Context, in *TpmtScheduledTasksFindOneReq, opts ...grpc.CallOption) (*TpmtScheduledTasksFindOneResp, error)
+		TpmtScheduledTasksList(ctx context.Context, in *TpmtScheduledTasksListReq, opts ...grpc.CallOption) (*TpmtScheduledTasksListResp, error)
+		// 失败任务且还在重试的任务
+		TpmtScheduledTasksFailureRecordList(ctx context.Context, in *TpmtScheduledTasksFailureRecordListReq, opts ...grpc.CallOption) (*TpmtScheduledTasksFailureRecordListResp, error)
 	}
 
 	defaultTpmt struct {
@@ -181,4 +200,36 @@ func (m *defaultTpmt) TpmtMonitorPointRealTimeFindOne(ctx context.Context, in *T
 func (m *defaultTpmt) TpmtMonitorPointHistorical(ctx context.Context, in *TpmtMonitorPointHistoricalReq, opts ...grpc.CallOption) (*TpmtMonitorPointHistoricalResp, error) {
 	client := tpmtclient.NewTpmtClient(m.cli.Conn())
 	return client.TpmtMonitorPointHistorical(ctx, in, opts...)
+}
+
+// 自定义定时任务
+func (m *defaultTpmt) TpmtScheduledTasksAdd(ctx context.Context, in *TpmtScheduledTasksAddReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtScheduledTasksAdd(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtScheduledTasksDelete(ctx context.Context, in *TpmtScheduledTasksDeleteReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtScheduledTasksDelete(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtScheduledTasksUpdate(ctx context.Context, in *TpmtScheduledTasksUpdateReq, opts ...grpc.CallOption) (*CommonResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtScheduledTasksUpdate(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtScheduledTasksFindOne(ctx context.Context, in *TpmtScheduledTasksFindOneReq, opts ...grpc.CallOption) (*TpmtScheduledTasksFindOneResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtScheduledTasksFindOne(ctx, in, opts...)
+}
+
+func (m *defaultTpmt) TpmtScheduledTasksList(ctx context.Context, in *TpmtScheduledTasksListReq, opts ...grpc.CallOption) (*TpmtScheduledTasksListResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtScheduledTasksList(ctx, in, opts...)
+}
+
+// 失败任务且还在重试的任务
+func (m *defaultTpmt) TpmtScheduledTasksFailureRecordList(ctx context.Context, in *TpmtScheduledTasksFailureRecordListReq, opts ...grpc.CallOption) (*TpmtScheduledTasksFailureRecordListResp, error) {
+	client := tpmtclient.NewTpmtClient(m.cli.Conn())
+	return client.TpmtScheduledTasksFailureRecordList(ctx, in, opts...)
 }

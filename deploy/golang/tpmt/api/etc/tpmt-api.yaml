@@ -18,9 +18,11 @@ ArchiveRpc:
     Hosts:
       - etcd:2379
     Key: archive.rpc
+  Timeout: 30000
 
 TpmtRpc:
   Etcd:
     Hosts:
       - etcd:2379
     Key: tpmt.rpc
+  Timeout: 30000

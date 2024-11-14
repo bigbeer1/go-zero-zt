@@ -24,8 +24,14 @@ type ServiceContext struct {
 	AsynqClient  *asynq.Client
 	RealDataTime time.Duration // 实时数据保持时间
 
-	//TPMT监测点
+	// TPMT监测点
 	TpmtMonitorPointModel model.TpmtMonitorPointModel
+
+	// 定时任务
+	TpmtScheduledTasksModel model.TpmtScheduledTasksModel
+
+	// 重试任务
+	TpmtScheduledTasksFailureRecordModel model.TpmtScheduledTasksFailureRecordModel
 
 	Redis cache.Cache
 
@@ -48,13 +54,15 @@ func NewServiceContext(c config.Config) *ServiceContext {
 	c.MqttSendRpc.Timeout = 30000
 
 	return &ServiceContext{
-		Config:                c,
-		Taos:                  tdenginex.NewTDengineManager(c.Tdengine),
-		Redis:                 cache.New(c.CacheRedis, syncx.NewSingleFlight(), cache.NewStat("any"), errors.New("placeholder")),
-		AsynqServer:           asynqx.NewAsynqServer(c.CacheRedis, c.Concurrency),
-		TpmtMonitorPointModel: model.NewTpmtMonitorPointModel(conn, c.CacheRedis),
-		AsynqClient:           asynqx.NewAsynqClient(c.CacheRedis),
-		WebsocketRpc:          websocket.NewWebsocket(zrpc.MustNewClient(c.WebsocketRpc)),
-		MqttSendRpc:           mqttsend.NewMqttSend(zrpc.MustNewClient(c.MqttSendRpc)),
+		Config:                               c,
+		Taos:                                 tdenginex.NewTDengineManager(c.Tdengine),
+		Redis:                                cache.New(c.CacheRedis, syncx.NewSingleFlight(), cache.NewStat("any"), errors.New("placeholder")),
+		AsynqServer:                          asynqx.NewAsynqServer(c.CacheRedis, c.Concurrency),
+		TpmtMonitorPointModel:                model.NewTpmtMonitorPointModel(conn, c.CacheRedis),
+		AsynqClient:                          asynqx.NewAsynqClient(c.CacheRedis),
+		WebsocketRpc:                         websocket.NewWebsocket(zrpc.MustNewClient(c.WebsocketRpc)),
+		MqttSendRpc:                          mqttsend.NewMqttSend(zrpc.MustNewClient(c.MqttSendRpc)),
+		TpmtScheduledTasksModel:              model.NewTpmtScheduledTasksModel(conn, c.CacheRedis),
+		TpmtScheduledTasksFailureRecordModel: model.NewTpmtScheduledTasksFailureRecordModel(conn, c.CacheRedis),
 	}
 }

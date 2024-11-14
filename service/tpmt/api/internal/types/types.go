@@ -468,6 +468,59 @@ type TpmtMonitorPointUpRequest struct {
 	Sort                      int64   `json:"sort,optional"`                        // 排序
 }
 
+type TpmtScheduledTasksAddRequest struct {
+	SchedulerName       string `json:"scheduler_name"`                 // 名称
+	SchedulerCategory   int64  `json:"scheduler_category"`             // 类别 1:已接入任务, 2:自定义任务
+	SchedulerTaskNumber int64  `json:"scheduler_task_number,optional"` // 已接入任务号
+	SchedulerType       int64  `json:"scheduler_type,optional"`        // 类型 1:Http任务,2:Webservices任务
+	IntervalTime        int64  `json:"interval_time,optional"`         // 间隔时间按秒
+	ErrorOrder          int64  `json:"error_order,optional"`           // 失败重新发送次数1-10次 不可超过10次
+	FailIntervalTime    int64  `json:"fail_interval_time,optional"`    // 失败间隔时间按秒
+	State               int64  `json:"state,optional"`                 // 状态 1:启动  2:暂停
+	SchedulerData       string `json:"scheduler_data,optional"`        // 内容
+}
+
+type TpmtScheduledTasksDelRequest struct {
+	Id string `path:"id"` // 定时任务ID
+}
+
+type TpmtScheduledTasksFailureRecordListRequest struct {
+	Current          int64  `form:"current,default=1,optional"`    // 页码
+	PageSize         int64  `form:"page_size,default=10,optional"` // 页数
+	ScheduledTasksId string `form:"scheduled_tasks_id"`            // 任务ID
+}
+
+type TpmtScheduledTasksInfoRequest struct {
+	Id string `form:"id"` // 定时任务ID
+}
+
+type TpmtScheduledTasksListRequest struct {
+	Current             int64  `form:"current,default=1,optional"`                // 页码
+	PageSize            int64  `form:"page_size,default=10,optional"`             // 页数
+	SchedulerName       string `form:"scheduler_name,optional"`                   // 名称
+	SchedulerCategory   int64  `form:"scheduler_category,default=99,optional"`    // 类别 1:已接入任务, 2:自定义任务
+	SchedulerTaskNumber int64  `form:"scheduler_task_number,default=99,optional"` // 已接入任务号
+	SchedulerType       int64  `form:"scheduler_type,default=99,optional"`        // 类型 1:Http任务,2:Webservices任务
+	IntervalTime        int64  `form:"interval_time,default=99,optional"`         // 间隔时间按秒
+	ErrorOrder          int64  `form:"error_order,default=99,optional"`           // 失败重新发送次数1-10次 不可超过10次
+	FailIntervalTime    int64  `form:"fail_interval_time,default=99,optional"`    // 失败间隔时间按秒
+	State               int64  `form:"state,default=99,optional"`                 // 状态 1:启动  2:暂停
+	SchedulerData       string `form:"scheduler_data,optional"`                   // 内容
+}
+
+type TpmtScheduledTasksUpRequest struct {
+	Id                  string `json:"id"`                             // 定时任务ID
+	SchedulerName       string `json:"scheduler_name,optional"`        // 名称
+	SchedulerCategory   int64  `json:"scheduler_category,optional"`    // 类别 1:已接入任务, 2:自定义任务
+	SchedulerTaskNumber int64  `json:"scheduler_task_number,optional"` // 已接入任务号
+	SchedulerType       int64  `json:"scheduler_type,optional"`        // 类型 1:Http任务,2:Webservices任务
+	IntervalTime        int64  `json:"interval_time,optional"`         // 间隔时间按秒
+	ErrorOrder          int64  `json:"error_order,optional"`           // 失败重新发送次数1-10次 不可超过10次
+	FailIntervalTime    int64  `json:"fail_interval_time,optional"`    // 失败间隔时间按秒
+	State               int64  `json:"state,optional"`                 // 状态 1:启动  2:暂停
+	SchedulerData       string `json:"scheduler_data,optional"`        // 内容
+}
+
 type TpmtmonitorPointHistoricalReq struct {
 	Ids                   []int64 `form:"ids"`                                // 监测点ID
 	TimeRangeStartDayTime int64   `form:"time_range_start_day_time,optional"` // 开始时间戳毫秒
