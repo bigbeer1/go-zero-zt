@@ -18,3 +18,5 @@ readme.md: 说明文档
 配套课程B站：
 https://www.bilibili.com/video/BV1kpBCYhEMD?vd_source=d142b06d07ef03994bc1ea2443ce549d&spm_id_from=333.788.videopod.sections
 ```
+
+数据库文件在   deploy  init  tpmt.sql 文件
